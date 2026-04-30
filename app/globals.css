@@ -22,9 +22,11 @@
   .text-display {
     @apply font-sans font-black tracking-tight leading-[0.92] uppercase;
   }
+
   .label-mono {
     @apply font-mono text-[15px] uppercase tracking-[0.16em] text-ink-muted;
   }
+
   .glass-card {
     @apply bg-white/40 backdrop-blur-md border border-white/60;
   }

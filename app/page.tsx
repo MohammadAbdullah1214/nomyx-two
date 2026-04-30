@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Shield,
   Zap,
@@ -11,10 +13,10 @@ import {
   Cpu,
   Clock3,
   ArrowLeftRight,
-  ShieldCheck
-} from 'lucide-react';
+  ShieldCheck,
+} from "lucide-react";
 
-const navItems = ['Infrastructure', 'Technology', 'Insights', 'Partners'];
+const navItems = ["Infrastructure", "Technology", "Insights", "Partners"];
 
 const CustomCursor = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -27,19 +29,24 @@ const CustomCursor = () => {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('button') || target.closest('a')) {
+      if (
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("button") ||
+        target.closest("a")
+      ) {
         setIsHovering(true);
       } else {
         setIsHovering(false);
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseover", handleMouseOver);
     };
   }, []);
 
@@ -48,7 +55,7 @@ const CustomCursor = () => {
       <motion.div
         className="fixed top-0 left-0 w-1.5 h-1.5 bg-ink rounded-full pointer-events-none z-[9999]"
         animate={{ x: mousePos.x - 3, y: mousePos.y - 3 }}
-        transition={{ type: 'spring', damping: 30, stiffness: 250, mass: 0.5 }}
+        transition={{ type: "spring", damping: 30, stiffness: 250, mass: 0.5 }}
       />
       <motion.div
         className="fixed top-0 left-0 w-10 h-10 border border-ink/20 rounded-full pointer-events-none z-[9998]"
@@ -56,9 +63,11 @@ const CustomCursor = () => {
           x: mousePos.x - 20,
           y: mousePos.y - 20,
           scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? 'rgba(10, 17, 40, 0.05)' : 'transparent'
+          backgroundColor: isHovering
+            ? "rgba(10, 17, 40, 0.05)"
+            : "transparent",
         }}
-        transition={{ type: 'spring', damping: 25, stiffness: 150, mass: 0.8 }}
+        transition={{ type: "spring", damping: 25, stiffness: 150, mass: 0.8 }}
       />
     </>
   );
@@ -69,14 +78,16 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[200] h-20 flex items-center transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md border-b border-border' : 'bg-transparent'
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-border"
+          : "bg-transparent"
       }`}
     >
       <div className="w-full max-w-[88rem] mx-auto px-6 md:px-8">
@@ -102,7 +113,7 @@ const Navbar = () => {
               href="#cta"
               className="h-11 px-7 inline-flex items-center justify-center bg-ink text-white text-xs font-bold uppercase tracking-[0.18em] hover:bg-ink/90 transition-colors"
             >
-              Access
+              Request Demo
             </a>
           </div>
         </div>
@@ -111,7 +122,10 @@ const Navbar = () => {
           <a href="#" className="flex items-center">
             <img src="/nomyx-logo.png" alt="Nomyx" className="h-8 w-auto" />
           </a>
-          <button className="text-ink" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button
+            className="text-ink"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -138,7 +152,7 @@ const Navbar = () => {
               ))}
               <a
                 href="#cta"
-                className="h-11 inline-flex items-center justify-center bg-ink text-white text-xs font-bold uppercase tracking-[0.18em]"
+                className="h-11 inline-flex items-center justify-center bg-ink text-white text-xs font-bold uppercase tracking-[0.14em]"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Access
@@ -157,16 +171,19 @@ const Hero = () => {
       <div className="max-w-[88rem] mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-12 items-start">
           <div>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="text-display text-[clamp(48px,8.8vw,112px)] mb-6 mt-1"
+              className="text-display text-[clamp(48px,8.0vw,60px)] mb-6 mt-1"
             >
-              Unlock <span className="text-accent">$25T</span> In
+              The <span className="text-accent">Agile</span>
               <br />
-              Private Markets.
+              Infrastructure
+              <br />
+              for Institutional
+              <br />
+              Capital.
             </motion.h1>
 
             <motion.p
@@ -175,8 +192,9 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg md:text-xl text-ink-muted leading-relaxed max-w-2xl mb-8"
             >
-              Tokenization for fund managers, not just crypto natives. Faster setup, real liquidity,
-              and seamless integrations.
+              Tokenize Real-World Assets with upgradeable smart contracts.
+              Future-proof compliance, automated lifecycle management, and T+0
+              settlement.
             </motion.p>
 
             <motion.div
@@ -189,14 +207,14 @@ const Hero = () => {
                 href="#cta"
                 className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors"
               >
-                Get Started
+                Start Building
                 <ArrowRight size={18} />
               </a>
               <a
                 href="#infrastructure"
                 className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center border border-border bg-white text-ink font-bold uppercase tracking-[0.14em] hover:bg-slate-50 transition-colors"
               >
-                Explore
+                View Documentation
               </a>
             </motion.div>
           </div>
@@ -204,23 +222,23 @@ const Hero = () => {
           <div className="border border-border bg-white divide-y divide-border mt-6 lg:mt-10">
             {[
               {
-                label: 'Setup Time',
-                value: 'Minutes',
-                sub: 'Vs. months on legacy',
-                icon: <Clock3 size={24} className="text-ink" />
+                label: "Setup Time",
+                value: "Minutes",
+                sub: "Vs. months on legacy",
+                icon: <Clock3 size={24} className="text-ink" />,
               },
               {
-                label: 'Settlement',
-                value: 'T+0',
-                sub: 'Atomic on-chain finality',
-                icon: <ArrowLeftRight size={24} className="text-ink" />
+                label: "Settlement",
+                value: "T+0",
+                sub: "Atomic on-chain finality",
+                icon: <ArrowLeftRight size={24} className="text-ink" />,
               },
               {
-                label: 'Compliance',
-                value: 'Built-in',
-                sub: 'Protocol-level enforcement',
-                icon: <ShieldCheck size={24} className="text-ink" />
-              }
+                label: "Compliance",
+                value: "Built-in",
+                sub: "Protocol-level enforcement",
+                icon: <ShieldCheck size={24} className="text-ink" />,
+              },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -230,9 +248,15 @@ const Hero = () => {
                 className="p-7 md:p-8 flex items-center justify-between gap-4"
               >
                 <div className="flex-1">
-                  <div className="text-xs uppercase tracking-[0.12em] text-ink-muted font-semibold mb-2">{stat.label}</div>
-                  <div className="text-4xl md:text-[42px] font-black tracking-tight text-ink mb-1">{stat.value}</div>
-                  <div className="text-sm text-ink-muted uppercase tracking-[0.08em]">{stat.sub}</div>
+                  <div className="text-xs uppercase tracking-[0.12em] text-ink-muted font-semibold mb-2">
+                    {stat.label}
+                  </div>
+                  <div className="text-4xl md:text-[42px] font-black tracking-tight text-ink mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-ink-muted uppercase tracking-[0.08em]">
+                    {stat.sub}
+                  </div>
                 </div>
                 <div className="w-14 h-14 border border-border flex items-center justify-center flex-shrink-0">
                   {stat.icon}
@@ -262,32 +286,36 @@ const SectionHeader = ({ title, label }: { title: string; label?: string }) => (
 const ValueProp = () => {
   const cards = [
     {
-      title: 'What Nomyx Is?',
-      desc: 'Complete tokenization infrastructure for institutional funds. We provide the rails for the next generation of private markets.',
-      icon: <Layers className="text-accent" size={24} />
+      title: "What Nomyx Is?",
+      desc: "Complete tokenization infrastructure for institutional funds. We provide the rails for the next generation of private markets.",
+      icon: <Layers className="text-accent" size={24} />,
     },
     {
       title: "What's Different?",
-      desc: 'Built for institutions that need infrastructure, not just a wrapper. Compliance is wired into the protocol, not bolted on.',
-      icon: <Shield className="text-accent" size={24} />
+      desc: "Built for institutions that need infrastructure, not just a wrapper. Compliance is wired into the protocol, not bolted on.",
+      icon: <Shield className="text-accent" size={24} />,
     },
     {
-      title: 'No Complexity',
-      desc: 'Tokenization without friction. Infrastructure that handles the heavy lifting so you can focus on fund management.',
-      icon: <Zap className="text-accent" size={24} />
-    }
+      title: "No Complexity",
+      desc: "Tokenization without friction. Infrastructure that handles the heavy lifting so you can focus on fund management.",
+      icon: <Zap className="text-accent" size={24} />,
+    },
   ];
 
   return (
     <section id="infrastructure" className="border-b border-border">
-      <SectionHeader label="Infrastructure" title="Infrastructure without friction." />
+      <SectionHeader
+        label="Infrastructure"
+        title="Beyond Tokenization. Intelligent Financial Infrastructure."
+      />
 
       <div className="max-w-[88rem] mx-auto px-6 md:px-8 pb-16 md:pb-20 space-y-8">
         <div className="flex justify-center">
           <div className="bg-ink text-white px-6 py-4 md:px-8 md:py-5 w-fit max-w-full">
             <p className="text-lg md:text-2xl font-semibold leading-relaxed text-center max-w-4xl">
-              Agile infrastructure for institutional capital. Tokenization-as-a-Service for the $25
-              trillion private markets sector.
+              Agile infrastructure for institutional capital.
+              Tokenization-as-a-Service for the $25 trillion private markets
+              sector.
             </p>
           </div>
         </div>
@@ -303,8 +331,12 @@ const ValueProp = () => {
               className="p-8 md:p-9 border-b md:border-b-0 md:border-r last:border-r-0 border-border bg-white hover:bg-slate-50 transition-colors text-center flex flex-col items-center"
             >
               <div className="mb-6 flex justify-center">{card.icon}</div>
-              <h3 className="text-3xl font-black tracking-tight uppercase mb-4 text-center">{card.title}</h3>
-              <p className="text-ink-muted leading-relaxed text-base text-center">{card.desc}</p>
+              <h3 className="text-3xl font-black tracking-tight uppercase mb-4 text-center">
+                {card.title}
+              </h3>
+              <p className="text-ink-muted leading-relaxed text-base text-center">
+                {card.desc}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -314,8 +346,8 @@ const ValueProp = () => {
 };
 
 const Technology = () => {
-  const [activeFacets, setActiveFacets] = useState(['KYC', 'AML', 'OFAC']);
-  const facets = ['KYC', 'AML', 'OFAC', 'PEP', 'Freeze', 'Dividends'];
+  const [activeFacets, setActiveFacets] = useState(["KYC", "AML", "OFAC"]);
+  const facets = ["KYC", "AML", "OFAC", "PEP", "Freeze", "Dividends"];
 
   const toggleFacet = (facet: string) => {
     if (activeFacets.includes(facet)) {
@@ -333,9 +365,10 @@ const Technology = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
           <div className="border border-border bg-white p-8 md:p-9">
             <p className="text-lg md:text-[22px] text-ink-muted leading-relaxed mb-9">
-              Every smart contract ever written is immutable. When compliance requirements change,
-              institutions face months of costly redeployment. Nomyx uses an architecture that
-              separates logic from data, so updates remain fast and safe.
+              Every smart contract ever written is immutable. When compliance
+              requirements change, institutions face months of costly
+              redeployment. Nomyx uses an architecture that separates logic from
+              data, so updates remain fast and safe.
             </p>
 
             <div className="space-y-7">
@@ -348,7 +381,8 @@ const Technology = () => {
                     Upgrade without redeployment
                   </h4>
                   <p className="text-base text-ink-muted leading-relaxed">
-                    Compliance changes deploy as facet swaps in under two seconds.
+                    Compliance changes deploy as facet swaps in under two
+                    seconds.
                   </p>
                 </div>
               </div>
@@ -362,7 +396,8 @@ const Technology = () => {
                     Protocol-level enforcement
                   </h4>
                   <p className="text-base text-ink-muted leading-relaxed">
-                    KYC, AML, and OFAC checks are enforced directly at the contract layer.
+                    KYC, AML, and OFAC checks are enforced directly at the
+                    contract layer.
                   </p>
                 </div>
               </div>
@@ -386,8 +421,12 @@ const Technology = () => {
             <div className="relative w-[320px] h-[320px] mb-6">
               <div className="absolute inset-[54px] rounded-full border border-border bg-slate-50 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-[11px] uppercase tracking-[0.12em] text-ink-muted font-semibold">Selected</div>
-                  <div className="text-2xl font-black text-ink">{activeFacets.length}</div>
+                  <div className="text-[11px] uppercase tracking-[0.12em] text-ink-muted font-semibold">
+                    Selected
+                  </div>
+                  <div className="text-2xl font-black text-ink">
+                    {activeFacets.length}
+                  </div>
                 </div>
               </div>
 
@@ -403,8 +442,8 @@ const Technology = () => {
                     onClick={() => toggleFacet(f)}
                     className={`absolute -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full font-mono text-[11px] font-bold uppercase tracking-[0.1em] transition-colors border ${
                       activeFacets.includes(f)
-                        ? 'bg-ink text-white border-ink'
-                        : 'bg-white text-ink-muted border-border hover:border-ink/30'
+                        ? "bg-ink text-white border-ink"
+                        : "bg-white text-ink-muted border-border hover:border-ink/30"
                     }`}
                     style={{ left: `${x}px`, top: `${y}px` }}
                   >
@@ -416,7 +455,7 @@ const Technology = () => {
 
             <div className="w-full bg-ink p-5 font-mono text-[11px] text-white/80 leading-relaxed">
               <div className="mb-1">DIAMOND_PROXY_ACTIVE</div>
-              <div>{`facets: [${activeFacets.join(', ')}]`}</div>
+              <div>{`facets: [${activeFacets.join(", ")}]`}</div>
               <div>status: compliant_verified</div>
             </div>
           </div>
@@ -428,14 +467,14 @@ const Technology = () => {
 
 const Partners = () => {
   const partners = [
-    { src: '/mastercard.webp', alt: 'Mastercard', className: 'w-48' },
-    { src: '/stellar.avif', alt: 'Stellar', className: 'h-14 w-48' },
-    { text: 'Plume', alt: 'Plume' },
-    { src: '/plugandplay.png', alt: 'Plug & Play' },
-    { src: '/XDC.svg', alt: 'XDC', className: 'w-20' },
-    { src: '/persona.png', alt: 'Persona' },
-    { src: '/halborn.png', alt: 'Halborn', className: 'h-14 w-48' },
-    { text: 'Dfns', alt: 'Dfns' }
+    { src: "/mastercard.webp", alt: "Mastercard", className: "w-48" },
+    { src: "/stellar.avif", alt: "Stellar", className: "h-14 w-48" },
+    { text: "Plume", alt: "Plume" },
+    { src: "/plugandplay.png", alt: "Plug & Play" },
+    { src: "/XDC.svg", alt: "XDC", className: "w-20" },
+    { src: "/persona.png", alt: "Persona" },
+    { src: "/halborn.png", alt: "Halborn", className: "h-14 w-48" },
+    { text: "Dfns", alt: "Dfns" },
   ];
 
   const marqueePartners = [...partners, ...partners];
@@ -448,14 +487,16 @@ const Partners = () => {
             Partners
           </span>
         </div>
-        <h2 className="text-display text-[clamp(34px,6vw,72px)]">Trusted by institutions.</h2>
+        <h2 className="text-display text-[clamp(34px,6vw,72px)]">
+          Trusted by institutions.
+        </h2>
       </div>
 
       <div className="overflow-hidden border-y border-border">
         <motion.div
           className="flex w-max"
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 28, ease: 'linear', repeat: Infinity }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 28, ease: "linear", repeat: Infinity }}
         >
           {marqueePartners.map((p, i) => (
             <div
@@ -463,9 +504,15 @@ const Partners = () => {
               className="w-[220px] md:w-[250px] h-28 px-8 border-r border-border flex items-center justify-center bg-white"
             >
               {p.src ? (
-                <img src={p.src} alt={p.alt} className={`object-contain ${p.className ?? 'h-10 w-36'}`} />
+                <img
+                  src={p.src}
+                  alt={p.alt}
+                  className={`object-contain ${p.className ?? "h-10 w-36"}`}
+                />
               ) : (
-                <span className="text-[30px] font-semibold text-ink/80 tracking-tight">{p.text}</span>
+                <span className="text-[30px] font-semibold text-ink/80 tracking-tight">
+                  {p.text}
+                </span>
               )}
             </div>
           ))}
@@ -477,11 +524,16 @@ const Partners = () => {
 
 const CTA = () => {
   return (
-    <section id="cta" className="py-20 md:py-24 border-b border-border bg-slate-50/50">
+    <section
+      id="cta"
+      className="py-20 md:py-24 border-b border-border bg-slate-50/50"
+    >
       <div className="max-w-5xl mx-auto px-6 md:px-8 text-center">
-        <h2 className="text-display text-[clamp(40px,8vw,92px)] mb-8">Ready to tokenize?</h2>
+        <h2 className="text-display text-[clamp(40px,8vw,92px)] mb-8">
+          Ready to modernize your AUM?
+        </h2>
         <p className="text-xl text-ink-muted leading-relaxed mb-12 max-w-3xl mx-auto">
-          Join the institutions shaping the future of private markets with Nomyx infrastructure.
+          Join the asset managers moving billions on-chain with Nomyx.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -491,13 +543,7 @@ const CTA = () => {
             rel="noopener"
             className="h-14 min-w-[230px] px-10 inline-flex items-center justify-center bg-ink text-white font-black uppercase tracking-[0.14em] text-base hover:bg-ink/90 transition-colors"
           >
-            Request Demo
-          </a>
-          <a
-            href="mailto:info@nomyx.io"
-            className="h-14 min-w-[230px] px-10 inline-flex items-center justify-center border border-ink bg-white text-ink font-black uppercase tracking-[0.14em] text-base hover:bg-slate-100 transition-colors"
-          >
-            Contact Sales
+            Request a Demo
           </a>
         </div>
       </div>
@@ -515,31 +561,70 @@ const Footer = () => {
               <img src="/nomyx-logo.png" alt="Nomyx" className="h-10 w-auto" />
             </a>
             <p className="text-sm text-ink-muted leading-relaxed max-w-xs">
-              Agile infrastructure for institutional capital. Built for the $25T private markets
-              sector.
+              Agile infrastructure for institutional capital. Built for the $25T
+              private markets sector.
             </p>
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-ink mb-4">Platform</h4>
+            <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-ink mb-4">
+              Platform
+            </h4>
             <ul className="space-y-3 text-sm text-ink-muted">
-              <li><a href="#infrastructure" className="hover:text-ink transition-colors">Infrastructure</a></li>
-              <li><a href="#technology" className="hover:text-ink transition-colors">Technology</a></li>
-              <li><a href="#partners" className="hover:text-ink transition-colors">Partners</a></li>
+              <li>
+                <a
+                  href="#infrastructure"
+                  className="hover:text-ink transition-colors"
+                >
+                  Infrastructure
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#technology"
+                  className="hover:text-ink transition-colors"
+                >
+                  Technology
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#partners"
+                  className="hover:text-ink transition-colors"
+                >
+                  Partners
+                </a>
+              </li>
             </ul>
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-ink mb-4">Company</h4>
+            <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-ink mb-4">
+              Company
+            </h4>
             <ul className="space-y-3 text-sm text-ink-muted">
-              <li><a href="#" className="hover:text-ink transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-ink transition-colors">Insights</a></li>
-              <li><a href="#" className="hover:text-ink transition-colors">Contact</a></li>
+              <li>
+                <a href="#" className="hover:text-ink transition-colors">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-ink transition-colors">
+                  Insights
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-ink transition-colors">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
           <div className="lg:col-span-4">
-            <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-ink mb-4">Newsletter</h4>
+            <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-ink mb-4">
+              Newsletter
+            </h4>
             <div className="flex border border-border h-11">
               <input
                 type="email"
@@ -558,16 +643,40 @@ const Footer = () => {
             © 2026 Nomyx Technology Labs Inc.
           </div>
           <div className="flex items-center gap-7">
-            <a href="#" aria-label="X" className="text-ink-muted hover:text-ink transition-colors">
-              <svg viewBox="0 0 1200 1227" className="w-5 h-5 fill-current" aria-hidden="true">
+            <a
+              href="#"
+              aria-label="X"
+              className="text-ink-muted hover:text-ink transition-colors"
+            >
+              <svg
+                viewBox="0 0 1200 1227"
+                className="w-5 h-5 fill-current"
+                aria-hidden="true"
+              >
                 <path d="M714 519L1160 0H1054L667 450L357 0H0L468 681L0 1227H106L515 750L843 1227H1200L714 519ZM569 687L521 618L128 56H290L607 509L655 578L1067 1172H905L569 687Z" />
               </svg>
             </a>
-            <a href="#" aria-label="LinkedIn" className="text-ink-muted hover:text-ink transition-colors">
-              <img src="/linkedin.png" alt="LinkedIn" className="h-5 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="text-ink-muted hover:text-ink transition-colors"
+            >
+              <img
+                src="/linkedin.png"
+                alt="LinkedIn"
+                className="h-5 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              />
             </a>
-            <a href="#" aria-label="Medium" className="text-ink-muted hover:text-ink transition-colors">
-              <img src="/medium.png" alt="Medium" className="h-6 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+            <a
+              href="#"
+              aria-label="Medium"
+              className="text-ink-muted hover:text-ink transition-colors"
+            >
+              <img
+                src="/medium.png"
+                alt="Medium"
+                className="h-6 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              />
             </a>
           </div>
         </div>
@@ -576,7 +685,7 @@ const Footer = () => {
   );
 };
 
-export default function App() {
+export default function Page() {
   return (
     <div className="bg-bg min-h-screen text-ink font-sans">
       <CustomCursor />
@@ -594,16 +703,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
