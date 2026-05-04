@@ -41,10 +41,13 @@ const GatewayHero = () => (
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-start justify-start gap-4"
           >
-            <button className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-[0_8px_24px_rgba(37,99,235,0.25)]">
+            <a 
+              href="https://calendly.com/ivan-j-nomyx"
+              className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-[0_8px_24px_rgba(37,99,235,0.25)]"
+            >
               Launch Your Market
               <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
+            </a>
           </motion.div>
         </div>
 

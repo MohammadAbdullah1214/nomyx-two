@@ -54,10 +54,13 @@ const DevelopersHero = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <button className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors">
+            <a 
+              href="https://nomyx-io.github.io/gemforce-docs/"
+              className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors"
+            >
               Read the Docs
               <ArrowRight size={16} />
-            </button>
+            </a>
           </motion.div>
         </div>
 
@@ -471,10 +474,13 @@ const FinalCallToAction = () => (
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
       >
-        <button className="h-14 min-w-[220px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors">
-          Get Started
+        <a 
+          href="https://nomyx-io.github.io/gemforce-docs/"
+          className="h-14 min-w-[220px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors"
+        >
+          View API Reference
           <ArrowRight size={16} />
-        </button>
+        </a>
       </motion.div>
     </div>
   </section>

@@ -356,8 +356,8 @@ export const Navbar = () => {
 
           <div className="flex justify-end shrink-0">
             <a
-              href="#cta"
-              aria-current={isHrefActive("#cta") ? "page" : undefined}
+              href="https://calendly.com/ivan-j-nomyx"
+              aria-current={isHrefActive("https://calendly.com/ivan-j-nomyx") ? "page" : undefined}
               className={`inline-flex h-11 items-center justify-center px-4 xl:px-7 text-[10px] xl:text-xs font-bold uppercase tracking-[0.12em] xl:tracking-[0.18em] text-white whitespace-nowrap transition-colors ${
                 isHrefActive("#cta") ? "bg-accent" : "bg-ink hover:bg-ink/90"
               }`}
