@@ -15,7 +15,7 @@ export const Waterfall = () => (
     <div className="custom-container">
       <SectionIntro
         // eyebrow="Waterfall Engine"
-        title="Perfect Waterfalls. Zero Spreadsheets."
+        title={<>Perfect Waterfalls.<br />Zero Spreadsheets.</>}
         description=""
       />
 

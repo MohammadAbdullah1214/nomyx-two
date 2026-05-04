@@ -24,12 +24,12 @@ export const FinalCTA = () => (
         Stop running your fund on quarterly deadlines.
       </h2>
       <motion.a
-        href="/#cta"
+        href="https://calendly.com/ivan-j-nomyx/30min"
         initial="rest"
         whileHover="hover"
         animate="rest"
         className="inline-flex h-14 items-center justify-center bg-white px-8 text-xs font-black uppercase tracking-[0.14em] text-ink transition-colors hover:bg-white/90"
-        onClick={(event) => forceHomeNavigation(event, "/#cta")}
+        onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx/30min")}
       >
         <HoverTextSwap text="Automate Your Evergreen Fund" />
       </motion.a>

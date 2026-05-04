@@ -49,12 +49,12 @@ export const Servicer = () => (
           Scale Your AUM Without Scaling Your Back Office.
         </h2>
         <AnimatedButton
-          href="/#cta"
+          href="https://calendly.com/ivan-j-nomyx"
           text="Demo The Distribution Engine"
           bgColor="bg-ink"
           hoverBgColor="hover:bg-accent"
           textColor="text-white"
-          onClick={(event) => forceHomeNavigation(event, "/#cta")}
+          onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx")}
         />
       </motion.div>
     </section>

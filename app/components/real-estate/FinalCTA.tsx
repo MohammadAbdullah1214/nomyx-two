@@ -17,12 +17,12 @@ export const RealEstateFinalCTA = () => (
         Turn Your Property Into A Liquid Asset.
       </h2>
       <AnimatedButton
-        href="/#cta"
+        href="https://calendly.com/ivan-j-nomyx"
         text="Start A Real Estate Pilot"
         bgColor="bg-white"
         hoverBgColor="hover:bg-white/90"
         textColor="text-ink"
-        onClick={(event) => forceHomeNavigation(event, "/#cta")}
+        onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx")}
       />
     </motion.div>
   </section>

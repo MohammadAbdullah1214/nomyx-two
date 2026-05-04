@@ -182,12 +182,12 @@ export const EvergreenHero = () => (
         </motion.p>
         <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
           <motion.a
-            href="/#cta"
+            href="https://calendly.com/ivan-j-nomyx/30min"
             initial="rest"
             whileHover="hover"
             animate="rest"
             className="inline-flex h-14 items-center gap-3 bg-ink px-8 text-xs font-black uppercase tracking-[0.14em] text-white transition-colors hover:bg-ink/90"
-            onClick={(event) => forceHomeNavigation(event, "/#cta")}
+            onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx/30min")}
           >
             <HoverTextSwap text="Modernize Your Fund" />
             <ArrowRight size={16} />

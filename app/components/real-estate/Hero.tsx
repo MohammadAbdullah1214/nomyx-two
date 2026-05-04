@@ -116,12 +116,12 @@ export const RealEstateHero = () => (
           
           <motion.div variants={fadeUp} className="flex flex-col items-center gap-4 sm:flex-row">
             <AnimatedButton
-              href="/#cta"
+              href="https://calendly.com/ivan-j-nomyx"
               text="Tokenize Your Property"
               bgColor="bg-ink"
               hoverBgColor="hover:bg-accent"
               textColor="text-white"
-              onClick={(event) => forceHomeNavigation(event, "/#cta")}
+              onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx")}
             />
           </motion.div>
         </motion.div>

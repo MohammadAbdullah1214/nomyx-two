@@ -132,12 +132,12 @@ export const SpvHero = () => (
           The fastest way to syndicate deals. Automate capital formation, cap table management, and carry distribution for single-asset vehicles.
         </motion.p>
         <AnimatedButton
-          href="/#cta"
+          href="https://calendly.com/ivan-j-nomyx"
           text="Start Your Syndication"
           bgColor="bg-ink"
           hoverBgColor="hover:bg-accent"
           textColor="text-white"
-          onClick={(event) => forceHomeNavigation(event, "/#cta")}
+          onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx")}
         />
       </motion.div>
       <div className="space-y-6">

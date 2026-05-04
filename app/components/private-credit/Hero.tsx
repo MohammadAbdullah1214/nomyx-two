@@ -120,11 +120,11 @@ export const PrivateCreditHero = () => (
           The most efficient way to manage your LP capital stack. Aggregate liquidity on-chain, deploy fiat to borrowers, and automate yield distribution back to investors instantly.
         </motion.p>
         <motion.a
-          href="/#cta"
+          href="https://calendly.com/ivan-j-nomyx"
           initial="rest"
           whileHover="hover"
           animate="rest"
-          onClick={(event) => forceHomeNavigation(event, "/#cta")}
+          onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx")}
           className="inline-flex h-14 items-center gap-3 bg-ink px-8 text-xs font-black uppercase tracking-[0.14em] text-white transition-colors hover:bg-ink/90"
         >
           <HoverTextSwap text="Streamline LP Distributions" />

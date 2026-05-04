@@ -193,7 +193,7 @@ const IdHero = () => (
           </motion.p>
 
           <motion.a
-            href="#"
+            href="https://calendly.com/ivan-j-nomyx"
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -733,9 +733,12 @@ const IdCTA = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          <button className="h-12 px-8 rounded-full bg-accent text-white font-bold text-sm hover:bg-accent/90 transition-colors shadow-[0_8px_20px_rgba(37,99,235,0.25)]">
+          <motion.a 
+            href="https://calendly.com/ivan-j-nomyx"
+            className="inline-flex items-center h-12 px-8 rounded-full bg-accent text-white font-bold text-sm hover:bg-accent/90 transition-colors shadow-[0_8px_20px_rgba(37,99,235,0.25)]"
+          >
             Schedule a Nomyx ID Demo
-          </button>
+          </motion.a>
         </motion.div>
       </div>
 

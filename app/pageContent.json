@@ -98,7 +98,7 @@
         ]
       }
     },
-    "caption": "Built for the assets that matter in 2025.",
+    "caption": "Built for the assets that matter in 2026.",
     "assets": [
       {
         "title": "Private Credit",
@@ -166,18 +166,32 @@
     "columns": [
       {
         "title": "Solutions",
-        "links": ["Asset Managers", "SPVs & Debt Syndication", "Private Credit", "Real Estate"]
+        "links": [
+          { "name": "Evergreen Funds", "href": "/evergreen-open-ended-funds" },
+          { "name": "SPVs & Deal Syndication", "href": "/spv-deal-syndication" },
+          { "name": "Private Credit", "href": "/private-credit-automation" },
+          { "name": "Real Estate", "href": "/real-estate-tokenization" }
+        ]
       },
       {
         "title": "Platform",
-        "links": ["Nomyx Engine", "Nomyx OS", "Nomyx Gateway", "Diamond Standard"]
+        "links": [
+          { "name": "Nomyx Engine", "href": "/nomyx-engine" },
+          { "name": "Nomyx ID", "href": "/nomyx-id" },
+          { "name": "Nomyx Gateway", "href": "/nomyx-gateway" },
+          { "name": "Diamond Standard", "href": "/the-diamond-standard" }
+        ]
       },
       {
         "title": "Resources",
-        "links": ["Developers", "Knowledge", "Legal Center"]
+        "links": [
+          { "name": "Developers", "href": "/developers" },
+          { "name": "Resources", "href": "/resources" },
+          { "name": "Legal Center", "href": "/legal" }
+        ]
       }
     ],
-    "copyright": "(C) 2025 Nomyx. All rights reserved.",
-    "legal": ["Privacy Policy", "Terms of Use", "Main Service Agreement", "Securities Disclaimer", "Marketing Terms", "Cookie Policy"]
+    "copyright": "© 2025 Nomyx Inc. All rights reserved.",
+    "legal": ["Privacy Notice", "Terms of Use", "Main Services Agreement", "Securities Addendum", "Blockchain Terms", "Cookie Notice"]
   }
 }

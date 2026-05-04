@@ -21,7 +21,7 @@ export const SectionIntro = ({
   description,
 }: {
   eyebrow?: string;
-  title: string;
+  title: React.ReactNode;
   description?: string;
 }) => (
   <motion.div

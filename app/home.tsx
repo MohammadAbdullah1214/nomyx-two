@@ -1267,9 +1267,9 @@ export const Footer = () => (
             </h4>
             <ul className="space-y-3 text-sm /65">
               {column.links.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="transition-colors ">
-                    {link}
+                <li key={link.name}>
+                  <Link href={link.href} className="transition-colors hover:text-accent">
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -1284,7 +1284,7 @@ export const Footer = () => (
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs ">
           {pageContent.footer.legal.map((link) => (
-            <Link key={link} href="#" className="transition-colors">
+            <Link key={link} href="/legal" className="transition-colors hover:text-accent">
               {link}
             </Link>
           ))}
