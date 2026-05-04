@@ -130,7 +130,7 @@ const EngineVisual = () => {
         </div>
 
         {/* Terminal footer */}
-        <div className="mt-8 bg-ink p-4 font-mono text-[11px] leading-relaxed">
+        {/* <div className="mt-8 bg-ink p-4 font-mono text-[11px] leading-relaxed">
           <div className="flex items-center gap-2 mb-1 text-white/70">
             <span className="text-emerald-400">●</span>
             LIFECYCLE_ENGINE_ACTIVE
@@ -144,7 +144,7 @@ const EngineVisual = () => {
             current_stage: {stages[active].label.toLowerCase().replace(/ /g, "_")} | next:{" "}
             {stages[(active + 1) % 4].label.toLowerCase().replace(/ /g, "_")}
           </motion.div>
-        </div>
+        </div> */}
       </div>
 
       {/* Shadow decorations */}
