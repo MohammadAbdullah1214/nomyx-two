@@ -18,6 +18,7 @@ import {
   Network,
   Shield,
   ShieldCheck,
+  TerminalSquare,
   X,
 } from "lucide-react";
 import pageContent from "./pageContent.json";
@@ -551,7 +552,7 @@ const Hero = () => {
               <br />
               for Institutional
               <br />
-              Capital.
+              Capital
             </motion.h1>
 
             <motion.p
@@ -572,14 +573,14 @@ const Hero = () => {
               className="flex flex-wrap gap-3"
             >
               <a
-                href="#cta"
+                href="https://calendly.com/ivan-j-nomyx"
                 className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors"
               >
                 Start Building
                 <ArrowRight size={18} />
               </a>
               <a
-                href="#infrastructure"
+                href="/developers"
                 className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center border border-border bg-white text-ink font-bold uppercase tracking-[0.14em] hover:bg-slate-50 transition-colors"
               >
                 View Documentation
@@ -743,94 +744,159 @@ export const ValueProp = () => (
   </section>
 );
 
-export const RoleInfrastructure = () => (
-  <section id="platform" className="border-b border-border bg-slate-50/60">
-    <SectionHeader title={pageContent.roles.title} />
+export const RoleInfrastructure = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const isAssetManager = activeTab === 0;
+  const content = isAssetManager
+    ? pageContent.roles.assetManagers
+    : pageContent.roles.fundAdministrators;
 
-    <div className="custom-container pb-16 md:pb-20">
-      <div className="mb-10 flex justify-center">
-        <div className="inline-flex border border-border bg-white p-1">
-          {pageContent.roles.tabs.map((tab, i) => (
-            <button
-              key={tab}
-              className={`h-10 px-4 text-xs font-bold uppercase tracking-[0.12em] ${
-                i === 0 ? "bg-ink text-white" : "text-ink-muted"
-              }`}
+  return (
+    <section id="platform" className="border-b border-border bg-slate-50/60">
+      <SectionHeader title={pageContent.roles.title} />
+
+      <div className="custom-container pb-16 md:pb-20">
+        <div className="mb-10 flex justify-center">
+          <div className="inline-flex border border-border bg-white p-1">
+            {pageContent.roles.tabs.map((tab, i) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(i)}
+                className={`h-10 px-4 text-xs font-bold uppercase tracking-[0.12em] transition-colors ${
+                  activeTab === i
+                    ? "bg-ink text-white"
+                    : "text-ink-muted hover:text-ink"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.15fr_1fr]">
+          <div className="border border-border bg-white p-8 md:p-9">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              {tab}
-            </button>
+              <h3 className="mb-7 text-3xl font-black uppercase tracking-tight">
+                {content.heading}
+              </h3>
+              <div className="space-y-5">
+                {content.bullets.map((item) => (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <Check size={18} className="mt-1 shrink-0 text-accent" />
+                    <p className="text-base leading-relaxed text-ink-muted">
+                      <span className="font-bold text-ink">{item.title}</span>{" "}
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="border border-border bg-white p-8 shadow-xl md:p-9">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isAssetManager ? (
+                <>
+                  <div className="mb-6 flex items-center justify-between gap-4">
+                    <h3 className="text-2xl font-black uppercase tracking-tight">
+                      {pageContent.roles.assetManagers.wizard.title}
+                    </h3>
+                    <span className="text-xs font-bold uppercase tracking-[0.14em] text-ink-muted">
+                      {pageContent.roles.assetManagers.wizard.status}
+                    </span>
+                  </div>
+                  <div className="space-y-4">
+                    {pageContent.roles.assetManagers.wizard.rows.map(
+                      ([label, value]) => (
+                        <div
+                          key={label}
+                          className="flex items-center justify-between border-b border-border pb-4 text-sm"
+                        >
+                          <span className="font-bold uppercase tracking-[0.12em] text-ink-muted">
+                            {label}
+                          </span>
+                          <span className="font-black text-ink">{value}</span>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                  <button className="mt-6 h-12 w-full bg-ink text-xs font-bold uppercase tracking-[0.14em] text-white">
+                    {pageContent.roles.assetManagers.wizard.button}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className="mb-6 flex items-center justify-between gap-4">
+                    <h3 className="text-2xl font-black uppercase tracking-tight">
+                      {pageContent.roles.fundAdministrators.log.title}
+                    </h3>
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                      <span className="text-xs font-bold uppercase tracking-[0.14em] text-emerald-600">
+                        {pageContent.roles.fundAdministrators.log.status}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    {pageContent.roles.fundAdministrators.log.rows.map(
+                      ([fund, amount, status]) => (
+                        <div
+                          key={fund}
+                          className="flex items-center justify-between border-b border-border pb-4 text-sm"
+                        >
+                          <span className="font-bold uppercase tracking-[0.12em] text-ink-muted">
+                            {fund}
+                          </span>
+                          <div className="flex items-center gap-4 md:gap-6">
+                            <span className="font-black text-ink">{amount}</span>
+                            <span className="rounded-sm bg-emerald-50 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-emerald-600">
+                              {status}
+                            </span>
+                          </div>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                </>
+              )}
+            </motion.div>
+          </div>
+        </div>
+
+        <p className="my-12 text-center text-sm uppercase tracking-[0.16em] text-ink-muted">
+          {pageContent.roles.caption}
+        </p>
+
+        <div className="grid grid-cols-1 border border-border md:grid-cols-3">
+          {pageContent.roles.assets.map((asset) => (
+            <div
+              key={asset.title}
+              className="border-b border-border bg-white p-7 md:border-b-0 md:border-r last:md:border-r-0"
+            >
+              <h3 className="mb-3 text-xl font-black uppercase tracking-tight">
+                {asset.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-ink-muted">
+                {asset.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>
-
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.15fr_1fr]">
-        <div className="border border-border bg-white p-8 md:p-9">
-          <h3 className="mb-7 text-3xl font-black uppercase tracking-tight">
-            {pageContent.roles.heading}
-          </h3>
-          <div className="space-y-5">
-            {pageContent.roles.bullets.map((item) => (
-              <div key={item.title} className="flex items-start gap-3">
-                <Check size={18} className="mt-1 shrink-0 text-accent" />
-                <p className="text-base leading-relaxed text-ink-muted">
-                  <span className="font-bold text-ink">{item.title}</span>{" "}
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="border border-border bg-white p-8 shadow-xl md:p-9">
-          <div className="mb-6 flex items-center justify-between gap-4">
-            <h3 className="text-2xl font-black uppercase tracking-tight">
-              {pageContent.roles.wizard.title}
-            </h3>
-            <span className="text-xs font-bold uppercase tracking-[0.14em] text-ink-muted">
-              {pageContent.roles.wizard.status}
-            </span>
-          </div>
-          <div className="space-y-4">
-            {pageContent.roles.wizard.rows.map(([label, value]) => (
-              <div
-                key={label}
-                className="flex items-center justify-between border-b border-border pb-4 text-sm"
-              >
-                <span className="font-bold uppercase tracking-[0.12em] text-ink-muted">
-                  {label}
-                </span>
-                <span className="font-black text-ink">{value}</span>
-              </div>
-            ))}
-          </div>
-          <button className="mt-6 h-12 w-full bg-ink text-xs font-bold uppercase tracking-[0.14em] text-white">
-            {pageContent.roles.wizard.button}
-          </button>
-        </div>
-      </div>
-
-      <p className="my-12 text-center text-sm uppercase tracking-[0.16em] text-ink-muted">
-        {pageContent.roles.caption}
-      </p>
-
-      <div className="grid grid-cols-1 border border-border md:grid-cols-3">
-        {pageContent.roles.assets.map((asset) => (
-          <div
-            key={asset.title}
-            className="border-b border-border bg-white p-7 md:border-b-0 md:border-r last:md:border-r-0"
-          >
-            <h3 className="mb-3 text-xl font-black uppercase tracking-tight">
-              {asset.title}
-            </h3>
-            <p className="text-sm leading-relaxed text-ink-muted">
-              {asset.description}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export const SmartContracts = () => (
   <section id="the-diamond-standard" className="border-b border-border">
@@ -876,60 +942,156 @@ export const SmartContracts = () => (
   </section>
 );
 
-export const Developers = () => (
-  <section id="developers" className="border-b border-border bg-ink text-white">
-    <div className="custom-container py-16 md:py-20">
-      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-        <div className="border border-white/10 bg-white/5 p-6 font-mono text-xs leading-relaxed text-white/80 md:p-8">
-          <div className="mb-5 flex gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-            <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-          </div>
-          <pre className="overflow-x-auto whitespace-pre-wrap">{`API: /v1/yield-distribution-cycle
-
+export const Developers = () => {
+  const terminalCode = `POST /api/v1/tokens/distribute-yield
 {
-  "asset_id": "PrivateCredit",
-  "frequency": "weekly",
-  "distribution_rate": "7.50%",
+  "token_id": "0x7a8f...",
+  "amount_usd": 250000,
+  "distribution_date": "2025-01-15",
   "compliance_check": true
 }
 
 // Response
 {
   "status": "success",
-  "tx_hash": "0x..."
-}`}</pre>
+  "tx_hash": "0x9b2c..."
+}`;
+
+  return (
+    <section id="developers" className="relative overflow-hidden border-b border-border bg-[#0A0F1C] py-24 text-white md:py-32">
+      {/* Blueprint Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)]" />
+
+      <div className="custom-container relative z-10">
+        <div className="mb-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400"
+          >
+            <Code2 size={24} />
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-heading mb-6 text-white"
+          >
+            {pageContent.developers.title}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mx-auto max-w-3xl text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            {pageContent.developers.description}
+          </motion.p>
         </div>
 
-        <div>
-          <Code2 className="mb-6 text-white" size={28} />
-          <h2 className="section-heading mb-6 text-white">
-            {pageContent.developers.title}
-          </h2>
-          <p className="mb-8 text-lg leading-relaxed text-white/75">
-            {pageContent.developers.description}
-          </p>
-          <div className="space-y-4">
-            {pageContent.developers.bullets.map((bullet) => (
-              <div key={bullet} className="flex items-start gap-3">
-                <ArrowRight size={16} className="mt-1 shrink-0 text-white" />
-                <p className="text-base text-white/80">{bullet}</p>
-              </div>
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+          {/* Feature Nodes */}
+          <div className="order-2 space-y-6 lg:order-1 lg:col-span-4">
+            {pageContent.developers.bullets.map((bullet, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-all hover:border-blue-500/30 hover:bg-white/[0.04]"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-blue-500/20 text-blue-400 transition-transform group-hover:scale-110">
+                    <TerminalSquare size={14} />
+                  </div>
+                  <p className="text-base font-medium leading-relaxed text-slate-300 transition-colors group-hover:text-white">
+                    {bullet}
+                  </p>
+                </div>
+              </motion.div>
             ))}
+
+            <motion.a
+              href="/developers"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="mt-8 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.14em] text-emerald-400 transition-colors hover:text-emerald-300"
+            >
+              Read the API Documentation
+              <ArrowRight size={16} />
+            </motion.a>
           </div>
-          <a
-            href="#cta"
-            className="mt-9 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-white"
-          >
-            {pageContent.developers.cta}
-            <ArrowRight size={16} />
-          </a>
+
+          {/* Large Interactive Terminal */}
+          <div className="order-1 lg:order-2 lg:col-span-8">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative rounded-2xl border border-white/10 bg-[#0D121F] p-1 shadow-2xl shadow-blue-500/5"
+            >
+              {/* Terminal Header */}
+              <div className="flex items-center justify-between border-b border-white/5 px-6 py-4">
+                <div className="flex gap-2">
+                  <span className="h-3 w-3 rounded-full bg-[#FF5F56]" />
+                  <span className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
+                  <span className="h-3 w-3 rounded-full bg-[#27C93F]" />
+                </div>
+                <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/50" />
+                  api/distribute-yield
+                </div>
+              </div>
+
+              {/* Terminal Content */}
+              <div className="p-6 font-mono text-[13px] leading-relaxed md:p-8 md:text-sm">
+                <pre className="overflow-x-auto text-slate-400">
+                  <code className="block">
+                    <span className="text-pink-400">POST</span>{" "}
+                    <span className="text-emerald-400">
+                      /api/v1/tokens/distribute-yield
+                    </span>
+                    {"\n"}
+                    <span className="text-slate-500">{"{"}</span>
+                    {"\n"}  <span className="text-blue-300">"token_id"</span>:{" "}
+                    <span className="text-yellow-200">"0x7a8f..."</span>,{"\n"}  
+                    <span className="text-blue-300">"amount_usd"</span>:{" "}
+                    <span className="text-orange-300">250000</span>,{"\n"}  
+                    <span className="text-blue-300">"distribution_date"</span>:{" "}
+                    <span className="text-yellow-200">"2025-01-15"</span>,{"\n"}  
+                    <span className="text-blue-300">"compliance_check"</span>:{" "}
+                    <span className="text-blue-400">true</span>
+                    {"\n"}
+                    <span className="text-slate-500">{"}"}</span>
+                    {"\n\n"}
+                    <span className="text-slate-500">// Response</span>
+                    {"\n"}
+                    <span className="text-slate-500">{"{"}</span>
+                    {"\n"}  <span className="text-blue-300">"status"</span>:{" "}
+                    <span className="text-yellow-200">"success"</span>,{"\n"}  
+                    <span className="text-blue-300">"tx_hash"</span>:{" "}
+                    <span className="text-yellow-200">"0x9b2c..."</span>
+                    {"\n"}
+                    <span className="text-slate-500">{"}"}</span>
+                  </code>
+                </pre>
+              </div>
+
+              {/* Decorative Glow */}
+              <div className="absolute -bottom-10 -right-10 h-64 w-64 bg-blue-500/10 blur-[80px]" />
+            </motion.div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export const Security = () => (
   <section id="resources" className="border-b border-border">
@@ -971,7 +1133,7 @@ export const CTA = () => (
         {pageContent.cta.description}
       </p>
       <a
-        href="https://nomyx.io"
+        href="https://calendly.com/ivan-j-nomyx"
         target="_blank"
         rel="noopener"
         className="inline-flex h-14 min-w-[230px] items-center justify-center bg-ink px-10 text-base font-black uppercase tracking-[0.14em] text-white transition-colors hover:bg-ink/90"

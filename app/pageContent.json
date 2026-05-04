@@ -1,7 +1,7 @@
 {
   "nav": ["Solutions", "Platform", "Resources", "The Diamond Standard", "Developers"],
   "hero": {
-    "title": "The Agile Infrastructure for Institutional Capital.",
+    "title": "The Agile Infrastructure for Institutional Capital",
     "accent": "Institutional Capital",
     "description": "Tokenize Real-World Assets with upgradeable smart contracts. Future-proof compliance, automated lifecycle management, and T+0 settlement.",
     "primaryCta": "Start Building",
@@ -20,7 +20,7 @@
   },
   "value": {
     "title": "Beyond Tokenization. Intelligent Financial Infrastructure.",
-    "description": "Streamline the lifecycle of regulated funds, SPVs, and yield-bearing assets with infrastructure built for institutional scale.",
+    "description": "Streamline the lifecycle of evergreen funds, SPVs, and yield-bearing assets with infrastructure built for institutional scale.",
     "cards": [
       {
         "title": "Yield-Native Architecture",
@@ -34,7 +34,7 @@
       },
       {
         "title": "Your Liquidity. Your Rules.",
-        "description": "Avoid the \"yield premium.\" Deploy institutional-grade liquidity on AMMs and new financial rails, secondary markets, and distribution channels.",
+        "description": "Avoid the 'walled gardens.' Deploy institutional-grade liquidity on AMMs and new financial rails, secondary markets, and distribution channels.",
         "icon": "network"
       }
     ]
@@ -42,30 +42,58 @@
   "roles": {
     "title": "Infrastructure That Adapts to Your Role.",
     "tabs": ["For Asset Managers", "For Fund Administrators"],
-    "heading": "Launch Faster. Distribute Globally.",
-    "bullets": [
-      {
-        "title": "Automated Vehicles:",
-        "text": "Program daily interest accruals and investor contributions into your workflow."
-      },
-      {
-        "title": "Liquidity Optionality:",
-        "text": "Offer secondary market liquidity via white-label solutions."
-      },
-      {
-        "title": "Capital Efficiency:",
-        "text": "Use tokenized assets as collateral in DeFi protocols."
-      }
-    ],
-    "wizard": {
-      "title": "Token Issuance Wizard",
-      "status": "Ready",
-      "rows": [
-        ["Asset", "U.S. Navy"],
-        ["Distribution Frequency", "Weekly"],
-        ["Total Supply", "$50,000,000"]
+    "assetManagers": {
+      "heading": "Launch Faster. Distribute Globally.",
+      "bullets": [
+        {
+          "title": "Automated Yield:",
+          "text": "Program daily interest accruals and auto-distribute to investor wallets."
+        },
+        {
+          "title": "Liquidity Optionality:",
+          "text": "Offer secondary market liquidity via white-label bulletin boards."
+        },
+        {
+          "title": "Capital Efficiency:",
+          "text": "Use tokenized assets as collateral in DeFi protocols."
+        }
       ],
-      "button": "Execute Deployment"
+      "wizard": {
+        "title": "Token Issuance Wizard",
+        "status": "Ready",
+        "rows": [
+          ["Asset", "U.S. Navy"],
+          ["Distribution Frequency", "Weekly"],
+          ["Total Supply", "$50,000,000"]
+        ],
+        "button": "Execute Deployment"
+      }
+    },
+    "fundAdministrators": {
+      "heading": "Perfect Reconciliation. Zero Friction.",
+      "bullets": [
+        {
+          "title": "Atomic Settlement:",
+          "text": "Instant DVP (Delivery vs. Payment) settlement eliminates T+2 delays."
+        },
+        {
+          "title": "Real-Time Cap Table:",
+          "text": "A single source of truth that updates instantly with every transfer."
+        },
+        {
+          "title": "Integrated Reporting:",
+          "text": "Seamless API export to existing ERP and fund accounting systems."
+        }
+      ],
+      "log": {
+        "title": "Transaction Log",
+        "status": "Live",
+        "rows": [
+          ["Fund A", "$250,000", "Settled"],
+          ["Fund B", "$180,000", "Settled"],
+          ["Fund C", "$500,000", "Settled"]
+        ]
+      }
     },
     "caption": "Built for the assets that matter in 2025.",
     "assets": [
@@ -93,22 +121,22 @@
     "bullets": [
       {
         "title": "Zero-Migration Upgrades:",
-        "text": "Regulatory changes in 2026? Update the compliance module instantly. No token swaps required."
+        "text": "Regulatory change in 2026? Update the compliance module instantly. No token swaps required."
       },
       {
         "title": "Modular Security:",
-        "text": "Add institutional facets independently. Keep the core asset secure while iterating on features."
+        "text": "Audit individual facets independently. Keep the core asset secure while iterating on features."
       },
       {
-        "title": "Future-Ready:",
-        "text": "Built on infrastructure designed to last decades, not just the current crypto cycle."
+        "title": "Eternal Longevity:",
+        "text": "Build on infrastructure designed to last decades, not just the current crypto cycle."
       }
     ],
     "cta": "Explore The Technical Paper"
   },
   "developers": {
     "title": "No-Code Simplicity. Full-Code Control.",
-    "description": "While business teams manage assets via the dashboard, your engineering team maintains full control. Nomyx is built on an API-first architecture, allowing seamless integration with your existing ERP, CRM, and fund administration software.",
+    "description": "While business teams manage assets via the dashboard, your engineering team retains full control. Nomyx is built on an API-first architecture, allowing seamless integration with your existing ERP, CRM, and fund administration software.",
     "bullets": [
       "GraphQL & REST APIs for all lifecycle management.",
       "Webhooks for real-time settlement notifications.",
