@@ -4,12 +4,12 @@ import { motion } from "motion/react";
 import { ArrowRight, Activity, Database, RefreshCw } from "lucide-react";
 import { fadeUp, forceHomeNavigation, HoverTextSwap } from "./shared";
 
-const headlineWords = ["Always-On", "Fund", "Infrastructure."];
+const headlineWords = ["The", "Perpetual", "Fund.", "Automated."];
 
 const AnimatedHeadline = () => (
   <motion.h1
     className="text-display text-[clamp(48px,8.0vw,60px)] mb-6 mt-1"
-    aria-label="Always-On Fund Infrastructure."
+    aria-label="The Perpetual Fund. Automated."
   >
     {headlineWords.map((word, index) => (
       <motion.span
@@ -166,7 +166,7 @@ export const EvergreenHero = () => (
           variants={fadeUp}
           className="mb-8 max-w-3xl text-lg leading-relaxed text-ink-muted md:text-xl"
         >
-          {"Convert quarterly fund operations into a continuous subscription, NAV, redemption, and reporting engine."
+          {"Replace quarterly operational drag with 'always-on' efficiency. Support continuous subscriptions, real-time redemptions, and dynamic NAV updates."
             .split(" ")
             .map((word, index) => (
               <motion.span
@@ -192,7 +192,7 @@ export const EvergreenHero = () => (
             <HoverTextSwap text="Modernize Your Fund" />
             <ArrowRight size={16} />
           </motion.a>
-          <motion.a
+          {/* <motion.a
             href="#live-operations"
             initial="rest"
             whileHover="hover"
@@ -200,7 +200,7 @@ export const EvergreenHero = () => (
             className="inline-flex h-14 items-center border border-border bg-white px-8 text-xs font-black uppercase tracking-[0.14em] text-ink transition-colors hover:bg-slate-50"
           >
             <HoverTextSwap text="View Workflow" />
-          </motion.a>
+          </motion.a> */}
         </motion.div>
       </motion.div>
       <HeroConsole />

@@ -256,40 +256,8 @@ const ComplianceLogic = () => (
         </p>
       </motion.div>
 
-      {/* The Rule Pipeline Visual */}
-      <div className="relative mb-16 md:mb-24 px-4 md:px-0">
-        {/* Connecting line behind nodes on desktop */}
-        <div className="hidden lg:block absolute top-1/2 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 z-0" />
-        {/* Connecting line behind nodes on mobile */}
-        <div className="lg:hidden absolute top-[10%] bottom-[10%] left-1/2 w-0.5 bg-gradient-to-b from-transparent via-border to-transparent -translate-x-1/2 z-0" />
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 relative z-10 max-w-5xl mx-auto">
-          {complianceNodes.map((node, i) => (
-            <motion.div
-              key={node.rule}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="bg-white border border-border p-6 md:p-8 rounded-[1.5rem] shadow-[0_12px_40px_rgba(10,17,40,0.04)] flex flex-col items-center text-center group hover:-translate-y-1 transition-transform"
-            >
-              <div className={`mb-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.14em] ${node.isBlocker ? 'bg-red-50 text-red-600' : 'bg-slate-100 text-ink-muted'}`}>
-                {node.type}
-              </div>
-              <h4 className="text-sm md:text-base font-black text-ink mb-6 h-10 flex items-center justify-center leading-tight">
-                {node.rule}
-              </h4>
-              <div className={`w-full py-2.5 rounded-xl border flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors ${node.isBlocker ? 'bg-red-50 border-red-100 text-red-600' : 'bg-emerald-50 border-emerald-100 text-emerald-600'}`}>
-                {node.isBlocker ? <X size={14} strokeWidth={3} /> : <Check size={14} strokeWidth={3} />}
-                {node.status}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
       {/* Text Features (Replacing left side bullets) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+      <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -329,6 +297,39 @@ const ComplianceLogic = () => (
           </div>
         </motion.div>
       </div>
+
+      {/* The Rule Pipeline Visual */}
+      <div className="relative px-4 md:px-0">
+        {/* Connecting line behind nodes on desktop */}
+        <div className="hidden lg:block absolute top-1/2 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 z-0" />
+        {/* Connecting line behind nodes on mobile */}
+        <div className="lg:hidden absolute top-[10%] bottom-[10%] left-1/2 w-0.5 bg-gradient-to-b from-transparent via-border to-transparent -translate-x-1/2 z-0" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 relative z-10 max-w-5xl mx-auto">
+          {complianceNodes.map((node, i) => (
+            <motion.div
+              key={node.rule}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.5 }}
+              className="bg-white border border-border p-6 md:p-8 rounded-[1.5rem] shadow-[0_12px_40px_rgba(10,17,40,0.04)] flex flex-col items-center text-center group hover:-translate-y-1 transition-transform"
+            >
+              <div className={`mb-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.14em] ${node.isBlocker ? 'bg-red-50 text-red-600' : 'bg-emerald-50 text-emerald-600'}`}>
+                {node.type}
+              </div>
+              <h4 className="text-sm md:text-base font-black text-ink mb-6 h-10 flex items-center justify-center leading-tight">
+                {node.rule}
+              </h4>
+              <div className={`w-full py-2.5 rounded-xl border flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors ${node.isBlocker ? 'bg-red-50 border-red-100 text-red-600' : 'bg-emerald-50 border-emerald-100 text-emerald-600'}`}>
+                {node.isBlocker ? <X size={14} strokeWidth={3} /> : <Check size={14} strokeWidth={3} />}
+                {node.status}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
     </div>
   </section>
 );
