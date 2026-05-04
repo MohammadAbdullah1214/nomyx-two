@@ -20,7 +20,8 @@ const GatewayHero = () => (
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-ink tracking-tight leading-[1.05] mb-6"
+            className="section-heading mb-6"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
             The Gateway: Your White-Label Liquidity Engine.
           </motion.h1>
@@ -40,9 +41,9 @@ const GatewayHero = () => (
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-start justify-start gap-4"
           >
-            <button className="h-12 md:h-14 px-8 rounded-full bg-accent text-white font-bold text-sm md:text-base hover:bg-accent/90 transition-all shadow-[0_8px_24px_rgba(37,99,235,0.25)] flex items-center justify-center gap-2 group w-full sm:w-auto">
+            <button className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-[0_8px_24px_rgba(37,99,235,0.25)]">
               Launch Your Market
-              <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </motion.div>
         </div>
@@ -146,7 +147,7 @@ const PrimaryDistribution = () => (
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl font-black text-ink tracking-tight leading-[1.1] mb-6"
+            className="section-heading mb-6 text-left"
           >
             Seamless Primary Distribution.
           </motion.h2>
@@ -223,7 +224,7 @@ const AnyAssetOnePlatform = () => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-black text-ink tracking-tight leading-[1.1] mb-6">
+            <h2 className="section-heading mb-6 text-left">
               Any Asset. <br className="hidden lg:block" />
               <span className="text-accent">One Platform.</span>
             </h2>
@@ -276,7 +277,7 @@ const EffortlessRamps = () => (
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl font-black text-ink tracking-tight leading-[1.1] mb-6"
+            className="section-heading mb-6 text-left"
           >
             Effortless On/Off Ramps.
           </motion.h2>
@@ -372,7 +373,7 @@ const SecureAssetDistribution = () => (
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-ink tracking-tight leading-[1.05] mb-6"
+            className="section-heading mb-6 text-left"
           >
             Secure Asset Distribution & Trade.
           </motion.h2>
@@ -419,9 +420,9 @@ const SecureAssetDistribution = () => (
                 <p className="text-[#99F6E4] text-xs font-bold uppercase tracking-widest opacity-90">Instant liquidity for your investors</p>
               </div>
               
-              <button className="relative z-10 shrink-0 h-14 px-8 rounded-full bg-white text-[#0F766E] hover:bg-slate-50 font-black text-sm transition-transform duration-300 group-hover:scale-105 shadow-[0_8px_24px_rgba(0,0,0,0.2)] flex items-center justify-center gap-2 w-full sm:w-auto">
+              <button className="relative z-10 group inline-flex h-14 items-center justify-center gap-3 bg-white px-8 text-sm font-bold uppercase tracking-[0.14em] text-[#0F766E] transition-all hover:bg-slate-50 hover:gap-4 shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
                 Swap Collateral
-                <ArrowUpRight size={18} strokeWidth={3} />
+                <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
             </div>
           </motion.div>
@@ -445,7 +446,7 @@ const GatewayCTA = () => (
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight text-white mb-8 leading-[1.1]"
+          className="section-heading !text-white mb-8"
         >
           Your Ecosystem. <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Powered by Nomyx.</span>
@@ -467,10 +468,15 @@ const GatewayCTA = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <button className="h-14 px-10 rounded-full bg-accent text-white font-bold text-base hover:bg-accent/90 transition-all duration-300 shadow-[0_8px_32px_rgba(37,99,235,0.4)] hover:shadow-[0_16px_48px_rgba(37,99,235,0.6)] hover:-translate-y-1 flex items-center justify-center gap-3 mx-auto group">
+          <a 
+            href="https://calendly.com/ivan-j-nomyx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-10 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-[0_8px_32px_rgba(37,99,235,0.4)] mx-auto"
+          >
             Deploy Your Branded Portal
-            <ArrowUpRight size={20} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </button>
+            <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
         </motion.div>
       </div>
     </div>

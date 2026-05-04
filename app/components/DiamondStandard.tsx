@@ -24,10 +24,10 @@ import {
 const titleWords = ["Smart", "Contracts", "That", "Never", "Expire."];
 
 const facets = [
-  ["Governance", "v1.governance", 96, 82, "bg-[#2f6de6]"],
-  ["Compliance", "v2.logic", 390, 82, "bg-[#2f6de6]"],
-  ["Yield", "v1.distribution", 96, 256, "bg-[#2f6de6]"],
-  ["Core Asset", "Storage", 390, 256, "bg-slate-600"],
+  ["Governance Facet", "(Upgradeable)", 86, 82, "bg-[#2f6de6]"],
+  ["Compliance Facet", "(Upgradeable)", 354, 82, "bg-[#2f6de6]"],
+  ["Yield Facet", "(Upgradeable)", 86, 256, "bg-[#2f6de6]"],
+  ["Core Asset Storage", "(Immutable)", 354, 256, "bg-slate-600"],
 ];
 
 const DiamondArchitecture = () => (
@@ -56,10 +56,10 @@ const DiamondArchitecture = () => (
       </defs>
 
       {[
-        [174, 120, 260, 190],
-        [386, 120, 300, 190],
-        [174, 256, 260, 220],
-        [386, 256, 300, 220],
+        [200, 138, 260, 190],
+        [360, 138, 300, 190],
+        [200, 264, 260, 220],
+        [360, 264, 300, 220],
       ].map(([x1, y1, x2, y2], index) => (
         <g key={`${x1}-${y1}`}>
           <path
@@ -125,31 +125,32 @@ const DiamondArchitecture = () => (
           <rect
             x={x as number}
             y={y as number}
-            width="84"
-            height="56"
+            width="120"
+            height="64"
             rx="7"
-            fill={title === "Core Asset" ? "#475569" : "#2f6de6"}
-            stroke={title === "Core Asset" ? "#94a3b8" : "#68a0ff"}
+            fill={title === "Core Asset Storage" ? "#475569" : "#2f6de6"}
+            stroke={title === "Core Asset Storage" ? "#94a3b8" : "#68a0ff"}
             strokeWidth="2"
-            filter={title === "Core Asset" ? undefined : "url(#diamondGlow)"}
+            filter={title === "Core Asset Storage" ? undefined : "url(#diamondGlow)"}
           />
           <text
-            x={(x as number) + 42}
-            y={(y as number) + 24}
+            x={(x as number) + 60}
+            y={(y as number) + 28}
             textAnchor="middle"
             fill="white"
-            fontSize="10"
+            fontSize="11"
             fontWeight="800"
           >
             {title}
           </text>
           <text
-            x={(x as number) + 42}
-            y={(y as number) + 39}
+            x={(x as number) + 60}
+            y={(y as number) + 46}
             textAnchor="middle"
             fill="#dbeafe"
-            fontSize="7"
+            fontSize="9"
             fontWeight="700"
+            opacity="0.9"
           >
             {label}
           </text>
@@ -187,17 +188,7 @@ const DiamondHero = () => (
         <motion.p variants={fadeUp} className="mb-8 max-w-3xl text-lg leading-relaxed text-ink-muted md:text-xl">
           The immutability paradox is solved. Build on modular, upgradeable infrastructure that adapts to regulatory changes without costly migrations or token swaps.
         </motion.p>
-        <motion.a
-          href="/#cta"
-          initial="rest"
-          whileHover="hover"
-          animate="rest"
-          onClick={(event) => forceHomeNavigation(event, "/#cta")}
-          className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors"
-        >
-          <HoverTextSwap text="Consult With Our Solutions Architect" />
-          <ArrowRight size={16} />
-        </motion.a>
+        
       </motion.div>
       <DiamondArchitecture />
     </div>
@@ -231,7 +222,7 @@ const Monoliths = () => (
           </h3>
           <div className="space-y-5">
             {[
-              ["Size limit constraints", "Complex logic requires multiple contracts."],
+              ["Size limit constraints (24kb)", "Complex logic requires multiple contracts."],
               ["Impossible to upgrade", "Logic is frozen at deployment."],
               ["Requires full migration if one bug is found", "New address, new audits, user disruption."],
             ].map(([title, text]) => (
@@ -284,7 +275,7 @@ const Monoliths = () => (
           </h3>
           <div className="space-y-5">
             {[
-              ["Unlimited size", "No contract size limits."],
+              ["Unlimited size (add infinite facets)", "No contract size limits."],
               ["Granular upgrades", "Update individual modules without touching others."],
               ["Stable contract address forever", "Zero user migration. Continuous compliance."],
             ].map(([title, text]) => (
@@ -307,7 +298,7 @@ const UpgradeFlow = () => {
   const steps = [
     ["Develop", "Engineers write a new Compliance Facet v2 to match the new law."],
     ["Audit", "Only the new v2 facet needs to be audited, saving time and cost."],
-    ["Propose", "The upgrade is proposed via on-chain governance, multisig, or DAO."],
+    ["Propose", "The upgrade is proposed via on-chain governance (Multi-sig or DAO)."],
     ["Cut", "The Diamond Proxy points delegates calls to the new v2 facet. The old v1 facet is disconnected."],
   ];
 
@@ -361,10 +352,19 @@ const UpgradeFlow = () => {
               </div>
               <h3 className="text-lg font-black uppercase tracking-tight text-ink">Result</h3>
             </div>
-            <div className="space-y-2 text-sm font-semibold text-ink">
-              <p>Token address remains the same.</p>
-              <p>User balances are untouched.</p>
-              <p>The logic is updated.</p>
+            <div className="space-y-3 text-sm font-semibold text-ink">
+              <div className="flex items-center gap-3">
+                <Check size={16} className="text-emerald-600" />
+                <p>Token address remains the same.</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Check size={16} className="text-emerald-600" />
+                <p>User balances are untouched.</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Check size={16} className="text-emerald-600" />
+                <p>The logic is updated.</p>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -384,7 +384,7 @@ const LogicSeparation = () => (
       >
         <h2 className="section-heading mb-6 text-ink">Separation Of State And Logic.</h2>
         <p className="mb-8 max-w-xl text-lg leading-relaxed text-ink-muted">
-          Nomyx utilizes diamond storage to ensure that state variables are kept distinct from logic facets. This prevents storage collisions during upgrades.
+          Nomyx utilizes "Diamond Storage" to ensure that state variables (who owns what) are kept distinct from logic facets. This prevents storage collisions during upgrades.
         </p>
         <div className="space-y-4">
           {[
@@ -410,26 +410,50 @@ const LogicSeparation = () => (
         <div className="border-b border-white/10 bg-white/10 px-5 py-3 font-mono text-xs text-white/58">
           &lt;&gt; DiamondCut.sol
         </div>
-        <pre className="overflow-x-auto p-6 text-sm leading-7 text-white/82">
-{`// Add new compliance facet
-IDiamondCut.FacetCut[] memory cut =
-  new IDiamondCut.FacetCut[](1);
-
-cut[0] = IDiamondCut.FacetCut({
-  facetAddress: complianceFacetV2,
-  action: FacetCutAction.Add,
-  functionSelectors: selectors
-});
-
-// Execute upgrade
-diamond.diamondCut(
-  cut,
-  address(0),
-  ""
-);
-
-// State preserved, logic updated`}
-        </pre>
+        <div className="overflow-x-auto p-6 text-sm leading-6 font-mono text-slate-300">
+          <div className="text-slate-500">// Add new compliance facet</div>
+          <div>
+            <span>IDiamondCut.FacetCut[]</span>{" "}
+            <span className="text-slate-400">memory</span>{" "}
+            <span className="text-white">cut</span> =
+          </div>
+          <div className="pl-2">
+            <span className="text-slate-400">new</span>{" "}
+            <span>IDiamondCut.FacetCut[]</span>(1);
+          </div>
+          
+          <div className="mt-4">
+            <span className="text-white">cut</span>[0] ={" "}
+            <span>IDiamondCut.FacetCut</span>({'{'}
+          </div>
+          <div className="pl-4">
+            <span className="text-cyan-400">facetAddress</span>:{" "}
+            <span className="text-white">complianceFacetV2</span>,
+          </div>
+          <div className="pl-4">
+            <span className="text-cyan-400">action</span>:{" "}
+            <span className="text-white">FacetCutAction.Add</span>,
+          </div>
+          <div className="pl-4">
+            <span className="text-fuchsia-400">functionSelectors</span>:{" "}
+            <span className="text-white">selectors</span>
+          </div>
+          <div>{'}'});</div>
+          
+          <div className="mt-4 text-slate-500">// Execute upgrade</div>
+          <div>
+            <span className="text-emerald-400">diamond</span>.
+            <span className="text-white">diamondCut</span>(
+          </div>
+          <div className="pl-4 text-white">cut,</div>
+          <div className="pl-4">
+            <span className="text-slate-400">address</span>(0),
+          </div>
+          <div className="pl-4 text-white">""</div>
+          <div>);</div>
+          
+          <div className="mt-4 text-slate-500">// State preserved, logic updated ✓</div>
+        </div>
       </motion.div>
     </div>
   </section>
@@ -439,9 +463,9 @@ const Complexity = () => (
   <section className="border-b border-border py-20 md:py-24">
     <div className="custom-container">
       <SectionIntro
-        eyebrow="Audited Complexity"
+        // eyebrow="Audited Complexity"
         title="Audited Complexity."
-        description="A modular contract system still needs institutional guardrails. These are designed into the architecture."
+        // description="A modular contract system still needs institutional guardrails. These are designed into the architecture."
       />
       <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
         {[
@@ -494,11 +518,11 @@ const DiamondFinalCTA = () => (
         Do Not Let Your Code Rot.
       </h2>
       <motion.a
-        href="/#cta"
+        href="https://calendly.com/ivan-j-nomyx/30min"
         initial="rest"
         whileHover="hover"
         animate="rest"
-        onClick={(event) => forceHomeNavigation(event, "/#cta")}
+        onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx/30min")}
         className="inline-flex h-14 items-center gap-3 bg-accent px-8 text-xs font-black uppercase tracking-[0.14em] text-white transition-colors hover:bg-accent/90"
       >
         <HoverTextSwap text="Consult With Our Solutions Architect" />
