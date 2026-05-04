@@ -10,12 +10,15 @@
   "partners": {
     "label": "SECURING THE NEXT GENERATION OF FINANCE WITH INDUSTRY LEADERS.",
     "items": [
-      { "name": "Stellar", "src": "/stellar.avif" },
-      { "name": "Plug and Play", "src": "/plugandplay.png" },
+      { "name": "XDC", "src": "/XDC.svg", "width": 180 },
+      { "name": "Mastercard Start Path", "src": "/mastercard.webp", "width": 200 },
+      { "name": "Plume" },
+      { "name": "Stellar", "src": "/stellar.avif", "width": 140 },
+      { "name": "Plug and Play", "src": "/plugandplay.png", "width": 120 },
       { "name": "Dfns" },
-      { "name": "Bridge", "src": "/bridge-CTOzOHvk.svg" },
-      { "name": "Persona", "src": "/persona.png" },
-      { "name": "Halborn", "src": "/halborn.png" }
+      { "name": "Bridge", "src": "/bridge-CTOzOHvk.svg", "width": 150 },
+      { "name": "Persona", "src": "/persona.png", "width": 120 },
+      { "name": "Halborn", "src": "/halborn.png", "width": 180 }
     ]
   },
   "value": {

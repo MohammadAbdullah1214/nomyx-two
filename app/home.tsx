@@ -37,7 +37,8 @@ const navDropdowns = {
   Solutions: [
     {
       title: "Evergreen & Open-Ended Funds",
-      description: "Perpetual fund automation with real-time NAV and 24/7 liquidity",
+      description:
+        "Perpetual fund automation with real-time NAV and 24/7 liquidity",
       href: "/evergreen-open-ended-funds",
     },
     {
@@ -47,19 +48,22 @@ const navDropdowns = {
     },
     {
       title: "Private Credit & Syndication",
-      description: "Aggregate LP capital on-chain, deploy to borrowers, automate yield distribution",
+      description:
+        "Aggregate LP capital on-chain, deploy to borrowers, automate yield distribution",
       href: "/private-credit-syndication",
     },
     {
       title: "Real Estate Tokenization",
-      description: "Fractional ownership with automated rent distribution and secondary liquidity",
+      description:
+        "Fractional ownership with automated rent distribution and secondary liquidity",
       href: "/real-estate-tokenization",
     },
   ],
   Platform: [
     {
       title: "Nomyx Engine",
-      description: "The operating system for digital assets with infinite upgradability",
+      description:
+        "The operating system for digital assets with infinite upgradability",
       href: "/nomyx-engine",
     },
     {
@@ -69,7 +73,8 @@ const navDropdowns = {
     },
     {
       title: "Nomyx Gateway",
-      description: "White-label liquidity infrastructure for your branded portal",
+      description:
+        "White-label liquidity infrastructure for your branded portal",
       href: "/nomyx-gateway",
     },
   ],
@@ -98,32 +103,26 @@ const navDropdowns = {
 
 const topLevelNavRoutes: Partial<Record<string, string>> = {
   "The Diamond Standard": "/the-diamond-standard",
-  "Developers": "/developers",
+  Developers: "/developers",
 };
 
 const getNavHref = (item: string) =>
   topLevelNavRoutes[item] ?? `#${item.toLowerCase().replaceAll(" ", "-")}`;
 
-const NavBorderTrace = ({ active = false }: { active?: boolean }) => {
-  const visible = active ? "scale-100" : "scale-0";
-
-  return (
-    <>
-      <span
-        className={`pointer-events-none absolute left-0 top-0 h-px w-full origin-left bg-accent transition-transform duration-150 ${visible} group-hover:scale-x-100`}
-      />
-      <span
-        className={`pointer-events-none absolute right-0 top-0 h-full w-px origin-top bg-accent transition-transform delay-150 duration-150 ${visible} group-hover:scale-y-100`}
-      />
-      <span
-        className={`pointer-events-none absolute bottom-0 right-0 h-px w-full origin-right bg-accent transition-transform delay-300 duration-150 ${visible} group-hover:scale-x-100`}
-      />
-      <span
-        className={`pointer-events-none absolute bottom-0 left-0 h-full w-px origin-bottom bg-accent transition-transform delay-[450ms] duration-150 ${visible} group-hover:scale-y-100`}
-      />
-    </>
-  );
-};
+const NavBorderTrace = ({ active = false }: { active?: boolean }) => (
+  <motion.div
+    className="pointer-events-none absolute bottom-0 left-0 right-0 flex justify-center"
+    initial={false}
+    animate={{ opacity: active ? 1 : 0 }}
+  >
+    <motion.div
+      className="h-[2px] bg-accent shadow-[0_0_8px_rgba(30,58,138,0.3)]"
+      initial={false}
+      animate={{ width: active ? "100%" : "0%" }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+    />
+  </motion.div>
+);
 
 export const CustomCursor = ({
   color = "#0A1128",
@@ -223,16 +222,16 @@ export const Navbar = () => {
         isScrolled
           ? "border-b border-border bg-white/95 backdrop-blur-md"
           : "bg-white/95"
-          // : "bg-transparent"
+        // : "bg-transparent"
       }`}
     >
       <div className="custom-container w-full">
-        <div className="hidden grid-cols-[1fr_auto_1fr] items-center gap-8 md:grid">
-          <a href="/" className="flex items-center">
-            <img src="/nomyx-logo.png" alt="Nomyx" className="h-9 w-auto" />
+        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center gap-4 xl:gap-8">
+          <a href="/" className="flex items-center shrink-0">
+            <img src="/nomyx-logo.png" alt="Nomyx" className="h-8 xl:h-9 w-auto object-contain" />
           </a>
 
-          <div className="flex items-center justify-center gap-2 xl:gap-3">
+          <div className="flex items-center justify-center gap-1 xl:gap-3">
             {pageContent.nav.map((item) => {
               const dropdown = navDropdowns[item as keyof typeof navDropdowns];
               const isOpen = activeDropdown === item;
@@ -245,16 +244,14 @@ export const Navbar = () => {
                     key={item}
                     href={getNavHref(item)}
                     aria-current={isCurrent ? "page" : undefined}
-                    className={`label-mono group relative inline-flex h-10 items-center whitespace-nowrap rounded-[6px] px-3 transition-colors xl:px-4 ${
-                      isCurrent ? "bg-accent/5 text-accent" : "hover:text-accent"
+                    className={`label-mono group relative inline-flex h-10 items-center whitespace-nowrap rounded-[6px] px-2 xl:px-4 transition-colors ${
+                      isActive
+                        ? "bg-accent/5 text-accent"
+                        : "hover:text-accent"
                     }`}
                   >
-                    {item}
-                    <span
-                      className={`absolute bottom-1 left-4 right-4 h-px origin-left bg-accent transition-transform duration-300 group-hover:scale-x-100 ${
-                        isCurrent ? "scale-x-100" : "scale-x-0"
-                      }`}
-                    />
+                    <span className="text-[11px] xl:text-[12px]">{item}</span>
+                    <NavBorderTrace active={isActive} />
                   </a>
                 );
               }
@@ -267,7 +264,11 @@ export const Navbar = () => {
                   onMouseLeave={() => setActiveDropdown(null)}
                   onFocus={() => setActiveDropdown(item)}
                   onBlur={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                    if (
+                      !event.currentTarget.contains(
+                        event.relatedTarget as Node | null,
+                      )
+                    ) {
                       setActiveDropdown(null);
                     }
                   }}
@@ -276,15 +277,13 @@ export const Navbar = () => {
                     type="button"
                     aria-expanded={isOpen}
                     aria-current={isCurrent ? "page" : undefined}
-                    className={`label-mono group relative inline-flex h-10 items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-[6px] px-3 transition-colors duration-200 xl:px-4 ${
-                      isActive
-                        ? "bg-accent/5 text-accent"
-                        : "hover:text-accent"
+                    className={`label-mono group relative inline-flex h-10 items-center gap-1 xl:gap-1.5 overflow-hidden whitespace-nowrap rounded-[6px] px-2 xl:px-4 transition-colors duration-200 ${
+                      isActive ? "bg-accent/5 text-accent" : "hover:text-accent"
                     }`}
                   >
-                    {item}
+                    <span className="text-[11px] xl:text-[12px]">{item}</span>
                     <ChevronDown
-                      size={14}
+                      size={12}
                       strokeWidth={2.4}
                       className={`transition-transform duration-200 ${
                         isOpen ? "rotate-180" : ""
@@ -300,20 +299,24 @@ export const Navbar = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.98 }}
                         transition={{ duration: 0.18, ease: "easeOut" }}
-                        className="absolute left-1/2 top-full w-[400px] -translate-x-1/2 pt-2"
+                        className="absolute left-1/2 top-full w-[380px] xl:w-[400px] -translate-x-1/2 pt-2"
                       >
                         <div className="relative rounded-[6px] border border-border bg-white p-4 shadow-[0_22px_48px_rgba(10,17,40,0.14)]">
                           <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
                           <div className="space-y-1">
                             {dropdown.map((dropdownItem) => {
-                              const isDropdownItemActive = isHrefActive(dropdownItem.href);
+                              const isDropdownItemActive = isHrefActive(
+                                dropdownItem.href,
+                              );
 
                               return (
                                 <a
                                   key={dropdownItem.title}
                                   href={dropdownItem.href}
-                                  aria-current={isDropdownItemActive ? "page" : undefined}
-                                  className={`group block rounded-[6px] px-5 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-[0_12px_28px_rgba(10,17,40,0.08)] ${
+                                  aria-current={
+                                    isDropdownItemActive ? "page" : undefined
+                                  }
+                                  className={`group block rounded-[6px] px-4 xl:px-5 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-[0_12px_28px_rgba(10,17,40,0.08)] ${
                                     isDropdownItemActive
                                       ? "border-l-2 border-accent bg-accent/5"
                                       : "border-l-2 border-transparent"
@@ -351,11 +354,11 @@ export const Navbar = () => {
             })}
           </div>
 
-          <div className="flex justify-end">
+          <div className="flex justify-end shrink-0">
             <a
               href="#cta"
               aria-current={isHrefActive("#cta") ? "page" : undefined}
-              className={`inline-flex h-11 items-center justify-center px-7 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors ${
+              className={`inline-flex h-11 items-center justify-center px-4 xl:px-7 text-[10px] xl:text-xs font-bold uppercase tracking-[0.12em] xl:tracking-[0.18em] text-white whitespace-nowrap transition-colors ${
                 isHrefActive("#cta") ? "bg-accent" : "bg-ink hover:bg-ink/90"
               }`}
             >
@@ -364,12 +367,12 @@ export const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between md:hidden">
-          <a href="/" className="flex items-center">
-            <img src="/nomyx-logo.png" alt="Nomyx" className="h-8 w-auto" />
+        <div className="flex items-center justify-between lg:hidden">
+          <a href="/" className="flex items-center shrink-0">
+            <img src="/nomyx-logo.png" alt="Nomyx" className="h-8 w-auto object-contain" />
           </a>
           <button
-            className="text-ink"
+            className="text-ink p-2"
             aria-label="Toggle navigation"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -388,7 +391,8 @@ export const Navbar = () => {
           >
             <div className="flex flex-col gap-5">
               {pageContent.nav.map((item) => {
-                const dropdown = navDropdowns[item as keyof typeof navDropdowns];
+                const dropdown =
+                  navDropdowns[item as keyof typeof navDropdowns];
                 const isCurrent = isNavItemActive(item);
 
                 return (
@@ -402,18 +406,24 @@ export const Navbar = () => {
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item}
-                      {dropdown && <ChevronDown size={16} className="-rotate-90" />}
+                      {dropdown && (
+                        <ChevronDown size={16} className="-rotate-90" />
+                      )}
                     </a>
                     {dropdown && (
                       <div className="mt-3 space-y-2 border-l-2 border-accent pl-4">
                         {dropdown.map((dropdownItem) => {
-                          const isDropdownItemActive = isHrefActive(dropdownItem.href);
+                          const isDropdownItemActive = isHrefActive(
+                            dropdownItem.href,
+                          );
 
                           return (
                             <a
                               key={dropdownItem.title}
                               href={dropdownItem.href}
-                              aria-current={isDropdownItemActive ? "page" : undefined}
+                              aria-current={
+                                isDropdownItemActive ? "page" : undefined
+                              }
                               className={`block rounded-[6px] px-3 py-2 transition-colors hover:bg-slate-50 ${
                                 isDropdownItemActive ? "bg-accent/5" : ""
                               }`}
@@ -421,7 +431,9 @@ export const Navbar = () => {
                             >
                               <span
                                 className={`block text-sm font-black ${
-                                  isDropdownItemActive ? "text-accent" : "text-ink"
+                                  isDropdownItemActive
+                                    ? "text-accent"
+                                    : "text-ink"
                                 }`}
                               >
                                 {dropdownItem.title}
@@ -672,7 +684,10 @@ export const Partners = () => {
   ];
 
   return (
-    <section id="partners" className="border-b border-border bg-slate-50/60 py-10">
+    <section
+      id="partners"
+      className="border-b border-border bg-slate-50/60 py-10"
+    >
       <div className="custom-container mb-7 text-center">
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-ink-muted">
           {pageContent.partners.label}
@@ -688,16 +703,18 @@ export const Partners = () => {
           {marqueePartners.map((partner, i) => (
             <div
               key={`${partner.name}-${i}`}
-              className="flex h-28 w-[220px] items-center justify-center border-r border-border bg-white px-8 md:w-[250px]"
+              className="flex h-28 shrink-0 items-center justify-center border-r border-border bg-white px-8"
+              style={{ width: partner.width ? `${partner.width + 64}px` : "250px" }}
             >
               {"src" in partner ? (
                 <img
                   src={partner.src}
                   alt={partner.name}
-                  className="max-h-12 w-40 object-contain"
+                  style={{ width: partner.width ? `${partner.width}px` : "160px" }}
+                  className="max-h-12 object-contain"
                 />
               ) : (
-                <span className="text-[30px] font-semibold tracking-tight text-ink/80">
+                <span className="text-[24px] font-semibold tracking-tight text-ink/80">
                   {partner.name}
                 </span>
               )}
@@ -859,7 +876,9 @@ export const RoleInfrastructure = () => {
                             {fund}
                           </span>
                           <div className="flex items-center gap-4 md:gap-6">
-                            <span className="font-black text-ink">{amount}</span>
+                            <span className="font-black text-ink">
+                              {amount}
+                            </span>
                             <span className="rounded-sm bg-emerald-50 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-emerald-600">
                               {status}
                             </span>
@@ -958,7 +977,10 @@ export const Developers = () => {
 }`;
 
   return (
-    <section id="developers" className="relative overflow-hidden border-b border-border bg-[#0A0F1C] py-24 text-white md:py-32">
+    <section
+      id="developers"
+      className="relative overflow-hidden border-b border-border bg-[#0A0F1C] py-24 text-white md:py-32"
+    >
       {/* Blueprint Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)]" />
@@ -1059,22 +1081,25 @@ export const Developers = () => {
                     </span>
                     {"\n"}
                     <span className="text-slate-500">{"{"}</span>
-                    {"\n"}  <span className="text-blue-300">"token_id"</span>:{" "}
-                    <span className="text-yellow-200">"0x7a8f..."</span>,{"\n"}  
+                    {"\n"} <span className="text-blue-300">"token_id"</span>:{" "}
+                    <span className="text-yellow-200">"0x7a8f..."</span>,{"\n"}
                     <span className="text-blue-300">"amount_usd"</span>:{" "}
-                    <span className="text-orange-300">250000</span>,{"\n"}  
-                    <span className="text-blue-300">"distribution_date"</span>:{" "}
-                    <span className="text-yellow-200">"2025-01-15"</span>,{"\n"}  
-                    <span className="text-blue-300">"compliance_check"</span>:{" "}
-                    <span className="text-blue-400">true</span>
+                    <span className="text-orange-300">250000</span>,{"\n"}
+                    <span className="text-blue-300">
+                      "distribution_date"
+                    </span>:{" "}
+                    <span className="text-yellow-200">"2025-01-15"</span>,{"\n"}
+                    <span className="text-blue-300">
+                      "compliance_check"
+                    </span>: <span className="text-blue-400">true</span>
                     {"\n"}
                     <span className="text-slate-500">{"}"}</span>
                     {"\n\n"}
                     <span className="text-slate-500">// Response</span>
                     {"\n"}
                     <span className="text-slate-500">{"{"}</span>
-                    {"\n"}  <span className="text-blue-300">"status"</span>:{" "}
-                    <span className="text-yellow-200">"success"</span>,{"\n"}  
+                    {"\n"} <span className="text-blue-300">"status"</span>:{" "}
+                    <span className="text-yellow-200">"success"</span>,{"\n"}
                     <span className="text-blue-300">"tx_hash"</span>:{" "}
                     <span className="text-yellow-200">"0x9b2c..."</span>
                     {"\n"}
@@ -1126,7 +1151,10 @@ export const Security = () => (
 );
 
 export const CTA = () => (
-  <section id="cta" className="border-b border-border bg-slate-50/50 py-20 md:py-24">
+  <section
+    id="cta"
+    className="border-b border-border bg-slate-50/50 py-20 md:py-24"
+  >
     <div className="custom-container text-center">
       <h2 className="section-heading mb-8">{pageContent.cta.title}</h2>
       <p className="mx-auto mb-12 max-w-3xl text-xl leading-relaxed text-ink-muted">
@@ -1266,7 +1294,11 @@ export const Footer = () => (
   </footer>
 );
 
-export default function Home({ featuredBlogs = [] }: { featuredBlogs?: BlogPost[] }) {
+export default function Home({
+  featuredBlogs = [],
+}: {
+  featuredBlogs?: BlogPost[];
+}) {
   return (
     <div className="min-h-screen bg-bg font-sans text-ink">
       <CustomCursor />

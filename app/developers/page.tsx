@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { ArrowUpRight, Terminal, CheckCircle2, Code, TerminalSquare, Zap, Code2, ArrowRight, ShieldCheck, Key, Network, Fingerprint, Github, MessageSquare, Layers } from "lucide-react";
+import { ArrowUpRight, Terminal, CheckCircle2, Code, TerminalSquare, Zap, Code2, ArrowRight, ShieldCheck, Key, Network, Fingerprint, Github, MessageSquare, Layers} from "lucide-react";
 import { CustomCursor, Navbar, Footer } from "@/app/home";
 
 /* ── Developers Hero Section ── */
@@ -21,20 +21,21 @@ const DevelopersHero = () => (
         {/* Left Side: Content */}
         <div className="max-w-xl mx-auto lg:mx-0 relative z-20">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full mb-8 shadow-sm"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
           >
-            <Code size={14} className="text-emerald-600" />
-            <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-widest">Nomyx API v2.0</span>
+            <span className="inline-flex border-2 border-accent px-5 py-2.5 text-sm font-bold uppercase tracking-[0.12em] text-[#1E3A8A]">
+              Nomyx API v2.0
+            </span>
           </motion.div>
           
           <motion.h1
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-5xl lg:text-6xl lg:leading-[1.1] font-black text-ink tracking-tight mb-6"
+            className="text-display text-[clamp(48px,8.0vw,60px)] mb-6 mt-1"
           >
             The Infrastructure Layer for Real-World Assets.
           </motion.h1>
@@ -53,9 +54,9 @@ const DevelopersHero = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <button className="h-14 px-8 rounded-xl bg-accent text-white font-bold text-base hover:bg-accent/90 transition-all shadow-[0_8px_24px_rgba(30,58,138,0.25)] hover:shadow-[0_12px_32px_rgba(30,58,138,0.35)] hover:-translate-y-1 flex items-center justify-center gap-3 group">
+            <button className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors">
               Read the Docs
-              <ArrowUpRight size={20} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowRight size={16} />
             </button>
           </motion.div>
         </div>
@@ -170,7 +171,7 @@ const ToolkitSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-black text-ink tracking-tight mb-20 md:mb-28 text-center"
+          className="section-heading mb-20 md:mb-28 text-center"
         >
           A Complete Toolkit for <br className="hidden md:block"/> Fintech Engineering.
         </motion.h2>
@@ -312,7 +313,7 @@ const SandboxSection = () => {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-black text-ink tracking-tight mb-6 leading-[1.1]"
+              className="section-heading mb-6"
             >
               Build Without Spending Real Money.
             </motion.h2>
@@ -360,7 +361,7 @@ const SecuritySection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-ink tracking-tight"
+            className="section-heading"
           >
             Enterprise Security Standards.
           </motion.h2>
@@ -374,16 +375,13 @@ const SecuritySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white p-8 md:p-10 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-[0_20px_40px_rgba(16,185,129,0.08)] hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden cursor-default"
+              className="bg-white p-9 rounded-2xl border border-slate-200 transition-all duration-300 group hover:border-ink hover:shadow-[0_30px_60px_rgba(10,17,40,0.06)] cursor-default"
             >
-              {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-emerald-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-              
-              <div className="w-14 h-14 rounded-2xl bg-slate-50 group-hover:bg-emerald-50 text-slate-400 group-hover:text-emerald-500 flex items-center justify-center mb-8 transition-colors duration-300">
-                <feat.icon size={28} />
+              <div className="w-14 h-14 rounded-xl bg-slate-50 flex items-center justify-center mb-8 transition-all duration-300 group-hover:bg-ink group-hover:text-white text-slate-400">
+                <feat.icon size={26} />
               </div>
               
-              <p className="font-bold text-ink text-lg leading-relaxed group-hover:text-emerald-950 transition-colors">
+              <p className="font-bold text-ink text-lg leading-relaxed">
                 {feat.text}
               </p>
             </motion.div>
@@ -414,7 +412,7 @@ const CommunityCTA = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight text-white mb-16"
+          className="section-heading text-white mb-16"
         >
           Join the Builders.
         </motion.h2>
@@ -463,18 +461,19 @@ const FinalCallToAction = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl md:text-5xl font-black text-ink mb-10 tracking-tight"
+        className="section-heading mb-10"
       >
         Start your integration today.
       </motion.h2>
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
       >
-        <button className="h-14 px-10 rounded-xl bg-[#1E40AF] text-white font-bold text-base hover:bg-[#1E3A8A] transition-all shadow-[0_8px_24px_rgba(30,64,175,0.2)] hover:shadow-[0_12px_32px_rgba(30,64,175,0.3)] hover:-translate-y-1">
-          View API Reference
+        <button className="h-14 min-w-[220px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors">
+          Get Started
+          <ArrowRight size={16} />
         </button>
       </motion.div>
     </div>
