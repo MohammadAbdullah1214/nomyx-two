@@ -19,6 +19,7 @@ import {
   Terminal,
 } from "lucide-react";
 import { CustomCursor, Navbar, Footer } from "@/app/home";
+import { AnimatedButton } from "@/app/components/evergreen/shared";
 
 const stages = [
   { icon: Zap, label: "Minted", date: "Jan 1" },
@@ -204,19 +205,17 @@ const EngineHero = () => (
             your firm to use.
           </motion.p>
 
-          <motion.a
-            href="https://calendly.com/ivan-j-nomyx"
+          <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="group inline-flex h-14 items-center justify-center gap-3 bg-ink px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-ink/90 hover:gap-4"
           >
-            Explore the Engine
-            <ArrowRight
-              size={18}
-              className="transition-transform group-hover:translate-x-0.5"
+            <AnimatedButton 
+              text="Explore the Engine" 
+              href="https://calendly.com/ivan-j-nomyx" 
+              variant="ink" 
             />
-          </motion.a>
+          </motion.div>
         </div>
 
         {/* Right — visual */}
@@ -847,20 +846,18 @@ const EngineCTA = () => (
       >
         Start your issuance on future-proof infrastructure.
       </motion.h2>
-      <motion.a
-        href="https://calendly.com/ivan-j-nomyx"
+      <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.15 }}
-        className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4"
       >
-        Access Nomyx Engine
-        <ArrowRight
-          size={18}
-          className="transition-transform group-hover:translate-x-0.5"
+        <AnimatedButton 
+          text="Access Nomyx Engine" 
+          href="https://calendly.com/ivan-j-nomyx" 
+          variant="ink" 
         />
-      </motion.a>
+      </motion.div>
     </div>
   </section>
 );

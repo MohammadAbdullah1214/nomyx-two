@@ -21,6 +21,7 @@ import {
   TerminalSquare,
   X,
 } from "lucide-react";
+import { AnimatedButton } from "@/app/components/evergreen/shared";
 import pageContent from "./pageContent.json";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blogs";
@@ -584,19 +585,18 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="flex flex-wrap gap-3"
             >
-              <a
-                href="https://calendly.com/ivan-j-nomyx"
-                className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors"
-              >
-                Start Building
-                <ArrowRight size={18} />
-              </a>
-              <a
-                href="/developers"
-                className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center border border-border bg-white text-ink font-bold uppercase tracking-[0.14em] hover:bg-slate-50 transition-colors"
-              >
-                View Documentation
-              </a>
+              <AnimatedButton 
+                text="Start Building" 
+                href="https://calendly.com/ivan-j-nomyx" 
+                variant="ink" 
+                className="min-w-[190px]"
+              />
+              <AnimatedButton 
+                text="View Documentation" 
+                href="/developers" 
+                variant="white" 
+                className="min-w-[190px]"
+              />
             </motion.div>
           </div>
 
@@ -1160,14 +1160,14 @@ export const CTA = () => (
       <p className="mx-auto mb-12 max-w-3xl text-xl leading-relaxed text-ink-muted">
         {pageContent.cta.description}
       </p>
-      <a
+      <AnimatedButton 
+        text={pageContent.cta.button}
         href="https://calendly.com/ivan-j-nomyx"
         target="_blank"
         rel="noopener"
-        className="inline-flex h-14 min-w-[230px] items-center justify-center bg-ink px-10 text-base font-black uppercase tracking-[0.14em] text-white transition-colors hover:bg-ink/90"
-      >
-        {pageContent.cta.button}
-      </a>
+        variant="ink"
+        className="min-w-[230px]"
+      />
     </div>
   </section>
 );

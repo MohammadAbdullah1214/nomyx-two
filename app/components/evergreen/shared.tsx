@@ -104,3 +104,48 @@ export const HoverTextTrigger = ({
     {children}
   </motion.span>
 );
+
+import { ArrowRight } from "lucide-react";
+
+export const AnimatedButton = ({
+  text,
+  href,
+  onClick,
+  variant = "ink",
+  target,
+  rel,
+  className = "",
+}: {
+  text: string;
+  href?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  variant?: "white" | "ink";
+  target?: string;
+  rel?: string;
+  className?: string;
+}) => {
+  const baseStyles = "group/btn relative inline-flex h-14 items-center justify-center gap-3 px-10 text-xs font-black uppercase tracking-[0.14em] transition-all duration-300";
+  const variants = {
+    white: "bg-white text-ink hover:bg-slate-50 border border-border",
+    ink: "bg-ink text-white hover:bg-ink/90",
+  };
+
+  return (
+    <motion.a
+      href={href}
+      onClick={onClick}
+      target={target}
+      rel={rel}
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+      className={`${baseStyles} ${variants[variant]} ${className}`}
+    >
+      <HoverTextSwap text={text} />
+      <ArrowRight 
+        size={16} 
+        className="transition-transform duration-300 group-hover/btn:translate-x-1" 
+      />
+    </motion.a>
+  );
+};

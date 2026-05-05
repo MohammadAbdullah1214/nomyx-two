@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight, TrendingUp, UserCheck, Shield, PieChart, CreditCard, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { CustomCursor, Navbar, Footer } from "@/app/home";
+import { AnimatedButton } from "@/app/components/evergreen/shared";
 
 /* ── Gateway Hero Section ── */
 const GatewayHero = () => (
@@ -41,13 +42,11 @@ const GatewayHero = () => (
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-start justify-start gap-4"
           >
-            <a 
-              href="https://calendly.com/ivan-j-nomyx"
-              className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-[0_8px_24px_rgba(37,99,235,0.25)]"
-            >
-              Launch Your Market
-              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <AnimatedButton 
+              text="Launch Your Market" 
+              href="https://calendly.com/ivan-j-nomyx" 
+              variant="ink" 
+            />
           </motion.div>
         </div>
 
@@ -423,10 +422,10 @@ const SecureAssetDistribution = () => (
                 <p className="text-[#99F6E4] text-xs font-bold uppercase tracking-widest opacity-90">Instant liquidity for your investors</p>
               </div>
               
-              <button className="relative z-10 group inline-flex h-14 items-center justify-center gap-3 bg-white px-8 text-sm font-bold uppercase tracking-[0.14em] text-[#0F766E] transition-all hover:bg-slate-50 hover:gap-4 shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
-                Swap Collateral
-                <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
+              <AnimatedButton 
+                text="Swap Collateral" 
+                variant="white" 
+              />
             </div>
           </motion.div>
         </div>
@@ -471,15 +470,13 @@ const GatewayCTA = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <a 
-            href="https://calendly.com/ivan-j-nomyx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-10 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-[0_8px_32px_rgba(37,99,235,0.4)] mx-auto"
-          >
-            Deploy Your Branded Portal
-            <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          <AnimatedButton 
+            text="Deploy Your Branded Portal" 
+            href="https://calendly.com/ivan-j-nomyx" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            variant="white" 
+          />
         </motion.div>
       </div>
     </div>

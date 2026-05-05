@@ -19,6 +19,7 @@ import {
   forceHomeNavigation,
   HoverTextSwap,
   SectionIntro,
+  AnimatedButton,
 } from "./evergreen/shared";
 
 const titleWords = ["Smart", "Contracts", "That", "Never", "Expire."];
@@ -517,17 +518,12 @@ const DiamondFinalCTA = () => (
       <h2 className="section-heading mx-auto mb-8 max-w-3xl text-ink">
         Do Not Let Your Code Rot.
       </h2>
-      <motion.a
-        href="https://calendly.com/ivan-j-nomyx/30min"
-        initial="rest"
-        whileHover="hover"
-        animate="rest"
+      <AnimatedButton 
+        text="Consult With Our Solutions Architect" 
+        href="https://calendly.com/ivan-j-nomyx/30min" 
+        variant="ink" 
         onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx/30min")}
-        className="inline-flex h-14 items-center gap-3 bg-accent px-8 text-xs font-black uppercase tracking-[0.14em] text-white transition-colors hover:bg-accent/90"
-      >
-        <HoverTextSwap text="Consult With Our Solutions Architect" />
-        <ArrowRight size={16} />
-      </motion.a>
+      />
     </motion.div>
   </section>
 );

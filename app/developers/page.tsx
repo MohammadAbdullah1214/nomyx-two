@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowUpRight, Terminal, CheckCircle2, Code, TerminalSquare, Zap, Code2, ArrowRight, ShieldCheck, Key, Network, Fingerprint, Github, MessageSquare, Layers} from "lucide-react";
 import { CustomCursor, Navbar, Footer } from "@/app/home";
+import { AnimatedButton } from "@/app/components/evergreen/shared";
 
 /* ── Developers Hero Section ── */
 const DevelopersHero = () => (
@@ -54,13 +55,11 @@ const DevelopersHero = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <a 
-              href="https://nomyx-io.github.io/gemforce-docs/"
-              className="h-14 min-w-[190px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors"
-            >
-              Read the Docs
-              <ArrowRight size={16} />
-            </a>
+            <AnimatedButton 
+              text="Read the Docs" 
+              href="https://nomyx-io.github.io/gemforce-docs/" 
+              variant="ink" 
+            />
           </motion.div>
         </div>
 
@@ -474,13 +473,11 @@ const FinalCallToAction = () => (
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
       >
-        <a 
-          href="https://nomyx-io.github.io/gemforce-docs/"
-          className="h-14 min-w-[220px] px-8 inline-flex items-center justify-center gap-3 bg-ink text-white font-bold uppercase tracking-[0.14em] hover:bg-ink/90 transition-colors"
-        >
-          View API Reference
-          <ArrowRight size={16} />
-        </a>
+        <AnimatedButton 
+          text="View API Reference" 
+          href="https://nomyx-io.github.io/gemforce-docs/" 
+          variant="ink" 
+        />
       </motion.div>
     </div>
   </section>

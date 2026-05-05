@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Search, BookOpen, FileText, ArrowUpRight, Code, Terminal, CheckCircle, Copy, Download, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { CustomCursor, Navbar, Footer } from "@/app/home";
+import { AnimatedButton } from "@/app/components/evergreen/shared";
 
 /* ── Resources Hero Section ── */
 const ResourcesHero = () => (
@@ -48,15 +49,13 @@ const ResourcesHero = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <a 
-            href="https://nomyx-io.github.io/gemforce-docs/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-lg mx-auto"
-          >
-            Visit Developer Docs
-            <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          <AnimatedButton 
+            text="Visit Developer Docs" 
+            href="https://nomyx-io.github.io/gemforce-docs/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            variant="ink" 
+          />
         </motion.div>
       </div>
     </div>
@@ -99,15 +98,13 @@ const BuildOnNomyx = () => (
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <a 
-              href="https://nomyx-io.github.io/gemforce-docs/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-lg"
-            >
-              Visit Developer Docs
-              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <AnimatedButton 
+              text="Visit Developer Docs" 
+              href="https://nomyx-io.github.io/gemforce-docs/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              variant="ink" 
+            />
           </motion.div>
         </div>
 
@@ -257,10 +254,11 @@ const EbookFeature = () => (
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <button className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 shadow-lg">
-                <Download size={20} />
-                Download PDF
-              </button>
+              <AnimatedButton 
+                text="Download PDF" 
+                href="/Why-Tokenize-My-Fund.pdf" 
+                variant="ink" 
+              />
             </motion.div>
           </div>
 
@@ -305,15 +303,13 @@ const ResourcesCTA = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <a 
-            href="https://calendly.com/ivan-j-nomyx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-10 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4 hover:-translate-y-1 shadow-lg mx-auto"
-          >
-            Schedule a Technical Demo
-            <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          <AnimatedButton 
+            text="Schedule a Technical Demo" 
+            href="https://calendly.com/ivan-j-nomyx" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            variant="white" 
+          />
         </motion.div>
       </div>
     </div>

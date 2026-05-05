@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, FileText, PenLine } from "lucide-react";
 
 import { CustomCursor, Footer, Navbar } from "@/app/home";
 import { getPublishedBlogs, plainTextFromHtml } from "@/lib/blogs";
+import { AnimatedButton } from "@/app/components/evergreen/shared";
 
 function formatDate(value: string | null) {
   if (!value) {
@@ -118,13 +119,12 @@ export default async function BlogIndexPage() {
                       <p className="mb-7 line-clamp-3 flex-1 text-base leading-relaxed text-ink-muted">
                         {blog.excerpt || plainTextFromHtml(blog.content_html).slice(0, 170)}
                       </p>
-                      <Link
-                        href={`/blog/${blog.slug}`}
-                        className="inline-flex h-11 w-fit items-center gap-2 bg-ink px-4 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink/90"
-                      >
-                        Read Article
-                        <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
-                      </Link>
+                      <AnimatedButton 
+                        text="Read Article" 
+                        href={`/blog/${blog.slug}`} 
+                        variant="ink" 
+                        className="h-11 !px-6"
+                      />
                     </div>
                   </article>
                 ))}

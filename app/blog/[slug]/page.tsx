@@ -4,6 +4,7 @@ import { CalendarDays, ChevronRight, Clock3, ListTree } from "lucide-react";
 
 import { CustomCursor, Footer, Navbar } from "@/app/home";
 import { getPublishedBlogBySlug, plainTextFromHtml } from "@/lib/blogs";
+import { AnimatedButton } from "@/app/components/evergreen/shared";
 import { enhanceBlogHtml } from "@/lib/blog-content";
 
 type BlogDetailPageProps = {
@@ -51,22 +52,14 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         <article className="relative py-8 md:py-12 lg:py-14">
           <div className="custom-container">
             <div className="max-w-8xl mx-auto">
-              <nav
-                aria-label="Breadcrumb"
-                className="app-reveal mb-6 flex flex-wrap items-center gap-2 text-[16px] font-bold uppercase tracking-[0.16em] text-ink-muted"
-              >
-                <Link href="/" className="transition-colors hover:text-ink">
-                  Home
-                </Link>
-                <ChevronRight size={13} />
-                <Link href="/blog" className="transition-colors hover:text-ink">
-                  Blog
-                </Link>
-                <ChevronRight size={13} />
-                <span className=" text-accent ">
-                  {blog.title}
-                </span>
-              </nav>
+              <div className="app-reveal mb-8">
+                <AnimatedButton 
+                  text="Back to Blog" 
+                  href="/blog" 
+                  variant="ink" 
+                  className="h-10 !px-6"
+                />
+              </div>
 
               <div className="grid gap-7 lg:grid-cols-[270px_minmax(0,1fr)] lg:items-start">
                 <aside className="app-reveal lg:sticky lg:top-28 lg:self-start">
@@ -135,12 +128,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                       {blog.title}
                     </h1>
 
-                    {/* {blog.excerpt && (
-                      <p className="mt-5 max-w-3xl text-base leading-relaxed text-ink-muted md:text-lg">
-                        {blog.excerpt}
-                      </p>
-                    )} */}
-
                     {blog.cover_image_url && (
                       <div className="mt-8 overflow-hidden border border-border bg-ink shadow-[0_18px_54px_rgba(10,17,40,0.10)]">
                         <img
@@ -161,6 +148,23 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             </div>
           </div>
         </article>
+
+        <section className="relative overflow-hidden border-y border-border bg-slate-50/50 py-20 text-center md:py-24">
+          <div className="custom-container">
+            <h2 className="section-heading mb-8">Ready to modernize your fund?</h2>
+            <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-ink-muted">
+              Schedule a personalized walkthrough with our technical team to see how Nomyx can streamline your infrastructure.
+            </p>
+            <AnimatedButton 
+              text="Schedule a Technical Demo" 
+              href="https://calendly.com/ivan-j-nomyx" 
+              target="_blank" 
+              rel="noopener" 
+              variant="ink" 
+              className="min-w-[240px]"
+            />
+          </div>
+        </section>
       </main>
 
       <Footer />

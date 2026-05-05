@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { CustomCursor, Navbar, Footer } from "@/app/home";
+import { AnimatedButton } from "@/app/components/evergreen/shared";
 
 /* ── Wallet architecture visual ── */
 const walletProviders = [
@@ -192,19 +193,17 @@ const IdHero = () => (
             biometric passkeys and identity verification.
           </motion.p>
 
-          <motion.a
-            href="https://calendly.com/ivan-j-nomyx"
+          <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="group inline-flex h-14 items-center justify-center gap-3 bg-accent px-9 text-sm font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-accent/90 hover:gap-4"
           >
-            Create Your Nomyx ID
-            <ArrowRight
-              size={18}
-              className="transition-transform group-hover:translate-x-0.5"
+            <AnimatedButton 
+              text="Create Your Nomyx ID" 
+              href="https://calendly.com/ivan-j-nomyx" 
+              variant="ink" 
             />
-          </motion.a>
+          </motion.div>
 
           {/* Compliance badges */}
           <motion.div
@@ -733,12 +732,11 @@ const IdCTA = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          <motion.a 
-            href="https://calendly.com/ivan-j-nomyx"
-            className="inline-flex items-center h-12 px-8 rounded-full bg-accent text-white font-bold text-sm hover:bg-accent/90 transition-colors shadow-[0_8px_20px_rgba(37,99,235,0.25)]"
-          >
-            Schedule a Nomyx ID Demo
-          </motion.a>
+          <AnimatedButton 
+            text="Schedule a Nomyx ID Demo" 
+            href="https://calendly.com/ivan-j-nomyx" 
+            variant="ink" 
+          />
         </motion.div>
       </div>
 
