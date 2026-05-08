@@ -192,6 +192,7 @@ export const EvergreenHero = () => (
             <HoverTextSwap text="Modernize Your Fund" />
             <ArrowRight size={16} />
           </motion.a>
+          
           {/* <motion.a
             href="#live-operations"
             initial="rest"

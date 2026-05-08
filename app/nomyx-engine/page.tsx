@@ -469,10 +469,14 @@ export default function NomyxEnginePage() {
         <AssetLifecycle />
         <FundLifecycle />
         <ApiFirst />
-        <EngineCTA />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Start your issuance on future-proof infrastructure."
+        ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="Access Nomyx Engine"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+      />
     </div>
   );
 }
@@ -676,7 +680,7 @@ const ApiFirst = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="section-heading text-white mb-4">
+          <h2 className="section-heading text-white! mb-4">
             API-First Architecture.
           </h2>
           <p className="text-base md:text-lg text-white/60 max-w-xl mx-auto leading-relaxed">

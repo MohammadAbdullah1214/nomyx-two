@@ -242,7 +242,7 @@ export const Navbar = ({ variant }: { variant?: "dark" | "light" }) => {
             <img
               src="/nomyx-logo.png"
               alt="Nomyx"
-              className={`h-8 xl:h-9 w-auto object-contain transition-all duration-300 ${!forceLightNav ? "brightness-0 invert" : ""}`}
+              className={`h-8 xl:h-9 w-38 object-contain transition-all duration-300 ${!forceLightNav ? "brightness-0 invert" : ""}`}
             />
           </a>
 
@@ -1188,7 +1188,17 @@ const FeaturedBlogs = ({ blogs }: { blogs: BlogPost[] }) => {
   );
 };
 
-export const Footer = () => (
+export const Footer = ({
+  ctaTitle = pageContent.cta.title,
+  ctaDescription = pageContent.cta.description,
+  ctaButtonText = pageContent.cta.button,
+  ctaButtonLink = "https://calendly.com/ivan-j-nomyx",
+}: {
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaButtonText?: string;
+  ctaButtonLink?: string;
+}) => (
   <footer className="relative w-full bg-white overflow-hidden">
     <div className="relative w-full bg-[#F2F9FF] rounded-t-[60px] md:rounded-t-[100px] pt-20 pb-12 overflow-hidden">
       {/* Background Decorative Logos */}
@@ -1207,14 +1217,14 @@ export const Footer = () => (
         {/* CTA Content */}
         <div className="mb-32 text-center">
           <h2 className="mb-6 text-[45px] font-bold tracking-tight text-[#19233D] md:text-[54px]">
-            {pageContent.cta.title}
+            {ctaTitle}
           </h2>
           <p className="mx-auto mb-12 max-w-2xl text-[18px] text-[#42546E]">
-            {pageContent.cta.description}
+            {ctaDescription}
           </p>
           <AnimatedButton
-            text={pageContent.cta.button}
-            href="https://calendly.com/ivan-j-nomyx"
+            text={ctaButtonText}
+            href={ctaButtonLink}
             variant="accent"
             className="h-14 !px-10"
           />

@@ -5,7 +5,6 @@ import { RealEstateHero } from "./real-estate/Hero";
 import { Ledger } from "./real-estate/Ledger";
 import { RentDistribution } from "./real-estate/RentDistribution";
 import { LiquidityPremium } from "./real-estate/LiquidityPremium";
-import { RealEstateFinalCTA } from "./real-estate/FinalCTA";
 
 export default function RealEstate() {
   return (
@@ -18,10 +17,14 @@ export default function RealEstate() {
         <Ledger />
         <RentDistribution />
         <LiquidityPremium />
-        <RealEstateFinalCTA />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Turn Your Property Into A Liquid Asset."
+        ctaDescription="Unlock liquidity and reach global investors. Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="Start A Real Estate Pilot"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+      />
     </div>
   );
 }

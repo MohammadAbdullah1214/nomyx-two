@@ -6,7 +6,6 @@ import { LifecycleCommand } from "./evergreen/LifecycleCommand";
 import { OperatingDelta } from "./evergreen/OperatingDelta";
 import { LiquidityLayer } from "./evergreen/LiquidityLayer";
 import { UpgradePanel } from "./evergreen/UpgradePanel";
-import { FinalCTA } from "./evergreen/FinalCTA";
 
 export default function Evergreen() {
   return (
@@ -22,10 +21,14 @@ export default function Evergreen() {
         <OperatingDelta />
         <LiquidityLayer />
         <UpgradePanel />
-        <FinalCTA />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Stop running your fund on quarterly deadlines."
+        ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="Automate Your Evergreen Fund"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx/30min"
+      />
     </div>
   );
 }

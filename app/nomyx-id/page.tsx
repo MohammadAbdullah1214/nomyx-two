@@ -840,10 +840,14 @@ export default function NomyxIdPage() {
         <ImpossibleTransfer />
         <ProtectionForAll />
         <BuiltForEvolution />
-        <IdCTA />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Secure your assets with identity-first infrastructure."
+        ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="Schedule a Nomyx ID Demo"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+      />
     </div>
   );
 }

@@ -326,10 +326,14 @@ export default function ResourcesPage() {
         <ResourcesHero />
         <BuildOnNomyx />
         <EbookFeature />
-        <ResourcesCTA />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Need a deeper dive?"
+        ctaDescription="Schedule a personalized walkthrough with our technical team. Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="Schedule a Technical Demo"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+      />
     </div>
   );
 }

@@ -4,7 +4,6 @@ import { CustomCursor, Footer, Navbar } from "../home";
 import { SpvHero } from "./spv/Hero";
 import { Waterfall } from "./spv/Waterfall";
 import { Onboarding } from "./spv/Onboarding";
-import { SpvFinalCTA } from "./spv/FinalCTA";
 
 export default function SpvDeal() {
   return (
@@ -16,10 +15,14 @@ export default function SpvDeal() {
         <SpvHero />
         <Waterfall />
         <Onboarding />
-        <SpvFinalCTA />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Ready For Your Next Deal?"
+        ctaDescription="Launch your next compliant SPV in minutes. Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="Launch An SPV Demo"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+      />
     </div>
   );
 }

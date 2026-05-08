@@ -148,26 +148,14 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             </div>
           </div>
         </article>
-
-        <section className="relative overflow-hidden border-y border-border bg-slate-50/50 py-20 text-center md:py-24">
-          <div className="custom-container">
-            <h2 className="section-heading mb-8">Ready to modernize your fund?</h2>
-            <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-ink-muted">
-              Schedule a personalized walkthrough with our technical team to see how Nomyx can streamline your infrastructure.
-            </p>
-            <AnimatedButton 
-              text="Schedule a Technical Demo" 
-              href="https://calendly.com/ivan-j-nomyx" 
-              target="_blank" 
-              rel="noopener" 
-              variant="ink" 
-              className="min-w-[240px]"
-            />
-          </div>
-        </section>
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Ready to modernize your fund?"
+        ctaDescription="Schedule a personalized walkthrough with our technical team to see how Nomyx can streamline your infrastructure."
+        ctaButtonText="Schedule a Technical Demo"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+      />
     </div>
   );
 }

@@ -414,7 +414,7 @@ const CommunityCTA = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="section-heading text-white mb-16"
+          className="section-heading text-white! mb-16"
         >
           Join the Builders.
         </motion.h2>
@@ -454,34 +454,7 @@ const CommunityCTA = () => {
   );
 };
 
-/* ── Final CTA Section ── */
-const FinalCallToAction = () => (
-  <section className="py-24 md:py-32 bg-white relative overflow-hidden">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.03)_0%,transparent_70%)]" />
-    <div className="custom-container relative z-10 text-center">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="section-heading mb-10"
-      >
-        Start your integration today.
-      </motion.h2>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1 }}
-      >
-        <AnimatedButton 
-          text="View API Reference" 
-          href="https://nomyx-io.github.io/gemforce-docs/" 
-          variant="ink" 
-        />
-      </motion.div>
-    </div>
-  </section>
-);
+
 
 export default function DevelopersPage() {
   return (
@@ -495,10 +468,14 @@ export default function DevelopersPage() {
         <SandboxSection />
         <SecuritySection />
         <CommunityCTA />
-        <FinalCallToAction />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Start your integration today."
+        ctaDescription="Don't reinvent the wheel. Integrate banking-grade tokenization directly into your app. Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="View API Reference"
+        ctaButtonLink="https://nomyx-io.github.io/gemforce-docs/"
+      />
     </div>
   );
 }

@@ -501,32 +501,7 @@ const Complexity = () => (
   </section>
 );
 
-const DiamondFinalCTA = () => (
-  <section className="relative overflow-hidden border-b border-border bg-white px-6 py-20 text-center text-ink md:py-24">
-    <motion.div
-      className="absolute left-1/2 top-0 h-px w-[72%] -translate-x-1/2 bg-accent/35"
-      animate={{ opacity: [0.2, 0.9, 0.2] }}
-      transition={{ duration: 3, repeat: Infinity }}
-    />
-    <motion.div
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.55 }}
-    >
-      <h2 className="section-heading mx-auto mb-8 max-w-3xl text-ink">
-        Do Not Let Your Code Rot.
-      </h2>
-      <AnimatedButton 
-        text="Consult With Our Solutions Architect" 
-        href="https://calendly.com/ivan-j-nomyx/30min" 
-        variant="ink" 
-        onClick={(event) => forceHomeNavigation(event, "https://calendly.com/ivan-j-nomyx/30min")}
-      />
-    </motion.div>
-  </section>
-);
+
 
 export default function DiamondStandard() {
   return (
@@ -540,10 +515,14 @@ export default function DiamondStandard() {
         <UpgradeFlow />
         <LogicSeparation />
         <Complexity />
-        <DiamondFinalCTA />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Do Not Let Your Code Rot."
+        ctaDescription="Build on modular, upgradeable infrastructure that adapts to regulatory changes. Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="Consult With Our Solutions Architect"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx/30min"
+      />
     </div>
   );
 }

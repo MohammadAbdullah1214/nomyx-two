@@ -21,7 +21,12 @@ export default function PrivateCredit() {
         <Servicer />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Scale Your AUM Without Scaling Your Back Office."
+        ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
+        ctaButtonText="Demo The Distribution Engine"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+      />
     </div>
   );
 }

@@ -495,10 +495,14 @@ export default function NomyxGatewayPage() {
         <AnyAssetOnePlatform />
         <EffortlessRamps />
         <SecureAssetDistribution />
-        <GatewayCTA />
       </main>
 
-      <Footer />
+      <Footer 
+        ctaTitle="Your Ecosystem. Powered by Nomyx."
+        ctaDescription="We provide the banking-grade rails. You provide the vision. Deliver a seamless digital experience that keeps your investors within your brand."
+        ctaButtonText="Deploy Your Branded Portal"
+        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+      />
     </div>
   );
 }
