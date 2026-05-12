@@ -1,10 +1,12 @@
 "use client";
 
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Search, BookOpen, FileText, ArrowUpRight, Code, Terminal, CheckCircle, Copy, Download, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { CustomCursor, Navbar, Footer } from "@/app/home";
 import { AnimatedButton } from "@/app/components/evergreen/shared";
+import { ResourceModal } from "./ResourceModal";
 
 /* ── Resources Hero Section ── */
 const ResourcesHero = () => (
@@ -163,7 +165,7 @@ const BuildOnNomyx = () => (
 );
 
 /* ── Ebook Feature ── */
-const EbookFeature = () => (
+const EbookFeature = ({ onDownloadClick }: { onDownloadClick: () => void }) => (
   <section className="section-padding bg-white relative overflow-hidden">
     <div className="custom-container relative z-10">
       
@@ -256,7 +258,10 @@ const EbookFeature = () => (
             >
               <AnimatedButton 
                 text="Download PDF" 
-                href="/Why-Tokenize-My-Fund.pdf" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  onDownloadClick();
+                }}
                 variant="ink" 
               />
             </motion.div>
@@ -272,6 +277,8 @@ const EbookFeature = () => (
 
 
 export default function ResourcesPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white font-sans text-ink">
       <CustomCursor />
@@ -280,8 +287,14 @@ export default function ResourcesPage() {
       <main>
         <ResourcesHero />
         <BuildOnNomyx />
-        <EbookFeature />
+        <EbookFeature onDownloadClick={() => setIsModalOpen(true)} />
       </main>
+
+      <ResourceModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        resourceTitle="Why Tokenize My Fund?"
+      />
 
       <Footer 
         ctaTitle="Need a deeper dive?"
