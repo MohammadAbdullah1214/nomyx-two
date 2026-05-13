@@ -11,24 +11,21 @@ const steps = [
 ];
 
 export const Waterfall = () => (
-  <section className="border-b border-border py-20 md:py-24">
+  <section className="py-20 md:py-24">
     <div className="custom-container">
-      <SectionIntro
-        // eyebrow="Waterfall Engine"
-        title={<>Perfect Waterfalls.<br />Zero Spreadsheets.</>}
-        description=""
-      />
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.55 }}
+        className="mb-14 text-center"
+      >
+        <h2 className="section-heading">Perfect Waterfalls.<br />Zero Spreadsheets.</h2>
+      </motion.div>
 
-      <div className="mt-14 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-        <div className="relative space-y-8">
-          <motion.div
-            className="absolute left-1/2 top-20 hidden h-[calc(100%-160px)] w-px -translate-x-1/2 bg-accent/30 md:block"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
-            style={{ transformOrigin: "top" }}
-          />
+      <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2">
+        <div className="flex flex-col gap-8">
           {steps.map(([label, title, text, value], index) => (
             <motion.div
               key={title}
@@ -37,20 +34,19 @@ export const Waterfall = () => (
               whileInView="show"
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              whileHover={{ x: 8 }}
-              className="relative border border-border bg-white p-6 shadow-sm transition-colors hover:border-accent/40 hover:bg-slate-50"
+              className="relative rounded-xl border border-[#0A112824] bg-white p-6 shadow-sm"
             >
               <div className="flex items-start justify-between gap-5">
                 <div>
-                  <div className="mb-2 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-accent">
+                  <div className="mb-2 text-[11px] font-bold uppercase tracking-widest text-[#2060D4]">
                     {label}
                   </div>
-                  <h3 className="text-xl font-black uppercase tracking-tight text-ink">
+                  <h3 className="text-[23px] font-bold text-ink">
                     {title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">{text}</p>
+                  <p className="mt-1 text-[15px] leading-relaxed text-ink-muted">{text}</p>
                 </div>
-                <div className="text-3xl font-black text-accent">{value}</div>
+                <div className="text-3xl font-bold text-[#2060D4]">{value}</div>
               </div>
             </motion.div>
           ))}
@@ -62,14 +58,20 @@ export const Waterfall = () => (
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.55 }}
-          className="border border-border bg-white p-8"
+          className="flex h-full flex-col rounded-2xl border border-[#0A112824] bg-white p-8 md:p-12"
         >
-          <Calculator className="mb-6 text-accent" size={30} />
-          <h2 className="section-heading mb-6">Program Your Carry Logic.</h2>
-          <p className="mb-8 text-lg leading-relaxed text-ink-muted">
+          <div className="mb-8 flex items-center gap-5">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-[#0A112824] text-[#2060D4]">
+              <Calculator size={26} />
+            </div>
+            <h2 className="text-[28px] font-bold leading-tight tracking-tight text-ink lg:text-[32px]">
+              Program Your Carry Logic.
+            </h2>
+          </div>
+          <p className="mb-10 text-[17px] leading-relaxed text-ink-muted">
             Forget manual calculations at exit. Encode your LP preferences, hurdle rates, and GP catch-up logic directly into the SPV smart contract. When the exit happens, funds distribute instantly according to the code.
           </p>
-          <div className="space-y-5">
+          <div className="space-y-6">
             {[
               [Zap, "No Spreadsheet Errors", "Calculations execute automatically on-chain"],
               [Check, "Instant Settlement", "Funds flow to wallets in seconds, not days"],
@@ -77,13 +79,13 @@ export const Waterfall = () => (
             ].map(([Icon, title, text]) => {
               const TypedIcon = Icon as typeof Zap;
               return (
-                <div key={title as string} className="flex gap-4 border-b border-border pb-5 last:border-b-0">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-border text-accent">
+                <div key={title as string} className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-[#0A112824] text-[#2060D4]">
                     <TypedIcon size={18} />
                   </div>
                   <div>
-                    <h3 className="font-black uppercase tracking-tight text-ink">{title as string}</h3>
-                    <p className="text-sm leading-relaxed text-ink-muted">{text as string}</p>
+                    <h3 className="text-[15px] font-bold text-ink">{title as string}</h3>
+                    <p className="text-[14px] leading-relaxed text-ink-muted">{text as string}</p>
                   </div>
                 </div>
               );
