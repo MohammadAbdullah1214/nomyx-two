@@ -23,73 +23,42 @@ export default async function BlogIndexPage() {
   return (
     <div className="min-h-screen bg-white text-ink">
       <CustomCursor />
-      <Navbar />
+      <Navbar variant="light" transparentInitially={true} hideBorder={true} />
 
-      <main className="overflow-hidden pt-20">
-        <section className="relative overflow-hidden border-b border-border bg-white">
-          <div className="custom-container relative">
-            <div className="grid items-center gap-10 py-14 md:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.7fr)]">
-              <div className="app-reveal max-w-4xl">
-                <p className="mb-6 inline-flex border border-border bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-accent shadow-sm">
-                  Insights
-                </p>
-                <h1 className="max-w-4xl text-[clamp(50px,7vw,92px)] font-black uppercase leading-[0.88] tracking-tight">
-                  Nomyx Blog
-                </h1>
-                <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
-                  Tokenization infrastructure notes, capital markets workflows, and product thinking from the Nomyx team.
-                </p>
-              </div>
-
-              <div aria-hidden="true" className="app-reveal relative hidden aspect-[1.05/1] overflow-hidden border border-border bg-white shadow-[0_24px_70px_rgba(10,17,40,0.08)] lg:block">
-                <div className="absolute inset-8 bg-slate-50/70 [clip-path:polygon(50%_0%,94%_25%,94%_75%,50%_100%,6%_75%,6%_25%)]" />
-                <div className="absolute inset-6 border-[14px] border-slate-100/80 [clip-path:polygon(50%_0%,94%_25%,94%_75%,50%_100%,6%_75%,6%_25%)]" />
-
-                <div className="absolute left-1/2 top-[18%] z-10 -translate-x-1/2 rounded-[6px] bg-accent px-6 py-2 text-xs font-black uppercase tracking-[0.08em] text-white shadow-[0_12px_28px_rgba(30,58,138,0.18)]">
-                  With Nomyx
-                </div>
-
-                <p className="absolute left-1/2 top-[33%] z-10 w-full -translate-x-1/2 px-10 text-center text-base font-bold leading-snug text-ink">
-                  Draft notes become published infrastructure insights
-                </p>
-
-                <div className="app-float absolute left-1/2 top-[39%] z-10 flex w-[54%] -translate-x-1/2 items-center gap-3 rounded-[8px] border border-border bg-white px-4 py-3 shadow-[0_16px_38px_rgba(10,17,40,0.08)]">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-slate-50">
-                    <PenLine size={18} className="text-accent" />
-                  </span>
-                  <span className="text-base font-semibold text-ink">Research Draft</span>
-                </div>
-
-                <div className="app-float absolute left-1/2 top-[59%] z-10 flex w-[58%] -translate-x-1/2 items-center gap-3 rounded-[8px] border border-accent/25 bg-white px-4 py-3 shadow-[0_16px_38px_rgba(10,17,40,0.08)] [animation-delay:700ms]">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-slate-50">
-                    <FileText size={18} className="text-accent" />
-                  </span>
-                  <span className="text-base font-semibold text-ink">Published Article</span>
-                </div>
-
-                {/* <div className="app-pulse absolute left-1/2 top-[60%] z-20 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-accent bg-white shadow-[0_14px_30px_rgba(10,17,40,0.12)]">
-                  <CheckCircle2 size={24} className="text-accent" />
-                </div>
-
-                <ArrowRight className="absolute left-[57%] top-[56%] z-10 rotate-90 text-ink" size={40} strokeWidth={1.8} /> */}
-              </div>
+      <main className="overflow-hidden">
+        <section 
+          className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28"
+          style={{
+            background: "linear-gradient(to bottom, #D9EFFF 0%, #FFFFFF 100%)"
+          }}
+        >
+          <div className="custom-container relative text-center">
+            <div className="mx-auto max-w-4xl">
+              <p className="eyebrow mb-6">
+                Insights
+              </p>
+              <h1 className="text-display mb-8">
+                Nomyx Blog
+              </h1>
+              <p className="mx-auto prgraphs mb-20 md:text-xl">
+                Tokenization infrastructure notes, capital markets workflows, and product thinking from the Nomyx team.
+              </p>
             </div>
           </div>
         </section>
 
-        <section className="bg-slate-50/70 py-14 md:py-20">
+        <section className="py-20 md:py-24">
           <div className="custom-container">
             {blogs.length === 0 ? (
-              <div className="border border-border bg-white px-6 py-14 text-center text-sm font-semibold uppercase tracking-[0.14em] text-ink-muted shadow-[0_18px_54px_rgba(10,17,40,0.06)]">
+              <div className="rounded-2xl border border-[#0A112824] bg-white px-6 py-20 text-center text-sm font-bold uppercase tracking-widest text-ink-muted">
                 No published blog posts yet.
               </div>
             ) : (
-              <div className="grid items-stretch gap-6 lg:grid-cols-2">
+              <div className="grid items-stretch gap-8 lg:grid-cols-2">
                 {blogs.map((blog, index) => (
                   <article
                     key={blog.id}
-                    className="app-reveal group flex h-full flex-col overflow-hidden border border-border bg-white shadow-[0_16px_44px_rgba(10,17,40,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-ink/45 hover:shadow-[0_22px_58px_rgba(10,17,40,0.09)]"
-                    style={{ animationDelay: `${Math.min(index, 8) * 65}ms` }}
+                    className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#0A112824] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
                     <Link href={`/blog/${blog.slug}`} className="relative block aspect-[16/9] overflow-hidden bg-ink">
                       {blog.cover_image_url ? (
@@ -99,32 +68,33 @@ export default async function BlogIndexPage() {
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                         />
                       ) : (
-                        <div className="app-line-stack flex h-full items-center justify-center bg-ink text-sm font-bold uppercase tracking-[0.16em] text-white/55">
-                          No Image
+                        <div className="flex h-full items-center justify-center bg-ink text-xs font-bold uppercase tracking-widest text-white/30">
+                          No Image Available
                         </div>
                       )}
                     </Link>
 
-                    <div className="flex flex-1 flex-col p-6 sm:p-7">
+                    <div className="flex flex-1 flex-col p-8 md:p-10">
                       <div className="mb-4 flex items-center justify-between gap-4">
-                        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-accent">
+                        <p className="text-[11px] font-bold uppercase tracking-widest text-[#2060D4]">
                           {blog.featured ? "Featured / " : ""}
                           {formatDate(blog.published_at)}
                         </p>
-                        <span className="h-2 w-2 rounded-full bg-ink/55" />
                       </div>
-                      <h2 className="mb-4 text-[clamp(26px,3vw,38px)] font-black uppercase leading-[0.98] tracking-tight">
+                      <h2 className="mb-4 text-[28px] font-bold leading-tight tracking-tight text-ink">
                         {blog.title}
                       </h2>
-                      <p className="mb-7 line-clamp-3 flex-1 text-base leading-relaxed text-ink-muted">
+                      <p className="mb-10 line-clamp-3 flex-1 text-[16px] leading-relaxed text-ink-muted">
                         {blog.excerpt || plainTextFromHtml(blog.content_html).slice(0, 170)}
                       </p>
-                      <AnimatedButton 
-                        text="Read Article" 
-                        href={`/blog/${blog.slug}`} 
-                        variant="ink" 
-                        className="h-11 !px-6"
-                      />
+                      <div className="mt-auto">
+                        <AnimatedButton 
+                          text="Read Article" 
+                          href={`/blog/${blog.slug}`} 
+                          variant="accent" 
+                          className="h-11 !px-7"
+                        />
+                      </div>
                     </div>
                   </article>
                 ))}
