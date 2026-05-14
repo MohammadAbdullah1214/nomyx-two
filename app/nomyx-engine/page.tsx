@@ -30,127 +30,120 @@ const stages = [
 
 /* ── Animated lifecycle visual (right column) ── */
 const EngineVisual = () => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1);
 
   useEffect(() => {
-    const id = setInterval(() => setActive((p) => (p + 1) % 4), 2200);
+    const id = setInterval(() => setActive((p) => (p + 1) % 4), 3000);
     return () => clearInterval(id);
   }, []);
+
+  // Circle centers in SVG coordinate space (viewBox 380×360)
+  const nodes = [
+    { x: 95,  y: 65 },   // Minted
+    { x: 285, y: 65 },   // Distribution
+    { x: 95,  y: 295 },  // Compliance Upgrade
+    { x: 285, y: 295 },  // Dividend Payout
+  ];
+
+  // S-path: line exits from circle sides, curves via right & left edges
+  const svgPath =
+    `M${nodes[0].x} ${nodes[0].y} H${nodes[1].x}` +               // top row horizontal
+    ` C370 ${nodes[1].y}, 370 180, ${nodes[1].x} 180` +            // right-edge curve down
+    ` H${nodes[2].x}` +                                             // middle horizontal left
+    ` C10 180, 10 ${nodes[2].y}, ${nodes[2].x} ${nodes[2].y}` +    // left-edge curve down
+    ` H${nodes[3].x}`;                                              // bottom row horizontal
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.35 }}
-      className="w-full max-w-[520px] mx-auto lg:ml-auto lg:mr-0"
+      className="w-full max-w-[580px] mx-auto lg:ml-auto lg:mr-0"
     >
-      {/* Card */}
-      <div className="border border-border bg-white shadow-[0_24px_64px_rgba(10,17,40,0.07)] p-7 md:p-9">
+      <div className="relative rounded-[40px] border border-[#0A112808] bg-white p-10 shadow-[0_32px_84px_rgba(10,17,40,0.06)] md:p-12">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
+        <div className="mb-6 flex items-center justify-between px-2">
+          <span className="text-[13px] font-extrabold uppercase tracking-[0.16em] text-[#42546E]">
             Asset Lifecycle Dashboard
           </span>
-          <motion.span
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-600"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <div className="flex items-center gap-2 text-[13px] font-extrabold uppercase tracking-[0.12em] text-[#10B981]">
+            <span className="h-2 w-2 rounded-full bg-[#10B981]" />
             Active
-          </motion.span>
-        </div>
-
-        {/* Timeline */}
-        <div className="relative px-2">
-          {/* Track */}
-          <div className="absolute top-7 left-[calc(12.5%)] right-[calc(12.5%)] h-px bg-border" />
-
-          {/* Progress fill */}
-          <motion.div
-            className="absolute top-7 left-[calc(12.5%)] h-[2px] bg-accent origin-left"
-            animate={{
-              width: `${(active / 3) * 75}%`,
-            }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          />
-
-          {/* Nodes */}
-          <div className="relative grid grid-cols-4 gap-0">
-            {stages.map((stage, i) => {
-              const Icon = stage.icon;
-              const reached = i <= active;
-
-              return (
-                <div key={stage.label} className="flex flex-col items-center">
-                  {/* Circle */}
-                  <div className="relative mb-3">
-                    {/* Pulse ring */}
-                    {i === active && (
-                      <motion.div
-                        className="absolute inset-0 rounded-full border-2 border-accent"
-                        animate={{ scale: [1, 1.7], opacity: [0.5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      />
-                    )}
-                    <motion.div
-                      animate={{
-                        backgroundColor: reached ? "#1E3A8A" : "#F1F5F9",
-                        scale: i === active ? 1.1 : 1,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="relative z-10 w-14 h-14 rounded-full flex items-center justify-center"
-                      style={{
-                        boxShadow: reached
-                          ? "0 6px 20px rgba(30,58,138,0.3)"
-                          : "0 1px 4px rgba(10,17,40,0.06)",
-                      }}
-                    >
-                      <Icon
-                        size={20}
-                        strokeWidth={2}
-                        color={reached ? "#fff" : "#94A3B8"}
-                      />
-                    </motion.div>
-                  </div>
-
-                  {/* Label */}
-                  <span
-                    className="text-[11px] font-bold text-center leading-tight mb-0.5 transition-colors duration-300"
-                    style={{ color: reached ? "#0A1128" : "#94A3B8" }}
-                  >
-                    {stage.label}
-                  </span>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-ink-muted/50">
-                    {stage.date}
-                  </span>
-                </div>
-              );
-            })}
           </div>
         </div>
 
-        {/* Terminal footer */}
-        {/* <div className="mt-8 bg-ink p-4 font-mono text-[11px] leading-relaxed">
-          <div className="flex items-center gap-2 mb-1 text-white/70">
-            <span className="text-emerald-400">●</span>
-            LIFECYCLE_ENGINE_ACTIVE
-          </div>
-          <motion.div
-            key={active}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-white/45"
+        {/* Timeline Visual — 380×360 coordinate space, 1:1 scale */}
+        <div className="relative mx-auto w-full max-w-[380px]" style={{ aspectRatio: "380 / 400" }}>
+          {/* Path SVG — aligned to top */}
+          <svg
+            className="absolute top-0 left-0 w-full pointer-events-none"
+            viewBox="0 0 380 360"
+            style={{ height: "90%" }}
+            preserveAspectRatio="xMidYMin meet"
+            fill="none"
           >
-            current_stage: {stages[active].label.toLowerCase().replace(/ /g, "_")} | next:{" "}
-            {stages[(active + 1) % 4].label.toLowerCase().replace(/ /g, "_")}
-          </motion.div>
-        </div> */}
-      </div>
+            <path d={svgPath} stroke="#E8EDF2" strokeWidth="2" strokeLinecap="round" fill="none" />
+            <motion.path
+              d={svgPath}
+              stroke="#1E3A8A"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{
+                pathLength: active === 0 ? 0.08 : active === 1 ? 0.28 : active === 2 ? 0.72 : 1,
+              }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            />
+          </svg>
 
-      {/* Shadow decorations */}
-      <div className="mx-4 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent mt-[-1px]" />
-      <div className="mx-10 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
+          {/* Nodes — circle center anchored at SVG coordinate, text hangs below */}
+          {stages.map((stage, i) => {
+            const Icon = stage.icon;
+            const isReached = i <= active;
+            const isActive = i === active;
+            const n = nodes[i];
+
+            return (
+              <div
+                key={stage.label}
+                className="absolute"
+                style={{
+                  left: `${(n.x / 380) * 100}%`,
+                  top: `${(n.y / 400) * 100}%`,
+                  transform: "translate(-50%, -36px)",
+                }}
+              >
+                {/* Circle — 72px, center sits exactly on path line */}
+                <div className="relative z-10">
+                  <motion.div
+                    animate={{
+                      backgroundColor: isReached ? "#1E3A8A" : "#F1F5F9",
+                      boxShadow: isReached
+                        ? "0 8px 24px rgba(30,58,138,0.22)"
+                        : "0 2px 8px rgba(10,17,40,0.04)",
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className="flex h-[72px] w-[72px] items-center justify-center rounded-full"
+                  >
+                    <Icon size={26} strokeWidth={1.8} className={isReached ? "text-white" : "text-[#94A3B8]"} />
+                  </motion.div>
+                </div>
+
+                {/* Label + date — sits below circle, clear of the path */}
+                <div className="mt-3 text-center whitespace-nowrap">
+                  <p className={`text-[15px] font-black tracking-tight leading-tight ${isReached ? "text-[#0A1128]" : "text-[#94A3B8]"}`}>
+                    {stage.label}
+                  </p>
+                  <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#B0BAC9]">
+                    {stage.date}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </motion.div>
   );
 };
