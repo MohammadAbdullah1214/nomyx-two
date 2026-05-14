@@ -150,17 +150,7 @@ const EngineVisual = () => {
 
 /* ── Hero ── */
 const EngineHero = () => (
-  <section className="relative pt-32 pb-14 md:pt-40 md:pb-20 border-b border-border overflow-hidden">
-    {/* Dot pattern */}
-    <div
-      className="absolute inset-0 opacity-[0.02] pointer-events-none"
-      style={{
-        backgroundImage:
-          "radial-gradient(circle, #0A1128 1px, transparent 1px)",
-        backgroundSize: "28px 28px",
-      }}
-    />
-
+  <section className="relative pt-32 pb-14 md:pt-40 md:pb-24 overflow-hidden bg-[#F2F9FF]">
     <div className="custom-container relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-10 items-center">
         {/* Left — text */}
@@ -169,9 +159,9 @@ const EngineHero = () => (
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-6"
+            className="mb-8"
           >
-            <span className="inline-flex border-2 border-accent px-5 py-2.5 text-sm font-bold uppercase tracking-[0.12em] text-accent">
+            <span className="eyebrow px-5 py-2.5 rounded-full border border-ink/10 bg-white/50 inline-block">
               The Tokenization Engine
             </span>
           </motion.div>
@@ -180,23 +170,21 @@ const EngineHero = () => (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="section-heading mb-7"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+            className="section-heading mb-8"
           >
-            The Operating System for Digital Assets.
+            The Operating System <br className="hidden md:block" /> For Digital Assets.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-base md:text-lg text-ink-muted leading-relaxed mb-10 max-w-xl"
+            className="prgraphs mb-12 max-w-2xl"
           >
-            Issue, manage, and distribute compliant assets with a purpose-built
-            smart contract factory. Zero technical debt. Infinite upgradability.
-            Take advantage of the world&apos;s most advanced smart contract
-            technology inside a system that&apos;s simple enough for anyone at
-            your firm to use.
+            Issue, manage, and distribute compliant assets with a purpose-built smart
+            contract factory. Zero technical debt. Infinite upgradability. Take advantage of the
+            world&apos;s most advanced smart contract technology inside a system that&apos;s simple
+            enough for anyone at your firm to use.
           </motion.p>
 
           <motion.div
@@ -207,13 +195,15 @@ const EngineHero = () => (
             <AnimatedButton
               text="Explore the Engine"
               href="https://calendly.com/ivan-j-nomyx"
-              variant="ink"
+              variant="accent"
             />
           </motion.div>
         </div>
 
-        {/* Right — visual */}
-        <EngineVisual />
+        {/* Right — visual (re-using the improved EngineVisual) */}
+        <div className="flex justify-center lg:justify-end">
+          <EngineVisual />
+        </div>
       </div>
     </div>
   </section>
@@ -416,57 +406,63 @@ const lifecycleCards = [
 ];
 
 const AssetLifecycle = () => (
-  <section className="border-b border-border bg-slate-50/60 section-padding">
+  <section className="bg-[#FAFAFA] section-padding pt-0">
     <div className="custom-container">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-10 md:mb-14"
+        className="text-center mb-14 md:mb-20"
       >
-        <h2 className="section-heading mb-4">Automate the Asset Lifecycle.</h2>
-        <p className="text-base md:text-lg text-ink-muted max-w-2xl mx-auto leading-relaxed">
+        <h2 className="section-heading mb-5">Automate the Asset Lifecycle.</h2>
+        <p className="prgraphs max-w-2xl mx-auto">
           Tokenization isn&apos;t just about day one. It&apos;s about day two,
           three, and four hundred.
         </p>
       </motion.div>
 
-      {/* Cards — 1 col mobile → 2 col tablet → 4 col desktop */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* Merged Cards Container */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-border rounded-[24px] overflow-hidden bg-white"
+      >
         {lifecycleCards.map((card, i) => {
           const Icon = card.icon;
           return (
-            <motion.div
+            <div
               key={card.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="group bg-white border border-border p-6 md:p-7 transition-shadow hover:shadow-[0_8px_30px_rgba(10,17,40,0.06)]"
+              className={`p-10 md:p-12 flex flex-col items-start transition-colors hover:bg-[#F2F9FF]/30
+                ${i !== lifecycleCards.length - 1 ? 'lg:border-r border-border' : ''}
+                ${i < 2 ? 'md:border-b lg:border-b-0' : ''}
+                ${i === 1 ? 'md:border-r-0 lg:border-r' : ''}
+              `}
             >
-              <div className="w-11 h-11 rounded-lg bg-accent/[0.07] flex items-center justify-center mb-5 transition-colors group-hover:bg-accent/[0.12]">
-                <Icon size={20} className="text-accent" />
+              <div className="mb-10 text-[#2563EB]">
+                <Icon size={40} strokeWidth={1.5} />
               </div>
-              <h3 className="text-base font-black uppercase tracking-tight mb-2">
+              <h3 className="text-xl font-black tracking-tight mb-3 text-ink">
                 {card.title}
               </h3>
               <p className="text-sm text-ink-muted leading-relaxed">
                 {card.desc}
               </p>
-            </motion.div>
+            </div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   </section>
 );
 
 export default function NomyxEnginePage() {
   return (
-    <div className="min-h-screen bg-bg font-sans text-ink">
+    <div className="min-h-screen bg-white font-sans text-ink">
       <CustomCursor />
-      <Navbar />
+      <Navbar transparentInitially={true} hideBorder={true} />
 
       <main>
         <EngineHero />
