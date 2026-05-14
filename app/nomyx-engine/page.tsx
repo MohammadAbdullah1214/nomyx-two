@@ -162,7 +162,8 @@ const EngineHero = () => (
     <div
       className="absolute inset-0 opacity-[0.02] pointer-events-none"
       style={{
-        backgroundImage: "radial-gradient(circle, #0A1128 1px, transparent 1px)",
+        backgroundImage:
+          "radial-gradient(circle, #0A1128 1px, transparent 1px)",
         backgroundSize: "28px 28px",
       }}
     />
@@ -210,10 +211,10 @@ const EngineHero = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <AnimatedButton 
-              text="Explore the Engine" 
-              href="https://calendly.com/ivan-j-nomyx" 
-              variant="ink" 
+            <AnimatedButton
+              text="Explore the Engine"
+              href="https://calendly.com/ivan-j-nomyx"
+              variant="ink"
             />
           </motion.div>
         </div>
@@ -248,7 +249,6 @@ const DeployOnce = () => {
 
         {/* Two-panel comparison */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-          
           {/* ── LEFT: The Problem ── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -268,7 +268,11 @@ const DeployOnce = () => {
                 </h3>
               </div>
               <p className="text-sm md:text-base text-slate-500 leading-relaxed font-medium">
-                Financial institutions rely on flexibility in their assets to maintain compliance in an evolving regulatory environment. However, traditional smart contracts are immutable. If regulations change, you have to migrate tokens — a security nightmare.
+                Financial institutions rely on flexibility in their assets to
+                maintain compliance in an evolving regulatory environment.
+                However, traditional smart contracts are immutable. If
+                regulations change, you have to migrate tokens — a security
+                nightmare.
               </p>
             </div>
 
@@ -301,7 +305,10 @@ const DeployOnce = () => {
                   "Cannot reference live data",
                 ].map((text) => (
                   <div key={text} className="flex items-start gap-3">
-                    <XCircle size={18} className="text-red-400 flex-shrink-0 mt-0.5" />
+                    <XCircle
+                      size={18}
+                      className="text-red-400 flex-shrink-0 mt-0.5"
+                    />
                     <span className="text-sm font-medium text-slate-600 leading-snug">
                       {text}
                     </span>
@@ -321,7 +328,7 @@ const DeployOnce = () => {
           >
             {/* Subtle glow */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 blur-3xl rounded-full pointer-events-none" />
-            
+
             {/* Text Section */}
             <div className="bg-accent/[0.03] p-6 md:p-8 border-b border-accent/10 flex-1 relative z-10">
               <div className="flex items-center gap-3 mb-4">
@@ -333,7 +340,11 @@ const DeployOnce = () => {
                 </h3>
               </div>
               <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
-                Nomyx created something better, a flexible platform to match the flexibility that financial institutions need. Nomyx Engine separates the asset state from the logic. You can upgrade compliance modules or yield calculators instantly without moving a single token.
+                Nomyx created something better, a flexible platform to match the
+                flexibility that financial institutions need. Nomyx Engine
+                separates the asset state from the logic. You can upgrade
+                compliance modules or yield calculators instantly without moving
+                a single token.
               </p>
             </div>
 
@@ -369,7 +380,10 @@ const DeployOnce = () => {
                   "Can be modified to match regulatory changes",
                 ].map((text) => (
                   <div key={text} className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2
+                      size={18}
+                      className="text-emerald-500 flex-shrink-0 mt-0.5"
+                    />
                     <span className="text-sm font-bold text-slate-700 leading-snug">
                       {text}
                     </span>
@@ -418,9 +432,7 @@ const AssetLifecycle = () => (
         viewport={{ once: true }}
         className="text-center mb-10 md:mb-14"
       >
-        <h2 className="section-heading mb-4">
-          Automate the Asset Lifecycle.
-        </h2>
+        <h2 className="section-heading mb-4">Automate the Asset Lifecycle.</h2>
         <p className="text-base md:text-lg text-ink-muted max-w-2xl mx-auto leading-relaxed">
           Tokenization isn&apos;t just about day one. It&apos;s about day two,
           three, and four hundred.
@@ -471,7 +483,7 @@ export default function NomyxEnginePage() {
         <ApiFirst />
       </main>
 
-      <Footer 
+      <Footer
         ctaTitle="Start your issuance on future-proof infrastructure."
         ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Access Nomyx Engine"
@@ -600,7 +612,6 @@ const LifecycleLoop = () => {
     </motion.div>
   );
 };
-
 
 const FundLifecycle = () => (
   <section className="border-b border-border section-padding">
@@ -762,7 +773,11 @@ const ApiFirst = () => {
               <div className="mt-auto">
                 <motion.div
                   whileInView={{ opacity: [0.7, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
                   className="w-full bg-emerald-500 text-center py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white"
                 >
                   Execute Action
@@ -799,16 +814,19 @@ const ApiFirst = () => {
                         {i + 1}
                       </span>
                       <span>
-                        {line.includes("mutation") || line.includes("updateAssetParameter") ? (
+                        {line.includes("mutation") ||
+                        line.includes("updateAssetParameter") ? (
                           <span className="text-sky-400">{line}</span>
                         ) : line.includes('"') ? (
                           <span>
                             {line.split('"').map((part, j) =>
                               j % 2 === 1 ? (
-                                <span key={j} className="text-emerald-400">&quot;{part}&quot;</span>
+                                <span key={j} className="text-emerald-400">
+                                  &quot;{part}&quot;
+                                </span>
                               ) : (
                                 <span key={j}>{part}</span>
-                              )
+                              ),
                             )}
                           </span>
                         ) : (
@@ -837,5 +855,3 @@ const ApiFirst = () => {
     </section>
   );
 };
-
-

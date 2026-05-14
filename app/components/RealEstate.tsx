@@ -10,7 +10,7 @@ export default function RealEstate() {
   return (
     <div className="min-h-screen bg-bg font-sans text-ink">
       <CustomCursor />
-      <Navbar />
+      <Navbar transparentInitially={true} hideBorder={true} />
 
       <main>
         <RealEstateHero />
