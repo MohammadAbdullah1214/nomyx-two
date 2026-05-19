@@ -641,9 +641,9 @@ const SectionHeader = ({
         </span>
       </div>
     )}
-    <h2 className="section-heading mx-auto">{title}</h2>
+    <h2 className="section-heading mx-auto whitespace-pre-line">{title}</h2>
     {description && (
-      <p className="mx-auto prgraphs text-[#42546E] mt-5">{description}</p>
+      <p className="mx-auto prgraphs text-[#42546E] mt-5 whitespace-pre-line">{description}</p>
     )}
   </div>
 );
@@ -693,7 +693,7 @@ export const Partners = () => {
 };
 
 export const ValueProp = () => (
-  <section id="solutions" className="border-b border-border">
+  <section id="solutions">
     <SectionHeader
       title={pageContent.value.title}
       description={pageContent.value.description}
@@ -733,6 +733,37 @@ export const ValueProp = () => (
     </div>
   </section>
 );
+
+export const WhiteLabel = () => {
+  // @ts-ignore
+  const { title, description } = pageContent.whiteLabel || {
+    title: "White-Label Infrastructure That Runs Under Your Brand.",
+    description: "Asset managers who work with Nomyx launch fully white-labeled platforms without building the stack from scratch. \nYour branded portal, your KYC flow, your secondary marketplace. Owned by your brand, powered by Nomyx."
+  };
+
+  return (
+    <section id="white-label" className="bg-white pb-20 md:pb-32">
+      <SectionHeader
+        title={title}
+        description={description}
+      />
+      <div className="custom-container">
+        <div className="relative mx-auto max-w-5xl">
+          <motion.img
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            src="/white-label-infrastructure.png"
+            draggable={false}
+            alt="White-Label Infrastructure"
+            className="w-full h-auto object-contain rounded-2xl shadow-[0_20px_50px_rgba(10,17,40,0.08)]"
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export const RoleInfrastructure = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -1105,7 +1136,7 @@ export const Developers = () => {
 };
 
 export const Security = () => (
-  <section id="resources" className="border-b border-border bg-white">
+  <section id="resources" className="bg-white">
     <div className="py-20 md:py-32">
       <div className="custom-container mb-16 text-center">
         <h2 className="section-heading mb-6">{pageContent.security.title}</h2>
@@ -1343,6 +1374,7 @@ export default function Home({
         <Hero />
         <Partners />
         <ValueProp />
+        <WhiteLabel />
         <RoleInfrastructure />
         <SmartContracts />
         <Developers />

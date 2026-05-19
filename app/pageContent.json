@@ -44,6 +44,10 @@
       }
     ]
   },
+  "whiteLabel": {
+    "title": "White-Label Infrastructure That Runs Under Your Brand.",
+    "description": "Asset managers who work with Nomyx launch fully white-labeled platforms without building the stack from scratch. \nYour branded portal, your KYC flow, your secondary marketplace. Owned by your brand, powered by Nomyx."
+  },
   "roles": {
     "title": "Infrastructure That Adapts to Your Role.",
     "tabs": ["For Asset Managers", "For Fund Administrators"],
