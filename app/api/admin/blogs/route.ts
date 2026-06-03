@@ -7,8 +7,13 @@ import {
   uploadImage,
   type BlogStatus,
 } from "@/lib/blogs";
+import { cmsUnauthorizedResponse, isCmsRequestAuthenticated } from "@/lib/cms-auth-server";
 
 export async function GET() {
+  if (!(await isCmsRequestAuthenticated())) {
+    return cmsUnauthorizedResponse();
+  }
+
   try {
     const blogs = await getAllBlogsForAdmin();
     return NextResponse.json({ blogs });
@@ -19,6 +24,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  if (!(await isCmsRequestAuthenticated())) {
+    return cmsUnauthorizedResponse();
+  }
+
   try {
     const formData = await request.formData();
     const title = String(formData.get("title") || "").trim();

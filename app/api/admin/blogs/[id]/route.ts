@@ -9,6 +9,7 @@ import {
   uploadImage,
   type BlogStatus,
 } from "@/lib/blogs";
+import { cmsUnauthorizedResponse, isCmsRequestAuthenticated } from "@/lib/cms-auth-server";
 
 type Context = {
   params: Promise<{
@@ -17,6 +18,10 @@ type Context = {
 };
 
 export async function PATCH(request: Request, context: Context) {
+  if (!(await isCmsRequestAuthenticated())) {
+    return cmsUnauthorizedResponse();
+  }
+
   try {
     const { id } = await context.params;
     const existing = await getBlogById(id);
@@ -71,6 +76,10 @@ export async function PATCH(request: Request, context: Context) {
 }
 
 export async function DELETE(_: Request, context: Context) {
+  if (!(await isCmsRequestAuthenticated())) {
+    return cmsUnauthorizedResponse();
+  }
+
   try {
     const { id } = await context.params;
     await deleteBlog(id);

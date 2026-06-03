@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
+
+import CmsLogoutButton from "@/app/cms/CmsLogoutButton";
 import type { ResourceLead } from "@/lib/leads";
 
 export default function LeadsCmsPage() {
@@ -82,6 +84,7 @@ export default function LeadsCmsPage() {
                 Monitor and manage users who have requested access to your whitepapers, guides, and strategic reports.
               </p>
             </div>
+            <CmsLogoutButton />
           </div>
         </div>
 

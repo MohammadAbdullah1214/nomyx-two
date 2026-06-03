@@ -20,6 +20,7 @@ import {
 import Link from "next/link";
 import { toast } from "sonner";
 
+import CmsLogoutButton from "@/app/cms/CmsLogoutButton";
 import RichTextEditor from "@/app/components/RichTextEditor";
 import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import type { BlogPost, BlogStatus } from "@/lib/blogs";
@@ -360,6 +361,7 @@ export default function BlogCmsPage() {
           </div>
 
           <div className="flex flex-wrap gap-3">
+            <CmsLogoutButton />
             <Link
               href="/cms/leads"
               className="inline-flex h-12 items-center justify-center gap-2 border border-border bg-white px-5 text-xs font-bold uppercase tracking-[0.16em] text-ink shadow-sm transition-transform hover:-translate-y-0.5"
