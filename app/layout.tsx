@@ -40,7 +40,7 @@ const openSauceSans = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nomyx.io"),
+  metadataBase: new URL("https://www.nomyx.io"),
   title: "Nomyx - Agile Infrastructure for Institutional Capital",
   description:
     "Tokenization infrastructure for institutional capital with upgradeable smart contracts and built-in compliance.",

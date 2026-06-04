@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, CalendarDays, ChevronDown, Clock3, Star } from "lucide-react";
@@ -12,6 +13,25 @@ type BlogDetailPageProps = {
     slug: string;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: BlogDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = await getPublishedBlogBySlug(slug);
+
+  return {
+    title: blog
+      ? `${blog.title} | Nomyx Blog`
+      : "Nomyx Blog",
+    description:
+      blog?.excerpt ||
+      "Tokenization infrastructure notes, capital markets workflows, and product thinking from the Nomyx team.",
+    alternates: {
+      canonical: `https://www.nomyx.io/blog/${slug}`,
+    },
+  };
+}
 
 function formatDate(value: string | null) {
   if (!value) {

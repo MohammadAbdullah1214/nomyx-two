@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, FileText, PenLine } from "lucide-react";
 
 import { CustomCursor, Footer, Navbar } from "@/app/home";
 import { getPublishedBlogs, plainTextFromHtml } from "@/lib/blogs";
 import { AnimatedButton } from "@/app/components/evergreen/shared";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.nomyx.io/blog",
+  },
+};
 
 function formatDate(value: string | null) {
   if (!value) {
