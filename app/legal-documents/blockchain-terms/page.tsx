@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function BlockchainTermsPage() {
   return (
-    <article className="mx-auto max-w-230">
+    <article className="max-w-230 lg:ml-18">
       <header className="mb-8">
         <h1 className="mb-2 text-[32px] font-bold leading-tight text-ink md:text-[40px] md:leading-tight">
           Blockchain Service-Specific Terms
@@ -472,8 +472,158 @@ export default function BlockchainTermsPage() {
               </h3>
               <ul className="space-y-3 pl-5">
                 <li className="list-disc">You remain responsible for compliance</li>
+                <li className="list-disc">Tools provide assistance, not guarantee</li>
+                <li className="list-disc">False positives possible</li>
+                <li className="list-disc">Regular updates required</li>
+                <li className="list-disc">Third-party service dependencies</li>
               </ul>
             </div>
+          </section>
+
+          <section className="space-y-5">
+            <h2 className="text-[22px] font-bold leading-tight text-ink md:text-[24px]">
+              9. Service Level Commitments
+            </h2>
+
+            <div className="space-y-3">
+              <h3 className="text-[17px] font-bold leading-tight text-ink md:text-[18px]">
+                9.1 Uptime Targets
+              </h3>
+              <ul className="space-y-3 pl-5">
+                <li className="list-disc"><strong>API availability:</strong> 99.9%</li>
+                <li className="list-disc"><strong>Dashboard access:</strong> 99.5%</li>
+                <li className="list-disc"><strong>Support response:</strong> Per plan</li>
+                <li className="list-disc"><strong>Third-party integrations:</strong> Best effort</li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-[17px] font-bold leading-tight text-ink md:text-[18px]">
+                9.2 Exclusions
+              </h3>
+              <p>
+                SLA doesn&apos;t cover:
+              </p>
+              <ul className="space-y-3 pl-5">
+                <li className="list-disc">Blockchain network issues</li>
+                <li className="list-disc">Gas price spikes</li>
+                <li className="list-disc">Network congestion</li>
+                <li className="list-disc">Fork-related downtime</li>
+                <li className="list-disc">Scheduled maintenance</li>
+                <li className="list-disc">Third-party service outages</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="space-y-5">
+            <h2 className="text-[22px] font-bold leading-tight text-ink md:text-[24px]">
+              10. Additional Restrictions
+            </h2>
+
+            <div className="space-y-3">
+              <h3 className="text-[17px] font-bold leading-tight text-ink md:text-[18px]">
+                10.1 Prohibited Activities
+              </h3>
+              <p>
+                Don&apos;t use our services for:
+              </p>
+              <ul className="space-y-3 pl-5">
+                <li className="list-disc">Mixer/tumbler services</li>
+                <li className="list-disc">Wash trading or market manipulation</li>
+                <li className="list-disc">Flash loan attacks</li>
+                <li className="list-disc">MEV exploitation (harmful)</li>
+                <li className="list-disc">Spam token creation</li>
+                <li className="list-disc">Unregistered securities offerings</li>
+                <li className="list-disc">Non-compliant fund structures</li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-[17px] font-bold leading-tight text-ink md:text-[18px]">
+                10.2 Rate Limits
+              </h3>
+              <p>
+                Abuse prevention limits:
+              </p>
+              <ul className="space-y-3 pl-5">
+                <li className="list-disc">2 deployments per day per domain</li>
+                <li className="list-disc">20 active fund/deal tokens per account (additional funds available on request)</li>
+                <li className="list-disc">1M API calls per day</li>
+                <li className="list-disc">Custom limits available</li>
+                <li className="list-disc">Securities tokens: Additional review required</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="space-y-5">
+            <h2 className="text-[22px] font-bold leading-tight text-ink md:text-[24px]">
+              11. Third-Party Integrations
+            </h2>
+
+            <div className="space-y-3">
+              <h3 className="text-[17px] font-bold leading-tight text-ink md:text-[18px]">
+                11.1 Required Integrations
+              </h3>
+              <p>
+                For securities tokenization, you must use:
+              </p>
+              <ul className="space-y-3 pl-5">
+                <li className="list-disc"><strong>DFNS:</strong> For MPC wallet infrastructure</li>
+                <li className="list-disc"><strong>Bridge.xyz/HiFi:</strong> For fiat on/off ramps</li>
+                <li className="list-disc"><strong>MTN:</strong> For tokenized deposit based transactions</li>
+                <li className="list-disc"><strong>Persona:</strong> For identity verification backend</li>
+                <li className="list-disc"><strong>1Transfer:</strong> For transfer agent services (where applicable)</li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-[17px] font-bold leading-tight text-ink md:text-[18px]">
+                11.2 Integration Support
+              </h3>
+              <ul className="space-y-3 pl-5">
+                <li className="list-disc">API documentation provided</li>
+                <li className="list-disc">Sandbox environments available</li>
+                <li className="list-disc">Technical support included</li>
+                <li className="list-disc">Custom integration assistance (Enterprise only)</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="space-y-5">
+            <h2 className="text-[22px] font-bold leading-tight text-ink md:text-[24px]">
+              12. Updates to These Terms
+            </h2>
+
+            <p>
+              We may update these terms to:
+            </p>
+            <ul className="space-y-3 pl-5">
+              <li className="list-disc">Support new blockchain networks</li>
+              <li className="list-disc">Add new service features</li>
+              <li className="list-disc">Comply with regulations</li>
+              <li className="list-disc">Improve security measures</li>
+              <li className="list-disc">Accommodate new securities requirements</li>
+            </ul>
+            <p>
+              Updates effective 30 days after posting unless urgent.
+            </p>
+          </section>
+
+          <section className="space-y-5">
+            <h2 className="text-[22px] font-bold leading-tight text-ink md:text-[24px]">
+              Contact
+            </h2>
+
+            <ul className="space-y-3 pl-5">
+              <li className="list-disc"><strong>Technical support:</strong> <a href="mailto:support@nomyx.io" className="text-accent hover:underline">support@nomyx.io</a></li>
+              <li className="list-disc"><strong>Compliance questions:</strong> <a href="mailto:compliance@nomyx.io" className="text-accent hover:underline">compliance@nomyx.io</a></li>
+              <li className="list-disc"><strong>Sales inquiries:</strong> <a href="mailto:sales@nomyx.io" className="text-accent hover:underline">sales@nomyx.io</a></li>
+              <li className="list-disc"><strong>Emergency (24/7):</strong> <a href="mailto:security@nomyx.io" className="text-accent hover:underline">security@nomyx.io</a></li>
+            </ul>
+
+            <p className="italic text-ink-muted">
+              These Service-Specific Terms supplement the Main Services Agreement. In case of conflict, these specific terms control for blockchain services.
+            </p>
           </section>
 
         </div>

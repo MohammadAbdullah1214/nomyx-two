@@ -193,11 +193,18 @@
         "links": [
           { "name": "Developers", "href": "/developers" },
           { "name": "Resources", "href": "/resources" },
-          { "name": "Legal Center", "href": "/legal" }
+          { "name": "Legal Documents", "href": "/legal-documents" }
         ]
       }
     ],
     "copyright": "© 2025 Nomyx Inc. All rights reserved.",
-    "legal": ["Privacy Notice", "Terms of Use", "Main Services Agreement", "Securities Addendum", "Blockchain Terms", "Cookie Notice"]
+    "legal": [
+      { "name": "Privacy Notice", "href": "/legal-documents/privacy-notice" },
+      { "name": "Terms of Use", "href": "/legal-documents/terms-of-use" },
+      { "name": "Main Services Agreement", "href": "/legal-documents/msa" },
+      { "name": "Securities Addendum", "href": "/legal-documents/securities-addendum" },
+      { "name": "Blockchain Terms", "href": "/legal-documents/blockchain-terms" },
+      { "name": "Cookie Notice", "href": "/legal-documents/cookie-notice" }
+    ]
   }
 }

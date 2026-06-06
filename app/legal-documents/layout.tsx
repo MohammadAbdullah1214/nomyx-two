@@ -16,7 +16,7 @@ export default function LegalDocumentsLayout({
 
       <main className="bg-white pt-28 pb-20 md:pt-32 md:pb-28">
         <div className="custom-container">
-          <div className="grid gap-8 lg:grid-cols-[290px_minmax(0,1fr)] lg:items-start xl:grid-cols-[320px_minmax(0,1fr)] xl:gap-12">
+          <div className="grid gap-0 lg:grid-cols-[290px_minmax(0,1fr)] lg:items-start lg:gap-8 xl:grid-cols-[320px_minmax(0,1fr)] xl:gap-12">
             <LegalSidebar />
             <section className="min-w-0">
               {children}

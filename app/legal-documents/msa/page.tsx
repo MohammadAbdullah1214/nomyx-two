@@ -20,9 +20,9 @@ export default function MainServiceAgreementPage() {
   }
 
   return (
-    <article className="mx-auto max-w-230">
+    <article className="max-w-230 lg:ml-18">
       <header className="mb-8">
-        <h1 className="max-w-3xl text-[34px] font-bold leading-[1.12] text-ink md:text-[46px]">
+        <h1 className="max-w-3xl text-[32px] font-bold leading-[1.12] text-ink md:text-[40px]">
           Main Service Agreement
         </h1>
         <p className="mt-3 text-base font-medium text-ink-muted">

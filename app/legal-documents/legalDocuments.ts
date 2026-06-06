@@ -56,6 +56,55 @@ export const legalDocuments = [
     lastUpdated: "July 1, 2025",
     description: "Terms governing access to and use of the Nomyx website.",
   },
+  {
+    slug: "enterprise-protection",
+    title: "Enterprise Services",
+    href: "/legal-documents/enterprise-services",
+    lastUpdated: "July 1, 2025",
+    description: "Terms governing access to and use of the Nomyx website.",
+  },
+  {
+    slug: "innovation-services",
+    title: "Innovation Services",
+    href: "/legal-documents/innovation-services",
+    lastUpdated: "November 1, 2024",
+    description: "Security measures for Nomyx innovation services.",
+  },
+  {
+    slug: "in-product-cookie-policy",
+    title: "In-Product Cookie Policy",
+    href: "/legal-documents/in-product-cookie-policy",
+    lastUpdated: "July 1, 2025",
+    description: "Information about how and when Nomyx uses Cookies within the Nomyx Services.",
+  },
+  {
+    slug: "professional-services",
+    title: "Professional Services Terms and Conditions",
+    href: "/legal-documents/professional-services",
+    lastUpdated: "July 1, 2025",
+    description: "Terms and conditions for Nomyx professional services.",
+  },
+  {
+    slug: "trademark-usage-guidelines",
+    title: "Trademark Usage Guidelines",
+    href: "/legal-documents/trademark-usage-guidelines",
+    lastUpdated: "July 1, 2025",
+    description: "Guidelines for using Nomyx trademarks and brand assets.",
+  },
+  {
+    slug: "user-content-and-conduct-policy",
+    title: "User Content and Conduct Policy",
+    href: "/legal-documents/user-content-and-conduct-policy",
+    lastUpdated: "July 1, 2025",
+    description: "Policy regarding acceptable user content and conduct on Nomyx.",
+  },
+  {
+    slug: "promotional-credit-policy",
+    title: "Promotional Credits Policy",
+    href: "/legal-documents/promotional-credit-policy",
+    lastUpdated: "July 1, 2025",
+    description: "Policy regarding promotional credits for Nomyx services.",
+  },
 ] satisfies LegalDocument[];
 
 export function getLegalDocument(slug: string) {

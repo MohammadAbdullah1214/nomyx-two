@@ -9,7 +9,7 @@ type LegalDocumentPageProps = {
 
 export function LegalDocumentPage({ document, children }: LegalDocumentPageProps) {
   return (
-    <article className="mx-auto max-w-[920px]">
+    <article className="max-w-[920px]">
       <header className="mb-10">
         <p className="mb-4 inline-flex rounded-[6px] border border-ink/15 px-4 py-1.5 text-sm font-semibold text-ink">
           Legal Documents

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SecuritiesAddendumPage() {
   return (
-    <article className="mx-auto max-w-230">
+    <article className="max-w-230 lg:ml-18">
       <header className="mb-8">
         <h1 className="mb-2 text-[32px] font-bold leading-tight text-ink md:text-[40px] md:leading-tight">
           Securities Tokenization Service Addendum

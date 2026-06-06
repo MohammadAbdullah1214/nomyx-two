@@ -1346,11 +1346,11 @@ export const Footer = ({
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[13px] font-medium text-[#42546E]">
             {pageContent.footer.legal.map((link) => (
               <Link
-                key={link}
-                href="/legal"
+                key={link.name}
+                href={link.href}
                 className="transition-colors hover:text-accent"
               >
-                {link}
+                {link.name}
               </Link>
             ))}
           </div>
