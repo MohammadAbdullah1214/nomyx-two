@@ -72,7 +72,7 @@ export function LegalSidebar() {
           </div>
         </div>
 
-        <nav aria-label="Legal documents" className="space-y-1">
+        <nav aria-label="Legal documents" className="space-y-1 max-h-[calc(100vh-14rem)] overflow-y-auto pr-2 custom-scrollbar">
           {legalDocuments.map((document) => {
             const isActive =
               pathname === document.href ||

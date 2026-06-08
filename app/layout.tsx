@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import ToastProvider from "@/app/components/ToastProvider";
 import localFont from "next/font/local";
@@ -71,6 +72,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSauceSans.variable}`}>
       <body className="antialiased">
+        {process.env.G_TAG && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.G_TAG}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.G_TAG}');
+              `}
+            </Script>
+          </>
+        )}
         {children}
         <ToastProvider />
       </body>
