@@ -90,6 +90,11 @@ const navDropdowns = {
       description: "Published insights, updates, and market commentary",
       href: "/blog",
     },
+    {
+      title: "News",
+      description: "Stay updated with the latest news and updates from Nomyx",
+      href: "/news",
+    },
   ],
 } satisfies Partial<
   Record<
