@@ -64,14 +64,6 @@ export default function LeadsCmsPage() {
         
         {/* Navigation & Header */}
         <div className="mb-10">
-          <Link 
-            href="/cms/blogs" 
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-ink-muted hover:text-accent transition-colors mb-6"
-          >
-            <ArrowLeft size={14} />
-            Back to Blog CMS
-          </Link>
-          
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-accent">
@@ -84,7 +76,6 @@ export default function LeadsCmsPage() {
                 Monitor and manage users who have requested access to your whitepapers, guides, and strategic reports.
               </p>
             </div>
-            <CmsLogoutButton />
           </div>
         </div>
 

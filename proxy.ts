@@ -3,12 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { CMS_SESSION_COOKIE, verifyCmsSession } from "@/lib/cms-auth";
 
 function isProtectedCmsPath(pathname: string) {
-  return (
-    pathname === "/cms/blogs" ||
-    pathname.startsWith("/cms/blogs/") ||
-    pathname === "/cms/leads" ||
-    pathname.startsWith("/cms/leads/")
-  );
+  return pathname.startsWith("/cms") && !pathname.startsWith("/cms/login");
 }
 
 function getLoginRedirect(request: NextRequest) {

@@ -10,8 +10,9 @@ export default function ToastProvider() {
       closeButton
       toastOptions={{
         style: {
-          borderRadius: "0px",
-          border: "1px solid rgba(10, 17, 40, 0.14)",
+          borderRadius: "8px",
+          border: "none",
+          boxShadow: "0 10px 40px -10px rgba(0,0,0,0.15)",
         },
       }}
     />
