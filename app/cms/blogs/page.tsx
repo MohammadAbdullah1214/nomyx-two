@@ -29,10 +29,12 @@ import CmsLogoutButton from "@/app/cms/CmsLogoutButton";
 import RichTextEditor from "@/app/components/RichTextEditor";
 import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import type { BlogFaq, BlogPost, BlogStatus } from "@/lib/blogs";
+import type { Author } from "@/lib/authors";
 
 type FormState = {
   id: string | null;
   title: string;
+  authorId: string | null;
   publishedAt: string;
   contentHtml: string;
   faqs: BlogFaq[];
@@ -46,6 +48,7 @@ type FormState = {
 const emptyForm: FormState = {
   id: null,
   title: "",
+  authorId: null,
   publishedAt: "",
   contentHtml: "<p></p>",
   faqs: [],
@@ -101,6 +104,7 @@ function cleanFaqs(faqs: BlogFaq[]) {
 
 export default function BlogCmsPage() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [authors, setAuthors] = useState<Author[]>([]);
   const [form, setForm] = useState<FormState>(emptyForm);
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -199,6 +203,7 @@ export default function BlogCmsPage() {
       ...current,
       id: blog.id,
       title: blog.title,
+      authorId: blog.author_id,
       publishedAt: toDateInput(blog.published_at),
       contentHtml: blog.content_html,
       faqs: blog.faqs || [],
@@ -209,29 +214,40 @@ export default function BlogCmsPage() {
     }));
   };
 
-  const loadBlogs = async () => {
+  const loadData = async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch("/api/admin/blogs", { cache: "no-store" });
-      const data = await response.json();
+      const [blogsResponse, authorsResponse] = await Promise.all([
+        fetch("/api/admin/blogs", { cache: "no-store" }),
+        fetch("/api/admin/authors", { cache: "no-store" })
+      ]);
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to load blogs");
+      const [blogsData, authorsData] = await Promise.all([
+        blogsResponse.json(),
+        authorsResponse.json()
+      ]);
+
+      if (!blogsResponse.ok) {
+        throw new Error(blogsData.error || "Failed to load blogs");
+      }
+      
+      if (authorsResponse.ok && authorsData.authors) {
+        setAuthors(authorsData.authors);
       }
 
-      setBlogs(sortBlogs(data.blogs));
+      setBlogs(sortBlogs(blogsData.blogs || []));
     } catch (requestError) {
-      setError(requestError instanceof Error ? requestError.message : "Failed to load blogs");
-      toast.error("Could not load blog entries.");
+      setError(requestError instanceof Error ? requestError.message : "Failed to load data");
+      toast.error("Could not load blogs.");
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    loadBlogs();
+    loadData();
   }, []);
 
   useEffect(() => {
@@ -300,6 +316,7 @@ export default function BlogCmsPage() {
     setForm({
       id: blog.id,
       title: blog.title,
+      authorId: blog.author_id,
       publishedAt: toDateInput(blog.published_at),
       contentHtml: blog.content_html,
       faqs: blog.faqs || [],
@@ -319,6 +336,7 @@ export default function BlogCmsPage() {
     try {
       const formData = new FormData();
       formData.set("title", form.title);
+      if (form.authorId) formData.set("authorId", form.authorId);
       formData.set("publishedAt", form.publishedAt);
       formData.set("contentHtml", form.contentHtml);
       formData.set("faqs", JSON.stringify(cleanFaqs(form.faqs)));
@@ -441,13 +459,13 @@ export default function BlogCmsPage() {
           <>
             <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="mb-4 inline-flex rounded-[6px] border border-[#1B243C] px-4 py-1.5 text-sm font-medium text-[#1B243C]">
+                <p className="mb-4 inline-flex rounded-[6px] border border-[#1B243C] px-4 py-1 text-sm font-medium text-[#1B243C]">
                   Publishing Panel
                 </p>
-                <h1 className="text-[clamp(36px,5vw,58px)] font-medium tracking-[-0.03em] leading-[1.02] text-[#19233D]">
+                <h1 className="text-[clamp(36px,5vw,25px)] font-medium tracking-[-0.03em] leading-[1.02] text-[#19233D]">
                   Editorial Control Center
                 </h1>
-                <p className="mt-4 max-w-3xl text-[17px] leading-relaxed text-[#42546E]">
+                <p className="mt-4 max-w-3xl text-[16px] leading-relaxed text-[#42546E]">
                   Draft, publish, feature, and compose rich articles with cover imagery and inline visuals from one focused editorial workspace.
                 </p>
               </div>
@@ -456,7 +474,7 @@ export default function BlogCmsPage() {
                 <button
                   type="button"
                   onClick={startNew}
-                  className="inline-flex h-12 items-center justify-center gap-2 bg-ink px-5 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_18px_36px_rgba(10,17,40,0.18)] transition-transform hover:-translate-y-0.5"
+                  className="inline-flex rounded-[9px] items-center justify-center gap-2 bg-ink px-4 py-3 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_18px_36px_rgba(10,17,40,0.18)] transition-transform hover:-translate-y-0.5"
                 >
                   <Plus size={16} />
                   New Blog
@@ -632,6 +650,25 @@ export default function BlogCmsPage() {
                         placeholder="Enter the blog title"
                         className="h-12 w-full rounded-[6px] border border-border bg-slate-50/50 px-4 text-base font-medium outline-none transition-colors focus:bg-white focus:border-accent"
                       />
+                    </div>
+                    
+                    {/* Author */}
+                    <div>
+                      <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
+                        Author
+                      </label>
+                      <select
+                        value={form.authorId || ""}
+                        onChange={(event) => setForm((current) => ({ ...current, authorId: event.target.value || null }))}
+                        className="h-12 w-full rounded-[6px] border border-border bg-slate-50/50 px-4 text-base font-medium outline-none transition-colors focus:bg-white focus:border-accent"
+                      >
+                        <option value="">No Author</option>
+                        {authors.map((author) => (
+                          <option key={author.id} value={author.id}>
+                            {author.name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
 
                     {/* Cover Image */}

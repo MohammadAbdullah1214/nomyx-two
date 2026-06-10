@@ -33,6 +33,7 @@ export async function PATCH(request: Request, context: Context) {
 
     const formData = await request.formData();
     const title = String(formData.get("title") || existing.title).trim();
+    const authorId = formData.has("authorId") ? (String(formData.get("authorId") || "").trim() || null) : existing.author_id;
     const publishedAtInput = String(formData.get("publishedAt") || existing.published_at || "").trim();
     const contentHtml = String(formData.get("contentHtml") || existing.content_html).trim();
     const faqs = normalizeBlogFaqs(String(formData.get("faqs") || JSON.stringify(existing.faqs || [])));
@@ -62,6 +63,7 @@ export async function PATCH(request: Request, context: Context) {
 
     const blog = await updateBlog(id, {
       title,
+      authorId,
       publishedAt: normalizePublishedAt(publishedAtInput || null, status),
       contentHtml,
       faqs,

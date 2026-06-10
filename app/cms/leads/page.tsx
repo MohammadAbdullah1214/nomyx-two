@@ -66,13 +66,13 @@ export default function LeadsCmsPage() {
         <div className="mb-10">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-accent">
+              <p className="mb-4 inline-flex rounded-[6px] border border-[#1B243C] px-4 py-1 text-sm font-medium text-[#1B243C]">
                 Lead Management
               </p>
-              <h1 className="text-[clamp(40px,6vw,64px)] font-black uppercase tracking-[-0.04em] leading-[0.92]">
+              <h1 className="text-[clamp(36px,5vw,25px)] font-medium tracking-[-0.03em] leading-[1.02] text-[#19233D]">
                 Resource Requests
               </h1>
-              <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-muted md:text-lg">
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-muted md:text-[16px]">
                 Monitor and manage users who have requested access to your whitepapers, guides, and strategic reports.
               </p>
             </div>

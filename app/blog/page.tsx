@@ -61,13 +61,13 @@ export default async function BlogIndexPage() {
                 No published blog posts yet.
               </div>
             ) : (
-              <div className="grid items-stretch gap-8 lg:grid-cols-2">
+              <div className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {blogs.map((blog, index) => (
                   <article
                     key={blog.id}
                     className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#0A112824] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <Link href={`/blog/${blog.slug}`} className="relative block aspect-[16/9] overflow-hidden bg-ink">
+                    <Link href={`/blog/${blog.slug}`} className="relative block aspect-[3/2] overflow-hidden bg-ink group">
                       {blog.cover_image_url ? (
                         <img
                           src={blog.cover_image_url}
@@ -81,25 +81,38 @@ export default async function BlogIndexPage() {
                       )}
                     </Link>
 
-                    <div className="flex flex-1 flex-col p-8 md:p-10">
+                    <div className="flex flex-1 flex-col p-6">
                       <div className="mb-4 flex items-center justify-between gap-4">
-                        <p className="text-[11px] font-bold uppercase tracking-widest text-[#2060D4]">
-                          {blog.featured ? "Featured / " : ""}
+                        {blog.authors ? (
+                          <div className="flex items-center gap-2.5">
+                            {blog.authors.cover_image_url ? (
+                              <img src={blog.authors.cover_image_url} alt={blog.authors.name} className="w-6 h-6 rounded-full object-cover border border-slate-200" />
+                            ) : (
+                              <div className="w-6 h-6 rounded-full bg-slate-200" />
+                            )}
+                            <span className="text-xs font-semibold text-ink line-clamp-1">{blog.authors.name}</span>
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-semibold text-ink">Nomyx Team</span>
+                          </div>
+                        )}
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#2060D4] shrink-0">
                           {formatDate(blog.published_at)}
                         </p>
                       </div>
-                      <h2 className="mb-4 text-[28px] font-bold leading-tight tracking-tight text-ink">
+                      <h2 className="mb-3 text-xl font-bold leading-tight tracking-tight text-ink line-clamp-2">
                         {blog.title}
                       </h2>
-                      <p className="mb-10 line-clamp-3 flex-1 text-[16px] leading-relaxed text-ink-muted">
-                        {blog.excerpt || plainTextFromHtml(blog.content_html).slice(0, 170)}
+                      <p className="mb-6 line-clamp-3 flex-1 text-sm leading-relaxed text-ink-muted">
+                        {blog.excerpt || plainTextFromHtml(blog.content_html).slice(0, 150)}
                       </p>
                       <div className="mt-auto">
                         <AnimatedButton 
                           text="Read Article" 
                           href={`/blog/${blog.slug}`} 
                           variant="accent" 
-                          className="h-11 !px-7"
+                          className="h-10 !px-6 text-xs"
                         />
                       </div>
                     </div>

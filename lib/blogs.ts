@@ -9,6 +9,13 @@ export type BlogPost = {
   id: string;
   title: string;
   slug: string;
+  author_id: string | null;
+  authors?: {
+    id: string;
+    name: string;
+    slug: string;
+    cover_image_url: string | null;
+  } | null;
   published_at: string | null;
   cover_image_url: string | null;
   cover_image_path: string | null;
@@ -187,7 +194,7 @@ export async function getPublishedBlogs() {
   }
 
   const query = buildQuery({
-    select: "id,title,slug,published_at,cover_image_url,content_html,faqs,featured,excerpt",
+    select: "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,authors(id,name,cover_image_url)",
     status: "eq.published",
     order: "published_at.desc,created_at.desc",
   });
@@ -201,7 +208,7 @@ export async function getFeaturedBlogs(limit = 3) {
   }
 
   const query = buildQuery({
-    select: "id,title,slug,published_at,cover_image_url,content_html,faqs,featured,excerpt",
+    select: "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,authors(id,name,cover_image_url)",
     status: "eq.published",
     featured: "eq.true",
     order: "published_at.desc,created_at.desc",
@@ -218,7 +225,7 @@ export async function getPublishedBlogBySlug(slug: string) {
 
   const query = buildQuery({
     select:
-      "id,title,slug,published_at,cover_image_url,content_html,faqs,featured,excerpt,created_at,updated_at",
+      "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,created_at,updated_at,authors(id,name,slug,cover_image_url)",
     slug: `eq.${slug}`,
     status: "eq.published",
     limit: 1,
@@ -296,6 +303,7 @@ export async function getBlogById(id: string) {
 
 export async function createBlog(input: {
   title: string;
+  authorId: string | null;
   publishedAt: string | null;
   contentHtml: string;
   faqs: BlogFaq[];
@@ -309,6 +317,7 @@ export async function createBlog(input: {
   const body = {
     title: input.title,
     slug,
+    author_id: input.authorId,
     published_at: input.publishedAt,
     content_html: input.contentHtml,
     faqs: normalizeBlogFaqs(input.faqs),
@@ -338,6 +347,7 @@ export async function updateBlog(
   id: string,
   input: {
     title: string;
+    authorId: string | null;
     publishedAt: string | null;
     contentHtml: string;
     faqs: BlogFaq[];
@@ -366,12 +376,11 @@ export async function updateBlog(
       body: JSON.stringify({
         title: input.title,
         slug,
+        author_id: input.authorId,
         published_at: input.publishedAt,
         content_html: input.contentHtml,
         faqs: normalizeBlogFaqs(input.faqs),
         featured: input.featured,
-        status: input.status,
-        cover_image_url: input.coverImageUrl,
         cover_image_path: input.coverImagePath,
         excerpt,
       }),

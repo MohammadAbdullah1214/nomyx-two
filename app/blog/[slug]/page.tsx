@@ -85,20 +85,49 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                   {blog.title}
                 </h1>
 
-                <div className="mt-6 flex flex-wrap items-center gap-3 text-[12px] font-bold uppercase tracking-[0.15em] text-[#42546E]">
-                  <span className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-white px-4 shadow-sm">
-                    <CalendarDays size={14} className="text-accent" />
+                <div className="mt-8 flex flex-wrap items-center gap-4 text-sm font-medium text-[#42546E]">
+                  {blog.authors ? (
+                    <Link href={`/author/${blog.authors.slug}`} className="flex items-center gap-3 transition-colors hover:text-accent group">
+                      {blog.authors.cover_image_url ? (
+                        <img src={blog.authors.cover_image_url} alt={blog.authors.name} className="h-10 w-10 rounded-full object-cover shadow-sm ring-1 ring-slate-900/5 group-hover:ring-accent/50 transition-all" />
+                      ) : (
+                        <div className="h-10 w-10 rounded-full bg-slate-50 ring-1 ring-slate-900/5 flex items-center justify-center text-xs font-bold text-slate-400 group-hover:ring-accent/50 transition-all">
+                          {blog.authors.name.charAt(0)}
+                        </div>
+                      )}
+                      <span className="font-semibold text-ink group-hover:text-accent transition-colors">{blog.authors.name}</span>
+                    </Link>
+                  ) : (
+                    <div className="flex items-center gap-3">
+                      <div className="h-10 w-10 rounded-full bg-slate-50 ring-1 ring-slate-900/5 flex items-center justify-center text-xs font-bold text-slate-400">
+                        N
+                      </div>
+                      <span className="font-semibold text-ink">Nomyx Team</span>
+                    </div>
+                  )}
+
+                  <span className="text-slate-300">•</span>
+
+                  <span className="flex items-center gap-1.5">
+                    <CalendarDays size={16} className="text-slate-400" />
                     {formatDate(blog.published_at)}
                   </span>
-                  <span className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-white px-4 shadow-sm">
-                    <Clock3 size={14} className="text-accent" />
+
+                  <span className="text-slate-300">•</span>
+
+                  <span className="flex items-center gap-1.5">
+                    <Clock3 size={16} className="text-slate-400" />
                     {readTime} min read
                   </span>
+
                   {blog.featured && (
-                    <span className="inline-flex h-9 items-center gap-2 rounded-full bg-ink px-4 text-white shadow-sm">
-                      <Star size={14} />
-                      Featured
-                    </span>
+                    <>
+                      <span className="text-slate-300">•</span>
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-accent">
+                        <Star size={12} className="fill-accent" />
+                        Featured
+                      </span>
+                    </>
                   )}
                 </div>
 

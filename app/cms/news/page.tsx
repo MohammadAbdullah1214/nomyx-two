@@ -344,13 +344,13 @@ export default function NewsCmsPage() {
           <>
             <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="mb-4 inline-flex rounded-[6px] border border-[#1B243C] px-4 py-1.5 text-sm font-medium text-[#1B243C]">
+                <p className="mb-4 inline-flex rounded-[6px] border border-[#1B243C] px-4 py-1 text-sm font-medium text-[#1B243C]">
                   Publishing Panel
                 </p>
-                <h1 className="text-[clamp(36px,5vw,58px)] font-medium tracking-[-0.03em] leading-[1.02] text-[#19233D]">
+                <h1 className="text-[clamp(36px,5vw,25px)] font-medium tracking-[-0.03em] leading-[1.02] text-[#19233D]">
                   News Control Center
                 </h1>
-                <p className="mt-4 max-w-3xl text-[17px] leading-relaxed text-[#42546E]">
+                <p className="mt-4 max-w-3xl text-[16px] leading-relaxed text-[#42546E]">
                   Draft, publish, feature, and categorize news updates from one focused editorial workspace.
                 </p>
               </div>
@@ -359,7 +359,7 @@ export default function NewsCmsPage() {
                 <button
                   type="button"
                   onClick={startNew}
-                  className="inline-flex h-12 items-center justify-center gap-2 bg-ink px-5 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_18px_36px_rgba(10,17,40,0.18)] transition-transform hover:-translate-y-0.5"
+                  className="inline-flex rounded-[9px] items-center justify-center gap-2 bg-ink px-4 py-3 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_18px_36px_rgba(10,17,40,0.18)] transition-transform hover:-translate-y-0.5"
                 >
                   <Plus size={16} />
                   New Article

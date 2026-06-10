@@ -32,6 +32,7 @@ export async function POST(request: Request) {
   try {
     const formData = await request.formData();
     const title = String(formData.get("title") || "").trim();
+    const authorId = String(formData.get("authorId") || "").trim() || null;
     const publishedAtInput = String(formData.get("publishedAt") || "").trim();
     const contentHtml = String(formData.get("contentHtml") || "").trim();
     const faqs = normalizeBlogFaqs(String(formData.get("faqs") || "[]"));
@@ -58,6 +59,7 @@ export async function POST(request: Request) {
 
     const blog = await createBlog({
       title,
+      authorId,
       publishedAt: normalizePublishedAt(publishedAtInput || null, status),
       contentHtml,
       faqs,

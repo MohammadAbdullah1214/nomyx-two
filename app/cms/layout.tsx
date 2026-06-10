@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { FileText, Newspaper, FolderTree, Users, LayoutDashboard, LogOut } from "lucide-react";
+import { FileText, Newspaper, FolderTree, Users, LayoutDashboard, LogOut, UserCircle } from "lucide-react";
 import CmsLogoutButton from "@/app/cms/CmsLogoutButton";
 
 export default function CmsLayout({ children }: { children: React.ReactNode }) {
@@ -11,6 +12,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
   const navLinks = [
     { href: "/cms/blogs", label: "Blog Entries", icon: FileText },
     { href: "/cms/news", label: "News Articles", icon: Newspaper },
+    { href: "/cms/authors", label: "Authors", icon: UserCircle },
     { href: "/cms/categories", label: "News Categories", icon: FolderTree },
     { href: "/cms/leads", label: "Resource Leads", icon: Users },
   ];
@@ -25,7 +27,8 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
       <aside className="w-64 border-r border-border bg-white shadow-sm flex flex-col shrink-0 sticky top-0 h-screen overflow-y-auto">
         <div className="p-6 border-b border-border">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-black uppercase tracking-tighter">Nomyx</span>
+            {/* <span className="text-xl font-black uppercase tracking-tighter">Nomyx</span> */}
+            <img src="/nomyx-logo.png" alt="Nomyx Logo" className={`h-8 xl:h-9 w-33 object-contain transition-all duration-300`} />
             <span className="text-xs font-bold uppercase tracking-widest text-accent bg-accent/10 px-2 py-0.5 rounded">CMS</span>
           </Link>
         </div>
