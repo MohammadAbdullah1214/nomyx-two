@@ -131,6 +131,15 @@ export async function getAllAuthorsForAdmin() {
   });
 }
 
+export async function getAllAuthors() {
+  const query = buildQuery({
+    select: "id,name,slug,bio_html,designation,cover_image_url,cover_image_path,meta_description,page_title,created_at,updated_at",
+    order: "name.asc",
+  });
+
+  return supabaseRequest<Author[]>(`/rest/v1/authors?${query}`);
+}
+
 export async function getAuthorById(id: string) {
   const query = buildQuery({ id: `eq.${id}` });
   const rows = await supabaseRequest<Author[]>(`/rest/v1/authors?${query}`);

@@ -761,21 +761,21 @@ export default function NewsCmsPage() {
                     <Save size={15} />
                     {saving ? "Saving..." : "Save Draft"}
                   </button>
+                </div>
 
+                <div className="flex items-center gap-2">
                   {form.id && (
                     <button
                       type="button"
                       disabled={saving}
                       onClick={toggleHiddenState}
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-[6px] border border-border bg-white text-ink shadow-[0_4px_12px_rgba(10,17,40,0.03)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(10,17,40,0.06)] disabled:opacity-50"
-                      title={form.status === "hidden" ? "Make Visible" : "Hide from public"}
+                      className="inline-flex h-11 items-center justify-center gap-2 rounded-[6px] border border-slate-200 bg-slate-50 px-5 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-700 transition-all hover:-translate-y-0.5 hover:bg-slate-100 disabled:opacity-50"
                     >
                       {form.status === "hidden" ? <EyeOff size={15} /> : <Eye size={15} />}
+                      {form.status === "hidden" ? "Unhide" : "Hide"}
                     </button>
                   )}
-                </div>
 
-                <div className="flex items-center gap-2">
                   {form.id && (
                     <button
                       type="button"

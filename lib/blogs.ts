@@ -15,6 +15,8 @@ export type BlogPost = {
     name: string;
     slug: string;
     cover_image_url: string | null;
+    designation?: string | null;
+    bio_html?: string | null;
   } | null;
   published_at: string | null;
   cover_image_url: string | null;
@@ -226,13 +228,31 @@ export async function getPublishedBlogBySlug(slug: string) {
 
   const query = buildQuery({
     select:
-      "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,page_title,created_at,updated_at,authors(id,name,slug,cover_image_url)",
+      "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,page_title,created_at,updated_at,authors(id,name,slug,cover_image_url,bio_html,designation)",
     slug: `eq.${slug}`,
     status: "eq.published",
     limit: 1,
   });
 
   const rows = await supabaseRequest<BlogPost[]>(`/rest/v1/blog_posts?${query}`);
+  return rows[0] ?? null;
+}
+
+export async function getBlogBySlug(slug: string) {
+  if (!hasPublicSupabaseConfig()) {
+    return null;
+  }
+
+  const query = buildQuery({
+    select:
+      "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,page_title,created_at,updated_at,authors(id,name,slug,cover_image_url,bio_html,designation),status",
+    slug: `eq.${slug}`,
+    limit: 1,
+  });
+
+  const rows = await supabaseRequest<BlogPost[]>(`/rest/v1/blog_posts?${query}`, undefined, {
+    admin: true,
+  });
   return rows[0] ?? null;
 }
 
@@ -392,6 +412,8 @@ export async function updateBlog(
         cover_image_path: input.coverImagePath,
         excerpt,
         page_title: input.pageTitle || null,
+        status: input.status,
+        cover_image_url: input.coverImageUrl,
       }),
     },
     { admin: true }

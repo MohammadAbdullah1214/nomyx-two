@@ -207,6 +207,7 @@ export const Navbar = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
   const [activeHash, setActiveHash] = useState("");
 
   useEffect(() => {
@@ -459,7 +460,7 @@ export const Navbar = ({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute left-0 right-0 top-20 border-b border-border bg-white p-6 shadow-xl md:hidden"
+            className="absolute left-0 right-0 top-20 border-b border-border bg-white p-6 shadow-xl md:hidden max-h-[calc(100vh-80px)] overflow-y-auto pb-10"
           >
             <div className="flex flex-col gap-5">
               {pageContent.nav.map((item) => {
@@ -469,20 +470,29 @@ export const Navbar = ({
 
                 return (
                   <div key={item}>
-                    <a
-                      href={getNavHref(item)}
-                      aria-current={isCurrent ? "page" : undefined}
-                      className={`flex items-center justify-between rounded-[6px] px-3 py-2 text-lg font-bold ${
-                        isCurrent ? "bg-accent/5 text-accent" : "text-ink"
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item}
-                      {dropdown && (
-                        <ChevronDown size={16} className="-rotate-90" />
-                      )}
-                    </a>
-                    {dropdown && (
+                    {dropdown ? (
+                      <button
+                        className={`w-full flex items-center justify-between rounded-[6px] px-3 py-2 text-lg font-bold ${
+                          isCurrent ? "bg-accent/5 text-accent" : "text-ink"
+                        }`}
+                        onClick={() => setActiveMobileDropdown(activeMobileDropdown === item ? null : item)}
+                      >
+                        {item}
+                        <ChevronDown size={16} className={`transition-transform duration-200 ${activeMobileDropdown === item ? "" : "-rotate-90"}`} />
+                      </button>
+                    ) : (
+                      <a
+                        href={getNavHref(item)}
+                        aria-current={isCurrent ? "page" : undefined}
+                        className={`flex items-center justify-between rounded-[6px] px-3 py-2 text-lg font-bold ${
+                          isCurrent ? "bg-accent/5 text-accent" : "text-ink"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item}
+                      </a>
+                    )}
+                    {dropdown && activeMobileDropdown === item && (
                       <div className="mt-3 space-y-2 border-l-2 border-accent pl-4">
                         {dropdown.map((dropdownItem) => {
                           const isDropdownItemActive = isHrefActive(

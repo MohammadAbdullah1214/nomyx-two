@@ -21,6 +21,7 @@ import {
   Upload,
   Users,
   X,
+  ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -580,13 +581,23 @@ export default function BlogCmsPage() {
                             {blog.featured ? <Star size={16} className="text-accent fill-accent" /> : <span className="text-slate-300">—</span>}
                           </td>
                           <td className="px-6 py-4 text-right">
-                            <button
-                              onClick={() => selectBlog(blog)}
-                              className="inline-flex items-center justify-center gap-2 rounded-[6px] border border-border bg-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink shadow-[0_2px_8px_rgba(10,17,40,0.04)] transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
-                            >
-                              <FilePenLine size={14} />
-                              Edit
-                            </button>
+                            <div className="flex items-center justify-end gap-2">
+                              <Link
+                                href={`/blog/${blog.slug}${blog.status !== "published" ? "?preview=true" : ""}`}
+                                target="_blank"
+                                className="inline-flex items-center justify-center gap-2 rounded-[6px] border border-border bg-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink shadow-[0_2px_8px_rgba(10,17,40,0.04)] transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                              >
+                                <ExternalLink size={14} />
+                                {blog.status === "published" ? "View" : "Preview"}
+                              </Link>
+                              <button
+                                onClick={() => selectBlog(blog)}
+                                className="inline-flex items-center justify-center gap-2 rounded-[6px] border border-border bg-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink shadow-[0_2px_8px_rgba(10,17,40,0.04)] transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                              >
+                                <FilePenLine size={14} />
+                                Edit
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))}
@@ -951,19 +962,31 @@ export default function BlogCmsPage() {
                     </button>
 
                     {form.id && (
-                      <button
-                        type="button"
-                        disabled={saving}
-                        onClick={toggleHiddenState}
-                        className="inline-flex h-11 w-11 items-center justify-center rounded-[6px] border border-border bg-white text-ink shadow-[0_4px_12px_rgba(10,17,40,0.03)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(10,17,40,0.06)] disabled:opacity-50"
-                        title={form.status === "hidden" ? "Make Visible" : "Hide from public"}
+                      <Link
+                        href={`/blog/${form.slug}?preview=true`}
+                        target="_blank"
+                        className="inline-flex h-11 items-center justify-center gap-2 rounded-[6px] border border-border bg-white px-5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink shadow-[0_4px_12px_rgba(10,17,40,0.03)] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(10,17,40,0.06)] disabled:opacity-50"
                       >
-                        {form.status === "hidden" ? <EyeOff size={15} /> : <Eye size={15} />}
-                      </button>
+                        <ExternalLink size={15} />
+                        {form.status === "published" ? "View" : "Preview"}
+                      </Link>
                     )}
                   </div>
 
                   <div className="flex items-center gap-2">
+                    {form.id && (
+                      <button
+                        type="button"
+                        disabled={saving}
+                        onClick={toggleHiddenState}
+                        className="inline-flex h-11 items-center justify-center gap-2 rounded-[6px] border border-slate-200 bg-slate-50 px-5 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-700 transition-all hover:-translate-y-0.5 hover:bg-slate-100 disabled:opacity-50"
+                        title={form.status === "hidden" ? "Make Visible" : "Hide from public"}
+                      >
+                        {form.status === "hidden" ? <EyeOff size={15} /> : <Eye size={15} />}
+                        {form.status === "hidden" ? "Unhide" : "Hide"}
+                      </button>
+                    )}
+
                     {form.id && (
                       <button
                         type="button"
