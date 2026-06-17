@@ -8,6 +8,7 @@ import { AnimatedButton } from "@/app/components/evergreen/shared";
 
 export const metadata: Metadata = {
   title: "Nomyx Insights | Institutional Tokenization",
+  description: "Read the Nomyx blog for expert insights on institutional tokenization. Discover in-depth notes on infrastructure, capital markets workflows, and product thinking.",
   alternates: {
     canonical: "https://www.nomyx.io/blog",
   },

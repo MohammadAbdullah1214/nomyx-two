@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "How We Protect Your Service Data (Enterprise Services) | Nomyx Legal Documents",
   description: "Enterprise Security Measures",
   alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/enterprise-protection",
+    canonical: "https://www.nomyx.io/legal-documents/enterprise-services",
   },
 };
 

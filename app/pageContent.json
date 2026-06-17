@@ -170,12 +170,12 @@
   "footer": {
     "description": "The infrastructure layer for the future of capital.",
     "columns": [
-      {
+      { 
         "title": "Solutions",
         "links": [
           { "name": "Evergreen Funds", "href": "/evergreen-open-ended-funds" },
           { "name": "SPVs & Deal Syndication", "href": "/spv-deal-syndication" },
-          { "name": "Private Credit", "href": "/private-credit-automation" },
+          { "name": "Private Credit", "href": "/private-credit-syndication" },
           { "name": "Real Estate", "href": "/real-estate-tokenization" }
         ]
       },
@@ -192,8 +192,8 @@
         "title": "Resources",
         "links": [
           { "name": "Developers", "href": "/developers" },
-          { "name": "Resources", "href": "/resources" },
-          { "name": "Legal Documents", "href": "/legal-documents" }
+          { "name": "Technical Documentation", "href": "/technical-documentation" },
+          { "name": "Legal Documents", "href": "/legal-documents/msa" }
         ]
       }
     ],

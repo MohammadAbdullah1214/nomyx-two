@@ -5,7 +5,7 @@ import NewsPageClient from "./NewsPageClient";
 
 export const metadata: Metadata = {
   title: "Nomyx News & Company Updates",
-  description: "Get the latest updates, press releases, and partner announcements from Nomyx.",
+  description: "Get the latest Nomyx news, press releases, and partner announcements. Stay updated on our institutional tokenization platform and digital asset infrastructure.",
   alternates: {
     canonical: "https://www.nomyx.io/news",
   },
