@@ -71,23 +71,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${openSauceSans.variable}`}>
-      <body className="antialiased">
+      <head>
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="NrLNMOqsZRzdvyokHjuxwQ" async></script>
         {process.env.G_TAG && (
           <>
-            <Script
+            <script
+              async
               src={`https://www.googletagmanager.com/gtag/js?id=${process.env.G_TAG}`}
-              strategy="afterInteractive"
             />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.G_TAG}');
-              `}
-            </Script>
+            <script
+              id="google-analytics"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.G_TAG}');
+                `,
+              }}
+            />
           </>
         )}
+      </head>
+      <body className="antialiased">
         {children}
         <ToastProvider />
       </body>
