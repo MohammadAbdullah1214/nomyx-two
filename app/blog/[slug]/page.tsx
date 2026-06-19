@@ -187,7 +187,7 @@ export default async function BlogDetailPage({ params, searchParams }: BlogDetai
                     <img
                       src={blog.cover_image_url}
                       alt={blog.title}
-                      className="w-full h-auto object-contain"
+                      className="aspect-[16/9] w-full object-cover"
                     />
                   </figure>
                 )}

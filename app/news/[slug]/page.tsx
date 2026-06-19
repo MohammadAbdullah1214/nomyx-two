@@ -120,7 +120,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
                     <img
                       src={news.cover_image_url}
                       alt={news.title}
-                      className="aspect-[16/9] max-h-[500px] w-full object-cover"
+                      className="aspect-[16/9] w-full object-cover"
                     />
                   </figure>
                 )}

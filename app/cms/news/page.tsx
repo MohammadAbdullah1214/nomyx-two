@@ -27,6 +27,7 @@ import Link from "next/link";
 import { toast } from "sonner";
 
 import RichTextEditor from "@/app/components/RichTextEditor";
+import ImageCropperModal from "../components/ImageCropperModal";
 import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import type { NewsCategory, NewsPost, NewsStatus } from "@/lib/news";
 
@@ -101,6 +102,9 @@ export default function NewsCmsPage() {
   const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
   const initializedRealtime = useRef(false);
   
+  // Image Cropper State
+  const [cropImageSrc, setCropImageSrc] = useState<string | null>(null);
+
   const previewUrl = useMemo(() => {
     if (!form.imageFile) return form.existingImageUrl;
     return URL.createObjectURL(form.imageFile);
@@ -506,6 +510,17 @@ export default function NewsCmsPage() {
               </button>
             </div>
 
+          <ImageCropperModal
+            isOpen={!!cropImageSrc}
+            imageSrc={cropImageSrc || ""}
+            onClose={() => setCropImageSrc(null)}
+            onCropComplete={(croppedBlob) => {
+              const file = new File([croppedBlob], "cover.jpg", { type: "image/jpeg" });
+              setForm((current) => ({ ...current, imageFile: file, removeImage: false }));
+              setCropImageSrc(null);
+            }}
+          />
+
           <section className="overflow-hidden rounded-[12px] border border-border bg-white/95 shadow-[0_24px_64px_rgba(10,17,40,0.08)] backdrop-blur">
             <div className="border-b border-border bg-[#F8FBFF] px-6 py-5">
               <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -622,21 +637,39 @@ export default function NewsCmsPage() {
                           type="file"
                           accept="image/*"
                           className="hidden"
-                          onChange={(event) =>
-                            setForm((current) => ({
-                              ...current,
-                              imageFile: event.target.files?.[0] ?? null,
-                              removeImage: false,
-                            }))
-                          }
+                          onChange={(event) => {
+                            if (event.target.files && event.target.files.length > 0) {
+                              const reader = new FileReader();
+                              reader.addEventListener("load", () => setCropImageSrc(reader.result?.toString() || null));
+                              reader.readAsDataURL(event.target.files[0]);
+                            }
+                            event.target.value = "";
+                          }}
                         />
                       </label>
                     </div>
 
                     {previewUrl ? (
                       <div className="overflow-hidden rounded-[8px] border border-border bg-white group relative">
-                        <img src={previewUrl} alt="Cover preview" className="aspect-[21/9] w-full object-cover" />
-                        <div className="absolute inset-0 bg-ink/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <img src={previewUrl} alt="Cover preview" className="aspect-[16/9] w-full object-cover" />
+                        <div className="absolute inset-0 bg-ink/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 backdrop-blur-sm">
+                          <label className="inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-[6px] bg-white px-5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink transition-transform hover:-translate-y-0.5 shadow-xl">
+                            <Upload size={14} />
+                            Change Image
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={(event) => {
+                                if (event.target.files && event.target.files.length > 0) {
+                                  const reader = new FileReader();
+                                  reader.addEventListener("load", () => setCropImageSrc(reader.result?.toString() || null));
+                                  reader.readAsDataURL(event.target.files[0]);
+                                }
+                                event.target.value = "";
+                              }}
+                            />
+                          </label>
                           <button
                             type="button"
                             onClick={() => setForm(current => ({ ...current, imageFile: null, existingImageUrl: current.imageFile ? current.existingImageUrl : null, removeImage: true }))}
@@ -660,9 +693,14 @@ export default function NewsCmsPage() {
                           type="file"
                           accept="image/*"
                           className="hidden"
-                          onChange={(event) =>
-                            setForm((current) => ({ ...current, imageFile: event.target.files?.[0] ?? null, removeImage: false }))
-                          }
+                          onChange={(event) => {
+                            if (event.target.files && event.target.files.length > 0) {
+                              const reader = new FileReader();
+                              reader.addEventListener("load", () => setCropImageSrc(reader.result?.toString() || null));
+                              reader.readAsDataURL(event.target.files[0]);
+                            }
+                            event.target.value = "";
+                          }}
                         />
                       </label>
                     )}

@@ -178,7 +178,7 @@ function ArticleRow({
 
         {/* Image */}
         <div className={`${reverse ? "md:order-1" : "md:order-2"}`}>
-          <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-ink">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-ink">
             {item.cover_image_url ? (
               <img
                 src={item.cover_image_url}

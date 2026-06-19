@@ -74,10 +74,10 @@ export default async function BlogIndexPage() {
                         <img
                           src={blog.cover_image_url}
                           alt={blog.title}
-                          className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+                          className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                         />
                       ) : (
-                        <div className="flex aspect-[3/2] w-full items-center justify-center bg-slate-100 text-xs font-bold uppercase tracking-widest text-slate-400">
+                        <div className="flex aspect-[16/9] w-full items-center justify-center bg-slate-100 text-xs font-bold uppercase tracking-widest text-slate-400">
                           No Image Available
                         </div>
                       )}
