@@ -20,16 +20,25 @@ export type SerializedImageNode = Spread<
 >;
 
 function convertImageElement(domNode: Node): null | DOMConversionOutput {
+  let imageElement: HTMLImageElement | null = null;
+
   if (domNode instanceof HTMLImageElement) {
-    const altText = domNode.getAttribute('alt') || '';
-    const src = domNode.getAttribute('src') || '';
-    const widthAttr = domNode.getAttribute('width');
-    const heightAttr = domNode.getAttribute('height');
+    imageElement = domNode;
+  } else if (domNode instanceof HTMLElement) {
+    imageElement = domNode.querySelector('img');
+  }
+
+  if (imageElement) {
+    const altText = imageElement.getAttribute('alt') || '';
+    const src = imageElement.getAttribute('src') || '';
+    const widthAttr = imageElement.getAttribute('width');
+    const heightAttr = imageElement.getAttribute('height');
     const width = widthAttr ? parseInt(widthAttr, 10) : undefined;
     const height = heightAttr ? parseInt(heightAttr, 10) : undefined;
     const node = $createImageNode({ altText, src, width, height });
     return { node };
   }
+
   return null;
 }
 
@@ -84,6 +93,20 @@ export class ImageNode extends DecoratorNode<ReactNode> {
 
   static importDOM(): DOMConversionMap | null {
     return {
+      figure: (node: Node) => {
+        if (
+          node instanceof HTMLElement &&
+          node.classList.contains('blog-content-image') &&
+          node.querySelector('img')
+        ) {
+          return {
+            conversion: convertImageElement,
+            priority: 2,
+          };
+        }
+
+        return null;
+      },
       img: (node: Node) => ({
         conversion: convertImageElement,
         priority: 0,
@@ -125,13 +148,14 @@ export class ImageNode extends DecoratorNode<ReactNode> {
   }
 
   createDOM(config: any): HTMLElement {
-    const span = document.createElement('span');
+    const element = document.createElement('div');
     const theme = config.theme;
     const className = theme.image;
     if (className !== undefined) {
-      span.className = className;
+      element.className = className;
     }
-    return span;
+
+    return element;
   }
 
   updateDOM(): false {

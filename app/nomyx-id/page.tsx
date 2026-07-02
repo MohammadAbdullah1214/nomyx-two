@@ -48,7 +48,7 @@ const IdentityVisual = () => {
             <Fingerprint size={24} className="text-[#215EC7]" />
           </div>
           <div className="text-left">
-            <div className="text-sm font-medium text-ink-muted leading-tight">Nomyx Id</div>
+            <div className="text-sm font-medium text-ink-muted leading-tight">Nomyx ID</div>
             <div className="text-xl font-bold text-ink leading-tight">Smart Contract</div>
           </div>
         </div>
@@ -163,7 +163,7 @@ const IdHero = () => (
             transition={{ delay: 0.6 }}
             className="flex flex-wrap items-center gap-x-6"
           >
-            {["Kyc Verified", "Aml Compliant", "Accredited"].map((item) => (
+            {["KYC Verified", "AML Compliant", "Accredited"].map((item) => (
               <div key={item} className="flex items-center gap-2">
                 <ShieldCheck size={18} className="text-[#215EC7] flex-shrink-0" />
                 <span className="text-sm font-medium text-[#42546E]">

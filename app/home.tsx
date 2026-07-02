@@ -591,8 +591,8 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="prgraphs text-white mb-20 md:text-xl"
             >
-              Tokenize Real-World Assets with upgradeable smart contracts.
-              future-proof compliance, automated lifecycle management, and T+0
+              Tokenize real-world assets with upgradeable smart contracts.
+              Future-proof compliance, automated lifecycle management, and T+0
               settlement.
             </motion.p>
 
@@ -1123,7 +1123,7 @@ export const Developers = () => {
                     <span className="text-blue-300">
                       "distribution_date"
                     </span>:{" "}
-                    <span className="text-yellow-200">"2025-01-15"</span>,{"\n"}
+                    <span className="text-yellow-200">"2026-01-15"</span>,{"\n"}
                     <span className="text-blue-300">
                       "compliance_check"
                     </span>: <span className="text-blue-400">true</span>

@@ -33,7 +33,7 @@
         "icon": "chart"
       },
       {
-        "title": "The Diamond Standard(TM)",
+        "title": "The Diamond Standard (TM)",
         "description": "Powered by Diamond Proxy technology (EIP-2535). Upgrade your compliance modules instantly without migrating assets or disrupting investors.",
         "icon": "shield"
       },
@@ -82,15 +82,15 @@
       "heading": "Perfect Reconciliation. Zero Friction.",
       "bullets": [
         {
-          "title": "Atomic Settlement:",
+          "title": "Atomic Settlement",
           "text": "Instant DVP (Delivery vs. Payment) settlement eliminates T+2 delays."
         },
         {
-          "title": "Real-Time Cap Table:",
+          "title": "Real-Time Cap Table",
           "text": "A single source of truth that updates instantly with every transfer."
         },
         {
-          "title": "Integrated Reporting:",
+          "title": "Integrated Reporting",
           "text": "Seamless API export to existing ERP and fund accounting systems."
         }
       ],
@@ -123,7 +123,7 @@
   "smartContracts": {
     "eyebrow": "Powered by EIP-2535",
     "title": "Smart Contracts That Evolve With the Law.",
-    "description": "The \"immutability Paradox\" is solved. Nomyx allows you to upgrade compliance logic and yield structures without migrating assets or changing token addresses.",
+    "description": "The \"immutability paradox\" is solved. Nomyx allows you to upgrade compliance logic and yield structures without migrating assets or changing token addresses.",
     "callouts": ["Issuance Facet (Upgradeable)", "Subscription/Redemption (Upgradeable)", "Compliance Facet (Upgradeable)", "Yield Logic Facet (Upgradeable)"],
     "core": "Core Storage (Immutable)",
     "legend": ["Immutable Core", "Upgradeable Facets"],
@@ -197,7 +197,7 @@
         ]
       }
     ],
-    "copyright": "© 2025 Nomyx Inc. All rights reserved.",
+    "copyright": "© 2026 Nomyx Inc. All rights reserved.",
     "legal": [
       { "name": "Privacy Notice", "href": "/legal-documents/privacy-notice" },
       { "name": "Terms of Use", "href": "/legal-documents/terms-of-use" },

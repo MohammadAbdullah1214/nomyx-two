@@ -87,7 +87,7 @@ export default function BlockchainTermsPage() {
                 <li className="list-disc">Verify contract compilation</li>
                 <li className="list-disc">Submit transactions to network</li>
                 <li className="list-disc">Provide Diamond Proxy (ERC-2535) upgrade mechanisms</li>
-                <li className="list-disc">Integrate compliance rule libraries via NomyxID &amp; Persona</li>
+                <li className="list-disc">Integrate compliance rule libraries via Nomyx ID &amp; Persona</li>
               </ul>
             </div>
 
