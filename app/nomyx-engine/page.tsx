@@ -194,7 +194,7 @@ const EngineHero = () => (
           >
             <AnimatedButton
               text="Explore the Engine"
-              href="https://calendly.com/ivan-j-nomyx"
+              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
               variant="accent"
             />
           </motion.div>
@@ -476,7 +476,7 @@ export default function NomyxEnginePage() {
         ctaTitle="Start your issuance on future-proof infrastructure."
         ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Access Nomyx Engine"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );

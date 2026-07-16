@@ -429,7 +429,7 @@ export const Navbar = ({
           <div className="flex justify-end shrink-0">
             <AnimatedButton
               text="Request Demo"
-              href="https://calendly.com/ivan-j-nomyx"
+              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
               variant={isScrolled ? "accent" : "accent"}
               className="h-11 !px-7"
             />
@@ -604,7 +604,7 @@ const Hero = () => {
             >
               <AnimatedButton
                 text="Start Building"
-                href="https://calendly.com/ivan-j-nomyx"
+                href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
                 variant="accent"
                 className="min-w-[180px]"
               />
@@ -1279,7 +1279,7 @@ export const Footer = ({
   ctaTitle = pageContent.cta.title,
   ctaDescription = pageContent.cta.description,
   ctaButtonText = pageContent.cta.button,
-  ctaButtonLink = "https://calendly.com/ivan-j-nomyx",
+  ctaButtonLink = "https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io",
 }: {
   ctaTitle?: string;
   ctaDescription?: string;

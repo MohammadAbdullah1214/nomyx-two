@@ -342,7 +342,7 @@ const SecuritySection = () => {
     { icon: Key, text: "Granular API Scopes (Read/Write/Admin)." },
     { icon: Network, text: "IP Whitelisting for API Keys." },
     { icon: Fingerprint, text: "MFA-Protected Org Settings." },
-    { icon: ShieldCheck, text: "SOC 2 Type II Certified Infrastructure." },
+    { icon: ShieldCheck, text: "SOC 2 Type II Pending" },
   ];
 
   return (
@@ -398,64 +398,7 @@ const SecuritySection = () => {
   );
 };
 
-/* ── Community CTA ── */
-const CommunityCTA = () => {
-  const platforms = [
-    { name: "GitHub", icon: Github },
-    { name: "Discord", icon: MessageSquare },
-    { name: "Stack Overflow", icon: Layers },
-  ];
 
-  return (
-    <section className="pt-24 pb-32 bg-[#0A1128] relative overflow-hidden text-center border-t border-[#ffffff0a]">
-      {/* Immersive Dark Background Effects */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-500/5 blur-[150px] pointer-events-none" />
-
-      <div className="custom-container relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[32px] md:text-[44px] font-bold md:font-black tracking-tight text-white mb-12"
-        >
-          Join the Builders.
-        </motion.h2>
-
-        {/* Interactive Platform Tiles */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12">
-          {platforms.map((plat, i) => (
-            <motion.a
-              key={i}
-              href="#"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="flex items-center gap-3 px-8 py-4 rounded-[14px] bg-[#131B35]/50 border border-[#22305C]/60 text-white font-semibold text-base transition-all duration-300 hover:bg-[#1E294A] hover:border-[#3B4E85] hover:shadow-[0_8px_24px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 group"
-            >
-              <plat.icon size={20} className="text-white/80 group-hover:text-white transition-colors" />
-              <span>{plat.name}</span>
-            </motion.a>
-          ))}
-        </div>
-
-        {/* Bottom Alert Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="inline-flex items-center justify-center px-6 py-2.5 bg-[#131B35]/30 border border-[#22305C]/40 rounded-full"
-        >
-          <p className="text-sm text-slate-300 font-medium select-none">
-            <span className="text-emerald-400 font-bold mr-2">✓</span>
-            Direct access to our solution engineers. We debug with you.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
 
 export default function DevelopersPage() {
   return (
@@ -468,7 +411,6 @@ export default function DevelopersPage() {
         <ToolkitSection />
         <SandboxSection />
         <SecuritySection />
-        <CommunityCTA />
       </main>
 
       <Footer

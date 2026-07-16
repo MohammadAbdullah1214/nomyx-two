@@ -43,7 +43,7 @@ const GatewayHero = () => (
           >
             <AnimatedButton
               text="Launch Your Market"
-              href="https://calendly.com/ivan-j-nomyx"
+              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
               variant="accent"
             />
           </motion.div>
@@ -448,7 +448,7 @@ export default function NomyxGatewayPage() {
         ctaTitle="Your Ecosystem. Powered by Nomyx."
         ctaDescription="We provide the banking-grade rails. You provide the vision. Deliver a seamless digital experience that keeps your investors within your brand."
         ctaButtonText="Deploy Your Branded Portal"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );

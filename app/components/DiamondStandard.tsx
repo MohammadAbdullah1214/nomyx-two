@@ -172,7 +172,7 @@ const DiamondHero = () => (
         <motion.div variants={fadeUp}>
           <AnimatedButton
             text="Consult With Our Solutions Architect"
-            href="https://calendly.com/ivan-j-nomyx/30min"
+            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
             variant="accent"
           />
         </motion.div>
@@ -498,7 +498,7 @@ export default function DiamondStandard() {
         ctaTitle="Do Not Let Your Code Rot."
         ctaDescription="Build on modular, upgradeable infrastructure that adapts to regulatory changes. Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Consult With Our Solutions Architect"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx/30min"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );

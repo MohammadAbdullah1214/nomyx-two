@@ -21,7 +21,7 @@ export default function SpvDeal() {
         ctaTitle="Ready For Your Next Deal?"
         ctaDescription="Launch your next compliant SPV in minutes. Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Launch An SPV Demo"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );

@@ -27,7 +27,7 @@ export default function Evergreen() {
         ctaTitle="Stop running your fund on quarterly deadlines."
         ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Automate Your Evergreen Fund"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx/30min"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );

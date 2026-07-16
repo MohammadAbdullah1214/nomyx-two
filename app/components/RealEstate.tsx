@@ -23,7 +23,7 @@ export default function RealEstate() {
         ctaTitle="Turn Your Property Into A Liquid Asset."
         ctaDescription="Unlock liquidity and reach global investors. Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Start A Real Estate Pilot"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );

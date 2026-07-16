@@ -242,7 +242,7 @@ export default async function BlogDetailPage({ params, searchParams }: BlogDetai
         ctaTitle="Ready to modernize your fund?"
         ctaDescription="Schedule a personalized walkthrough with our technical team to see how Nomyx can streamline your infrastructure."
         ctaButtonText="Schedule a Technical Demo"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );

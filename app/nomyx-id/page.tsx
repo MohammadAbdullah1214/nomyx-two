@@ -151,7 +151,7 @@ const IdHero = () => (
           >
             <AnimatedButton
               text="Create Your Nomyx ID"
-              href="https://calendly.com/ivan-j-nomyx"
+              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
               variant="accent"
             />
           </motion.div>
@@ -657,7 +657,7 @@ export default function NomyxIdPage() {
         ctaTitle="Secure your assets with identity-first infrastructure."
         ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Schedule a Nomyx ID Demo"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );

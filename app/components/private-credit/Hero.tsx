@@ -61,7 +61,7 @@ export const PrivateCreditHero = () => (
         </motion.p>
         <motion.div variants={fadeUp}>
           <AnimatedButton
-            href="https://calendly.com/ivan-j-nomyx"
+            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
             text="Streamline LP Distributions"
             variant="accent"
             className="h-11 !px-7"

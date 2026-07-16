@@ -315,7 +315,7 @@ export default function ResourcesPage() {
         ctaTitle="Need a deeper dive?"
         ctaDescription="Schedule a personalized walkthrough with our technical team. Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Schedule a Technical Demo"
-        ctaButtonLink="https://calendly.com/ivan-j-nomyx"
+        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
       />
     </div>
   );
