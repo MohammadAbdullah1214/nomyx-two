@@ -69,7 +69,7 @@ export const EvergreenHero = () => (
         <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
           <AnimatedButton
             text="Modernize Your Fund"
-            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
             variant="accent"
             className="h-11 !px-7"
             onClick={(event) =>

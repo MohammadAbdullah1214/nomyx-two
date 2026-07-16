@@ -172,7 +172,7 @@ const DiamondHero = () => (
         <motion.div variants={fadeUp}>
           <AnimatedButton
             text="Consult With Our Solutions Architect"
-            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
             variant="accent"
           />
         </motion.div>

@@ -151,7 +151,7 @@ const IdHero = () => (
           >
             <AnimatedButton
               text="Create Your Nomyx ID"
-              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
               variant="accent"
             />
           </motion.div>

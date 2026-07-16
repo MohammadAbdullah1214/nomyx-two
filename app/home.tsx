@@ -429,7 +429,7 @@ export const Navbar = ({
           <div className="flex justify-end shrink-0">
             <AnimatedButton
               text="Request Demo"
-              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
               variant={isScrolled ? "accent" : "accent"}
               className="h-11 !px-7"
             />
@@ -604,7 +604,7 @@ const Hero = () => {
             >
               <AnimatedButton
                 text="Start Building"
-                href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+                href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
                 variant="accent"
                 className="min-w-[180px]"
               />
@@ -1312,6 +1312,8 @@ export const Footer = ({
             href={ctaButtonLink}
             variant="accent"
             className="h-14 !px-10"
+            target="_blank"
+            rel="noopener noreferrer"
           />
         </div>
 
