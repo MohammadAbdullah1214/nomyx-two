@@ -1003,7 +1003,7 @@ export default function MainServiceAgreementPage() {
 
             
             <p>
-              All documents available at <Link className="text-blue-500 hover:underline" href="https://www.nomyx.io/legal-documents" target="_blank">www.nomyx.io/legal-documents</Link>
+              All documents available at <Link className="text-blue-500 hover:underline" href="https://www.nomyx.io/legal-documents/msa" target="_blank">www.nomyx.io/legal-documents/msa</Link>
             </p>
 
             <p>

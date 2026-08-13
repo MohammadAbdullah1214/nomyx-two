@@ -822,7 +822,7 @@ export default function DataProcessingAgreementPage() {
               This DPA supplements and is incorporated into the Main Services Agreement. No separate signature required.
             </p>
             <p className="italic text-ink-muted">
-              Version: 2.0 | Effective: July 1, 2025 | Latest: <a href="https://www.nomyx.io/legal-documents" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">www.nomyx.io/legal-documents</a>
+              Version: 2.0 | Effective: July 1, 2025 | Latest: <a href="https://www.nomyx.io/legal-documents/msa" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">www.nomyx.io/legal-documents/msa</a>
             </p>
           </section>
         </div>
