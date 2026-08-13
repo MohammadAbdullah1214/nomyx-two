@@ -2,12 +2,17 @@
 
 import { motion } from "motion/react";
 import { ArrowDown, ArrowRight, Landmark, Repeat2, Wallet } from "lucide-react";
-import { fadeUp, forceHomeNavigation, HoverTextSwap, AnimatedButton } from "../evergreen/shared";
+import {
+  fadeUp,
+  forceHomeNavigation,
+  HoverTextSwap,
+  AnimatedButton,
+} from "../evergreen/shared";
 
 const AnimatedHeadline = () => {
   const words = "Syndicate Loans On-Chain. Service Off-Chain.".split(" ");
   return (
-    <motion.h1 
+    <motion.h1
       className="text-display mb-8 mt-1"
       initial="hidden"
       animate="show"
@@ -27,10 +32,10 @@ const AnimatedHeadline = () => {
 };
 
 export const PrivateCreditHero = () => (
-  <section 
+  <section
     className="relative overflow-hidden pt-28"
     style={{
-      background: "linear-gradient(to bottom, #D9EFFF 0%, #FFFFFF 100%)"
+      background: "linear-gradient(to bottom, #D9EFFF 0%, #FFFFFF 100%)",
     }}
   >
     <div className="custom-container relative grid grid-cols-1 items-center gap-12 py-24 md:py-28 lg:grid-cols-[1.05fr_0.95fr]">
@@ -52,7 +57,7 @@ export const PrivateCreditHero = () => (
                 className="mr-1 inline-block"
                 variants={{
                   hidden: { opacity: 0, y: 10 },
-                  show: { opacity: 1, y: 0 }
+                  show: { opacity: 1, y: 0 },
                 }}
               >
                 {word}
@@ -61,7 +66,9 @@ export const PrivateCreditHero = () => (
         </motion.p>
         <motion.div variants={fadeUp}>
           <AnimatedButton
-            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
+            href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
+            target="_blank"
+            rel="noopener noreferrer"
             text="Streamline LP Distributions"
             variant="accent"
             className="h-11 !px-7"

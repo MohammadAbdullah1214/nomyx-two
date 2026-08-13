@@ -29,8 +29,18 @@ import { AnimatedButton } from "@/app/components/evergreen/shared";
 /* ── Wallet architecture visual ── */
 const walletProviders = [
   { name: "Dfns", sub: "MPC Wallet", icon: KeyRound, isDefault: true },
-  { name: "WalletConnect", sub: "External Wallet", icon: Wallet, isDefault: false },
-  { name: "Ledger", sub: "Hardware Security", icon: HardDrive, isDefault: false },
+  {
+    name: "WalletConnect",
+    sub: "External Wallet",
+    icon: Wallet,
+    isDefault: false,
+  },
+  {
+    name: "Ledger",
+    sub: "Hardware Security",
+    icon: HardDrive,
+    isDefault: false,
+  },
 ];
 
 const IdentityVisual = () => {
@@ -48,8 +58,12 @@ const IdentityVisual = () => {
             <Fingerprint size={24} className="text-[#215EC7]" />
           </div>
           <div className="text-left">
-            <div className="text-sm font-medium text-ink-muted leading-tight">Nomyx ID</div>
-            <div className="text-xl font-bold text-ink leading-tight">Smart Contract</div>
+            <div className="text-sm font-medium text-ink-muted leading-tight">
+              Nomyx ID
+            </div>
+            <div className="text-xl font-bold text-ink leading-tight">
+              Smart Contract
+            </div>
           </div>
         </div>
 
@@ -82,10 +96,7 @@ const IdentityVisual = () => {
               )}
 
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-[10px] bg-[#EDF3F8] group-hover:bg-[#EBF3FC] flex items-center justify-center mb-2 md:mb-3 transition-colors duration-300">
-                <Icon
-                  size={16}
-                  className="text-[#215EC7]"
-                />
+                <Icon size={16} className="text-[#215EC7]" />
               </div>
               <span className="text-xs md:text-base font-bold text-ink mb-0.5 group-hover:text-[#215EC7] transition-colors duration-300 leading-tight block truncate w-full px-1">
                 {w.name}
@@ -151,7 +162,9 @@ const IdHero = () => (
           >
             <AnimatedButton
               text="Create Your Nomyx ID"
-              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
+              href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="accent"
             />
           </motion.div>
@@ -165,7 +178,10 @@ const IdHero = () => (
           >
             {["KYC Verified", "AML Compliant", "Accredited"].map((item) => (
               <div key={item} className="flex items-center gap-2">
-                <ShieldCheck size={18} className="text-[#215EC7] flex-shrink-0" />
+                <ShieldCheck
+                  size={18}
+                  className="text-[#215EC7] flex-shrink-0"
+                />
                 <span className="text-sm font-medium text-[#42546E]">
                   {item}
                 </span>
@@ -216,7 +232,8 @@ const ComplianceLogic = () => (
               Composable Rules
             </h4>
             <p className="text-sm text-[#94A3B8] leading-relaxed font-medium">
-              Stack requirements like &apos;US Citizen&apos; + &apos;Accredited Investor&apos; + &apos;KYC Verified&apos;.
+              Stack requirements like &apos;US Citizen&apos; + &apos;Accredited
+              Investor&apos; + &apos;KYC Verified&apos;.
             </p>
           </div>
         </motion.div>
@@ -236,7 +253,8 @@ const ComplianceLogic = () => (
               The Receiver Check
             </h4>
             <p className="text-sm text-[#94A3B8] leading-relaxed font-medium">
-              Assets cannot be sent to a wallet unless that wallet is mapped to a verified Nomyx ID.
+              Assets cannot be sent to a wallet unless that wallet is mapped to
+              a verified Nomyx ID.
             </p>
           </div>
         </motion.div>
@@ -336,9 +354,9 @@ const BiometricSecurity = () => (
           Biometric Security. No Seed Phrases.
         </h2>
         <p className="prgraphs text-ink-muted max-w-3xl mx-auto leading-relaxed text-center font-light">
-          Traditional wallets rely on fragile seed phrases. Nomyx ID leverages Dfns MPC
-          (Multi-Party Computation) technology. Your private key is split and secured.
-          Access your assets using FaceID or TouchID.
+          Traditional wallets rely on fragile seed phrases. Nomyx ID leverages
+          Dfns MPC (Multi-Party Computation) technology. Your private key is
+          split and secured. Access your assets using FaceID or TouchID.
         </p>
       </motion.div>
 
@@ -380,13 +398,13 @@ const ImpossibleTransfer = () => (
           The Impossible Transfer.
         </h2>
         <p className="prgraphs text-ink-muted max-w-2xl mx-auto leading-relaxed text-center font-light">
-          Compliance checks happen before settlement. Transactions only succeed if both parties hold the required credentials.
+          Compliance checks happen before settlement. Transactions only succeed
+          if both parties hold the required credentials.
         </p>
       </motion.div>
 
       {/* New Improved Layout: Top GIF Showcase, Bottom 3-Column Features */}
       <div className="flex flex-col gap-16 md:gap-20">
-
         {/* GIF Showcase */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -429,9 +447,12 @@ const ImpossibleTransfer = () => (
               <div className="w-14 h-14 rounded-[14px] border border-[#0A112824] bg-white flex items-center justify-center mb-5 shadow-sm">
                 <Check size={22} className="text-[#215EC7]" strokeWidth={2.5} />
               </div>
-              <h4 className="text-base font-black text-ink mb-2">Bilateral Verification</h4>
+              <h4 className="text-base font-black text-ink mb-2">
+                Bilateral Verification
+              </h4>
               <p className="text-sm text-ink-muted leading-relaxed max-w-[280px] md:max-w-none">
-                The engine checks credentials for both the sender and the receiver.
+                The engine checks credentials for both the sender and the
+                receiver.
               </p>
             </motion.div>
 
@@ -445,9 +466,12 @@ const ImpossibleTransfer = () => (
               <div className="w-14 h-14 rounded-[14px] border border-[#0A112824] bg-white flex items-center justify-center mb-5 shadow-sm">
                 <FileText size={20} className="text-[#215EC7]" />
               </div>
-              <h4 className="text-base font-black text-ink mb-2">Asset-Specific Rules</h4>
+              <h4 className="text-base font-black text-ink mb-2">
+                Asset-Specific Rules
+              </h4>
               <p className="text-sm text-ink-muted leading-relaxed max-w-[280px] md:max-w-none">
-                This transfer succeeded because both users met the specific &apos;US Accredited Investor&apos; rule required by this asset.
+                This transfer succeeded because both users met the specific
+                &apos;US Accredited Investor&apos; rule required by this asset.
               </p>
             </motion.div>
 
@@ -461,14 +485,15 @@ const ImpossibleTransfer = () => (
               <div className="w-14 h-14 rounded-[14px] border border-[#0A112824] bg-white flex items-center justify-center mb-5 shadow-sm">
                 <Database size={20} className="text-[#215EC7]" />
               </div>
-              <h4 className="text-base font-black text-ink mb-2">Atomic Settlement</h4>
+              <h4 className="text-base font-black text-ink mb-2">
+                Atomic Settlement
+              </h4>
               <p className="text-sm text-ink-muted leading-relaxed max-w-[280px] md:max-w-none">
                 If the rule passes, the ledger updates instantly.
               </p>
             </motion.div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -522,7 +547,10 @@ const ProtectionForAll = () => (
           Stronger Protection for All
         </h2>
         <p className="prgraphs text-ink-muted max-w-3xl mx-auto leading-relaxed text-center font-light">
-          The Nomyx Platform democratizes the ownership and trading of assets through safe and efficient tokenization, all while staying in line with evolving compliance standards using our revolutionary KYC, Nomyx ID.
+          The Nomyx Platform democratizes the ownership and trading of assets
+          through safe and efficient tokenization, all while staying in line
+          with evolving compliance standards using our revolutionary KYC, Nomyx
+          ID.
         </p>
       </motion.div>
 
@@ -538,7 +566,7 @@ const ProtectionForAll = () => (
             className="relative bg-[#F8FAFC] border border-[#0A11281A] p-8 md:p-10 rounded-[24px] transition-colors duration-300 hover:border-[#0A112833] group overflow-hidden flex flex-col justify-between min-h-[220px] md:min-h-[255px]"
           >
             {/* Massive background watermark number (Hairline/Thin 100 weight font) */}
-            <div 
+            <div
               className="absolute right-2 bottom-[-30px] md:bottom-[-40px] text-[260px] md:text-[320px] text-[#0A1128]/[0.02] select-none leading-none z-0 tracking-tighter"
               style={{ fontWeight: 100, fontFamily: "'Inter', sans-serif" }}
             >
@@ -606,7 +634,8 @@ const BuiltForEvolution = () => (
           Built for Evolution.
         </h2>
         <p className="prgraphs text-white/70 max-w-2xl mx-auto leading-relaxed font-light">
-          Your compliance infrastructure should adapt as regulations change and your business grows.
+          Your compliance infrastructure should adapt as regulations change and
+          your business grows.
         </p>
       </motion.div>
 
@@ -636,8 +665,6 @@ const BuiltForEvolution = () => (
   </section>
 );
 
-
-
 export default function NomyxIdPage() {
   return (
     <div className="min-h-screen bg-bg font-sans text-ink">
@@ -657,7 +684,7 @@ export default function NomyxIdPage() {
         ctaTitle="Secure your assets with identity-first infrastructure."
         ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Schedule a Nomyx ID Demo"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );

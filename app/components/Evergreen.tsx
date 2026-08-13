@@ -23,11 +23,11 @@ export default function Evergreen() {
         <UpgradePanel />
       </main>
 
-      <Footer 
+      <Footer
         ctaTitle="Stop running your fund on quarterly deadlines."
         ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Automate Your Evergreen Fund"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );

@@ -21,13 +21,12 @@ export default function PrivateCredit() {
         <Servicer />
       </main>
 
-      <Footer 
+      <Footer
         ctaTitle="Scale Your AUM Without Scaling Your Back Office."
         ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Demo The Distribution Engine"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );
 }
-

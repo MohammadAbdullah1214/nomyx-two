@@ -39,19 +39,19 @@ const EngineVisual = () => {
 
   // Circle centers in SVG coordinate space (viewBox 380×360)
   const nodes = [
-    { x: 95,  y: 65 },   // Minted
-    { x: 285, y: 65 },   // Distribution
-    { x: 95,  y: 295 },  // Compliance Upgrade
-    { x: 285, y: 295 },  // Dividend Payout
+    { x: 95, y: 65 }, // Minted
+    { x: 285, y: 65 }, // Distribution
+    { x: 95, y: 295 }, // Compliance Upgrade
+    { x: 285, y: 295 }, // Dividend Payout
   ];
 
   // S-path: line exits from circle sides, curves via right & left edges
   const svgPath =
-    `M${nodes[0].x} ${nodes[0].y} H${nodes[1].x}` +               // top row horizontal
-    ` C370 ${nodes[1].y}, 370 180, ${nodes[1].x} 180` +            // right-edge curve down
-    ` H${nodes[2].x}` +                                             // middle horizontal left
-    ` C10 180, 10 ${nodes[2].y}, ${nodes[2].x} ${nodes[2].y}` +    // left-edge curve down
-    ` H${nodes[3].x}`;                                              // bottom row horizontal
+    `M${nodes[0].x} ${nodes[0].y} H${nodes[1].x}` + // top row horizontal
+    ` C370 ${nodes[1].y}, 370 180, ${nodes[1].x} 180` + // right-edge curve down
+    ` H${nodes[2].x}` + // middle horizontal left
+    ` C10 180, 10 ${nodes[2].y}, ${nodes[2].x} ${nodes[2].y}` + // left-edge curve down
+    ` H${nodes[3].x}`; // bottom row horizontal
 
   return (
     <motion.div
@@ -73,7 +73,10 @@ const EngineVisual = () => {
         </div>
 
         {/* Timeline Visual — 380×360 coordinate space, 1:1 scale */}
-        <div className="relative mx-auto w-full max-w-95" style={{ aspectRatio: "380 / 400" }}>
+        <div
+          className="relative mx-auto w-full max-w-95"
+          style={{ aspectRatio: "380 / 400" }}
+        >
           {/* Path SVG — aligned to top */}
           <svg
             className="absolute top-0 left-0 w-full pointer-events-none"
@@ -82,7 +85,13 @@ const EngineVisual = () => {
             preserveAspectRatio="xMidYMin meet"
             fill="none"
           >
-            <path d={svgPath} stroke="#E8EDF2" strokeWidth="2" strokeLinecap="round" fill="none" />
+            <path
+              d={svgPath}
+              stroke="#E8EDF2"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+            />
             <motion.path
               d={svgPath}
               stroke="#1E3A8A"
@@ -91,7 +100,14 @@ const EngineVisual = () => {
               fill="none"
               initial={{ pathLength: 0 }}
               animate={{
-                pathLength: active === 0 ? 0.08 : active === 1 ? 0.28 : active === 2 ? 0.72 : 1,
+                pathLength:
+                  active === 0
+                    ? 0.08
+                    : active === 1
+                      ? 0.28
+                      : active === 2
+                        ? 0.72
+                        : 1,
               }}
               transition={{ duration: 1, ease: "easeInOut" }}
             />
@@ -126,13 +142,19 @@ const EngineVisual = () => {
                     transition={{ duration: 0.5 }}
                     className="flex h-18 w-18 items-center justify-center rounded-full"
                   >
-                    <Icon size={26} strokeWidth={1.8} className={isReached ? "text-white" : "text-[#94A3B8]"} />
+                    <Icon
+                      size={26}
+                      strokeWidth={1.8}
+                      className={isReached ? "text-white" : "text-[#94A3B8]"}
+                    />
                   </motion.div>
                 </div>
 
                 {/* Label + date — sits below circle, clear of the path */}
                 <div className="mt-3 text-center whitespace-nowrap">
-                  <p className={`text-[15px] font-black tracking-tight leading-tight ${isReached ? "text-ink" : "text-[#94A3B8]"}`}>
+                  <p
+                    className={`text-[15px] font-black tracking-tight leading-tight ${isReached ? "text-ink" : "text-[#94A3B8]"}`}
+                  >
                     {stage.label}
                   </p>
                   <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#B0BAC9]">
@@ -172,7 +194,8 @@ const EngineHero = () => (
             transition={{ duration: 0.7, delay: 0.1 }}
             className="section-heading mb-8"
           >
-            The Operating System <br className="hidden md:block" /> For Digital Assets.
+            The Operating System <br className="hidden md:block" /> For Digital
+            Assets.
           </motion.h1>
 
           <motion.p
@@ -181,10 +204,11 @@ const EngineHero = () => (
             transition={{ duration: 0.6, delay: 0.25 }}
             className="prgraphs mb-12 max-w-2xl"
           >
-            Issue, manage, and distribute compliant assets with a purpose-built smart
-            contract factory. Zero technical debt. Infinite upgradability. Take advantage of the
-            world&apos;s most advanced smart contract technology inside a system that&apos;s simple
-            enough for anyone at your firm to use.
+            Issue, manage, and distribute compliant assets with a purpose-built
+            smart contract factory. Zero technical debt. Infinite upgradability.
+            Take advantage of the world&apos;s most advanced smart contract
+            technology inside a system that&apos;s simple enough for anyone at
+            your firm to use.
           </motion.p>
 
           <motion.div
@@ -194,7 +218,9 @@ const EngineHero = () => (
           >
             <AnimatedButton
               text="Explore the Engine"
-              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
+              href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="accent"
             />
           </motion.div>
@@ -436,9 +462,9 @@ const AssetLifecycle = () => (
             <div
               key={card.title}
               className={`p-10 md:p-12 flex flex-col items-start transition-colors hover:bg-[#F2F9FF]/30
-                ${i !== lifecycleCards.length - 1 ? 'lg:border-r border-border' : ''}
-                ${i < 2 ? 'md:border-b lg:border-b-0' : ''}
-                ${i === 1 ? 'md:border-r-0 lg:border-r' : ''}
+                ${i !== lifecycleCards.length - 1 ? "lg:border-r border-border" : ""}
+                ${i < 2 ? "md:border-b lg:border-b-0" : ""}
+                ${i === 1 ? "md:border-r-0 lg:border-r" : ""}
               `}
             >
               <div className="mb-10 text-[#2563EB]">
@@ -476,7 +502,7 @@ export default function NomyxEnginePage() {
         ctaTitle="Start your issuance on future-proof infrastructure."
         ctaDescription="Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Access Nomyx Engine"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );

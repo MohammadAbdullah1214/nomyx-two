@@ -1,7 +1,15 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowUpRight, TrendingUp, UserCheck, Shield, PieChart, CreditCard, ArrowRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  TrendingUp,
+  UserCheck,
+  Shield,
+  PieChart,
+  CreditCard,
+  ArrowRight,
+} from "lucide-react";
 import Image from "next/image";
 import { CustomCursor, Navbar, Footer } from "@/app/home";
 import { AnimatedButton } from "@/app/components/evergreen/shared";
@@ -14,7 +22,6 @@ const GatewayHero = () => (
 
     <div className="custom-container relative z-10 w-full">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 lg:gap-12 xl:gap-20 items-center">
-
         {/* Left Side: Text Content */}
         <div className="text-left max-w-2xl mx-auto xl:mx-0">
           <motion.h1
@@ -32,7 +39,9 @@ const GatewayHero = () => (
             transition={{ duration: 0.6, delay: 0.1 }}
             className="prgraphs text-ink-muted font-light mb-10 max-w-xl leading-relaxed"
           >
-            Deploy a branded, compliant marketplace infrastructure. From primary issuance to secondary trading, manage the entire lifecycle of your digital assets in one platform.
+            Deploy a branded, compliant marketplace infrastructure. From primary
+            issuance to secondary trading, manage the entire lifecycle of your
+            digital assets in one platform.
           </motion.p>
 
           <motion.div
@@ -43,7 +52,9 @@ const GatewayHero = () => (
           >
             <AnimatedButton
               text="Launch Your Market"
-              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
+              href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="accent"
             />
           </motion.div>
@@ -57,7 +68,6 @@ const GatewayHero = () => (
           className="relative w-full max-w-md mx-auto xl:max-w-none xl:mx-0 flex justify-center xl:justify-end"
         >
           <div className="bg-white border border-[#0A11281A] rounded-[32px] p-8 md:p-10 shadow-[0_24px_60px_rgba(10,17,40,0.06)] relative flex flex-col items-center w-full max-w-[420px] select-none">
-
             <h3 className="text-xs md:text-sm font-semibold text-[#42546E] uppercase tracking-[0.12em] mb-6 text-center select-none relative z-10">
               Marketplace Admin View
             </h3>
@@ -65,7 +75,9 @@ const GatewayHero = () => (
             <div className="flex flex-col gap-5 w-full relative z-10">
               {/* Stat Card 1 */}
               <div className="bg-[#0A1128] border border-white/[0.05] p-6 rounded-[24px] flex flex-col justify-between min-h-[145px]">
-                <span className="text-xs font-semibold text-[#94A3B8] mb-2">Total Volume</span>
+                <span className="text-xs font-semibold text-[#94A3B8] mb-2">
+                  Total Volume
+                </span>
                 <div className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
                   $127.5M
                 </div>
@@ -77,7 +89,9 @@ const GatewayHero = () => (
 
               {/* Stat Card 2 */}
               <div className="bg-[#0A1128] border border-white/[0.05] p-6 rounded-[24px] flex flex-col justify-between min-h-[145px]">
-                <span className="text-xs font-semibold text-[#94A3B8] mb-2">Active Investors</span>
+                <span className="text-xs font-semibold text-[#94A3B8] mb-2">
+                  Active Investors
+                </span>
                 <div className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
                   2,847
                 </div>
@@ -114,7 +128,6 @@ const PrimaryDistribution = () => (
   <section className="py-20 md:py-28 bg-white border-b border-border/40 overflow-hidden relative">
     <div className="custom-container relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-
         {/* Left Side: Visual Showcase */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -157,7 +170,9 @@ const PrimaryDistribution = () => (
             transition={{ delay: 0.1 }}
             className="prgraphs text-ink-muted font-light mb-10 max-w-xl leading-relaxed"
           >
-            Streamline the capital formation process. The Gateway acts as your central hub, automating the distribution of assets from the issuer directly to verified investors.
+            Streamline the capital formation process. The Gateway acts as your
+            central hub, automating the distribution of assets from the issuer
+            directly to verified investors.
           </motion.p>
 
           <div className="space-y-8">
@@ -167,7 +182,7 @@ const PrimaryDistribution = () => (
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2 + (i * 0.1) }}
+                transition={{ delay: 0.2 + i * 0.1 }}
                 className="flex gap-5"
               >
                 <div className="shrink-0 mt-0.5">
@@ -176,7 +191,9 @@ const PrimaryDistribution = () => (
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-base font-bold text-ink mb-1.5">{feat.title}</h4>
+                  <h4 className="text-base font-bold text-ink mb-1.5">
+                    {feat.title}
+                  </h4>
                   <p className="text-sm text-slate-400 font-medium leading-relaxed">
                     {feat.desc}
                   </p>
@@ -185,7 +202,6 @@ const PrimaryDistribution = () => (
             ))}
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -224,7 +240,8 @@ const AnyAssetOnePlatform = () => (
             Any Asset. <span className="text-[#215EC7]">One Platform.</span>
           </h2>
           <p className="prgraphs text-ink-muted leading-relaxed font-light">
-            Whether you are managing real estate, equities, or alternative assets, the Gateway is asset-agnostic.
+            Whether you are managing real estate, equities, or alternative
+            assets, the Gateway is asset-agnostic.
           </p>
         </motion.div>
       </div>
@@ -242,7 +259,10 @@ const AnyAssetOnePlatform = () => (
           >
             {/* Column 1: Standalone Icon with Right Divider */}
             <div className="w-16 md:w-24 shrink-0 flex items-center justify-start md:justify-center pr-0 md:pr-6 pb-4 md:pb-0 border-b md:border-b-0 md:border-r border-[#0A11281A] self-stretch md:self-auto">
-              <feat.icon size={36} className="text-[#215EC7] shrink-0 animate-none" />
+              <feat.icon
+                size={36}
+                className="text-[#215EC7] shrink-0 animate-none"
+              />
             </div>
 
             {/* Column 2: Title */}
@@ -270,7 +290,6 @@ const EffortlessRamps = () => (
   <section className="py-20 md:py-28 bg-white border-b border-border/40 overflow-hidden relative">
     <div className="custom-container relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-
         {/* Left Side: Text Content */}
         <div className="max-w-2xl mx-auto lg:mx-0">
           <motion.h2
@@ -289,7 +308,9 @@ const EffortlessRamps = () => (
             transition={{ delay: 0.1 }}
             className="prgraphs text-ink-muted font-light max-w-xl leading-relaxed"
           >
-            Bridge the gap between traditional banking and digital currency. The Gateway supports global traditional payment methods (ACH/Wire), allowing users to move funds in and out with minimal friction.
+            Bridge the gap between traditional banking and digital currency. The
+            Gateway supports global traditional payment methods (ACH/Wire),
+            allowing users to move funds in and out with minimal friction.
           </motion.p>
         </div>
 
@@ -310,7 +331,9 @@ const EffortlessRamps = () => (
               <div className="w-8 h-8 rounded-lg bg-[#215EC7]/10 flex items-center justify-center text-[#215EC7]">
                 <CreditCard size={18} />
               </div>
-              <h3 className="text-base font-bold text-ink select-none">Transfer In</h3>
+              <h3 className="text-base font-bold text-ink select-none">
+                Transfer In
+              </h3>
             </div>
 
             <div className="h-px bg-slate-100/80 mb-6 w-full" />
@@ -318,9 +341,13 @@ const EffortlessRamps = () => (
             <div className="flex flex-col gap-4 relative">
               {/* Source */}
               <div>
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2.5 block ml-1 select-none">Source</label>
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2.5 block ml-1 select-none">
+                  Source
+                </label>
                 <div className="bg-[#F8FAFC] border border-[#0A11281A] rounded-[20px] p-5 select-none">
-                  <span className="text-[15px] font-semibold text-ink">ACH Push</span>
+                  <span className="text-[15px] font-semibold text-ink">
+                    ACH Push
+                  </span>
                 </div>
               </div>
 
@@ -331,9 +358,13 @@ const EffortlessRamps = () => (
 
               {/* Destination */}
               <div className="mt-2">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2.5 block ml-1 select-none">Destination</label>
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2.5 block ml-1 select-none">
+                  Destination
+                </label>
                 <div className="bg-[#F8FAFC] border border-[#0A11281A] rounded-[20px] p-5 select-none">
-                  <span className="text-[15px] font-semibold text-ink">USDC</span>
+                  <span className="text-[15px] font-semibold text-ink">
+                    USDC
+                  </span>
                 </div>
               </div>
             </div>
@@ -345,7 +376,6 @@ const EffortlessRamps = () => (
             </div>
           </div>
         </motion.div>
-
       </div>
     </div>
   </section>
@@ -356,7 +386,6 @@ const SecureAssetDistribution = () => (
   <section className="py-20 md:py-28 bg-[#FAFAFA] relative overflow-hidden border-b border-border/40">
     <div className="custom-container relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center">
-
         {/* Left Side: Text */}
         <div className="lg:col-span-5 pr-0 lg:pr-8">
           <motion.div
@@ -366,7 +395,9 @@ const SecureAssetDistribution = () => (
             className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-full mb-8 shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-widest">Marketplace Live</span>
+            <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-widest">
+              Marketplace Live
+            </span>
           </motion.div>
 
           <motion.h2
@@ -385,7 +416,9 @@ const SecureAssetDistribution = () => (
             transition={{ delay: 0.1 }}
             className="prgraphs text-ink-muted font-light max-w-xl leading-relaxed"
           >
-            Plug and play with a white-labeled exchange tailored to your specific needs. Expand asset liquidity to reach global markets while retaining complete control over the user experience.
+            Plug and play with a white-labeled exchange tailored to your
+            specific needs. Expand asset liquidity to reach global markets while
+            retaining complete control over the user experience.
           </motion.p>
         </div>
 
@@ -400,21 +433,33 @@ const SecureAssetDistribution = () => (
           >
             {/* TVL Block */}
             <div className="sm:col-span-1 bg-white p-8 md:p-10 rounded-[24px] shadow-sm border border-[#0A11281A] flex flex-col justify-center min-h-[175px] hover:shadow-md hover:bg-[#F8FAFC]/50 transition-all duration-300">
-              <span className="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-wider select-none">Total Value Locked</span>
-              <span className="text-4xl lg:text-5xl font-bold text-ink tracking-tight select-none">$24.5M</span>
+              <span className="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-wider select-none">
+                Total Value Locked
+              </span>
+              <span className="text-4xl lg:text-5xl font-bold text-ink tracking-tight select-none">
+                $24.5M
+              </span>
             </div>
 
             {/* Investors Block */}
             <div className="sm:col-span-1 bg-white p-8 md:p-10 rounded-[24px] shadow-sm border border-[#0A11281A] flex flex-col justify-center min-h-[175px] hover:shadow-md hover:bg-[#F8FAFC]/50 transition-all duration-300">
-              <span className="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-wider select-none">Active Investors</span>
-              <span className="text-4xl lg:text-5xl font-bold text-ink tracking-tight select-none">1,247</span>
+              <span className="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-wider select-none">
+                Active Investors
+              </span>
+              <span className="text-4xl lg:text-5xl font-bold text-ink tracking-tight select-none">
+                1,247
+              </span>
             </div>
 
             {/* CTA Block (Spans full width) */}
             <div className="sm:col-span-2 bg-[#0A1128] p-8 md:p-10 rounded-[24px] shadow-md border border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 relative overflow-hidden group hover:bg-[#131B32] transition-colors duration-300">
               <div className="relative z-10">
-                <h4 className="text-white font-bold text-xl md:text-2xl mb-2 tracking-tight select-none">Marketplace Project View</h4>
-                <p className="text-slate-400 text-xs font-semibold uppercase tracking-widest select-none">Instant liquidity for your investors</p>
+                <h4 className="text-white font-bold text-xl md:text-2xl mb-2 tracking-tight select-none">
+                  Marketplace Project View
+                </h4>
+                <p className="text-slate-400 text-xs font-semibold uppercase tracking-widest select-none">
+                  Instant liquidity for your investors
+                </p>
               </div>
 
               <button className="bg-white hover:bg-slate-100 text-ink font-bold text-sm px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-2 select-none shrink-0 shadow-sm border border-slate-200">
@@ -424,7 +469,6 @@ const SecureAssetDistribution = () => (
             </div>
           </motion.div>
         </div>
-
       </div>
     </div>
   </section>
@@ -448,7 +492,7 @@ export default function NomyxGatewayPage() {
         ctaTitle="Your Ecosystem. Powered by Nomyx."
         ctaDescription="We provide the banking-grade rails. You provide the vision. Deliver a seamless digital experience that keeps your investors within your brand."
         ctaButtonText="Deploy Your Branded Portal"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );

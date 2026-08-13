@@ -207,7 +207,9 @@ export const Navbar = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<
+    string | null
+  >(null);
   const [activeHash, setActiveHash] = useState("");
 
   useEffect(() => {
@@ -429,7 +431,9 @@ export const Navbar = ({
           <div className="flex justify-end shrink-0">
             <AnimatedButton
               text="Request Demo"
-              href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
+              href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
+              target="_blank"
+              rel="noopener noreferrer"
               variant={isScrolled ? "accent" : "accent"}
               className="h-11 !px-7"
             />
@@ -475,10 +479,17 @@ export const Navbar = ({
                         className={`w-full flex items-center justify-between rounded-[6px] px-3 py-2 text-lg font-bold ${
                           isCurrent ? "bg-accent/5 text-accent" : "text-ink"
                         }`}
-                        onClick={() => setActiveMobileDropdown(activeMobileDropdown === item ? null : item)}
+                        onClick={() =>
+                          setActiveMobileDropdown(
+                            activeMobileDropdown === item ? null : item,
+                          )
+                        }
                       >
                         {item}
-                        <ChevronDown size={16} className={`transition-transform duration-200 ${activeMobileDropdown === item ? "" : "-rotate-90"}`} />
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-200 ${activeMobileDropdown === item ? "" : "-rotate-90"}`}
+                        />
                       </button>
                     ) : (
                       <a
@@ -604,7 +615,9 @@ const Hero = () => {
             >
               <AnimatedButton
                 text="Start Building"
-                href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
+                href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
+                target="_blank"
+                rel="noopener noreferrer"
                 variant="accent"
                 className="min-w-[180px]"
               />
@@ -658,7 +671,9 @@ const SectionHeader = ({
     )}
     <h2 className="section-heading mx-auto whitespace-pre-line">{title}</h2>
     {description && (
-      <p className="mx-auto prgraphs text-[#42546E] mt-5 whitespace-pre-line">{description}</p>
+      <p className="mx-auto prgraphs text-[#42546E] mt-5 whitespace-pre-line">
+        {description}
+      </p>
     )}
   </div>
 );
@@ -753,15 +768,13 @@ export const WhiteLabel = () => {
   // @ts-ignore
   const { title, description } = pageContent.whiteLabel || {
     title: "White-Label Infrastructure That Runs Under Your Brand.",
-    description: "Asset managers who work with Nomyx launch fully white-labeled platforms without building the stack from scratch. \nYour branded portal, your KYC flow, your secondary marketplace. Owned by your brand, powered by Nomyx."
+    description:
+      "Asset managers who work with Nomyx launch fully white-labeled platforms without building the stack from scratch. \nYour branded portal, your KYC flow, your secondary marketplace. Owned by your brand, powered by Nomyx.",
   };
 
   return (
     <section id="white-label" className="bg-white pb-20 md:pb-32">
-      <SectionHeader
-        title={title}
-        description={description}
-      />
+      <SectionHeader title={title} description={description} />
       <div className="custom-container">
         <div className="relative mx-auto max-w-5xl">
           <motion.img
@@ -1279,7 +1292,7 @@ export const Footer = ({
   ctaTitle = pageContent.cta.title,
   ctaDescription = pageContent.cta.description,
   ctaButtonText = pageContent.cta.button,
-  ctaButtonLink = "https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io",
+  ctaButtonLink = "https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true",
 }: {
   ctaTitle?: string;
   ctaDescription?: string;

@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, CalendarDays, Clock3, Star, FolderTree } from "lucide-react";
+import {
+  ArrowLeft,
+  CalendarDays,
+  Clock3,
+  Star,
+  FolderTree,
+} from "lucide-react";
 
 import { CustomCursor, Footer, Navbar } from "@/app/home";
 import { getPublishedNewsBySlug } from "@/lib/news";
@@ -23,7 +29,7 @@ export async function generateMetadata({
 
   return {
     title: news
-      ? (news.page_title || `${news.title} | Nomyx News`)
+      ? news.page_title || `${news.title} | Nomyx News`
       : "Nomyx News",
     description:
       news?.excerpt ||
@@ -69,11 +75,20 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
         <section className="pt-32 pb-20 md:pt-40 md:pb-28">
           <div className="custom-container">
             <nav className="mb-10 flex items-center gap-2 text-sm font-medium text-[#42546E]">
-              <Link href="/" className="hover:text-accent transition-colors">Home</Link>
+              <Link href="/" className="hover:text-accent transition-colors">
+                Home
+              </Link>
               <span className="text-slate-300">/</span>
-              <Link href="/news" className="hover:text-accent transition-colors">News</Link>
+              <Link
+                href="/news"
+                className="hover:text-accent transition-colors"
+              >
+                News
+              </Link>
               <span className="text-slate-300">/</span>
-              <span className="text-ink font-semibold truncate max-w-[200px] md:max-w-md">{news.title}</span>
+              <span className="text-ink font-semibold truncate max-w-[200px] md:max-w-md">
+                {news.title}
+              </span>
             </nav>
 
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start xl:gap-16">
@@ -147,7 +162,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
         ctaTitle="Ready to modernize your fund?"
         ctaDescription="Schedule a personalized walkthrough with our technical team to see how Nomyx can streamline your infrastructure."
         ctaButtonText="Schedule a Technical Demo"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );

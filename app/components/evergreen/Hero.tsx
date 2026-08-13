@@ -69,13 +69,15 @@ export const EvergreenHero = () => (
         <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
           <AnimatedButton
             text="Modernize Your Fund"
-            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
+            href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
+            target="_blank"
+            rel="noopener noreferrer"
             variant="accent"
             className="h-11 !px-7"
             onClick={(event) =>
               forceHomeNavigation(
                 event,
-                "https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io",
+                "https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true",
               )
             }
           />

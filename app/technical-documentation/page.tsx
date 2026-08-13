@@ -146,10 +146,14 @@ const BuildOnNomyx = () => (
               <div className="space-y-4">
                 <div className="flex items-center gap-2.5">
                   <span className="text-cyan-400 font-bold">$</span>
-                  <span className="text-white font-medium">npm install @nomyx/sdk</span>
+                  <span className="text-white font-medium">
+                    npm install @nomyx/sdk
+                  </span>
                 </div>
 
-                <div className="text-slate-500 text-sm">Installing dependencies...</div>
+                <div className="text-slate-500 text-sm">
+                  Installing dependencies...
+                </div>
 
                 <div className="flex items-center gap-3 text-emerald-400/90 font-medium">
                   <CheckCircle2 size={16} className="text-emerald-400" />
@@ -264,7 +268,9 @@ const EbookFeature = ({ onDownloadClick }: { onDownloadClick: () => void }) => (
                     size={20}
                     className="text-[#215EC7] bg-[#215EC7]/10 rounded-full p-0.5 shrink-0"
                   />
-                  <span className="text-sm md:text-base text-[#42546E] font-medium">{item}</span>
+                  <span className="text-sm md:text-base text-[#42546E] font-medium">
+                    {item}
+                  </span>
                 </li>
               ))}
             </motion.ul>
@@ -315,7 +321,7 @@ export default function ResourcesPage() {
         ctaTitle="Need a deeper dive?"
         ctaDescription="Schedule a personalized walkthrough with our technical team. Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Schedule a Technical Demo"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );

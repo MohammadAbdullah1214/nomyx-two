@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, CalendarDays, ChevronDown, Clock3, Star } from "lucide-react";
+import {
+  ArrowLeft,
+  CalendarDays,
+  ChevronDown,
+  Clock3,
+  Star,
+} from "lucide-react";
 
 import { CustomCursor, Footer, Navbar } from "@/app/home";
-import { getBlogBySlug, getPublishedBlogBySlug, plainTextFromHtml } from "@/lib/blogs";
+import {
+  getBlogBySlug,
+  getPublishedBlogBySlug,
+  plainTextFromHtml,
+} from "@/lib/blogs";
 import { enhanceBlogHtml } from "@/lib/blog-content";
 import BlogTableOfContents from "./BlogTableOfContents";
 import { isCmsRequestAuthenticated } from "@/lib/cms-auth-server";
@@ -22,13 +32,15 @@ export async function generateMetadata({
 }: BlogDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
   const { preview } = await searchParams;
-  
+
   const isPreview = preview === "true" && (await isCmsRequestAuthenticated());
-  const blog = isPreview ? await getBlogBySlug(slug) : await getPublishedBlogBySlug(slug);
+  const blog = isPreview
+    ? await getBlogBySlug(slug)
+    : await getPublishedBlogBySlug(slug);
 
   return {
     title: blog
-      ? (blog.page_title || `${blog.title} | Nomyx Blog`)
+      ? blog.page_title || `${blog.title} | Nomyx Blog`
       : "Nomyx Blog",
     description:
       blog?.excerpt ||
@@ -51,12 +63,17 @@ function formatDate(value: string | null) {
   }).format(new Date(value));
 }
 
-export default async function BlogDetailPage({ params, searchParams }: BlogDetailPageProps) {
+export default async function BlogDetailPage({
+  params,
+  searchParams,
+}: BlogDetailPageProps) {
   const { slug } = await params;
   const { preview } = await searchParams;
 
   const isPreview = preview === "true" && (await isCmsRequestAuthenticated());
-  const blog = isPreview ? await getBlogBySlug(slug) : await getPublishedBlogBySlug(slug);
+  const blog = isPreview
+    ? await getBlogBySlug(slug)
+    : await getPublishedBlogBySlug(slug);
 
   if (!blog) {
     notFound();
@@ -66,7 +83,9 @@ export default async function BlogDetailPage({ params, searchParams }: BlogDetai
   const faqs = blog.faqs || [];
   const tableHeadings = [
     ...headings.filter((heading) => heading.level === 2),
-    ...(faqs.length > 0 ? [{ id: "faqs", level: 2 as const, text: "FAQ's" }] : []),
+    ...(faqs.length > 0
+      ? [{ id: "faqs", level: 2 as const, text: "FAQ's" }]
+      : []),
   ];
   const plainText = plainTextFromHtml(blog.content_html);
   const wordCount = plainText.split(/\s+/).filter(Boolean).length;
@@ -81,11 +100,20 @@ export default async function BlogDetailPage({ params, searchParams }: BlogDetai
         <section className="pt-32 pb-20 md:pt-40 md:pb-28">
           <div className="custom-container">
             <nav className="mb-10 flex items-center gap-2 text-sm font-medium text-[#42546E]">
-              <Link href="/" className="hover:text-accent transition-colors">Home</Link>
+              <Link href="/" className="hover:text-accent transition-colors">
+                Home
+              </Link>
               <span className="text-slate-300">/</span>
-              <Link href="/blog" className="hover:text-accent transition-colors">Blog</Link>
+              <Link
+                href="/blog"
+                className="hover:text-accent transition-colors"
+              >
+                Blog
+              </Link>
               <span className="text-slate-300">/</span>
-              <span className="text-ink font-semibold truncate max-w-[200px] md:max-w-md">{blog.title}</span>
+              <span className="text-ink font-semibold truncate max-w-[200px] md:max-w-md">
+                {blog.title}
+              </span>
             </nav>
 
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start xl:gap-16">
@@ -97,15 +125,24 @@ export default async function BlogDetailPage({ params, searchParams }: BlogDetai
                 <div className="mt-8 flex flex-wrap items-center gap-4 text-sm font-medium text-[#42546E]">
                   {blog.authors ? (
                     <div className="relative group/author flex items-center">
-                      <Link href={`/blog/author/${blog.authors.slug}`} className="flex items-center gap-3 transition-colors hover:text-accent">
+                      <Link
+                        href={`/blog/author/${blog.authors.slug}`}
+                        className="flex items-center gap-3 transition-colors hover:text-accent"
+                      >
                         {blog.authors.cover_image_url ? (
-                          <img src={blog.authors.cover_image_url} alt={blog.authors.name} className="h-10 w-10 rounded-full object-cover shadow-sm ring-1 ring-slate-900/5 group-hover/author:ring-accent/50 transition-all" />
+                          <img
+                            src={blog.authors.cover_image_url}
+                            alt={blog.authors.name}
+                            className="h-10 w-10 rounded-full object-cover shadow-sm ring-1 ring-slate-900/5 group-hover/author:ring-accent/50 transition-all"
+                          />
                         ) : (
                           <div className="h-10 w-10 rounded-full bg-slate-50 ring-1 ring-slate-900/5 flex items-center justify-center text-xs font-bold text-slate-400 group-hover/author:ring-accent/50 transition-all">
                             {blog.authors.name.charAt(0)}
                           </div>
                         )}
-                        <span className="font-semibold text-ink group-hover/author:text-accent transition-colors">{blog.authors.name}</span>
+                        <span className="font-semibold text-ink group-hover/author:text-accent transition-colors">
+                          {blog.authors.name}
+                        </span>
                       </Link>
 
                       {/* Hover Card */}
@@ -113,35 +150,78 @@ export default async function BlogDetailPage({ params, searchParams }: BlogDetai
                         <div className="bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-slate-100 p-6 cursor-default relative pointer-events-auto">
                           <div className="flex items-center gap-4 mb-4">
                             {blog.authors.cover_image_url ? (
-                              <img src={blog.authors.cover_image_url} alt={blog.authors.name} className="w-14 h-14 rounded-full object-cover shadow-sm ring-1 ring-slate-900/5" />
+                              <img
+                                src={blog.authors.cover_image_url}
+                                alt={blog.authors.name}
+                                className="w-14 h-14 rounded-full object-cover shadow-sm ring-1 ring-slate-900/5"
+                              />
                             ) : (
                               <div className="w-14 h-14 rounded-full bg-slate-50 ring-1 ring-slate-900/5 flex items-center justify-center text-lg font-bold text-slate-400">
                                 {blog.authors.name.charAt(0)}
                               </div>
                             )}
                             <div>
-                              <div className="font-bold text-ink text-lg leading-tight">{blog.authors.name}</div>
-                              {blog.authors.designation && <div className="text-sm text-[#42546E] mt-0.5">{blog.authors.designation}</div>}
+                              <div className="font-bold text-ink text-lg leading-tight">
+                                {blog.authors.name}
+                              </div>
+                              {blog.authors.designation && (
+                                <div className="text-sm text-[#42546E] mt-0.5">
+                                  {blog.authors.designation}
+                                </div>
+                              )}
                             </div>
                           </div>
-                          
+
                           {blog.authors.bio_html && (
                             <p className="text-sm text-[#42546E] leading-relaxed line-clamp-4 mb-5">
-                              {plainTextFromHtml(blog.authors.bio_html).substring(0, 150)}{plainTextFromHtml(blog.authors.bio_html).length > 150 ? '...' : ''}
+                              {plainTextFromHtml(
+                                blog.authors.bio_html,
+                              ).substring(0, 150)}
+                              {plainTextFromHtml(blog.authors.bio_html).length >
+                              150
+                                ? "..."
+                                : ""}
                             </p>
                           )}
 
                           <div className="flex items-center justify-between mt-auto">
-                            <Link href={`/blog/author/${blog.authors.slug}`} className="inline-flex items-center justify-center rounded-[6px] bg-[#F2F9FF] px-4 py-2 text-[13px] font-semibold text-accent transition-colors hover:bg-[#e6f3ff]">
+                            <Link
+                              href={`/blog/author/${blog.authors.slug}`}
+                              className="inline-flex items-center justify-center rounded-[6px] bg-[#F2F9FF] px-4 py-2 text-[13px] font-semibold text-accent transition-colors hover:bg-[#e6f3ff]"
+                            >
                               Read Full Bio
                             </Link>
-                            
+
                             <div className="flex items-center gap-3">
-                              <a href="https://x.com/ubear90" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-accent transition-colors" aria-label="X (Twitter)">
-                                <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                              <a
+                                href="https://x.com/ubear90"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-slate-300 hover:text-accent transition-colors"
+                                aria-label="X (Twitter)"
+                              >
+                                <svg
+                                  className="w-[18px] h-[18px]"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
                               </a>
-                              <a href="https://www.linkedin.com/in/ubairjavaid" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-accent transition-colors" aria-label="LinkedIn">
-                                <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                              <a
+                                href="https://www.linkedin.com/in/ubairjavaid"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-slate-300 hover:text-accent transition-colors"
+                                aria-label="LinkedIn"
+                              >
+                                <svg
+                                  className="w-[18px] h-[18px]"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                </svg>
                               </a>
                             </div>
                           </div>
@@ -242,7 +322,7 @@ export default async function BlogDetailPage({ params, searchParams }: BlogDetai
         ctaTitle="Ready to modernize your fund?"
         ctaDescription="Schedule a personalized walkthrough with our technical team to see how Nomyx can streamline your infrastructure."
         ctaButtonText="Schedule a Technical Demo"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );

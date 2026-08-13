@@ -17,13 +17,12 @@ export default function SpvDeal() {
         <Onboarding />
       </main>
 
-      <Footer 
+      <Footer
         ctaTitle="Ready For Your Next Deal?"
         ctaDescription="Launch your next compliant SPV in minutes. Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Launch An SPV Demo"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );
 }
-

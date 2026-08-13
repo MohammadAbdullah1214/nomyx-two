@@ -19,13 +19,12 @@ export default function RealEstate() {
         <LiquidityPremium />
       </main>
 
-      <Footer 
+      <Footer
         ctaTitle="Turn Your Property Into A Liquid Asset."
         ctaDescription="Unlock liquidity and reach global investors. Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Start A Real Estate Pilot"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );
 }
-

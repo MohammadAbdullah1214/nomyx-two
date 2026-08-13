@@ -93,10 +93,24 @@ const DiamondArchitecture = () => (
           strokeWidth="2"
           filter="url(#diamondGlow)"
         />
-        <text x="280" y="202" textAnchor="middle" fill="white" fontSize="11" fontWeight="800">
+        <text
+          x="280"
+          y="202"
+          textAnchor="middle"
+          fill="white"
+          fontSize="11"
+          fontWeight="800"
+        >
           Core
         </text>
-        <text x="280" y="216" textAnchor="middle" fill="#94a3b8" fontSize="8" fontWeight="600">
+        <text
+          x="280"
+          y="216"
+          textAnchor="middle"
+          fill="#94a3b8"
+          fontSize="8"
+          fontWeight="600"
+        >
           Proxy
         </text>
       </g>
@@ -150,11 +164,13 @@ const DiamondHero = () => (
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_30%,#D9EFFF_0%,transparent_60%),radial-gradient(circle_at_70%_26%,rgba(33,94,199,0.04),transparent_40%)]" />
 
     <div className="custom-container relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-      <motion.div initial="hidden" animate="show" transition={{ staggerChildren: 0.1 }} className="text-left">
-        <motion.div
-          variants={fadeUp}
-          className="mb-7"
-        >
+      <motion.div
+        initial="hidden"
+        animate="show"
+        transition={{ staggerChildren: 0.1 }}
+        className="text-left"
+      >
+        <motion.div variants={fadeUp} className="mb-7">
           <span className="eyebrow px-5 py-2.5 rounded-full border border-ink/10 bg-white/50 inline-block">
             EIP-2535 Architecture
           </span>
@@ -165,14 +181,21 @@ const DiamondHero = () => (
           That Never Expire.
         </h1>
 
-        <motion.p variants={fadeUp} className="prgraphs text-ink-muted leading-relaxed font-light max-w-xl text-left mb-8">
-          The immutability paradox is solved. Build on modular, upgradeable infrastructure that adapts to regulatory changes without costly migrations or token swaps.
+        <motion.p
+          variants={fadeUp}
+          className="prgraphs text-ink-muted leading-relaxed font-light max-w-xl text-left mb-8"
+        >
+          The immutability paradox is solved. Build on modular, upgradeable
+          infrastructure that adapts to regulatory changes without costly
+          migrations or token swaps.
         </motion.p>
 
         <motion.div variants={fadeUp}>
           <AnimatedButton
             text="Consult With Our Solutions Architect"
-            href="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io" target="_blank" rel="noopener noreferrer"
+            href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
+            target="_blank"
+            rel="noopener noreferrer"
             variant="accent"
           />
         </motion.div>
@@ -211,15 +234,29 @@ const Monoliths = () => (
             </h3>
             <div className="space-y-6">
               {[
-                ["Size limit constraints (24kb)", "Complex logic requires multiple contracts."],
+                [
+                  "Size limit constraints (24kb)",
+                  "Complex logic requires multiple contracts.",
+                ],
                 ["Impossible to upgrade", "Logic is frozen at deployment."],
-                ["Requires full migration if one bug is found", "New address, new audits, user disruption."],
+                [
+                  "Requires full migration if one bug is found",
+                  "New address, new audits, user disruption.",
+                ],
               ].map(([title, text]) => (
-                <div key={title} className="flex gap-4 items-start text-left select-none">
-                  <X className="text-rose-500 bg-rose-50 rounded-full p-0.5 shrink-0 mt-0.5" size={18} />
+                <div
+                  key={title}
+                  className="flex gap-4 items-start text-left select-none"
+                >
+                  <X
+                    className="text-rose-500 bg-rose-50 rounded-full p-0.5 shrink-0 mt-0.5"
+                    size={18}
+                  />
                   <div>
                     <div className="text-sm font-bold text-ink">{title}</div>
-                    <p className="text-xs md:text-sm leading-relaxed text-ink-muted mt-1">{text}</p>
+                    <p className="text-xs md:text-sm leading-relaxed text-ink-muted mt-1">
+                      {text}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -247,15 +284,32 @@ const Monoliths = () => (
             </h3>
             <div className="space-y-6">
               {[
-                ["Unlimited size (add infinite facets)", "No contract size limits."],
-                ["Granular upgrades", "Update individual modules without touching others."],
-                ["Stable contract address forever", "Zero user migration. Continuous compliance."],
+                [
+                  "Unlimited size (add infinite facets)",
+                  "No contract size limits.",
+                ],
+                [
+                  "Granular upgrades",
+                  "Update individual modules without touching others.",
+                ],
+                [
+                  "Stable contract address forever",
+                  "Zero user migration. Continuous compliance.",
+                ],
               ].map(([title, text]) => (
-                <div key={title} className="flex gap-4 items-start text-left select-none">
-                  <Check className="text-[#215EC7] bg-[#215EC7]/10 rounded-full p-0.5 shrink-0 mt-0.5" size={18} />
+                <div
+                  key={title}
+                  className="flex gap-4 items-start text-left select-none"
+                >
+                  <Check
+                    className="text-[#215EC7] bg-[#215EC7]/10 rounded-full p-0.5 shrink-0 mt-0.5"
+                    size={18}
+                  />
                   <div>
                     <div className="text-sm font-bold text-ink">{title}</div>
-                    <p className="text-xs md:text-sm leading-relaxed text-ink-muted mt-1">{text}</p>
+                    <p className="text-xs md:text-sm leading-relaxed text-ink-muted mt-1">
+                      {text}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -269,10 +323,22 @@ const Monoliths = () => (
 
 const UpgradeFlow = () => {
   const steps = [
-    ["Develop", "Engineers write a new Compliance Facet v2 to match the new law."],
-    ["Audit", "Only the new v2 facet needs to be audited, saving time and cost."],
-    ["Propose", "The upgrade is proposed via on-chain governance (Multi-sig or DAO)."],
-    ["Cut", "The Diamond Proxy points delegates calls to the new v2 facet. The old v1 facet is disconnected."],
+    [
+      "Develop",
+      "Engineers write a new Compliance Facet v2 to match the new law.",
+    ],
+    [
+      "Audit",
+      "Only the new v2 facet needs to be audited, saving time and cost.",
+    ],
+    [
+      "Propose",
+      "The upgrade is proposed via on-chain governance (Multi-sig or DAO).",
+    ],
+    [
+      "Cut",
+      "The Diamond Proxy points delegates calls to the new v2 facet. The old v1 facet is disconnected.",
+    ],
   ];
 
   return (
@@ -306,8 +372,12 @@ const UpgradeFlow = () => {
                   {index + 1}
                 </div>
                 <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 flex-1 text-left">
-                  <h4 className="text-lg font-bold text-ink shrink-0 md:w-32">{title}</h4>
-                  <p className="text-sm text-ink-muted font-light leading-relaxed">{text}</p>
+                  <h4 className="text-lg font-bold text-ink shrink-0 md:w-32">
+                    {title}
+                  </h4>
+                  <p className="text-sm text-ink-muted font-light leading-relaxed">
+                    {text}
+                  </p>
                 </div>
               </div>
               {index < steps.length - 1 && (
@@ -338,8 +408,14 @@ const UpgradeFlow = () => {
                 "User balances are untouched.",
                 "The logic is updated.",
               ].map((result, rIdx) => (
-                <div key={rIdx} className="flex items-center gap-1 md:whitespace-nowrap">
-                  <CheckCircle2 size={20} className="text-white fill-[#215EC7] shrink-0" />
+                <div
+                  key={rIdx}
+                  className="flex items-center gap-1 md:whitespace-nowrap"
+                >
+                  <CheckCircle2
+                    size={20}
+                    className="text-white fill-[#215EC7] shrink-0"
+                  />
                   <span className="text-base font-bold text-ink">{result}</span>
                 </div>
               ))}
@@ -365,7 +441,9 @@ const LogicSeparation = () => (
           Separation Of State And Logic.
         </h2>
         <p className="prgraphs text-ink-muted leading-relaxed font-light mb-8 max-w-xl">
-          Nomyx utilizes &quot;Diamond Storage&quot; to ensure that state variables (who owns what) are kept distinct from logic facets. This prevents storage collisions during upgrades.
+          Nomyx utilizes &quot;Diamond Storage&quot; to ensure that state
+          variables (who owns what) are kept distinct from logic facets. This
+          prevents storage collisions during upgrades.
         </p>
         <div className="space-y-4">
           {[
@@ -373,7 +451,10 @@ const LogicSeparation = () => (
             "Zero risk of storage slot conflicts during upgrades.",
             "Asset balances are preserved across all logic updates.",
           ].map((item) => (
-            <div key={item} className="flex gap-3 text-sm md:text-base font-semibold text-ink select-none items-center">
+            <div
+              key={item}
+              className="flex gap-3 text-sm md:text-base font-semibold text-ink select-none items-center"
+            >
               <ShieldCheck
                 size={20}
                 className="text-[#215EC7] bg-[#215EC7]/10 rounded-full p-0.5 shrink-0"
@@ -398,18 +479,26 @@ const LogicSeparation = () => (
         <div className="overflow-x-auto p-6 md:p-8 text-xs md:text-sm leading-relaxed font-mono text-slate-300 text-left select-text">
           <div className="text-slate-500">// Add new compliance facet</div>
           <div>
-            <span className="text-fuchsia-400 font-bold">IDiamondCut.FacetCut[]</span>{" "}
+            <span className="text-fuchsia-400 font-bold">
+              IDiamondCut.FacetCut[]
+            </span>{" "}
             <span className="text-slate-400">memory</span>{" "}
             <span className="text-white">cut</span> =
           </div>
           <div className="pl-4">
             <span className="text-slate-400">new</span>{" "}
-            <span className="text-fuchsia-400 font-bold">IDiamondCut.FacetCut[]</span>(1);
+            <span className="text-fuchsia-400 font-bold">
+              IDiamondCut.FacetCut[]
+            </span>
+            (1);
           </div>
 
           <div className="mt-4">
             <span className="text-white">cut</span>[0] ={" "}
-            <span className="text-fuchsia-400 font-bold">IDiamondCut.FacetCut</span>({'{'}
+            <span className="text-fuchsia-400 font-bold">
+              IDiamondCut.FacetCut
+            </span>
+            ({"{"}
           </div>
           <div className="pl-6">
             <span className="text-cyan-400">facetAddress</span>:{" "}
@@ -423,7 +512,7 @@ const LogicSeparation = () => (
             <span className="text-cyan-400">functionSelectors</span>:{" "}
             <span className="text-white font-medium">selectors</span>
           </div>
-          <div className="pl-2">{'}'});</div>
+          <div className="pl-2">{"}"});</div>
 
           <div className="mt-4 text-slate-500">// Execute upgrade</div>
           <div>
@@ -449,14 +538,24 @@ const LogicSeparation = () => (
 const Complexity = () => (
   <section className="border-b border-border/40 py-20 md:py-24 bg-white">
     <div className="custom-container">
-      <SectionIntro
-        title="Onboard Investors In Minutes."
-      />
+      <SectionIntro title="Onboard Investors In Minutes." />
       <div className="mt-14 border border-[#0A11281A] bg-white rounded-[24px] overflow-hidden grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#0A11281A] shadow-sm select-none">
         {[
-          [GitBranch, "EIP-2535 Standard", "We did not invent this pattern; we perfected the implementation. Based on the peer-reviewed Ethereum Improvement Proposal."],
-          [Lock, "Facet Isolation", "A vulnerability in the voting facet cannot compromise the custody facet. Modular security by design."],
-          [TimerReset, "Time-Lock Upgrades", "All upgrades are subject to a mandatory time-lock, giving the community time to veto malicious changes."],
+          [
+            GitBranch,
+            "EIP-2535 Standard",
+            "We did not invent this pattern; we perfected the implementation. Based on the peer-reviewed Ethereum Improvement Proposal.",
+          ],
+          [
+            Lock,
+            "Facet Isolation",
+            "A vulnerability in the voting facet cannot compromise the custody facet. Modular security by design.",
+          ],
+          [
+            TimerReset,
+            "Time-Lock Upgrades",
+            "All upgrades are subject to a mandatory time-lock, giving the community time to veto malicious changes.",
+          ],
         ].map(([Icon, title, text]) => {
           const TypedIcon = Icon as typeof Code2;
 
@@ -471,7 +570,9 @@ const Complexity = () => (
               <h3 className="mb-4 text-lg font-black text-ink">
                 {title as string}
               </h3>
-              <p className="text-sm font-light leading-relaxed text-ink-muted">{text as string}</p>
+              <p className="text-sm font-light leading-relaxed text-ink-muted">
+                {text as string}
+              </p>
             </div>
           );
         })}
@@ -498,7 +599,7 @@ export default function DiamondStandard() {
         ctaTitle="Do Not Let Your Code Rot."
         ctaDescription="Build on modular, upgradeable infrastructure that adapts to regulatory changes. Join the asset managers moving billions on-chain with Nomyx."
         ctaButtonText="Consult With Our Solutions Architect"
-        ctaButtonLink="https://outlook.office.com/book/NomyxDiscoveryCall@nomyx.io"
+        ctaButtonLink="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
       />
     </div>
   );
