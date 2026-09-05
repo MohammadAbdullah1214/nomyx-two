@@ -72,7 +72,7 @@ export default function InProductCookiePolicyPage() {
                 Users can generally activate or later deactivate the use of Cookies through functionality built into their web browser, or by means of Cookie consent mechanisms. To learn more about how to control Cookie settings through a browser.
               </p>
               <p>
-                If you want to learn more about Cookies, or how to control, disable or delete them, please visit <a href="http://www.aboutcookies.org" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">http://www.aboutcookies.org</a> for detailed guidance. Further, certain third party advertising networks, including Google, permit users to opt out of or customize preferences associated with your internet browsing generally.
+                If you want to learn more about Cookies, or how to control, disable or delete them, please visit <a href="https://www.aboutcookies.org" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">https://www.aboutcookies.org</a> for detailed guidance. Further, certain third party advertising networks, including Google, permit users to opt out of or customize preferences associated with your internet browsing generally.
               </p>
               <p>
                 Many jurisdictions require or recommend that website operators inform users/visitors as to the nature of Cookies they utilize and, in certain circumstances, obtain the consent of their users to the placement of certain types of Cookies. Options for enabling consent mechanisms for the Nomyx End-User Cookies are discussed further below.
