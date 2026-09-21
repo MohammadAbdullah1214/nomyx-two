@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import Evergreen from "../components/Evergreen";
+import { serviceSchemas } from "@/lib/schema-data";
 
 export const metadata: Metadata = {
   title: "Evergreen & Open-Ended Fund Tokenization | Nomyx",
@@ -11,5 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default function EvergreenOpenEndedFundsPage() {
-  return <Evergreen />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchemas["evergreen-open-ended-funds"]),
+        }}
+      />
+      <Evergreen />
+    </>
+  );
 }
+

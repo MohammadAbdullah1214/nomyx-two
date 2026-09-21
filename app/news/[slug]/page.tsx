@@ -15,6 +15,8 @@ import { plainTextFromHtml } from "@/lib/blogs";
 import { enhanceBlogHtml } from "@/lib/blog-content";
 import BlogTableOfContents from "@/app/blog/[slug]/BlogTableOfContents";
 
+import { newsSchemas } from "@/lib/schema-data";
+
 type NewsDetailPageProps = {
   params: Promise<{
     slug: string;
@@ -66,8 +68,32 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   const wordCount = plainText.split(/\s+/).filter(Boolean).length;
   const readTime = Math.max(1, Math.ceil(wordCount / 220));
 
+  const schema = newsSchemas[slug] || {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "@id": `https://www.nomyx.io/news/${slug}#news`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.nomyx.io/news/${slug}`,
+    },
+    headline: news.title,
+    description: news.excerpt || undefined,
+    url: `https://www.nomyx.io/news/${slug}`,
+    publisher: {
+      "@id": "https://www.nomyx.io#organization",
+    },
+    inLanguage: "en-US",
+    datePublished: news.published_at || undefined,
+  };
+
   return (
     <div className="min-h-screen bg-white text-ink">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema),
+        }}
+      />
       <CustomCursor />
       <Navbar variant="light" transparentInitially={true} hideBorder={true} />
 

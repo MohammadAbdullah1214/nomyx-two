@@ -19,6 +19,8 @@ import { enhanceBlogHtml } from "@/lib/blog-content";
 import BlogTableOfContents from "./BlogTableOfContents";
 import { isCmsRequestAuthenticated } from "@/lib/cms-auth-server";
 
+import { blogSchemas } from "@/lib/schema-data";
+
 type BlogDetailPageProps = {
   params: Promise<{
     slug: string;
@@ -91,8 +93,59 @@ export default async function BlogDetailPage({
   const wordCount = plainText.split(/\s+/).filter(Boolean).length;
   const readTime = Math.max(1, Math.ceil(wordCount / 220));
 
+  const schema = blogSchemas[slug] || {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `https://www.nomyx.io/blog/${slug}#article`,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `https://www.nomyx.io/blog/${slug}`,
+        },
+        headline: blog.title,
+        description: blog.excerpt || undefined,
+        url: `https://www.nomyx.io/blog/${slug}`,
+        author: {
+          "@id": "https://www.nomyx.io/blog/author/ubair-javaid#person",
+        },
+        publisher: {
+          "@id": "https://www.nomyx.io#organization",
+        },
+        inLanguage: "en-US",
+        isPartOf: {
+          "@type": "Blog",
+          "@id": "https://www.nomyx.io/blog#blog",
+          name: "Nomyx Blog",
+        },
+      },
+      ...(faqs.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `https://www.nomyx.io/blog/${slug}#faq`,
+              mainEntity: faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.answer,
+                },
+              })),
+            },
+          ]
+        : []),
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white text-ink">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema),
+        }}
+      />
       <CustomCursor />
       <Navbar variant="light" transparentInitially={true} hideBorder={true} />
 

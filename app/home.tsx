@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useAnimate } from "motion/react";
 import { usePathname } from "next/navigation";
 import {
   ArrowLeftRight,
@@ -574,8 +574,36 @@ const DiamondVisual = ({ compact = false }: { compact?: boolean }) => (
 );
 
 const Hero = () => {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    animate(
+      "h1",
+      { opacity: [0, 1], y: [24, 0] },
+      { duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }
+    );
+    animate(
+      ".hero-sub",
+      { opacity: [0, 1], y: [20, 0] },
+      { duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }
+    );
+    animate(
+      ".hero-cta",
+      { opacity: [0, 1], y: [20, 0] },
+      { duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }
+    );
+    animate(
+      ".hero-img",
+      { opacity: [0, 1], scale: [0.94, 1] },
+      { duration: 0.85, delay: 0.4, ease: "easeOut" }
+    );
+  }, [animate]);
+
   return (
-    <section className="relative overflow-hidden bg-hero-bg pt-44 pb-20 lg:pt-52 lg:pb-1">
+    <section
+      ref={scope}
+      className="relative overflow-hidden bg-hero-bg pt-44 pb-20 lg:pt-52 lg:pb-1"
+    >
       {/* Background Gradients */}
       <div className="pointer-events-none absolute -left-[500px] -top-[500px] h-[1000px] w-[1000px] rounded-full bg-hero-glow blur-[180px] opacity-60" />
       <div className="pointer-events-none absolute -right-[500px] -bottom-[500px] h-[1000px] w-[1000px] rounded-full bg-hero-glow blur-[180px] opacity-60" />
@@ -583,36 +611,21 @@ const Hero = () => {
       <div className="custom-container relative z-10">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
           <div className="max-w-3xl">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="text-display mb-8 text-white"
-            >
+            <h1 className="text-display mb-8 text-white">
               The Agile
               <br />
               Infrastructure For
               <br />
               Institutional Capital
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="prgraphs text-white mb-20 md:text-xl"
-            >
+            <p className="hero-sub prgraphs text-white mb-20 md:text-xl">
               Tokenize real-world assets with upgradeable smart contracts.
               Future-proof compliance, automated lifecycle management, and T+0
               settlement.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="flex flex-wrap gap-4"
-            >
+            <div className="hero-cta flex flex-wrap gap-4">
               <AnimatedButton
                 text="Start Building"
                 href="https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true"
@@ -627,18 +640,15 @@ const Hero = () => {
                 variant="outline"
                 className="min-w-[180px]"
               />
-            </motion.div>
+            </div>
           </div>
 
           <div className="relative hidden lg:flex justify-end">
-            <motion.img
+            <img
               src="/right-visual.png"
               alt="Nomyx Platform"
               draggable={false}
-              className="w-[550px] h-auto object-contain"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+              className="hero-img w-[550px] h-auto object-contain"
             />
           </div>
         </div>
@@ -735,12 +745,8 @@ export const ValueProp = () => (
           const iconSrc =
             i === 0 ? "/Union.png" : i === 1 ? "/diamond.png" : "/connect.png";
           return (
-            <motion.div
+            <div
               key={card.title}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
               className="rounded-2xl bg-[#1B243C] p-10 transition-all duration-300 hover:translate-y-[-4px] hover:shadow-2xl"
             >
               <div className="mb-8 h-12 w-12">
@@ -756,7 +762,7 @@ export const ValueProp = () => (
               <p className="text-[15px] font-normal text-white">
                 {card.description}
               </p>
-            </motion.div>
+            </div>
           );
         })}
       </div>
@@ -777,11 +783,7 @@ export const WhiteLabel = () => {
       <SectionHeader title={title} description={description} />
       <div className="custom-container">
         <div className="relative mx-auto max-w-5xl">
-          <motion.img
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <img
             src="/white-label-infrastructure.png"
             draggable={false}
             alt="White-Label Infrastructure"
@@ -834,11 +836,9 @@ export const RoleInfrastructure = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.15fr_1fr]">
-            <motion.div
+            <div
               key={`main-${activeTab}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-2xl bg-white p-8 shadow-sm md:p-12"
+              className="rounded-2xl bg-white p-8 shadow-sm md:p-12 transition-all duration-300"
             >
               <h3 className="mb-8 text-3xl font-bold text-[#19233D]">
                 {content.heading}
@@ -858,13 +858,11 @@ export const RoleInfrastructure = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
+            <div
               key={`wizard-${activeTab}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-2xl bg-white p-8 shadow-lg md:p-10"
+              className="rounded-2xl bg-white p-8 shadow-lg md:p-10 transition-all duration-300"
             >
               {isAssetManager ? (
                 <>
@@ -934,7 +932,7 @@ export const RoleInfrastructure = () => {
                   </div>
                 </>
               )}
-            </motion.div>
+            </div>
           </div>
 
           <div className="mt-16 text-center">
@@ -976,11 +974,7 @@ export const SmartContracts = () => (
     <div className="custom-container py-20 md:py-32">
       <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
         <div className="relative">
-          <motion.img
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+          <img
             src="/core-storage.png"
             draggable={false}
             alt="Diamond smart contract architecture"
@@ -1041,35 +1035,20 @@ export const Developers = () => {
 
       <div className="custom-container relative z-10">
         <div className="mb-20 text-center max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="section-heading mb-6 !text-white"
-          >
+          <h2 className="section-heading mb-6 !text-white">
             {pageContent.developers.title}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="prgraphs text-white/70"
-          >
+          </h2>
+          <p className="prgraphs text-white/70">
             {pageContent.developers.description}
-          </motion.p>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
           {/* Feature Cards */}
           <div className="order-2 space-y-4 lg:order-1 lg:col-span-5">
             {pageContent.developers.bullets.map((bullet, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="group relative rounded-2xl bg-[#1B243C] p-6 transition-all hover:bg-[#232E4A]"
               >
                 <div className="flex items-center gap-5">
@@ -1080,32 +1059,23 @@ export const Developers = () => {
                     {bullet}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
 
             <div className="pt-6">
-              <motion.a
+              <a
                 href="/developers"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
                 className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-[#34D399] transition-all hover:gap-4"
               >
                 {pageContent.developers.cta}
                 <ArrowRight size={16} />
-              </motion.a>
+              </a>
             </div>
           </div>
 
           {/* Large Terminal */}
           <div className="order-1 lg:order-2 lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative rounded-2xl border border-white/10 bg-[#0D121F] shadow-2xl"
-            >
+            <div className="relative rounded-2xl border border-white/10 bg-[#0D121F] shadow-2xl">
               {/* Terminal Header */}
               <div className="flex items-center justify-between border-b border-white/5 px-6 py-4">
                 <div className="flex gap-2">
@@ -1155,7 +1125,7 @@ export const Developers = () => {
                   </code>
                 </pre>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

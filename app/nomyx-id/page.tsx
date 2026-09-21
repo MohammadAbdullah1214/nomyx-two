@@ -665,9 +665,17 @@ const BuiltForEvolution = () => (
   </section>
 );
 
+import { serviceSchemas } from "@/lib/schema-data";
+
 export default function NomyxIdPage() {
   return (
     <div className="min-h-screen bg-bg font-sans text-ink">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchemas["nomyx-id"]),
+        }}
+      />
       <CustomCursor />
       <Navbar transparentInitially={true} hideBorder={true} />
 

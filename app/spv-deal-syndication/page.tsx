@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import SpvDeal from "../components/SpvDeal";
+import { serviceSchemas } from "@/lib/schema-data";
 
 export const metadata: Metadata = {
   title: "SPV & Deal Syndication | Nomyx",
@@ -11,5 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default function SpvDealSyndicationPage() {
-  return <SpvDeal />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchemas["spv-deal-syndication"]),
+        }}
+      />
+      <SpvDeal />
+    </>
+  );
 }
+

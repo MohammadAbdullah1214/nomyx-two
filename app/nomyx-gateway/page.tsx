@@ -474,9 +474,17 @@ const SecureAssetDistribution = () => (
   </section>
 );
 
+import { serviceSchemas } from "@/lib/schema-data";
+
 export default function NomyxGatewayPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-ink">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchemas["nomyx-gateway"]),
+        }}
+      />
       <CustomCursor />
       <Navbar transparentInitially={true} hideBorder={true} />
 

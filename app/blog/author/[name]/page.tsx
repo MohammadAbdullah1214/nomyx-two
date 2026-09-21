@@ -4,6 +4,8 @@ import { CustomCursor, Footer, Navbar } from "@/app/home";
 import { getAuthorBySlug } from "@/lib/authors";
 import { plainTextFromHtml } from "@/lib/blogs";
 
+import { ubairJavaidPersonSchema } from "@/lib/schema-data";
+
 type AuthorProps = {
   params: Promise<{
     name: string;
@@ -42,8 +44,32 @@ export default async function AuthorPage({ params }: AuthorProps) {
     notFound();
   }
 
+  const authorSchema =
+    name === "ubair-javaid"
+      ? ubairJavaidPersonSchema
+      : {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": `https://www.nomyx.io/blog/author/${name}#person`,
+          name: author.name,
+          url: `https://www.nomyx.io/blog/author/${name}`,
+          jobTitle: author.designation || undefined,
+          worksFor: {
+            "@id": "https://www.nomyx.io#organization",
+          },
+          description: author.bio_html
+            ? plainTextFromHtml(author.bio_html).substring(0, 300)
+            : undefined,
+        };
+
   return (
     <div className="min-h-screen bg-white text-ink">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(authorSchema),
+        }}
+      />
       <CustomCursor />
       <Navbar variant="light" transparentInitially={true} hideBorder={true} />
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import PrivateCredit from "../components/PrivateCredit";
+import { serviceSchemas } from "@/lib/schema-data";
 
 export const metadata: Metadata = {
   title: "Tokenized Private Credit Syndication | Nomyx",
@@ -11,5 +12,18 @@ export const metadata: Metadata = {
 };
 
 export default function PrivateCreditSyndicationPage() {
-  return <PrivateCredit />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            serviceSchemas["private-credit-syndication"]
+          ),
+        }}
+      />
+      <PrivateCredit />
+    </>
+  );
 }
+

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import DiamondStandard from "../components/DiamondStandard";
+import { diamondStandardTechArticleSchema } from "@/lib/schema-data";
 
 export const metadata: Metadata = {
   title: "EIP-2535 The Diamond Standard | Nomyx",
@@ -11,5 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default function TheDiamondStandardPage() {
-  return <DiamondStandard />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(diamondStandardTechArticleSchema),
+        }}
+      />
+      <DiamondStandard />
+    </>
+  );
 }
+

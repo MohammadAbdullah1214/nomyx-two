@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import RealEstate from "../components/RealEstate";
+import { serviceSchemas } from "@/lib/schema-data";
 
 export const metadata: Metadata = {
   title: "Real Estate Tokenization | Nomyx",
@@ -11,5 +12,18 @@ export const metadata: Metadata = {
 };
 
 export default function RealEstateTokenizationPage() {
-  return <RealEstate />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            serviceSchemas["real-estate-tokenization"]
+          ),
+        }}
+      />
+      <RealEstate />
+    </>
+  );
 }
+

@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import ToastProvider from "@/app/components/ToastProvider";
 import localFont from "next/font/local";
+import { organizationAndWebsiteSchema } from "@/lib/schema-data";
 
 const openSauceSans = localFont({
   src: [
@@ -72,6 +73,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSauceSans.variable}`}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationAndWebsiteSchema),
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
