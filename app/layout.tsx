@@ -56,7 +56,9 @@ export const metadata: Metadata = {
       { url: "/favicon.png", sizes: "512x512", type: "image/png" },
     ],
     shortcut: "/favicon.ico",
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   appleWebApp: {
     capable: true,
@@ -88,7 +90,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MXFWRT49');`,
           }}
         />
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="NrLNMOqsZRzdvyokHjuxwQ" async></script>
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="NrLNMOqsZRzdvyokHjuxwQ"
+          async
+        ></script>
       </head>
       <body className="antialiased">
         <noscript>
@@ -100,6 +106,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {children}
+        <Script
+          src="https://news.google.com/swg/js/v1/publisher.js"
+          strategy="afterInteractive"
+          {...{ "preferred-sources-control": "manual" }}
+        />
         <ToastProvider />
       </body>
     </html>

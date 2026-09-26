@@ -22,6 +22,7 @@ import {
   X,
 } from "lucide-react";
 import { AnimatedButton } from "@/app/components/evergreen/shared";
+import PreferredSourceButton from "@/app/components/PreferredSourceButton";
 import pageContent from "./pageContent.json";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blogs";
@@ -1313,6 +1314,7 @@ export const Footer = ({
             <p className="max-w-sm text-[15px] font-medium leading-relaxed text-[#42546E]">
               {pageContent.footer.description}
             </p>
+            <PreferredSourceButton />
           </div>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 lg:col-span-7">
