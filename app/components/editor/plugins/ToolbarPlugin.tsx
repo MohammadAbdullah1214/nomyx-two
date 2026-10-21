@@ -113,6 +113,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
   const [uploadingImage, setUploadingImage] = useState(false);
   const [pendingImage, setPendingImage] = useState<File | null>(null);
   const [imageAltText, setImageAltText] = useState('');
+  const [imageAltTextMode, setImageAltTextMode] = useState<'descriptive' | 'decorative'>('descriptive');
 
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
   const [linkUrl, setLinkUrl] = useState('');
@@ -306,10 +307,11 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
 
     setPendingImage(imageFile);
     setImageAltText('');
+    setImageAltTextMode('descriptive');
   };
 
   const handleImageUpload = async () => {
-    if (!pendingImage || !imageAltText.trim()) return;
+    if (!pendingImage || (imageAltTextMode === 'descriptive' && !imageAltText.trim())) return;
 
     setUploadingImage(true);
     const formData = new FormData();
@@ -326,7 +328,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
       const { image } = await uploadRes.json();
       
       editor.update(() => {
-        const imageNode = $createImageNode({ src: image.url, altText: imageAltText.trim() });
+        const imageNode = $createImageNode({ src: image.url, altText: imageAltTextMode === 'descriptive' ? imageAltText.trim() : '' });
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
           selection.insertNodes([imageNode]);
@@ -336,6 +338,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
       });
       setPendingImage(null);
       setImageAltText('');
+      setImageAltTextMode('descriptive');
       toast.success("Image uploaded");
     } catch (error) {
       console.error(error);
@@ -514,23 +517,16 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
 
       {pendingImage && (
         <div className="absolute top-14 left-1/2 z-50 w-[min(28rem,calc(100vw-2rem))] -translate-x-1/2 rounded-md border border-border bg-white p-4 shadow-lg">
-          <p className="text-sm font-semibold text-ink">Describe this image</p>
-          <p className="mt-1 text-xs text-ink-muted">Alt text is read by screen readers and shown if the image cannot load.</p>
-          <input
-            autoFocus
-            type="text"
-            value={imageAltText}
-            onChange={(event) => setImageAltText(event.target.value)}
-            placeholder="Describe the image's purpose or content"
-            className="mt-3 h-10 w-full rounded border border-border px-3 text-sm outline-none focus:border-accent"
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') handleImageUpload();
-              if (event.key === 'Escape') setPendingImage(null);
-            }}
-          />
+          <p className="text-sm font-semibold text-ink">Set image alt text</p>
+          <p className="mt-1 text-xs text-ink-muted">Choose how assistive technology should treat this image.</p>
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <label className="flex cursor-pointer gap-2 rounded border border-border p-3 text-sm text-ink"><input type="radio" name="upload-alt-text-mode" checked={imageAltTextMode === 'descriptive'} onChange={() => setImageAltTextMode('descriptive')} /><span><strong className="block">Descriptive</strong><span className="text-xs text-ink-muted">Explain meaningful content.</span></span></label>
+            <label className="flex cursor-pointer gap-2 rounded border border-border p-3 text-sm text-ink"><input type="radio" name="upload-alt-text-mode" checked={imageAltTextMode === 'decorative'} onChange={() => setImageAltTextMode('decorative')} /><span><strong className="block">Decorative</strong><span className="text-xs text-ink-muted">Save an empty alt value.</span></span></label>
+          </div>
+          {imageAltTextMode === 'descriptive' && <input autoFocus type="text" value={imageAltText} onChange={(event) => setImageAltText(event.target.value)} placeholder="Describe the image for screen readers" className="mt-3 h-10 w-full rounded border border-border px-3 text-sm outline-none focus:border-accent" onKeyDown={(event) => { if (event.key === 'Enter') handleImageUpload(); if (event.key === 'Escape') setPendingImage(null); }} />}
           <div className="mt-3 flex justify-end gap-2">
             <button onClick={() => setPendingImage(null)} className="rounded px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Cancel</button>
-            <button onClick={handleImageUpload} disabled={!imageAltText.trim() || uploadingImage} className="rounded bg-accent px-3 py-1.5 text-sm text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">
+            <button onClick={handleImageUpload} disabled={(imageAltTextMode === 'descriptive' && !imageAltText.trim()) || uploadingImage} className="rounded bg-accent px-3 py-1.5 text-sm text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">
               {uploadingImage ? 'Uploading...' : 'Upload image'}
             </button>
           </div>
