@@ -21,6 +21,7 @@ export type BlogPost = {
   published_at: string | null;
   cover_image_url: string | null;
   cover_image_path: string | null;
+  cover_image_alt: string | null;
   content_html: string;
   faqs: BlogFaq[];
   featured: boolean;
@@ -197,7 +198,7 @@ export async function getPublishedBlogs() {
   }
 
   const query = buildQuery({
-    select: "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,page_title,authors(id,name,cover_image_url)",
+    select: "id,title,slug,author_id,published_at,cover_image_url,cover_image_alt,content_html,faqs,featured,excerpt,page_title,authors(id,name,cover_image_url)",
     status: "eq.published",
     order: "published_at.desc,created_at.desc",
   });
@@ -211,7 +212,7 @@ export async function getFeaturedBlogs(limit = 3) {
   }
 
   const query = buildQuery({
-    select: "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,page_title,authors(id,name,cover_image_url)",
+    select: "id,title,slug,author_id,published_at,cover_image_url,cover_image_alt,content_html,faqs,featured,excerpt,page_title,authors(id,name,cover_image_url)",
     status: "eq.published",
     featured: "eq.true",
     order: "published_at.desc,created_at.desc",
@@ -228,7 +229,7 @@ export async function getPublishedBlogBySlug(slug: string) {
 
   const query = buildQuery({
     select:
-      "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,page_title,created_at,updated_at,authors(id,name,slug,cover_image_url,bio_html,designation)",
+      "id,title,slug,author_id,published_at,cover_image_url,cover_image_alt,content_html,faqs,featured,excerpt,page_title,created_at,updated_at,authors(id,name,slug,cover_image_url,bio_html,designation)",
     slug: `eq.${slug}`,
     status: "eq.published",
     limit: 1,
@@ -245,7 +246,7 @@ export async function getBlogBySlug(slug: string) {
 
   const query = buildQuery({
     select:
-      "id,title,slug,author_id,published_at,cover_image_url,content_html,faqs,featured,excerpt,page_title,created_at,updated_at,authors(id,name,slug,cover_image_url,bio_html,designation),status",
+      "id,title,slug,author_id,published_at,cover_image_url,cover_image_alt,content_html,faqs,featured,excerpt,page_title,created_at,updated_at,authors(id,name,slug,cover_image_url,bio_html,designation),status",
     slug: `eq.${slug}`,
     limit: 1,
   });
@@ -334,6 +335,7 @@ export async function createBlog(input: {
   status: BlogStatus;
   coverImageUrl: string | null;
   coverImagePath: string | null;
+  coverImageAlt: string | null;
   pageTitle?: string | null;
 }) {
   const slug = input.slug ? await ensureUniqueSlug(input.slug) : await ensureUniqueSlug(input.title);
@@ -349,6 +351,7 @@ export async function createBlog(input: {
     status: input.status,
     cover_image_url: input.coverImageUrl,
     cover_image_path: input.coverImagePath,
+    cover_image_alt: input.coverImageAlt,
     excerpt,
     page_title: input.pageTitle || null,
   };
@@ -382,6 +385,7 @@ export async function updateBlog(
     status: BlogStatus;
     coverImageUrl: string | null;
     coverImagePath: string | null;
+    coverImageAlt: string | null;
     pageTitle?: string | null;
   }
 ) {
@@ -410,6 +414,7 @@ export async function updateBlog(
         faqs: normalizeBlogFaqs(input.faqs),
         featured: input.featured,
         cover_image_path: input.coverImagePath,
+        cover_image_alt: input.coverImageAlt,
         excerpt,
         page_title: input.pageTitle || null,
         status: input.status,

@@ -35,6 +35,7 @@ export async function POST(request: Request) {
     const slug = String(formData.get("slug") || "").trim();
     const pageTitle = formData.has("pageTitle") ? String(formData.get("pageTitle") || "").trim() || null : null;
     const excerpt = String(formData.get("excerpt") || "").trim();
+    const coverImageAlt = String(formData.get("coverImageAlt") || "").trim() || null;
     const authorId = String(formData.get("authorId") || "").trim() || null;
     const publishedAtInput = String(formData.get("publishedAt") || "").trim();
     const contentHtml = String(formData.get("contentHtml") || "").trim();
@@ -72,6 +73,7 @@ export async function POST(request: Request) {
       status,
       coverImageUrl,
       coverImagePath,
+      coverImageAlt,
       pageTitle,
     });
 

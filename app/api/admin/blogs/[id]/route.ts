@@ -36,6 +36,7 @@ export async function PATCH(request: Request, context: Context) {
     const slug = String(formData.get("slug") || existing.slug).trim();
     const pageTitle = formData.has("pageTitle") ? String(formData.get("pageTitle") || "").trim() || null : existing.page_title;
     const excerpt = String(formData.get("excerpt") || existing.excerpt || "").trim();
+    const coverImageAlt = formData.has("coverImageAlt") ? String(formData.get("coverImageAlt") || "").trim() || null : existing.cover_image_alt;
     const authorId = formData.has("authorId") ? (String(formData.get("authorId") || "").trim() || null) : existing.author_id;
     const publishedAtInput = String(formData.get("publishedAt") || existing.published_at || "").trim();
     const contentHtml = String(formData.get("contentHtml") || existing.content_html).trim();
@@ -76,6 +77,7 @@ export async function PATCH(request: Request, context: Context) {
       status,
       coverImageUrl,
       coverImagePath,
+      coverImageAlt,
       pageTitle,
     });
 

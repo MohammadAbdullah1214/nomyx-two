@@ -61,7 +61,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-x-hidden">
+      <main className="flex-1">
         {children}
       </main>
     </div>

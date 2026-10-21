@@ -33,7 +33,7 @@ import {
   AlignCenter, AlignRight, AlignJustify, Type, Palette, Baseline, ChevronDown, Check, TypeOutline,
   Table as TableIcon
 } from 'lucide-react';
-import { $createCalloutNode } from '../nodes/CalloutNode';
+import { $createCalloutNode, $isCalloutNode } from '../nodes/CalloutNode';
 import { $createImageNode } from '../nodes/ImageNode';
 import { $createCodeNode } from '@lexical/code';
 
@@ -111,6 +111,8 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
   const [editor] = useLexicalComposerContext();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [pendingImage, setPendingImage] = useState<File | null>(null);
+  const [imageAltText, setImageAltText] = useState('');
 
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
   const [linkUrl, setLinkUrl] = useState('');
@@ -254,9 +256,32 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
         } else if (type === 'code') {
           $wrapNodes(selection, () => $createCodeNode());
         } else if (type === 'callout') {
-          $wrapNodes(selection, () => $createCalloutNode());
+          const list = $getNearestNodeOfType(selection.anchor.getNode(), ListNode);
+          if (list && !$isCalloutNode(list.getParent())) {
+            const callout = $createCalloutNode();
+            list.insertBefore(callout);
+            callout.append(list);
+          } else if (!list) {
+            $wrapNodes(selection, () => $createCalloutNode());
+          }
         }
       }
+    });
+  };
+
+  const formatKeyTakeaways = () => {
+    editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
+
+    editor.update(() => {
+      const selection = $getSelection();
+      if (!$isRangeSelection(selection)) return;
+
+      const list = $getNearestNodeOfType(selection.anchor.getNode(), ListNode);
+      if (!list || $isCalloutNode(list.getParent())) return;
+
+      const callout = $createCalloutNode();
+      list.insertBefore(callout);
+      callout.append(list);
     });
   };
 
@@ -274,14 +299,21 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
     });
   };
 
-  const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
+  const selectImage = (event: ChangeEvent<HTMLInputElement>) => {
     const imageFile = event.target.files?.[0];
     event.target.value = "";
     if (!imageFile) return;
 
+    setPendingImage(imageFile);
+    setImageAltText('');
+  };
+
+  const handleImageUpload = async () => {
+    if (!pendingImage || !imageAltText.trim()) return;
+
     setUploadingImage(true);
     const formData = new FormData();
-    formData.append("image", imageFile);
+    formData.append("image", pendingImage);
     formData.append("title", imageUploadTitle);
 
     try {
@@ -294,7 +326,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
       const { image } = await uploadRes.json();
       
       editor.update(() => {
-        const imageNode = $createImageNode({ src: image.url, altText: imageFile.name });
+        const imageNode = $createImageNode({ src: image.url, altText: imageAltText.trim() });
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
           selection.insertNodes([imageNode]);
@@ -302,6 +334,8 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
           $getRoot().append(imageNode);
         }
       });
+      setPendingImage(null);
+      setImageAltText('');
       toast.success("Image uploaded");
     } catch (error) {
       console.error(error);
@@ -350,7 +384,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
 
   return (
     <>
-      <div className="flex flex-wrap items-center gap-1 p-2 border-b border-border bg-white sticky top-0 z-10 rounded-t-[8px]">
+      <div className="sticky top-0 z-30 flex flex-wrap items-center gap-1 rounded-t-[8px] border-b border-border bg-white p-2 shadow-[0_8px_18px_rgba(10,17,40,0.08)]">
         
         {/* History */}
         <ToolbarButton onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)} icon={Undo} title="Undo" />
@@ -369,6 +403,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
           <DropdownItem label="Quote" icon={Quote} onClick={() => formatBlock('quote')} active={blockType === 'quote'} />
           <DropdownItem label="Code Block" icon={Code} onClick={() => formatBlock('code')} active={blockType === 'code'} />
           <DropdownItem label="Highlighter Box" icon={Baseline} onClick={() => formatBlock('callout')} active={blockType === 'callout'} />
+           <DropdownItem label="Key Takeaways" icon={ListChecks} onClick={formatKeyTakeaways} />
         </Dropdown>
 
         <Divider />
@@ -445,7 +480,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
         <Dropdown title="Insert" icon={ImagePlus}>
           <DropdownItem label="Image" icon={ImagePlus} onClick={() => fileInputRef.current?.click()} />
         </Dropdown>
-        <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleImageUpload} />
+        <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={selectImage} />
 
         <Divider />
 
@@ -474,6 +509,31 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
           />
           <button onClick={insertLink} className="bg-accent text-white px-3 py-1 rounded text-sm hover:bg-blue-700">Add</button>
           <button onClick={() => setIsLinkModalOpen(false)} className="text-slate-500 hover:bg-slate-100 px-2 py-1 rounded text-sm">Cancel</button>
+        </div>
+      )}
+
+      {pendingImage && (
+        <div className="absolute top-14 left-1/2 z-50 w-[min(28rem,calc(100vw-2rem))] -translate-x-1/2 rounded-md border border-border bg-white p-4 shadow-lg">
+          <p className="text-sm font-semibold text-ink">Describe this image</p>
+          <p className="mt-1 text-xs text-ink-muted">Alt text is read by screen readers and shown if the image cannot load.</p>
+          <input
+            autoFocus
+            type="text"
+            value={imageAltText}
+            onChange={(event) => setImageAltText(event.target.value)}
+            placeholder="Describe the image's purpose or content"
+            className="mt-3 h-10 w-full rounded border border-border px-3 text-sm outline-none focus:border-accent"
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') handleImageUpload();
+              if (event.key === 'Escape') setPendingImage(null);
+            }}
+          />
+          <div className="mt-3 flex justify-end gap-2">
+            <button onClick={() => setPendingImage(null)} className="rounded px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Cancel</button>
+            <button onClick={handleImageUpload} disabled={!imageAltText.trim() || uploadingImage} className="rounded bg-accent px-3 py-1.5 text-sm text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">
+              {uploadingImage ? 'Uploading...' : 'Upload image'}
+            </button>
+          </div>
         </div>
       )}
     </>

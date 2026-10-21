@@ -73,7 +73,7 @@ export default async function BlogIndexPage() {
                       {blog.cover_image_url ? (
                         <img
                           src={blog.cover_image_url}
-                          alt={blog.title}
+                          alt={blog.cover_image_alt || blog.title}
                           className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                         />
                       ) : (

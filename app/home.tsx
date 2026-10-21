@@ -1225,7 +1225,7 @@ const FeaturedBlogs = ({ blogs }: { blogs: BlogPost[] }) => {
               {blog.cover_image_url ? (
                 <img
                   src={blog.cover_image_url}
-                  alt={blog.title}
+                  alt={blog.cover_image_alt || blog.title}
                   className="h-64 w-full object-cover"
                 />
               ) : (

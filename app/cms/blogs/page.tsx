@@ -47,6 +47,7 @@ type FormState = {
   status: BlogStatus;
   imageFile: File | null;
   existingImageUrl: string | null;
+  coverImageAlt: string;
   removeImage: boolean;
 };
 
@@ -64,6 +65,7 @@ const emptyForm: FormState = {
   status: "draft",
   imageFile: null,
   existingImageUrl: null,
+  coverImageAlt: "",
   removeImage: false,
 };
 
@@ -223,6 +225,7 @@ export default function BlogCmsPage() {
       featured: blog.featured,
       status: blog.status,
       existingImageUrl: blog.cover_image_url,
+      coverImageAlt: blog.cover_image_alt || "",
       removeImage: false,
     }));
   };
@@ -340,6 +343,7 @@ export default function BlogCmsPage() {
       status: blog.status,
       imageFile: null,
       existingImageUrl: blog.cover_image_url,
+      coverImageAlt: blog.cover_image_alt || "",
       removeImage: false,
     });
     setIsEditing(true);
@@ -355,6 +359,7 @@ export default function BlogCmsPage() {
       formData.set("slug", form.slug);
       formData.set("pageTitle", form.pageTitle);
       formData.set("excerpt", form.excerpt);
+      formData.set("coverImageAlt", form.coverImageAlt);
       if (form.authorId) formData.set("authorId", form.authorId);
       formData.set("publishedAt", form.publishedAt);
       formData.set("contentHtml", form.contentHtml);
@@ -633,7 +638,7 @@ export default function BlogCmsPage() {
             }}
           />
 
-            <section className="overflow-hidden rounded-[12px] border border-border bg-white/95 shadow-[0_24px_64px_rgba(10,17,40,0.08)] backdrop-blur">
+            <section className="rounded-[12px] border border-border bg-white/95 shadow-[0_24px_64px_rgba(10,17,40,0.08)] backdrop-blur">
               <div className="border-b border-border bg-[#F8FBFF] px-6 py-5">
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div>
@@ -695,7 +700,7 @@ export default function BlogCmsPage() {
                     {/* Page Title */}
                     <div>
                       <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
-                        Page Title
+                      Meta Title
                       </label>
                       <input
                         value={form.pageTitle || ""}
@@ -836,6 +841,15 @@ export default function BlogCmsPage() {
                           />
                         </label>
                       )}
+                       <label className="mt-3 block">
+                         <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted">Cover image alt text</span>
+                         <input
+                           value={form.coverImageAlt}
+                           onChange={(event) => setForm((current) => ({ ...current, coverImageAlt: event.target.value }))}
+                           placeholder="Describe the cover image for screen readers"
+                           className="h-11 w-full rounded-[6px] border border-border bg-slate-50/50 px-4 text-sm font-medium outline-none transition-colors focus:bg-white focus:border-accent"
+                         />
+                       </label>
                     </div>
 
                     {/* Body */}
@@ -853,7 +867,7 @@ export default function BlogCmsPage() {
                           <span className="rounded-[6px] bg-slate-100 border border-slate-200 px-3 py-1.5">{contentStats.words} Words</span>
                         </div>
                       </div>
-                      <div className="rounded-[8px] border border-border bg-white shadow-[0_2px_8px_rgba(10,17,40,0.04)] overflow-hidden">
+                      <div className="rounded-[8px] border border-border bg-white shadow-[0_2px_8px_rgba(10,17,40,0.04)]">
                         <RichTextEditor
                           value={form.contentHtml}
                           imageUploadTitle={form.title || "blog-content"}

@@ -7,6 +7,7 @@ create table if not exists public.blog_posts (
   published_at timestamptz,
   cover_image_url text,
   cover_image_path text,
+  cover_image_alt text,
   content_html text not null,
   excerpt text,
   featured boolean not null default false,

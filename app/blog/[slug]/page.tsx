@@ -319,7 +319,7 @@ export default async function BlogDetailPage({
                   <figure className="mt-10 overflow-hidden rounded-2xl border border-border bg-white shadow-[0_24px_70px_rgba(10,17,40,0.10)]">
                     <img
                       src={blog.cover_image_url}
-                      alt={blog.title}
+                      alt={blog.cover_image_alt || blog.title}
                       className="aspect-[16/9] w-full object-cover"
                     />
                   </figure>

@@ -563,10 +563,10 @@ export default function AuthorsCmsPage() {
                     />
                   </div>
 
-                  {/* Page Title */}
+                  {/* Meta Title */}
                   <div>
                     <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">
-                      Page Title
+                      Meta Title
                     </label>
                     <input
                       value={form.pageTitle || ""}
