@@ -385,7 +385,7 @@ function InvestorExperience() {
           ]}
         />
       </Section>
-      <Section tone="soft">
+      <Section id="white-label" tone="neutral">
         <Intro
           eyebrow="Own the investor relationship"
           title="Your brand on the glass. Nomyx underneath."
@@ -471,7 +471,7 @@ function InvestorExperience() {
                 "A landlord that may compete — your stall is not the landlord’s priority.",
               ].map((item) => (
                 <li key={item}>
-                  <X size={18} className="shrink-0" aria-hidden="true" />
+                  <X size={18} className="lc-store-cross" aria-hidden="true" />
                   <span>
                     <strong>{item.split(" — ")[0]}</strong>
                     <span>{item.split(" — ")[1]}</span>

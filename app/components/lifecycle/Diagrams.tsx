@@ -226,7 +226,7 @@ export function WhiteLabelPath() {
         </div>
       </div>
       <p className="lc-relationship-quote">
-        The relationship stays yours. <span>Nomyx runs underneath it.</span>
+        The relationship stays yours. <br/><span>Nomyx runs underneath it.</span>
       </p>
     </>
   );

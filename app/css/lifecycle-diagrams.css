@@ -356,9 +356,10 @@
   width: 64px;
   height: 64px;
   padding: 1rem;
-  border: 1px solid var(--color-border);
+  border: 0;
   border-radius: 50%;
-  color: var(--color-accent);
+  background: var(--color-accent);
+  color: white;
 }
 .lc-investor-node h3 {
   font-size: 20px;
@@ -372,7 +373,7 @@
   min-width: 0;
   padding: 1.5rem;
   border-radius: 1.25rem;
-  background: var(--color-hero-bg);
+  background: var(--color-ink);
   color: white;
 }
 .lc-portal-title {
@@ -388,7 +389,10 @@
 }
 .lc-portal-title span {
   font-size: 12px;
-  color: rgb(255 255 255 / 0.65);
+  padding: 0.375rem 0.875rem;
+  border-radius: 0.625rem;
+  background: var(--color-bg);
+  color: var(--color-ink);
 }
 .lc-portal-pillars {
   display: grid;
@@ -419,13 +423,14 @@
 }
 .lc-portal-under {
   display: grid;
-  justify-items: center;
+  justify-items: start;
   gap: 0.625rem;
   margin-top: 1rem;
   padding: 1.25rem 1rem;
   border: 1px solid rgb(255 255 255 / 0.2);
   border-radius: 0.75rem;
-  text-align: center;
+  background: rgb(255 255 255 / 0.04);
+  text-align: left;
 }
 .lc-portal-under strong {
   font-size: 16px;
@@ -435,10 +440,12 @@
   color: rgb(255 255 255 / 0.7);
 }
 .lc-portal-under span {
-  border: 1px solid rgb(255 255 255 / 0.25);
-  border-radius: 1rem;
-  padding: 0.25rem 0.75rem;
+  border-radius: 0.625rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--color-accent);
+  color: white;
   font-size: 12px;
+  font-weight: 700;
 }
 .lc-external-rails {
   display: grid;
@@ -453,9 +460,18 @@
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   padding: 0.75rem;
-  color: var(--color-accent);
+  color: var(--color-ink);
   font-size: 15px;
   font-weight: 600;
+  transition: border-color 200ms ease, background-color 200ms ease, color 200ms ease, transform 200ms ease;
+}
+.lc-external-rails > .lc-caption {
+  color: var(--color-accent);
+  text-transform: none;
+  letter-spacing: normal;
+}
+#white-label .lc-cards-4 > .lc-card {
+  background: transparent;
 }
 .lc-external-rails p {
   font-size: 13px;
@@ -484,8 +500,8 @@
   padding: 1.5rem;
 }
 .lc-store-own {
-  border-color: var(--color-hero-bg);
-  background: var(--color-hero-bg);
+  border-color: var(--color-ink);
+  background: var(--color-ink);
   color: white;
 }
 .lc-store-own .lc-store-icon,
@@ -495,8 +511,8 @@
 .lc-store-own .lc-checks li {
   border-color: rgb(255 255 255 / 0.15);
 }
-.lc-store-own .lc-checks li > span > span {
-  color: rgb(255 255 255 / 0.7);
+.lc-store-card.lc-store-own .lc-checks li > span > span {
+  color: var(--color-bg);
 }
 .lc-store-card > h3 {
   margin-top: 1rem;
@@ -524,23 +540,37 @@
   font-weight: 700;
   font-size: 20px;
 }
+.lc-store-cross {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--color-negative);
+  color: white;
+}
 .lc-store-underband {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
   margin-top: 2rem;
   padding: 1.5rem;
   border: 1px solid var(--color-border);
   border-radius: 1rem;
-  background: var(--color-hero-bg);
+  background: var(--color-ink);
   color: white;
+}
+.lc-store-underband > .lc-chips {
+  margin-left: auto;
+  justify-content: flex-end;
 }
 .lc-store-underband .lc-chips span {
   border-color: rgb(255 255 255 / 0.25);
 }
 .lc-store-underband h3 {
   margin-top: 0.75rem;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1.3;
   font-weight: 700;
 }
@@ -1208,7 +1238,6 @@
     padding: 2.5rem;
   }
   .lc-collateral-limits,
-  .lc-store-underband,
   .lc-incumbent-bet {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1272,6 +1301,12 @@
   }
 }
 @media (hover: hover) and (pointer: fine) {
+  .lc-external-rails > div:hover {
+    border-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 5%, var(--color-bg));
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
   .lc-result-pills > span:hover {
     transform: translateY(-2px) scale(1.03);
     border-color: var(--color-accent);
@@ -1294,6 +1329,9 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .lc-external-rails > div:hover {
+    transform: none;
+  }
   .lc-operating-rail li::after {
     display: none;
   }

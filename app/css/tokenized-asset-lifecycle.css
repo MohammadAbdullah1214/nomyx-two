@@ -29,7 +29,7 @@
   background: #f2f9ff;
 }
 .lc-section-neutral {
-  background: #FAFAFA;
+  background: var(--color-bg-neutral);
 }
 .lc-section-dark,
 .lc-hero {

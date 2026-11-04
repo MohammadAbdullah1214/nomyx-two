@@ -6,10 +6,12 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   --color-bg: #FFFFFF;
+  --color-bg-neutral: #FAFAFA;
   --color-ink: #0A1128;
   --color-ink-muted: #42546E;
   --color-accent: #215EC7;
   --color-amber: #F7A600;
+  --color-negative: #E8604C;
   --color-border: rgba(10, 17, 40, 0.14);
   --color-hero-bg: #1B243C;
   --color-hero-glow: rgba(0, 77, 221, 0.5);
