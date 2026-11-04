@@ -1,0 +1,225 @@
+#platform {
+  background: var(--color-ink);
+}
+
+#platform > .custom-container {
+  max-width: 1464px;
+}
+
+#platform .lc-intro {
+  max-width: 1000px;
+}
+
+#platform .lc-lead {
+  color: white;
+  font-weight: 400;
+}
+
+#platform .lc-platform-question {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+#platform .lc-platform-path,
+#platform .lc-platform-envelope,
+#platform .lc-card {
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 0.625rem;
+  background: rgb(255 255 255 / 0.06);
+}
+
+#platform .lc-platform-path > .lc-caption {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#platform .lc-handoffs strong {
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+  background: rgb(255 255 255 / 0.04);
+  font-size: 18px;
+}
+
+#platform .lc-handoffs li > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  color: white;
+  letter-spacing: normal;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+#platform .lc-handoffs li > span::before {
+  content: "";
+  height: 24px;
+  border-left: 1px dashed rgb(255 255 255 / 0.7);
+}
+
+#platform .lc-handoff-caption {
+  margin-top: 1rem;
+  color: white;
+  text-align: left;
+  font-size: 15px;
+}
+
+#platform .lc-one-layer {
+  padding: 1.5rem;
+  border-radius: 0.625rem;
+  background: rgb(255 255 255 / 0.04);
+}
+
+#platform .lc-one-layer > p {
+  color: white;
+  font-weight: 600;
+}
+
+#platform .lc-connected-rail {
+  position: relative;
+}
+
+#platform .lc-connected-rail strong {
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+#platform .lc-connected-rail li > span {
+  border: 0;
+  background: var(--color-accent);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#platform .lc-connected-rail li > span:empty {
+  width: 10px;
+  height: 10px;
+  margin: 9px;
+  box-shadow: none;
+}
+
+.lc-platform-badge-row {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.lc-platform-badge {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.875rem 1.375rem;
+  border-radius: 0.625rem;
+  background: var(--color-accent);
+  color: white;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+#platform .lc-card {
+  padding: 2rem;
+  text-align: left;
+}
+
+#platform .lc-card-icon {
+  color: white;
+  margin-bottom: 3rem;
+}
+
+#platform .lc-card h3 {
+  margin-bottom: 0.75rem;
+  font-size: 24px;
+}
+
+#platform .lc-card p {
+  color: white;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.lc-platform-envelope {
+  margin-top: 1.75rem;
+  padding: 2rem 1.5rem;
+}
+
+.lc-envelope-heading {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.lc-platform-footer {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  margin: 2.5rem auto 0;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+#platform .lc-platform-footer .lc-note {
+  max-width: 1090px;
+  margin-top: 0;
+  color: white;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+@media (min-width: 640px) {
+  #platform .lc-handoffs {
+    gap: 1.25rem;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(
+        0,
+        1fr
+      ) auto minmax(0, 1fr);
+    align-items: center;
+  }
+
+  #platform .lc-handoffs li {
+    display: contents;
+    padding-right: 0;
+  }
+
+  #platform .lc-handoffs li > span {
+    position: static;
+    transform: none;
+  }
+
+  #platform .lc-one-layer .lc-connected-rail {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    margin-top: 0;
+  }
+
+  #platform .lc-one-layer .lc-connected-rail::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 1rem;
+    right: 1rem;
+    height: 1px;
+    background: rgb(255 255 255 / 0.55);
+  }
+
+  #platform .lc-one-layer .lc-connected-rail li::before {
+    display: none;
+  }
+
+  #platform .lc-one-layer .lc-connected-rail li > span:empty {
+    width: 9px;
+    height: 9px;
+    margin: 0;
+  }
+
+  #platform .lc-envelope-rail {
+    margin-top: 2rem;
+  }
+
+  .lc-platform-envelope {
+    padding: 2.5rem 3.5rem;
+  }
+}

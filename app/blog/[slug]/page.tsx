@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   ArrowLeft,
   CalendarDays,
-  ChevronDown,
   Clock3,
   Star,
 } from "lucide-react";
@@ -17,6 +16,7 @@ import {
 } from "@/lib/blogs";
 import { enhanceBlogHtml } from "@/lib/blog-content";
 import BlogTableOfContents from "./BlogTableOfContents";
+import Accordion from "@/app/components/shared/Accordion";
 import { isCmsRequestAuthenticated } from "@/lib/cms-auth-server";
 
 import { blogSchemas } from "@/lib/schema-data";
@@ -336,25 +336,7 @@ export default async function BlogDetailPage({
                       FAQ&apos;s
                     </h2>
 
-                    <div className="space-y-3">
-                      {faqs.map((faq, index) => (
-                        <details
-                          key={`${faq.question}-${index}`}
-                          className="group rounded-2xl border border-border bg-[#F8FBFF] px-5 py-4 transition-colors open:bg-white md:px-7 md:py-5"
-                        >
-                          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-[17px] font-bold leading-snug text-ink marker:hidden md:text-[18px] [&::-webkit-details-marker]:hidden">
-                            {faq.question}
-                            <ChevronDown
-                              size={20}
-                              className="shrink-0 text-accent transition-transform group-open:rotate-180"
-                            />
-                          </summary>
-                          <p className="mt-4 max-w-4xl text-[16px] font-normal leading-8 text-[#42546E] md:text-[17px]">
-                            {faq.answer}
-                          </p>
-                        </details>
-                      ))}
-                    </div>
+                    <Accordion items={faqs} />
                   </section>
                 )}
               </article>

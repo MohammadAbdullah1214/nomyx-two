@@ -60,6 +60,11 @@ const navDropdowns = {
         "Fractional ownership with automated rent distribution and secondary liquidity",
       href: "/real-estate-tokenization",
     },
+    {
+      title: "Tokenized-asset lifecycle",
+      description: "One connected path from asset orientation to settlement",
+      href: "/tokenized-asset-lifecycle",
+    },
   ],
   Platform: [
     {

@@ -9,3 +9,4 @@ tsconfig.tsbuildinfo
 *.log
 .env*
 !.env.example
+nomyx-new-pages/

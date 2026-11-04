@@ -57,10 +57,12 @@ export const HoverTextSwap = ({
   text,
   className = "",
   stagger = 0.018,
+  startIndex = 0,
 }: {
   text: string;
   className?: string;
   stagger?: number;
+  startIndex?: number;
 }) => (
   <span className={`group/hovertext inline-flex overflow-hidden ${className}`} aria-label={text}>
     <span className="flex" aria-hidden="true">
@@ -68,7 +70,7 @@ export const HoverTextSwap = ({
         <span key={`${char}-${index}`} className="relative inline-block overflow-hidden">
           <motion.span
             className="inline-block"
-            transition={{ duration: 0.42, delay: index * stagger, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.42, delay: (startIndex + index) * stagger, ease: [0.22, 1, 0.36, 1] }}
             variants={{
               rest: { y: "0%", rotateX: 0 },
               hover: { y: "-110%", rotateX: -55 },
@@ -78,7 +80,7 @@ export const HoverTextSwap = ({
           </motion.span>
           <motion.span
             className="absolute left-0 top-0 inline-block"
-            transition={{ duration: 0.42, delay: index * stagger, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.42, delay: (startIndex + index) * stagger, ease: [0.22, 1, 0.36, 1] }}
             variants={{
               rest: { y: "110%", rotateX: 55 },
               hover: { y: "0%", rotateX: 0 },
