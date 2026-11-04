@@ -1,0 +1,200 @@
+/* Property comparison refinements; all colors inherit the existing theme. */
+.property-comparison .cmp-section {
+  padding-block: 3.5rem;
+}
+.property-comparison .cmp-section .custom-container {
+  max-width: 1280px;
+}
+.property-comparison #quick .custom-container {
+  max-width: 1424px;
+}
+.property-comparison .cmp-intro-copy {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.property-comparison .cmp-section-heading {
+  margin-bottom: 1.75rem;
+}
+.property-comparison .cmp-numbered-rows {
+  gap: 0.375rem;
+}
+.property-comparison .cmp-numbered-rows li {
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+}
+.property-comparison .cmp-row-number {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+.property-comparison .cmp-numbered-rows h3 {
+  font-size: 16px;
+}
+.property-comparison .cmp-numbered-rows p {
+  line-height: 1.6;
+}
+.property-comparison .cmp-path-note {
+  font-size: 18px;
+}
+.property-comparison .cmp-fit-columns {
+  align-items: start;
+  gap: 2rem;
+}
+.property-comparison .cmp-fit-description {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.property-comparison .cmp-fit-card {
+  padding: 1.5rem;
+  border-radius: 0.625rem;
+}
+.property-comparison .cmp-fit-card h3 {
+  font-size: 20px;
+  margin-bottom: 0.5rem;
+}
+.property-comparison .cmp-fit-card p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.property-comparison #fit .cmp-intro-copy {
+  max-width: 850px;
+  margin-inline: auto;
+}
+.property-comparison #fit .cmp-note {
+  max-width: 900px;
+}
+.property-comparison :is(#costs, #fit-review) .custom-container {
+  max-width: 1200px;
+}
+.property-comparison #costs .cmp-intro-copy {
+  max-width: 1000px;
+  margin-inline: auto;
+  font-size: 17px;
+}
+.property-comparison #costs .cmp-structure-callout {
+  max-width: 855px;
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.property-comparison #costs .cmp-note {
+  font-size: 17px;
+  line-height: 1.6;
+}
+.property-comparison #fit-review {
+  padding-top: 2.5rem;
+}
+.property-comparison .cmp-review-band > p {
+  font-size: 17px;
+  line-height: 1.6;
+}
+.property-comparison .cmp-review-band > p + p {
+  color: rgb(255 255 255 / 0.75);
+}
+.property-comparison #faq {
+  background: #f2f9ff;
+}
+.property-comparison :is(#faq, #research) .custom-container {
+  max-width: 1088px;
+}
+.property-comparison #faq summary {
+  font-size: 16px;
+}
+.property-comparison #faq details {
+  padding-block: 1rem;
+}
+.property-comparison #research {
+  padding-block: 2.75rem;
+}
+.property-comparison #research .cmp-research {
+  border-radius: 2rem;
+}
+.property-comparison #research .cmp-research > p {
+  font-size: 14px;
+}
+.property-comparison #research .cmp-prompt {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  border-radius: 0.5rem;
+}
+.property-comparison #research .cmp-copy-status:empty {
+  display: none;
+}
+.property-comparison #research .cmp-ai-providers {
+  margin-top: 2rem;
+}
+.property-comparison #research .cmp-ai-providers img {
+  height: 24px;
+  max-width: 120px;
+}
+.property-comparison #research .cmp-prompt-actions button {
+  min-height: 44px;
+  padding: 0.5rem 0.875rem;
+  font-size: 12px;
+  border-radius: 0.5rem;
+}
+.property-comparison #research .cmp-prompt-actions button > svg {
+  display: none;
+}
+.property-comparison #research .cmp-prompt-actions > span {
+  font-size: 11px;
+}
+.property-comparison #research .cmp-ai-providers {
+  gap: 0.75rem 1rem;
+}
+.property-comparison #research .cmp-ai-providers a + a {
+  padding-left: 1rem;
+}
+.property-comparison #sources .cmp-sources {
+  max-width: 1152px;
+}
+.property-comparison #sources .cmp-sources > div {
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+.property-comparison #sources .cmp-note {
+  max-width: 1152px;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .property-comparison .cmp-section:not(#quick) .section-heading {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+  .property-comparison #fit.cmp-section .section-heading {
+    font-size: 32px;
+  }
+  .property-comparison #faq.cmp-section .section-heading {
+    font-size: 34px;
+  }
+  .property-comparison #research.cmp-section .section-heading {
+    font-size: 32px;
+    max-width: 800px;
+    margin-inline: auto;
+  }
+  .property-comparison .cmp-fit-columns {
+    gap: 4rem;
+  }
+  .property-comparison #research .cmp-research {
+    padding: 3rem;
+    border-radius: 3rem;
+  }
+  .property-comparison #research .cmp-prompt {
+    padding: 2.5rem;
+  }
+  .property-comparison #sources .cmp-sources > div {
+    padding-inline: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .property-comparison .cmp-boundaries li {
+    grid-template-columns: 28px minmax(190px, 260px) minmax(0, 1fr);
+    gap: 1.75rem;
+    padding-inline: 1.5rem;
+  }
+}

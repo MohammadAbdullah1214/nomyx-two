@@ -1,0 +1,124 @@
+/* Lower-section refinements for this comparison only. */
+.credit-comparison
+  :is(#repayment-tests, #costs, #fit-review, #faq, #research, #sources) {
+  padding-block: 3.5rem;
+}
+.credit-comparison #repayment-tests .custom-container {
+  max-width: 1280px;
+}
+.credit-comparison :is(#costs, #fit-review) .custom-container {
+  max-width: 1200px;
+}
+.credit-comparison :is(#faq, #research, #sources) .custom-container {
+  max-width: 1280px;
+}
+.credit-comparison :is(#repayment-tests, #costs) .cmp-section-heading {
+  margin-bottom: 1.75rem;
+}
+.credit-comparison :is(#repayment-tests, #costs) .cmp-intro-copy {
+  max-width: 1050px;
+  margin-inline: auto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.credit-comparison :is(#repayment-tests, #costs) .cmp-numbered-rows {
+  gap: 0.375rem;
+}
+.credit-comparison :is(#repayment-tests, #costs) .cmp-numbered-rows li {
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+}
+.credit-comparison :is(#repayment-tests, #costs) .cmp-row-number {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+.credit-comparison :is(#repayment-tests, #costs) .cmp-numbered-rows h3 {
+  font-size: 16px;
+}
+.credit-comparison :is(#repayment-tests, #costs) .cmp-numbered-rows p {
+  line-height: 1.6;
+}
+.credit-comparison #repayment-tests .cmp-note {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.credit-comparison .cmp-review-band > p {
+  font-size: 17px;
+  line-height: 1.6;
+}
+.credit-comparison .cmp-review-band > p + p {
+  color: rgb(255 255 255 / 0.75);
+}
+.credit-comparison #faq {
+  background: #f2f9ff;
+}
+.credit-comparison #faq .cmp-section-heading {
+  margin-bottom: 1.75rem;
+}
+.credit-comparison .cmp-faq {
+  max-width: 1152px;
+}
+.credit-comparison #research .cmp-research {
+  border-radius: 2rem;
+}
+.credit-comparison #research .cmp-research > p {
+  font-size: 16px;
+}
+.credit-comparison #research .cmp-prompt {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  border-radius: 0.5rem;
+}
+.credit-comparison #research .cmp-copy-status:empty {
+  display: none;
+}
+.credit-comparison #research .cmp-ai-providers {
+  margin-top: 2rem;
+}
+.credit-comparison #research .cmp-ai-providers > span {
+  font-size: 22px;
+}
+.credit-comparison #research .cmp-ai-providers img {
+  height: 28px;
+  max-width: 140px;
+}
+.credit-comparison #sources .cmp-sources {
+  max-width: 1152px;
+}
+.credit-comparison #sources .cmp-sources > div {
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+.credit-comparison #sources .cmp-note {
+  max-width: 1152px;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .credit-comparison
+    :is(#repayment-tests, #costs, #fit-review, #faq, #research, #sources)
+    .section-heading {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+  .credit-comparison #research .cmp-research {
+    padding: 3rem 4rem;
+    border-radius: 3rem;
+  }
+  .credit-comparison #research .cmp-prompt {
+    padding: 2.5rem;
+  }
+  .credit-comparison #sources .cmp-sources > div {
+    padding-inline: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .credit-comparison :is(#repayment-tests, #costs) .cmp-boundaries li {
+    grid-template-columns: 28px minmax(190px, 260px) minmax(0, 1fr);
+    gap: 1.75rem;
+    padding-inline: 1.5rem;
+  }
+}

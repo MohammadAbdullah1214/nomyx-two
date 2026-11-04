@@ -35,7 +35,9 @@ export default function ThreeModelComparisonPage() {
       <main className="three-model-page">
         <ComparisonPage />
       </main>
-      <Footer />
+      <div className="three-model-footer">
+        <Footer />
+      </div>
     </>
   );
 }

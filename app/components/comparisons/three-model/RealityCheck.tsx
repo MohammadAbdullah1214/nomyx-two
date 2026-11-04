@@ -1,5 +1,5 @@
 import AnimatedAction from "@/app/components/shared/AnimatedAction";
-import ModelTable from "./ModelTable";
+import ModelTable from "../ModelTable";
 
 export default function RealityCheck() {
   return (

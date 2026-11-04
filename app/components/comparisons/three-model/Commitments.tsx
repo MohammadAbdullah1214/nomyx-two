@@ -1,6 +1,6 @@
 export default function Commitments() {
   return (
-    <section className="sec alt">
+    <section id="commitments" className="sec alt">
       <div className="wrap custom-container">
         <div className="sh">
           <span className="tag eyebrow">Buying committee decision sphere</span>

@@ -1,0 +1,832 @@
+/* Scoped comparison layouts. Brand and typography tokens remain shared. */
+.nvs-page {
+  color: var(--color-ink);
+  overflow-wrap: break-word;
+}
+.nvs-page .custom-container {
+  max-width: 1464px;
+}
+.nvs-page [id] {
+  scroll-margin-top: 8rem;
+}
+.nvs-page .nvs-section {
+  padding-block: 4rem;
+}
+.nvs-page .alt {
+  background: var(--color-bg-neutral);
+}
+.nvs-page :is(.sky, .ice) {
+  background: #f2f9ff;
+}
+.nvs-page .sh {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+.nvs-page .sh .tag {
+  margin-bottom: 1.5rem;
+}
+.nvs-page :is(.lede, .lede7) {
+  margin-top: 1.5rem;
+  color: var(--color-ink-muted);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.625;
+}
+.nvs-page .hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 10rem 0 4rem;
+  background: var(--color-hero-bg);
+  color: white;
+  text-align: center;
+}
+.nvs-page .hero::before,
+.nvs-page .hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background: var(--color-hero-glow);
+  filter: blur(180px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.nvs-page .hero::before {
+  top: -500px;
+  left: -500px;
+}
+.nvs-page .hero::after {
+  bottom: -500px;
+  right: -500px;
+}
+.nvs-page .hero .tag {
+  border-color: rgb(255 255 255 / 0.6);
+  color: white;
+}
+.nvs-page .hero h1 {
+  max-width: 1280px;
+  margin: 1.75rem auto 0;
+  color: white;
+}
+.nvs-page :is(.h2sub, .frameq, .support) {
+  max-width: 1240px;
+  margin: 1.75rem auto 0;
+  font-size: 20px;
+  line-height: 1.65;
+}
+.nvs-page .frameq {
+  color: rgb(255 255 255 / 0.75);
+}
+.nvs-page .fork-asset {
+  margin: 3rem auto 2rem;
+}
+.nvs-page .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 1.125rem;
+  border: 1px solid rgb(255 255 255 / 0.6);
+  border-radius: 0.75rem;
+  font-size: 15px;
+}
+.nvs-page .pill .d {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}
+.nvs-page .fork {
+  display: grid;
+  gap: 1.5rem;
+  text-align: left;
+}
+.nvs-page .path {
+  min-width: 0;
+  padding: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 1.25rem;
+}
+.nvs-page .path.nmx {
+  border-color: var(--color-accent);
+}
+.nvs-page .pl {
+  font-size: 15px;
+  margin-bottom: 0.75rem;
+}
+.nvs-page .pt {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.nvs-page :is(.pd, .horizon) {
+  font-size: 16px;
+  line-height: 1.65;
+  margin-top: 1rem;
+}
+.nvs-page .horizon {
+  border-top: 1px solid rgb(255 255 255 / 0.3);
+  padding-top: 1.25rem;
+  margin-top: 1.75rem;
+}
+.nvs-page :is(.cta-row, .cta-c, .plan-cta) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.nvs-page .after {
+  margin-top: 2.5rem;
+  font-size: 18px;
+  line-height: 1.65;
+}
+.nvs-page .after p + p {
+  margin-top: 0.5rem;
+}
+.nvs-page .split {
+  display: grid;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  overflow: clip;
+}
+.nvs-page :is(.sl, .sr) {
+  min-width: 0;
+  padding: 1.5rem;
+}
+.nvs-page .sr {
+  background: var(--color-ink);
+  color: white;
+}
+.nvs-page .split p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+.nvs-page .split p + p {
+  margin-top: 1.5rem;
+}
+.nvs-page :is(.ey, .punch) {
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.5;
+}
+.nvs-page .ey {
+  margin-bottom: 1.25rem;
+  color: rgb(255 255 255 / 0.8);
+}
+.nvs-page :is(.costlist, .split ul) {
+  padding-left: 1.25rem;
+  margin-block: 1.5rem;
+  list-style: disc;
+  font-size: 20px;
+  line-height: 1.6;
+}
+.nvs-page li + li {
+  margin-top: 0.75rem;
+}
+.nvs-page :is(.note7, .cmpnote) {
+  margin: 1.75rem auto 0;
+  text-align: center;
+  color: var(--color-ink-muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.nvs-page .spine {
+  display: grid;
+  gap: 1.25rem;
+}
+.nvs-page .node {
+  min-width: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+}
+.nvs-page .sn {
+  color: var(--color-accent);
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+.nvs-page :is(h4, .node h4) {
+  font-size: 25px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.nvs-page .node p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.nvs-page .forces {
+  display: inline-block;
+  margin-top: 1.5rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 2rem;
+  padding: 0.375rem 0.875rem;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.nvs-page .arw {
+  display: grid;
+  place-items: center;
+  color: var(--color-accent);
+  font-size: 30px;
+}
+.nvs-page .arw::before {
+  content: "↓";
+}
+.nvs-page .pullq {
+  max-width: none;
+  margin: 0 auto 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-bg);
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 400;
+}
+.nvs-page #stages .custom-container {
+  max-width: 1284px;
+}
+.nvs-page #stages .lede7 {
+  max-width: 1100px;
+  font-size: 18px;
+}
+.nvs-page #stages .lede7 + .lede7 {
+  max-width: 940px;
+  margin-top: 1.75rem;
+}
+.nvs-page .lede7 {
+  max-width: 1200px;
+  margin-inline: auto;
+  text-align: center;
+}
+.nvs-page .ladder {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.nvs-page .rung {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 3.25rem 1rem 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-bg);
+}
+.nvs-page .rung.s3 {
+  border-color: var(--color-accent);
+}
+.nvs-page .rung .bar,
+.nvs-page .flag {
+  position: absolute;
+  top: 0.875rem;
+  left: 0.875rem;
+  right: 0.875rem;
+  border-radius: 1rem;
+}
+.nvs-page .flag {
+  left: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.125rem;
+  background: var(--color-accent);
+  color: white;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.nvs-page .flag.here {
+  background: color-mix(in srgb, var(--color-accent) 55%, white);
+}
+.nvs-page .rung .bar {
+  height: 6px;
+  background: var(--color-accent);
+}
+.nvs-page .rung.contingent .bar {
+  background: var(--color-amber);
+}
+.nvs-page .rung.declared .bar {
+  background: var(--color-border);
+}
+.nvs-page .st {
+  color: var(--color-ink);
+  font-size: 14px;
+}
+.nvs-page .nm {
+  margin-block: 0.5rem;
+  font-size: 21px;
+  font-weight: 700;
+}
+.nvs-page .rung p {
+  font-size: 15px;
+  line-height: 1.3;
+}
+.nvs-page .reach-key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem 1.5rem;
+  margin-top: 2.5rem;
+  font-size: 18px;
+  color: var(--color-ink-muted);
+}
+.nvs-page .reach-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nvs-page .reach-key i {
+  width: 27px;
+  height: 13px;
+  border-radius: 1rem;
+  background: var(--color-accent);
+}
+.nvs-page .reach-key span:nth-child(2) i {
+  background: var(--color-amber);
+}
+.nvs-page .reach-key span:nth-child(3) i {
+  background: var(--color-border);
+}
+.nvs-page :is(.boxp, .gov, .wtb) {
+  margin-top: 1.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  font-size: 17px;
+  line-height: 1.7;
+  background: var(--color-bg);
+}
+.nvs-page .verify {
+  display: inline-block;
+  padding: 0.125rem 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  color: var(--color-accent);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.nvs-page #stages .boxp {
+  font-size: 22px;
+  line-height: 1.35;
+}
+.nvs-page :is(#stages, #proof) .verify {
+  padding: 0.125rem 0.625rem;
+  border: 0;
+  border-radius: 1rem;
+  background: var(--color-amber);
+  color: white;
+  font-size: 10px;
+  vertical-align: middle;
+}
+.nvs-page .tbl-wrap {
+  margin-top: 2rem;
+}
+.nvs-page .tm-table-desktop {
+  display: none;
+  overflow: clip;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+}
+.nvs-page table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.nvs-page caption {
+  padding: 1rem;
+  font-size: 14px;
+  color: var(--color-ink-muted);
+  text-align: left;
+}
+.nvs-page :is(th, td) {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+.nvs-page thead,
+.nvs-page .tm-table-group {
+  background: var(--color-ink);
+  color: white;
+}
+.nvs-page th {
+  font-weight: 600;
+}
+.nvs-page td:nth-child(3) {
+  background: rgb(33 94 199 / 0.06);
+}
+.nvs-page td:last-child {
+  font-size: 14px;
+}
+.nvs-page .tm-table-mobile {
+  display: grid;
+  gap: 1.25rem;
+}
+.nvs-page .tm-mobile-row {
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  overflow: clip;
+}
+.nvs-page :is(.tm-mobile-row h3, .tm-mobile-group) {
+  padding: 1rem;
+  background: var(--color-ink);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.nvs-page .tm-mobile-row dl > div {
+  padding: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.nvs-page .tm-mobile-row dl > div:nth-child(2) {
+  background: rgb(33 94 199 / 0.06);
+}
+.nvs-page .tm-mobile-row dt {
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.nvs-page .ml {
+  font-size: 15px;
+  margin-bottom: 0.75rem;
+}
+.nvs-page .split h3 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.nvs-page .mir .split li {
+  font-size: 17px;
+  line-height: 1.4;
+}
+.nvs-page .mir .custom-container {
+  max-width: 1184px;
+}
+.nvs-page .mir .lede {
+  font-size: 16px;
+}
+.nvs-page .mir .split ul {
+  margin-bottom: 0;
+}
+.nvs-page #proof .custom-container {
+  max-width: 1080px;
+}
+.nvs-page #proof .sh {
+  max-width: 900px;
+}
+.nvs-page #proof .lede {
+  font-size: 15px;
+}
+.nvs-page .strows {
+  display: grid;
+  gap: 1rem;
+}
+.nvs-page .strow {
+  display: grid;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+}
+.nvs-page .strow p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.nvs-page .sbadge {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  padding: 1rem 0.875rem;
+  border-radius: 0.875rem;
+  background: var(--color-accent);
+  color: white;
+  font-size: 17px;
+  font-weight: 400;
+}
+.nvs-page .sbadge.contingent {
+  background: var(--color-amber);
+  color: white;
+}
+.nvs-page .sbadge.declared {
+  background: var(--color-border);
+  color: var(--color-ink);
+}
+.nvs-page .proofbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.875rem;
+  margin-top: 1.75rem;
+}
+.nvs-page .pchip {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 2rem;
+  font-size: 13px;
+}
+.nvs-page #proof .verify.soft {
+  background: color-mix(in srgb, var(--color-amber) 18%, white);
+  color: var(--color-ink);
+}
+.nvs-page #proof .gov h4 {
+  font-size: 20px;
+  margin-bottom: 0.5rem;
+}
+.nvs-page #proof .gov p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.nvs-page .ice .research-questions {
+  max-width: 1120px;
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+}
+.nvs-page .ice .research-probe {
+  background: var(--color-bg);
+  border-radius: 1.25rem;
+}
+.nvs-page .ice .research-probe:hover {
+  background: rgb(33 94 199 / 0.04);
+}
+.nvs-page .ice .research-label {
+  color: var(--color-ink);
+  font-weight: 500;
+  line-height: 1.1;
+}
+.nvs-page .ice .research-probes {
+  gap: 2rem;
+}
+.nvs-page .ice .research-question {
+  line-height: 1.3;
+}
+.nvs-page .ice .research-status:empty {
+  display: none;
+}
+.nvs-page .ice :is(.research-description, .research-question, .research-note) {
+  font-size: 15px;
+}
+.nvs-page .pchip svg {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+.nvs-page .plan-cta {
+  flex-direction: column;
+}
+.nvs-page .plan-cta > span {
+  color: var(--color-ink-muted);
+  font-size: 16px;
+  text-align: center;
+}
+.nvs-page #faq .custom-container > :last-child {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.nvs-page #faq ul {
+  padding-left: 1.25rem;
+  margin-top: 1rem;
+  list-style: disc;
+}
+.nvs-page #faq p + p {
+  margin-top: 1rem;
+}
+.nvs-page .choose {
+  padding: 2rem 1.5rem;
+  background: var(--color-ink);
+  color: white;
+  border-radius: 2rem;
+  text-align: center;
+}
+.nvs-page .choose .eyebrow {
+  color: white;
+  border-color: rgb(255 255 255 / 0.6);
+}
+.nvs-page .choose .section-heading {
+  max-width: 1100px;
+  margin-inline: auto;
+  color: white;
+}
+.nvs-page .choose p {
+  max-width: 1100px;
+  margin: 1.5rem auto 0;
+  font-size: 18px;
+  line-height: 1.75;
+}
+.nvs-page .choose .q {
+  font-size: 21px;
+  font-weight: 600;
+}
+.nvs-page .choose .fine {
+  font-size: 15px;
+  color: rgb(255 255 255 / 0.75);
+}
+.research-questions {
+  max-width: 1260px;
+  margin-inline: auto;
+  padding: 2rem 1.5rem;
+  border-radius: 2rem;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  text-align: center;
+}
+.research-questions .section-heading {
+  max-width: 900px;
+  margin: 0.5rem auto 0;
+}
+.research-description {
+  margin: 1.5rem auto 0;
+  max-width: 1000px;
+  font-size: 17px;
+  line-height: 1.65;
+}
+.research-probes {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+.research-probe {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  width: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: rgb(33 94 199 / 0.04);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.research-label {
+  color: var(--color-accent);
+  font-size: 21px;
+  font-weight: 700;
+}
+.research-question {
+  grid-column: 1 / -1;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.research-copy {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 15px;
+  font-weight: 600;
+}
+.research-probe:hover {
+  background: rgb(33 94 199 / 0.1);
+}
+.research-probe:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+.research-status {
+  min-height: 1.5em;
+  margin-top: 0.75rem;
+  font-size: 14px;
+}
+.research-note {
+  margin-top: 1.5rem;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.research-questions .cmp-ai-providers > span {
+  font-size: 22px;
+}
+.research-questions .cmp-ai-providers img {
+  height: 30px;
+  max-width: 150px;
+}
+.research-questions-dark {
+  background: var(--color-ink);
+  color: white;
+}
+.research-questions-dark :is(.eyebrow, .section-heading) {
+  color: white;
+}
+.research-questions-dark .eyebrow {
+  border-color: rgb(255 255 255 / 0.6);
+}
+.research-questions-dark .research-probe {
+  background: rgb(255 255 255 / 0.05);
+  border-color: rgb(255 255 255 / 0.2);
+}
+.research-questions-dark .research-probe:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+.research-questions-dark .research-label {
+  color: rgb(255 255 255 / 0.8);
+}
+.research-questions:not(.research-questions-dark) .cmp-ai-providers img {
+  filter: none;
+}
+.research-questions:not(.research-questions-dark) .cmp-ai-providers a + a {
+  border-color: var(--color-border);
+}
+@media (min-width: 768px) {
+  .nvs-page #proof .section-heading {
+    max-width: 800px;
+    margin-inline: auto;
+    font-size: 36px;
+    line-height: 1.25;
+  }
+  .nvs-page .ice .section-heading {
+    max-width: none;
+    font-size: 36px;
+    line-height: 1.25;
+  }
+  .nvs-page .nvs-section {
+    padding-block: 5rem;
+  }
+  .nvs-page .hero {
+    padding-top: 11rem;
+    padding-bottom: 5rem;
+  }
+  .nvs-page :is(.fork, .split) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .nvs-page :is(.path, .sl, .sr) {
+    padding: 2rem;
+  }
+  .nvs-page .ladder {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .nvs-page .choose,
+  .research-questions {
+    padding: 3.5rem 3rem;
+    border-radius: 3rem;
+  }
+  .nvs-page .strow {
+    grid-template-columns: 230px minmax(0, 1fr);
+    align-items: center;
+  }
+}
+@media (min-width: 1024px) {
+  .nvs-page .ice .research-probe {
+    padding-block: 1rem;
+  }
+  .nvs-page .rung {
+    min-height: 245px;
+  }
+  .nvs-page .spine {
+    grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr) 44px minmax(
+        0,
+        1fr
+      );
+  }
+  .nvs-page .arw::before {
+    content: "⟶";
+  }
+  .nvs-page .ladder {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .nvs-page .tm-table-desktop {
+    display: block;
+  }
+  .nvs-page .tm-table-mobile {
+    display: none;
+  }
+  .nvs-page table th:first-child {
+    width: 20%;
+  }
+  .nvs-page table thead th:last-child {
+    width: 14%;
+  }
+  .research-probe {
+    grid-template-columns: minmax(150px, 0.8fr) minmax(0, 3fr) 70px;
+    padding: 1.5rem 2rem;
+  }
+  .research-question {
+    grid-column: auto;
+  }
+  .research-copy {
+    grid-column: auto;
+    grid-row: auto;
+    text-align: right;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .research-probe {
+    transition: none;
+  }
+}

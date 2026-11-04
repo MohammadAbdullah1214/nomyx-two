@@ -360,6 +360,17 @@
 .cmp-acceptance-test {
   margin-top: 3.5rem;
 }
+.cmp-structure-callout {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0.75rem;
+  color: var(--color-ink-muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
 .cmp-test-rows {
   max-width: 1100px;
   margin-inline: auto;

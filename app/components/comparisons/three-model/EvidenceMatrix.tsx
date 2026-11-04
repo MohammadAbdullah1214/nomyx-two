@@ -1,4 +1,4 @@
-import ModelTable from "./ModelTable";
+import ModelTable from "../ModelTable";
 
 export default function EvidenceMatrix() {
   return (
