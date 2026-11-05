@@ -16,6 +16,7 @@ import { CalloutNode } from './nodes/CalloutNode';
 import { ToolbarPlugin } from './plugins/ToolbarPlugin';
 import { HTMLSyncPlugin } from './plugins/HTMLSyncPlugin';
 import { FloatingLinkEditorPlugin } from './plugins/FloatingLinkEditorPlugin';
+import { createStyleImportMap } from './styleImport';
 
 const theme = {
   text: {
@@ -51,6 +52,7 @@ export function LexicalEditor({
 }) {
   const initialConfig = {
     namespace: 'NomyxEditor',
+    html: { import: createStyleImportMap() },
     theme,
     onError: (error: Error) => {
       console.error(error);

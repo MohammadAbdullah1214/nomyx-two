@@ -4,6 +4,7 @@ import { $isLinkNode } from '@lexical/link';
 import { useCallback, useEffect, useState, useRef } from 'react';
 import { mergeRegister } from '@lexical/utils';
 import { createPortal } from 'react-dom';
+import { isSafeEditorLink } from '@/lib/faq-links';
 
 export function FloatingLinkEditorPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -87,11 +88,12 @@ export function FloatingLinkEditorPlugin() {
   }, [activeLinkKey, editor]);
 
   const updateLink = (url: string, target: boolean, rel: boolean) => {
+    if (!isSafeEditorLink(url.trim())) return;
     editor.update(() => {
       if (!activeLinkKey) return;
       const node = $getNodeByKey(activeLinkKey);
       if ($isLinkNode(node)) {
-        node.setURL(url);
+        node.setURL(url.trim());
         node.setTarget(target ? '_blank' : null);
         node.setRel(rel ? 'nofollow' : null);
       }
@@ -103,7 +105,7 @@ export function FloatingLinkEditorPlugin() {
   return createPortal(
     <div 
       ref={editorRef}
-      className="absolute z-50 bg-white border border-border shadow-lg rounded-xl p-4 flex flex-col gap-3 w-80"
+      className="absolute z-50 bg-white border border-border shadow-lg rounded-xl p-4 flex flex-col gap-3 w-80 max-w-[calc(100vw-2rem)]"
       style={{ top: position.top, left: position.left }}
     >
       <input
@@ -142,6 +144,21 @@ export function FloatingLinkEditorPlugin() {
           </label>
         </div>
         <button
+          type="button"
+          onClick={() => {
+            editor.update(() => {
+              const node = $getNodeByKey(activeLinkKey);
+              if ($isLinkNode(node)) {
+                node.getChildren().forEach(child => node.insertBefore(child));
+                node.remove();
+              }
+            });
+            setActiveLinkKey(null);
+          }}
+          className="rounded border border-border px-3 py-1.5 text-sm font-medium text-ink hover:bg-slate-100"
+        >Remove link</button>
+        <button
+          type="button"
           onClick={() => setActiveLinkKey(null)}
           className="bg-accent text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-700 transition-colors"
         >

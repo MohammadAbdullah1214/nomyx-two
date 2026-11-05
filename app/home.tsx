@@ -23,6 +23,9 @@ import {
 } from "lucide-react";
 import { AnimatedButton } from "@/app/components/evergreen/shared";
 import PreferredSourceButton from "@/app/components/PreferredSourceButton";
+import ComparisonNavigation, {
+  isComparisonRoute,
+} from "@/app/components/ComparisonNavigation";
 import pageContent from "./pageContent.json";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blogs";
@@ -248,6 +251,7 @@ export const Navbar = ({
   };
 
   const isNavItemActive = (item: string) => {
+    if (item === "Resources" && isComparisonRoute(pathname)) return true;
     const dropdown = navDropdowns[item as keyof typeof navDropdowns];
 
     if (dropdown?.some((dropdownItem) => isHrefActive(dropdownItem.href))) {
@@ -324,6 +328,7 @@ export const Navbar = ({
                   <button
                     type="button"
                     aria-expanded={isOpen}
+                    onClick={() => setActiveDropdown(item)}
                     aria-current={isCurrent ? "page" : undefined}
                     className={`label-mono group relative inline-flex h-10 items-center gap-1 xl:gap-1.5 overflow-hidden whitespace-nowrap rounded-[6px] px-2 xl:px-4 transition-all duration-300 ${
                       isActive
@@ -424,6 +429,13 @@ export const Navbar = ({
                                 </a>
                               );
                             })}
+                            {item === "Resources" && (
+                              <ComparisonNavigation
+                                light={forceLightNav}
+                                pathname={pathname}
+                                onNavigate={() => setActiveDropdown(null)}
+                              />
+                            )}
                           </div>
                         </div>
                       </motion.div>
@@ -457,6 +469,7 @@ export const Navbar = ({
           <button
             className={`p-2 transition-colors ${forceLightNav ? "text-ink" : "text-white"}`}
             aria-label="Toggle navigation"
+            aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -470,7 +483,7 @@ export const Navbar = ({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute left-0 right-0 top-20 border-b border-border bg-white p-6 shadow-xl md:hidden max-h-[calc(100vh-80px)] overflow-y-auto pb-10"
+            className="absolute left-0 right-0 top-[104px] border-b border-border bg-white p-6 shadow-xl lg:hidden max-h-[calc(100dvh-104px)] overflow-y-auto pb-10"
           >
             <div className="flex flex-col gap-5">
               {pageContent.nav.map((item) => {
@@ -482,6 +495,7 @@ export const Navbar = ({
                   <div key={item}>
                     {dropdown ? (
                       <button
+                        aria-expanded={activeMobileDropdown === item}
                         className={`w-full flex items-center justify-between rounded-[6px] px-3 py-2 text-lg font-bold ${
                           isCurrent ? "bg-accent/5 text-accent" : "text-ink"
                         }`}
@@ -543,6 +557,13 @@ export const Navbar = ({
                             </a>
                           );
                         })}
+                        {item === "Resources" && (
+                          <ComparisonNavigation
+                            mobile
+                            pathname={pathname}
+                            onNavigate={() => setIsMobileMenuOpen(false)}
+                          />
+                        )}
                       </div>
                     )}
                   </div>

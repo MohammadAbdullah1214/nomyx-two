@@ -1,5 +1,6 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { useCallback, useState, useRef, useEffect, ChangeEvent } from 'react';
+import { createPortal } from 'react-dom';
 import {
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
@@ -14,8 +15,11 @@ import {
   TextFormatType,
   ElementFormatType,
   $getRoot,
+  $setSelection,
+  type RangeSelection,
 } from 'lexical';
-import { TOGGLE_LINK_COMMAND } from '@lexical/link';
+import { TOGGLE_LINK_COMMAND, $isLinkNode } from '@lexical/link';
+import { isSafeEditorLink } from '@/lib/faq-links';
 import { $wrapNodes } from '@lexical/selection';
 import { $patchStyleText } from '@lexical/selection';
 import {
@@ -31,7 +35,7 @@ import {
   Bold, Heading1, Heading2, Heading3, ImagePlus, Italic, Link2, List, ListOrdered, Quote, 
   RemoveFormatting, Underline, ListChecks, Undo, Redo, Strikethrough, Code, AlignLeft, 
   AlignCenter, AlignRight, AlignJustify, Type, Palette, Baseline, ChevronDown, Check, TypeOutline,
-  Table as TableIcon
+  Table as TableIcon, Unlink
 } from 'lucide-react';
 import { $createCalloutNode, $isCalloutNode } from '../nodes/CalloutNode';
 import { $createImageNode } from '../nodes/ImageNode';
@@ -76,6 +80,8 @@ function Dropdown({ title, icon: Icon, children, disabled = false, showArrow = t
   return (
     <div className="relative inline-block" ref={ref}>
       <button
+        type="button"
+        onMouseDown={e => e.preventDefault()}
         disabled={disabled}
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1.5 px-2 py-1.5 rounded hover:bg-slate-100 disabled:opacity-50 disabled:hover:bg-transparent transition-colors text-sm font-medium text-slate-700 h-8 whitespace-nowrap"
@@ -97,6 +103,8 @@ function Dropdown({ title, icon: Icon, children, disabled = false, showArrow = t
 function DropdownItem({ onClick, icon: Icon, label, active = false }: any) {
   return (
     <button
+      type="button"
+      onMouseDown={e => e.preventDefault()}
       onClick={onClick}
       className={`flex items-center gap-2 px-3 py-1.5 text-sm text-left w-full hover:bg-slate-50 transition-colors ${active ? 'bg-slate-50 text-accent font-semibold' : 'text-slate-700'}`}
     >
@@ -117,6 +125,8 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
 
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
   const [linkUrl, setLinkUrl] = useState('');
+  const linkSelection = useRef<RangeSelection | null>(null);
+  const [isLink, setIsLink] = useState(false);
 
   // Formats
   const [isBold, setIsBold] = useState(false);
@@ -128,7 +138,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
   // Block type & styles
   const [blockType, setBlockType] = useState('paragraph');
   const [fontFamily, setFontFamily] = useState('Arial');
-  const [fontSize, setFontSize] = useState('16px');
+  const [fontSize, setFontSize] = useState('Select text');
   const [alignment, setAlignment] = useState<ElementFormatType>('left');
 
   const updateToolbar = useCallback(() => {
@@ -143,6 +153,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
 
       // Node selection for block type
       const anchorNode = selection.anchor.getNode();
+      setIsLink($isLinkNode(anchorNode) || $isLinkNode(anchorNode.getParent()));
       const element =
         anchorNode.getKey() === 'root'
           ? anchorNode
@@ -161,19 +172,28 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
         }
       }
 
-      // Font Styles
-      const node = selection.getNodes()[0];
-      if ($isTextNode(node)) {
-        const style = node.getStyle();
-        // naive extraction for demo
-        const ffMatch = style.match(/font-family: ([^;]+)/);
-        if (ffMatch) setFontFamily(ffMatch[1].replace(/['"]/g, ''));
-        else setFontFamily('Arial');
-
-        const fsMatch = style.match(/font-size: ([^;]+)/);
-        if (fsMatch) setFontSize(fsMatch[1]);
-        else setFontSize('16px');
+      const textNodes = selection.getNodes().filter($isTextNode);
+      const readStyle = (style: string, property: string) => {
+        const declaration = document.createElement('span').style;
+        declaration.cssText = style;
+        return declaration.getPropertyValue(property);
+      };
+      const sizes = new Set(textNodes.map(node => {
+        const element = editor.getElementByKey(node.getKey());
+        return (selection.isCollapsed() ? readStyle(selection.style, 'font-size') : '') || readStyle(node.getStyle(), 'font-size') || (element ? getComputedStyle(element).fontSize : '');
+      }).filter(Boolean));
+      if (!sizes.size) {
+        const dom = editor.getElementByKey(anchorNode.getKey()) ?? editor.getRootElement();
+        setFontSize(dom ? getComputedStyle(dom).fontSize : 'Select text');
+      } else setFontSize(sizes.size === 1 ? [...sizes][0] : 'Mixed');
+      const node = textNodes[0];
+      if (node) {
+        const dom = editor.getElementByKey(node.getKey());
+        setFontFamily((readStyle(node.getStyle(), 'font-family') || (dom ? getComputedStyle(dom).fontFamily : 'Arial')).split(',')[0].replace(/['"]/g, '').trim());
       }
+    } else {
+      setFontSize('Select text');
+      setIsLink(false);
     }
   }, [editor]);
 
@@ -350,11 +370,20 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
 
   const insertLink = () => {
     if (!isLinkModalOpen) {
+      editor.getEditorState().read(() => {
+        const selection = $getSelection();
+        linkSelection.current = $isRangeSelection(selection) ? selection.clone() : null;
+      });
+      if (!linkSelection.current) return;
       setIsLinkModalOpen(true);
       return;
     }
     if (linkUrl) {
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, linkUrl);
+      if (!isSafeEditorLink(linkUrl.trim())) { toast.error('Enter a valid https://, http://, mailto:, tel:, relative, or # URL.'); return; }
+      editor.update(() => {
+        if (linkSelection.current) $setSelection(linkSelection.current.clone());
+        editor.dispatchCommand(TOGGLE_LINK_COMMAND, linkUrl.trim());
+      });
       setLinkUrl('');
       setIsLinkModalOpen(false);
     }
@@ -362,6 +391,8 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
 
   const ToolbarButton = ({ onClick, icon: Icon, active, title, disabled }: any) => (
     <button
+      type="button"
+      onMouseDown={e => e.preventDefault()}
       onClick={onClick}
       disabled={disabled}
       className={`p-1.5 rounded transition-colors ${active ? 'bg-slate-200 text-accent' : 'text-slate-600 hover:bg-slate-100'} disabled:opacity-50`}
@@ -387,7 +418,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
 
   return (
     <>
-      <div className="sticky top-0 z-30 flex flex-wrap items-center gap-1 rounded-t-[8px] border-b border-border bg-white p-2 shadow-[0_8px_18px_rgba(10,17,40,0.08)]">
+      <div className="sticky top-[var(--cms-editor-header-height,0px)] z-30 flex flex-wrap items-center gap-1 rounded-t-[8px] border-b border-border bg-white p-2 shadow-[0_8px_18px_rgba(10,17,40,0.08)]">
         
         {/* History */}
         <ToolbarButton onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)} icon={Undo} title="Undo" />
@@ -450,6 +481,7 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
         }} icon={TableIcon} title="Insert Table" />
         <ToolbarButton onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code')} icon={Code} active={isCode} title="Inline Code" />
         <ToolbarButton onClick={() => insertLink()} icon={Link2} title="Link" />
+        <ToolbarButton onClick={() => editor.dispatchCommand(TOGGLE_LINK_COMMAND, null)} icon={Unlink} title="Remove link" disabled={!isLink} />
         
         <Divider />
 
@@ -496,8 +528,8 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
         </Dropdown>
       </div>
 
-      {isLinkModalOpen && (
-        <div className="absolute top-14 left-1/2 -translate-x-1/2 bg-white border border-border shadow-lg rounded-md p-3 z-50 flex items-center gap-2">
+      {isLinkModalOpen && createPortal(
+        <div role="dialog" aria-label="Add link" className="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white border border-border shadow-lg rounded-md p-3 z-50 flex flex-wrap items-center gap-2 max-w-[calc(100vw-2rem)]">
           <input
             autoFocus
             type="url"
@@ -506,13 +538,13 @@ export function ToolbarPlugin({ imageUploadTitle = "blog-content" }: { imageUplo
             placeholder="https://..."
             className="border border-border rounded px-2 py-1 text-sm outline-none focus:border-accent w-64"
             onKeyDown={(e) => {
-              if (e.key === 'Enter') insertLink();
+              if (e.key === 'Enter') { e.preventDefault(); insertLink(); }
               if (e.key === 'Escape') setIsLinkModalOpen(false);
             }}
           />
-          <button onClick={insertLink} className="bg-accent text-white px-3 py-1 rounded text-sm hover:bg-blue-700">Add</button>
-          <button onClick={() => setIsLinkModalOpen(false)} className="text-slate-500 hover:bg-slate-100 px-2 py-1 rounded text-sm">Cancel</button>
-        </div>
+          <button type="button" onClick={insertLink} className="bg-accent text-white px-3 py-1 rounded text-sm hover:bg-blue-700">Add</button>
+          <button type="button" onClick={() => setIsLinkModalOpen(false)} className="text-slate-500 hover:bg-slate-100 px-2 py-1 rounded text-sm">Cancel</button>
+        </div>, document.body
       )}
 
       {pendingImage && (

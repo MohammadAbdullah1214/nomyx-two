@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FileText, Newspaper, FolderTree, Users, LayoutDashboard, LogOut, UserCircle } from "lucide-react";
 import CmsLogoutButton from "@/app/cms/CmsLogoutButton";
+import BackToTop from './BackToTop';
 
 export default function CmsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -64,6 +65,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
       <main className="flex-1">
         {children}
       </main>
+      <BackToTop />
     </div>
   );
 }

@@ -28,6 +28,8 @@ import { toast } from "sonner";
 
 import CmsLogoutButton from "@/app/cms/CmsLogoutButton";
 import RichTextEditor from "@/app/components/RichTextEditor";
+import FaqAnswerEditor from "@/app/components/FaqAnswerEditor";
+import StickyEditorHeader from "../components/StickyEditorHeader";
 import ImageCropperModal from "../components/ImageCropperModal";
 import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import type { BlogFaq, BlogPost, BlogStatus } from "@/lib/blogs";
@@ -639,7 +641,7 @@ export default function BlogCmsPage() {
           />
 
             <section className="rounded-[12px] border border-border bg-white/95 shadow-[0_24px_64px_rgba(10,17,40,0.08)] backdrop-blur">
-              <div className="border-b border-border bg-[#F8FBFF] px-6 py-5">
+              <StickyEditorHeader>
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div>
                     <h2 className="text-sm font-bold uppercase tracking-[0.16em]">
@@ -673,7 +675,7 @@ export default function BlogCmsPage() {
                     )}
                   </div>
                 </div>
-              </div>
+              </StickyEditorHeader>
 
               <div className="flex flex-col gap-8 px-5 py-6 md:px-8 md:py-8">
                 {error && (
@@ -940,18 +942,16 @@ export default function BlogCmsPage() {
                                 />
                               </label>
 
-                              <label className="block">
+                              <div>
                                 <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted">
                                   Answer
                                 </span>
-                                <textarea
+                                <FaqAnswerEditor
+                                  index={index}
                                   value={faq.answer}
-                                  onChange={(event) => updateFaq(index, "answer", event.target.value)}
-                                  placeholder="Provide a concise answer..."
-                                  rows={3}
-                                  className="w-full rounded-[6px] border border-border bg-slate-50/50 px-4 py-3 text-sm font-medium outline-none transition-colors focus:bg-white focus:border-accent resize-y"
+                                  onChange={(answer) => updateFaq(index, "answer", answer)}
                                 />
-                              </label>
+                              </div>
                             </div>
                           ))}
                         </div>

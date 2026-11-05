@@ -17,6 +17,8 @@ import {
 import { enhanceBlogHtml } from "@/lib/blog-content";
 import BlogTableOfContents from "./BlogTableOfContents";
 import Accordion from "@/app/components/shared/Accordion";
+import FaqAnswer from "@/app/components/FaqAnswer";
+import { faqAnswerText } from "@/lib/faq-links";
 import { isCmsRequestAuthenticated } from "@/lib/cms-auth-server";
 
 import { blogSchemas } from "@/lib/schema-data";
@@ -129,7 +131,7 @@ export default async function BlogDetailPage({
                 name: faq.question,
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: faq.answer,
+                  text: faqAnswerText(faq.answer),
                 },
               })),
             },
@@ -336,7 +338,7 @@ export default async function BlogDetailPage({
                       FAQ&apos;s
                     </h2>
 
-                    <Accordion items={faqs} />
+                    <Accordion items={faqs.map(faq => ({ question: faq.question, answer: <FaqAnswer answer={faq.answer} /> }))} />
                   </section>
                 )}
               </article>
