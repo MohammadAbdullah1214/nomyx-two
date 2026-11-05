@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { AnimatedButton } from "@/app/components/evergreen/shared";
 import PreferredSourceButton from "@/app/components/PreferredSourceButton";
+import { footerNavigation } from "@/app/components/footerNavigation";
 import ComparisonNavigation, {
   isComparisonRoute,
 } from "@/app/components/ComparisonNavigation";
@@ -1329,12 +1330,12 @@ export const Footer = ({
 
         {/* Footer Content */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-3 xl:col-span-4">
             <Link href="/" className="mb-6 block">
               <img
                 src="/nomyx-logo.png"
                 alt="Nomyx"
-                className="h-9 md:h-12 w-auto"
+                className="h-9 md:h-12 w-auto max-w-full object-contain"
               />
             </Link>
             <p className="max-w-sm text-[15px] font-medium leading-relaxed text-[#42546E]">
@@ -1343,21 +1344,31 @@ export const Footer = ({
             <PreferredSourceButton />
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 lg:col-span-7">
-            {pageContent.footer.columns.map((column) => (
-              <div key={column.title}>
-                <h4 className="mb-6 text-[13px] font-bold uppercase tracking-[0.15em] text-[#19233D]">
+          <div className="grid min-w-0 grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:col-span-9 xl:col-span-8 xl:grid-cols-5">
+            {footerNavigation.map((column) => (
+              <div key={column.title} className="min-w-0">
+                <h4 className="mb-6 text-[13px] font-bold leading-relaxed text-[#19233D]">
                   {column.title}
                 </h4>
                 <ul className="space-y-4">
                   {column.links.map((link) => (
                     <li key={link.name}>
-                      <Link
-                        href={link.href}
-                        className="text-[15px] font-medium text-[#42546E] transition-colors hover:text-accent"
-                      >
-                        {link.name}
-                      </Link>
+                      {link.href ? (
+                        <Link
+                          href={link.href}
+                          className="block text-[15px] font-medium leading-relaxed text-[#42546E] transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                        >
+                          {link.name}
+                        </Link>
+                      ) : (
+                        <span
+                          aria-disabled="true"
+                          title="Link destination not yet available"
+                          className="block text-[15px] font-medium leading-relaxed text-[#42546E]/70"
+                        >
+                          {link.name}
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
