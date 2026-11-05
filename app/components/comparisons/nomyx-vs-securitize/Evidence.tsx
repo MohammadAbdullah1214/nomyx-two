@@ -25,10 +25,7 @@ export default function Evidence() {
             <p>
               Nomyx tokenizes, recomposes in motion, and presents continuous,
               machine-verifiable compliance. Per-customer isolated
-              infrastructure. Cryptographic integrity audited by Halborn.{" "}
-              <span className="verify">
-                Gemforce codebase; current-production audit status
-              </span>
+              infrastructure. Cryptographic integrity audited by Halborn.
             </p>
           </div>
           <div className="strow">
@@ -36,8 +33,7 @@ export default function Evidence() {
             <p>
               Hyperliquid depends on a confirmed collateral integration. Until a
               named lender or protocol confirms a documented integration, the
-              deployable-capital argument reads illustrative, not delivered.{" "}
-              <span className="verify">Aave Horizon / Morpho Blue</span>
+              deployable-capital argument reads illustrative, not delivered.
             </p>
           </div>
           <div className="strow">
@@ -52,25 +48,20 @@ export default function Evidence() {
         <div className="proofbar">
           <span className="pchip">
             <ShieldCheck size={16} aria-hidden="true" />
-            Smart-contract security audit, Halborn{" "}
-            <span className="verify soft">scope + current-production</span>
+            Smart-contract security audit, Halborn
           </span>
           <span className="pchip">
             <RectangleHorizontal size={16} aria-hidden="true" />
-            Per-customer isolated infrastructure{" "}
-            <span className="verify soft">isolation claim</span>
+            Per-customer isolated infrastructure
           </span>
           <span className="pchip">
-            Distribution relationship, tZERO{" "}
-            <span className="verify soft">wording; investor count</span>
+            Distribution relationship, tZERO
           </span>
           <span className="pchip">
-            Active pilot, ECGI Holdings / RezyFi{" "}
-            <span className="verify soft">amount; spelling; permission</span>
+            Active pilot, ECGI Holdings / RezyFi
           </span>
           <span className="pchip">
-            Named customer, Molokai Capital{" "}
-            <span className="verify soft">permission to name</span>
+            Named customer, Molokai Capital
           </span>
         </div>
         <div className="gov">
@@ -81,10 +72,7 @@ export default function Evidence() {
           <p>
             Nomyx publishes the DiamondCut governance model, multisig control, a
             timelock on every upgrade, and a stated audit cadence, rather than
-            hiding the capability.{" "}
-            <span className="verify">
-              final diamondCut governance parameters
-            </span>
+            hiding the capability.
           </p>
         </div>
       </div>

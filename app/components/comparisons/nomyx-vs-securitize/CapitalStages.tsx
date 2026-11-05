@@ -86,8 +86,7 @@ export default function CapitalStages() {
         <p className="boxp">
           Each stage you climb frees capital that a lower stage traps. Stage 3
           makes your assets collateral-ready; the lending integration that turns
-          that into borrowed capital is named and contingent{" "}
-          <span className="verify">Aave Horizon / Morpho Blue</span>. Stage 4
+          that into borrowed capital is named and contingent. Stage 4
           compresses the liquidity discount the market charges illiquid paper.
           That freed capital, pledged sooner and discounted less, names the
           structural alpha a faster operating model creates. Your Assessment

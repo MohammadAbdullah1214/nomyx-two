@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["wrongly-dander-obtrusive.ngrok-free.dev"],
   async redirects() {
     return [
       {

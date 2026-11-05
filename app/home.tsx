@@ -64,7 +64,7 @@ const navDropdowns = {
       href: "/real-estate-tokenization",
     },
     {
-      title: "Tokenized-asset lifecycle",
+      title: "Tokenized Asset Lifecycle",
       description: "One connected path from asset orientation to settlement",
       href: "/tokenized-asset-lifecycle",
     },

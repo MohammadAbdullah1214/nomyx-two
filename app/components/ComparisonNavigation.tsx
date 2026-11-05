@@ -7,13 +7,12 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 export const comparisonColumns = [
   [
-    { title: "Tokenized-asset lifecycle", href: "/tokenized-asset-lifecycle" },
     { title: "Capital velocity guide", href: "/capital-velocity-pillar" },
     { title: "Brickken vs Bitbond", href: "/brickken-bitbond" },
     { title: "Securitize vs Tokeny", href: "/securitize-tokeny" },
+    { title: "SettleMint vs Bitbond", href: "/settlemint-bitbond" },
   ],
   [
-    { title: "SettleMint vs Bitbond", href: "/settlemint-bitbond" },
     { title: "Taurus vs Fireblocks", href: "/taurus-fireblocks" },
     { title: "Three-model comparison", href: "/three-model-comparison" },
     { title: "Nomyx vs Securitize", href: "/nomyx-vs-securitize" },
