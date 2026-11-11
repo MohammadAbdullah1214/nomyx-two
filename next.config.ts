@@ -45,6 +45,11 @@ const nextConfig: NextConfig = {
         destination: "/technical-documentation",
         permanent: true,
       },
+      {
+        source: "/brickken-bitbond",
+        destination: "/nomyx-vs-brickken",
+        permanent: true,
+      },
     ];
   },
 };

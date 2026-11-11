@@ -31,6 +31,8 @@ const staticRoutes = [
   "/nomyx-id",
   "/private-credit-syndication",
   "/real-estate-tokenization",
+  "/nomyx-compare",
+  "/nomyx-vs-brickken",
   "/securitize-tokeny",
   "/settlemint-bitbond",
   "/taurus-fireblocks",

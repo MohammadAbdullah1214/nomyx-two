@@ -1,0 +1,277 @@
+/* Nomyx vs Brickken comparison refinements; base layout and tokens remain shared. */
+.brickken-comparison .cmp-section {
+  padding-block: 3.5rem;
+}
+
+.brickken-comparison .cmp-section .custom-container {
+  max-width: 1280px;
+}
+
+.brickken-comparison #quick .custom-container {
+  max-width: 1424px;
+}
+
+.brickken-comparison .cmp-intro-copy {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.brickken-comparison .cmp-section-heading {
+  margin-bottom: 1.75rem;
+}
+
+.brickken-comparison #compare {
+  scroll-margin-top: 8rem;
+}
+
+/* Highlight Nomyx (column 2 / mobile item 1) instead of column 3. */
+.brickken-comparison .cmp-table thead th:nth-child(3),
+.brickken-comparison .cmp-table td:nth-child(3),
+.brickken-comparison .cmp-mobile-decision dl > div:nth-child(2) {
+  background: transparent;
+}
+
+.brickken-comparison .cmp-table thead th:nth-child(2) {
+  background: rgb(255 255 255 / 0.05);
+}
+
+.brickken-comparison .cmp-table td:nth-child(2) {
+  background: rgb(33 94 199 / 0.09);
+}
+
+.brickken-comparison .cmp-mobile-decision dl > div:nth-child(1) {
+  background: rgb(33 94 199 / 0.07);
+}
+
+.brickken-comparison .cmp-numbered-rows {
+  gap: 0.375rem;
+}
+
+.brickken-comparison .cmp-numbered-rows li {
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+}
+
+.brickken-comparison .cmp-row-number {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.brickken-comparison .cmp-numbered-rows h3 {
+  font-size: 16px;
+}
+
+.brickken-comparison .cmp-numbered-rows p {
+  line-height: 1.6;
+}
+
+.brickken-comparison .cmp-fit-columns {
+  align-items: start;
+  gap: 2rem;
+}
+
+.brickken-comparison .cmp-fit-description {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.brickken-comparison .cmp-fit-card {
+  padding: 1.5rem;
+  border-radius: 0.625rem;
+  background: var(--color-bg);
+}
+
+.brickken-comparison .cmp-fit-card h3 {
+  font-size: 20px;
+  margin-bottom: 0.625rem;
+}
+
+.brickken-comparison .cmp-fit-card p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.brickken-comparison #fit .cmp-intro-copy {
+  max-width: 850px;
+  margin-inline: auto;
+}
+
+.brickken-comparison :is(#costs, #fit-review) .custom-container {
+  max-width: 1200px;
+}
+
+.brickken-comparison #costs .cmp-intro-copy {
+  max-width: 1000px;
+  margin-inline: auto;
+  font-size: 17px;
+}
+
+.brickken-comparison #costs .cmp-structure-callout {
+  max-width: 855px;
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.brickken-comparison #costs .cmp-note {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.brickken-comparison #fit-review {
+  padding-top: 2.5rem;
+}
+
+.brickken-comparison .cmp-review-band > p {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.brickken-comparison .cmp-review-band > p + p {
+  color: rgb(255 255 255 / 0.75);
+}
+
+.brickken-comparison #faq {
+  background: #f2f9ff;
+}
+
+.brickken-comparison :is(#faq, #research) .custom-container {
+  max-width: 1088px;
+}
+
+.brickken-comparison #faq summary {
+  font-size: 16px;
+}
+
+.brickken-comparison #faq details {
+  padding-block: 1rem;
+}
+
+.brickken-comparison #research {
+  padding-block: 2.75rem;
+}
+
+.brickken-comparison #research .cmp-research {
+  border-radius: 2rem;
+}
+
+.brickken-comparison #research .cmp-research > p {
+  font-size: 14px;
+}
+
+.brickken-comparison #research .cmp-prompt {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  border-radius: 0.5rem;
+}
+
+.brickken-comparison #research .cmp-copy-status:empty {
+  display: none;
+}
+
+.brickken-comparison #research .cmp-ai-providers {
+  margin-top: 2rem;
+  gap: 0.75rem 1rem;
+}
+
+.brickken-comparison #research .cmp-ai-providers img {
+  height: 24px;
+  max-width: 120px;
+}
+
+.brickken-comparison #research .cmp-ai-providers a + a {
+  padding-left: 1rem;
+}
+
+.brickken-comparison #research .cmp-prompt-actions button {
+  min-height: 44px;
+  padding: 0.5rem 0.875rem;
+  font-size: 12px;
+  border-radius: 0.5rem;
+}
+
+.brickken-comparison #research .cmp-prompt-actions button > svg {
+  display: none;
+}
+
+.brickken-comparison #research .cmp-prompt-actions > span {
+  font-size: 11px;
+}
+
+.brickken-comparison #sources .cmp-sources {
+  max-width: 1152px;
+}
+
+.brickken-comparison #sources .cmp-sources > div {
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.brickken-comparison #sources .cmp-sources dd a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.brickken-comparison #sources .cmp-sources dd a:hover {
+  text-decoration: underline;
+}
+
+.brickken-comparison #sources .cmp-note {
+  max-width: 1152px;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .brickken-comparison .cmp-section:not(#quick) .section-heading {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+
+  .brickken-comparison #fit.cmp-section .cmp-fit-columns .section-heading,
+  .brickken-comparison #fit.cmp-section .cmp-acceptance-test .section-heading {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .brickken-comparison #faq.cmp-section .section-heading {
+    font-size: 34px;
+  }
+
+  .brickken-comparison #research.cmp-section .section-heading {
+    font-size: 32px;
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  .brickken-comparison .cmp-fit-columns {
+    gap: 4rem;
+  }
+
+  .brickken-comparison #research .cmp-research {
+    padding: 3rem;
+    border-radius: 3rem;
+  }
+
+  .brickken-comparison #research .cmp-prompt {
+    padding: 2.5rem;
+  }
+
+  .brickken-comparison #sources .cmp-sources > div {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .brickken-comparison .cmp-boundaries li {
+    grid-template-columns: 28px minmax(190px, 260px) minmax(0, 1fr);
+    gap: 1.75rem;
+    padding-inline: 1.5rem;
+  }
+}
+

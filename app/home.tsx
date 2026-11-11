@@ -24,9 +24,6 @@ import {
 import { AnimatedButton } from "@/app/components/evergreen/shared";
 import PreferredSourceButton from "@/app/components/PreferredSourceButton";
 import { footerNavigation } from "@/app/components/footerNavigation";
-import ComparisonNavigation, {
-  isComparisonRoute,
-} from "@/app/components/ComparisonNavigation";
 import pageContent from "./pageContent.json";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blogs";
@@ -105,6 +102,11 @@ const navDropdowns = {
       description: "Stay updated with the latest news and updates from Nomyx",
       href: "/news",
     },
+    {
+      title: "Comparison",
+      description: "Compare platforms, costs, and operating models.",
+      href: "/nomyx-compare",
+    },
   ],
 } satisfies Partial<
   Record<
@@ -116,6 +118,20 @@ const navDropdowns = {
     }[]
   >
 >;
+
+const comparisonRoutes = new Set([
+  "/nomyx-compare",
+  "/capital-velocity-pillar",
+  "/nomyx-vs-brickken",
+  "/securitize-tokeny",
+  "/settlemint-bitbond",
+  "/taurus-fireblocks",
+  "/three-model-comparison",
+  "/nomyx-vs-securitize",
+  "/centrifuge-clearpool",
+  "/digishares-investax",
+  "/digishares-launch-entry",
+]);
 
 const topLevelNavRoutes: Partial<Record<string, string>> = {
   "The Diamond Standard": "/the-diamond-standard",
@@ -248,11 +264,14 @@ export const Navbar = ({
       return isHomeRoute && activeHash === href;
     }
 
+    if (href === "/nomyx-compare") {
+      return comparisonRoutes.has(pathname);
+    }
+
     return pathname === href;
   };
 
   const isNavItemActive = (item: string) => {
-    if (item === "Resources" && isComparisonRoute(pathname)) return true;
     const dropdown = navDropdowns[item as keyof typeof navDropdowns];
 
     if (dropdown?.some((dropdownItem) => isHrefActive(dropdownItem.href))) {
@@ -430,13 +449,6 @@ export const Navbar = ({
                                 </a>
                               );
                             })}
-                            {item === "Resources" && (
-                              <ComparisonNavigation
-                                light={forceLightNav}
-                                pathname={pathname}
-                                onNavigate={() => setActiveDropdown(null)}
-                              />
-                            )}
                           </div>
                         </div>
                       </motion.div>
@@ -558,13 +570,6 @@ export const Navbar = ({
                             </a>
                           );
                         })}
-                        {item === "Resources" && (
-                          <ComparisonNavigation
-                            mobile
-                            pathname={pathname}
-                            onNavigate={() => setIsMobileMenuOpen(false)}
-                          />
-                        )}
                       </div>
                     )}
                   </div>

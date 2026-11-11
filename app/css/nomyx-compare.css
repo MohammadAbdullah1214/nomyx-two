@@ -1,0 +1,603 @@
+/* Comparison Hub page styles scoped to .compare-hub; base tokens and section primitives remain in globals.css and comparisons.css. */
+.compare-hub :is(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+.compare-hub .cmp-badge-dot {
+  position: relative;
+}
+
+.compare-hub .cmp-badge-dot::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  opacity: 0;
+  animation: cmp-eyepulse 2.2s ease-out infinite;
+}
+
+@keyframes cmp-eyepulse {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.compare-hub .cmp-meta {
+  gap: 0.35rem 0.65rem;
+}
+
+.compare-hub .cmp-meta-sep {
+  user-select: none;
+  color: var(--color-ink-muted);
+}
+
+.compare-hub .cmp-section {
+  padding-block: 3.5rem;
+}
+
+.compare-hub .cmp-section-heading {
+  margin-bottom: 1.75rem;
+}
+
+.compare-hub .cmp-intro-copy {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.compare-hub #guides .cmp-section-heading h2 {
+  max-width: 780px;
+  margin-inline: auto;
+}
+
+.compare-hub #method .custom-container {
+  max-width: 1280px;
+}
+
+.compare-hub #fit-review {
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+}
+
+.compare-hub #fit-review .custom-container {
+  max-width: 1200px;
+}
+
+.compare-hub #method .cmp-numbered-rows {
+  gap: 0.375rem;
+  margin-top: 0.5rem;
+}
+
+.compare-hub #method .cmp-numbered-rows li {
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+}
+
+.compare-hub #method .cmp-row-number {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.compare-hub #method .cmp-numbered-rows h3 {
+  font-size: 16px;
+}
+
+.compare-hub #method .cmp-numbered-rows p {
+  line-height: 1.6;
+}
+
+.compare-hub .cmp-review-band > p {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.compare-hub .cmp-review-band > p + p {
+  color: rgb(255 255 255 / 0.75);
+}
+
+/* ---------- Company filter toolbar & directory grid ---------- */
+.compare-hub .htools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-top: 2.5rem;
+  padding: 0.875rem 0.875rem 0.875rem 1.25rem;
+  background: var(--color-bg);
+  border: 1px solid #dce3ee;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px -22px rgb(10 17 40 / 0.35);
+}
+
+.compare-hub .hsearch {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex: 1 1 260px;
+  max-width: 360px;
+  color: #6b7690;
+}
+
+.compare-hub .hsearch svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.compare-hub .hsearch input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-ink);
+  padding: 0.5rem 0;
+}
+
+.compare-hub .hsearch input::placeholder {
+  color: #6b7690;
+}
+
+.compare-hub .hsearch:focus-within {
+  color: var(--color-accent);
+}
+
+.compare-hub .hchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.compare-hub .hchip {
+  appearance: none;
+  border: 1px solid #dce3ee;
+  background: #f5f8fc;
+  color: var(--color-ink);
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.625rem 0.875rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.compare-hub .hchip .cnt {
+  font-size: 0.82em;
+  color: #6b7690;
+  font-weight: 600;
+}
+
+.compare-hub .hchip:hover {
+  border-color: var(--color-accent);
+}
+
+.compare-hub .hchip.on {
+  background: var(--color-hero-bg);
+  border-color: var(--color-hero-bg);
+  color: #fff;
+}
+
+.compare-hub .hchip.on .cnt {
+  color: #9fb3d8;
+}
+
+.compare-hub .hchip:focus-visible,
+.compare-hub .hc-link:focus-visible,
+.compare-hub .gcard:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.compare-hub .hcount {
+  margin: 1.375rem 0 1rem;
+  font-size: 15px;
+  color: #6b7690;
+}
+
+.compare-hub .hgrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.compare-hub .hcard {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-bg);
+  border: 1px solid #dce3ee;
+  border-radius: 1.125rem;
+  padding: 1.5rem 1.5rem 1.25rem;
+  transition: border-color 0.2s, box-shadow 0.25s, transform 0.25s;
+}
+
+.compare-hub .hcard:hover {
+  border-color: #b9cbea;
+  box-shadow: 0 18px 36px -26px rgb(10 17 40 / 0.45);
+  transform: translateY(-2px);
+}
+
+.compare-hub .hc-logo {
+  height: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.compare-hub .hc-logo .firm-logo {
+  width: auto;
+  height: auto;
+  max-height: calc(var(--ls, 1) * 24px);
+  max-width: min(100%, calc(var(--ls, 1) * 150px));
+  object-fit: contain;
+}
+
+.compare-hub .hc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 1rem;
+}
+
+.compare-hub .hc-tag {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: #eaf1fd;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  line-height: 1.2;
+}
+
+.compare-hub .hc-blurb {
+  margin-top: 0.875rem;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-ink-muted);
+  flex: 1;
+}
+
+.compare-hub .hc-links {
+  margin-top: 1.125rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid #e8edf4;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.compare-hub .hc-lbl {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a90a3;
+  margin-bottom: 4px;
+}
+
+.compare-hub .hc-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.625rem;
+  padding: 7px 0;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+.compare-hub .hc-link .hc-arrow {
+  flex: 0 0 auto;
+  color: var(--color-accent);
+  transition: transform 0.2s;
+}
+
+.compare-hub .hc-link:hover {
+  color: var(--color-accent);
+}
+
+.compare-hub .hc-link:hover .hc-arrow {
+  transform: translateX(3px);
+}
+
+.compare-hub .hc-other {
+  background: #f7f9fc;
+  border-style: dashed;
+  border-color: #c9d3e1;
+}
+
+.compare-hub .hc-oname {
+  margin-top: 1rem;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.compare-hub .hc-other .hc-link {
+  color: var(--color-accent);
+}
+
+.compare-hub .hempty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  text-align: center;
+  padding: 3rem 1.25rem;
+  border: 1px dashed #c9d3e1;
+  border-radius: 1.125rem;
+  background: #f7f9fc;
+}
+
+.compare-hub .hempty strong {
+  font-size: 19px;
+  color: var(--color-ink);
+}
+
+.compare-hub .hempty > p {
+  color: #6b7690;
+  max-width: 520px;
+}
+
+.compare-hub .hempty .hempty-action {
+  margin-top: 0.625rem;
+}
+
+/* ---------- Decision guides grid ---------- */
+.compare-hub .ggrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.compare-hub .gcard {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-bg);
+  border: 1px solid #dce3ee;
+  border-radius: 1.125rem;
+  padding: 1.625rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, box-shadow 0.25s, transform 0.25s;
+}
+
+.compare-hub .gcard:hover {
+  border-color: #b9cbea;
+  box-shadow: 0 18px 36px -26px rgb(10 17 40 / 0.45);
+  transform: translateY(-2px);
+}
+
+.compare-hub .g-ico {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #eaf1fd;
+  color: var(--color-accent);
+  display: grid;
+  place-items: center;
+}
+
+.compare-hub .gcard h3 {
+  margin-top: 1.125rem;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+}
+
+.compare-hub .gcard p {
+  margin-top: 0.5rem;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-ink-muted);
+  flex: 1;
+}
+
+.compare-hub .g-go {
+  margin-top: 1.125rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 15.5px;
+  color: var(--color-accent);
+}
+
+.compare-hub .g-go .g-arrow {
+  transition: transform 0.2s;
+}
+
+.compare-hub .gcard:hover .g-go .g-arrow {
+  transform: translateX(3px);
+}
+
+@media (min-width: 768px) {
+  .compare-hub .cmp-section .section-heading {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .compare-hub #method .cmp-boundaries li {
+    grid-template-columns: 28px minmax(190px, 260px) minmax(0, 1fr);
+    gap: 1.75rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (max-width: 1180px) {
+  .compare-hub .hgrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .compare-hub .hgrid,
+  .compare-hub .ggrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .compare-hub .hsearch {
+    max-width: none;
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .compare-hub .htools {
+    padding: 12px 14px;
+    gap: 12px;
+    margin-top: 22px;
+    border-radius: 12px;
+  }
+
+  .compare-hub .hsearch input {
+    font-size: 16px;
+  }
+
+  .compare-hub .hchips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 -14px;
+    padding: 0 14px 2px;
+    scrollbar-width: none;
+  }
+
+  .compare-hub .hchips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .compare-hub .hchip {
+    flex: 0 0 auto;
+    font-size: 12.5px;
+    padding: 8px 12px;
+  }
+
+  .compare-hub .hcount {
+    font-size: 12px;
+    margin: 16px 0 12px;
+  }
+
+  .compare-hub .hgrid,
+  .compare-hub .ggrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .compare-hub .hcard {
+    padding: 16px 16px 12px;
+    border-radius: 12px;
+  }
+
+  .compare-hub .hcard:hover,
+  .compare-hub .gcard:hover {
+    transform: none;
+  }
+
+  .compare-hub .hc-logo {
+    height: 26px;
+  }
+
+  .compare-hub .hc-logo .firm-logo {
+    max-height: calc(var(--ls, 1) * 19px);
+    max-width: min(100%, calc(var(--ls, 1) * 120px));
+  }
+
+  .compare-hub .hc-tags {
+    margin-top: 10px;
+  }
+
+  .compare-hub .hc-tag {
+    font-size: 10.5px;
+  }
+
+  .compare-hub .hc-blurb {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  .compare-hub .hc-links {
+    margin-top: 12px;
+    padding-top: 8px;
+  }
+
+  .compare-hub .hc-lbl {
+    font-size: 9.5px;
+  }
+
+  .compare-hub .hc-link {
+    font-size: 13.5px;
+    padding: 8px 0;
+    min-height: 32px;
+  }
+
+  .compare-hub .gcard {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .compare-hub .g-ico {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+  }
+
+  .compare-hub .gcard h3 {
+    font-size: 16px;
+    margin-top: 12px;
+  }
+
+  .compare-hub .gcard p {
+    font-size: 12.5px;
+  }
+
+  .compare-hub .g-go {
+    font-size: 13px;
+    margin-top: 12px;
+  }
+
+  .compare-hub .hempty {
+    padding: 28px 16px;
+  }
+
+  .compare-hub .hempty strong {
+    font-size: 15px;
+  }
+
+  .compare-hub .hempty > p {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compare-hub .cmp-badge-dot::after {
+    animation: none;
+  }
+
+  .compare-hub .hchip,
+  .compare-hub .hcard,
+  .compare-hub .hc-link .hc-arrow,
+  .compare-hub .gcard,
+  .compare-hub .g-go .g-arrow {
+    transition: none;
+  }
+}
+
