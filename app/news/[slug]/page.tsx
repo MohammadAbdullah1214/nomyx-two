@@ -14,6 +14,7 @@ import { getPublishedNewsBySlug } from "@/lib/news";
 import { plainTextFromHtml } from "@/lib/blogs";
 import { enhanceBlogHtml } from "@/lib/blog-content";
 import BlogTableOfContents from "@/app/blog/[slug]/BlogTableOfContents";
+import { createPageMetadata } from "@/lib/metadata";
 
 import { newsSchemas } from "@/lib/schema-data";
 
@@ -29,17 +30,21 @@ export async function generateMetadata({
   const { slug } = await params;
   const news = await getPublishedNewsBySlug(slug);
 
-  return {
-    title: news
-      ? news.page_title || `${news.title} | Nomyx News`
-      : "Nomyx News",
-    description:
-      news?.excerpt ||
-      "Get the latest updates, press releases, and partner announcements from Nomyx.",
-    alternates: {
-      canonical: `https://www.nomyx.io/news/${slug}`,
-    },
-  };
+  const title = news
+    ? news.page_title || `${news.title} | Nomyx News`
+    : "Nomyx News";
+  const description =
+    news?.excerpt ||
+    "Get the latest updates, press releases, and partner announcements from Nomyx.";
+
+  return createPageMetadata({
+    title,
+    description,
+    pathname: `/news/${slug}`,
+    image: news?.cover_image_url || null,
+    imageAlt: news?.title || null,
+    type: "article",
+  });
 }
 
 function formatDate(value: string | null) {

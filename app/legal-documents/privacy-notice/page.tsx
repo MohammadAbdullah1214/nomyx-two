@@ -1,12 +1,11 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Privacy Notice | Nomyx Legal Documents",
   description: "Privacy Notice",
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/privacy-notice",
-  },
-};
+  pathname: "/legal-documents/privacy-notice",
+});
 
 export default function PrivacyNoticePage() {
   return (

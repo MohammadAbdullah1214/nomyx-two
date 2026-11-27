@@ -1,12 +1,11 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "User Content and Conduct Policy | Nomyx Legal Documents",
   description: "Policy regarding acceptable user content and conduct on Nomyx.",
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/user-content-and-conduct-policy",
-  },
-};
+  pathname: "/legal-documents/user-content-and-conduct-policy",
+});
 
 export default function UserContentAndConductPolicyPage() {
   return (

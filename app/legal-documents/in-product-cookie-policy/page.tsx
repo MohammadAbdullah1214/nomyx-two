@@ -1,12 +1,11 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Nomyx In-Product Cookie Policy | Nomyx Legal Documents",
   description: "Information about how and when Nomyx uses Cookies within the Nomyx Services.",
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/in-product-cookie-policy",
-  },
-};
+  pathname: "/legal-documents/in-product-cookie-policy",
+});
 
 export default function InProductCookiePolicyPage() {
   return (

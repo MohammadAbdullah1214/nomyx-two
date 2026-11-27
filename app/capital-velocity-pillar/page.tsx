@@ -4,12 +4,13 @@ import { PillarContent, ContentsSidebar, PillarFaq, PillarAction } from "@/app/c
 import PillarTable from "@/app/components/capital-velocity-pillar/PillarTable";
 import { faqs, tables } from "@/app/components/capital-velocity-pillar/content";
 import "@/app/css/capital-velocity-pillar.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Capital Velocity Infrastructure for Tokenized Private Markets | Nomyx",
   description: "What tokenized private-market assets need to move through distribution, compliance, restructuring, collateral diligence, and settlement.",
-  alternates: { canonical: "https://www.nomyx.io/capital-velocity-pillar" },
-};
+  pathname: "/capital-velocity-pillar",
+});
 
 export default function CapitalVelocityPillarPage() {
   const schema = {
@@ -120,7 +121,11 @@ export default function CapitalVelocityPillarPage() {
     <section id="own-rent">
       <h2>Own your store or rent a stall?</h2>
       <p>The next decision concerns control. Asset managers can enter tokenized markets through three broad operating models.</p>
-      <PillarTable table={tables[2]} />
+      <div id="build-the-stack" className="scroll-mt-[125px]">
+        <div id="build-stack" className="scroll-mt-[125px]">
+          <PillarTable table={tables[2]} />
+        </div>
+      </div>
       <p>The third model resembles Shopify more than a securities exchange. Shopify gives merchants infrastructure for operating their own stores. It does not become the merchant or guarantee customers. In the same way, tokenization infrastructure can power an asset manager's environment without becoming the issuer, the asset, the lender, or the regulated secondary venue. The analogy explains the model. It does not prove that any provider delivers every required capability.</p>
       <h3>What "own your own store" should mean</h3>
       <p>Do not reduce ownership to a logo and color palette. Test the operating rights.</p>
@@ -308,15 +313,15 @@ export default function CapitalVelocityPillarPage() {
   <div className="wrap">
     <h2>Continue your evaluation</h2>
     <div className="rel-grid">
-      <a href="/tokenization-does-not-create-liquidity/">Tokenization does not create liquidity</a>
-      <a href="/own-the-rails-vs-rent-the-marketplace/">Own the rails vs rent the marketplace</a>
-      <a href="/asset-recomposition/">Asset recomposition</a>
-      <a href="/tokenized-asset-collateral-readiness/">Tokenized asset collateral readiness</a>
-      <a href="/continuous-compliance-tokenized-assets/">Continuous compliance for tokenized assets</a>
-      <a href="/private-credit-tokenization-infrastructure/">Private-credit tokenization infrastructure</a>
-      <a href="/institutional-tokenization-without-crypto-ux/">Institutional tokenization without crypto UX</a>
-      <a href="/t0-atomic-settlement/">T+0 and atomic settlement</a>
-      <a href="/build-buy-rent-tokenization-infrastructure/">Build, buy, or rent tokenization infrastructure</a>
+      <a href="/capital-velocity-pillar#not-liquidity">Tokenization does not create liquidity</a>
+      <a href="/capital-velocity-pillar#own-rent">Own the rails vs rent the marketplace</a>
+      <a href="/capital-velocity-pillar#recomposition">Asset recomposition</a>
+      <a href="/capital-velocity-pillar#collateral">Tokenized asset collateral readiness</a>
+      <a href="/capital-velocity-pillar#compliance">Continuous compliance for tokenized assets</a>
+      <a href="/capital-velocity-pillar#fit">Private-credit tokenization infrastructure</a>
+      <a href="/capital-velocity-pillar#no-crypto">Institutional tokenization without crypto UX</a>
+      <a href="/capital-velocity-pillar#settlement">T+0 and atomic settlement</a>
+      <a href="/capital-velocity-pillar#build-the-stack">Build, buy, or rent tokenization infrastructure</a>
     </div>
   </div>
 </section>

@@ -4,13 +4,14 @@ import ComparisonPage from "@/app/components/comparisons/nomyx-vs-securitize/Com
 import { faqs } from "@/app/components/comparisons/nomyx-vs-securitize/content";
 import "@/app/css/comparisons.css";
 import "@/app/css/nomyx-vs-securitize.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Nomyx vs Securitize | Tokenization Operating Models",
   description:
     "Compare Nomyx and Securitize across issuer control, investor experience, asset changes, retained service providers, market access, and total operating cost.",
-  alternates: { canonical: "https://www.nomyx.io/nomyx-vs-securitize" },
-};
+  pathname: "/nomyx-vs-securitize",
+});
 
 export default function NomyxVsSecuritizePage() {
   const schema = {

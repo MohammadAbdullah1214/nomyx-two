@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 
 import Evergreen from "../components/Evergreen";
 import { serviceSchemas } from "@/lib/schema-data";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Evergreen & Open-Ended Fund Tokenization | Nomyx",
   description: "Automate your evergreen and open-ended funds with Nomyx. Replace quarterly drag with always-on efficiency, continuous subscriptions, and dynamic NAV updates.",
-  alternates: {
-    canonical: "https://www.nomyx.io/evergreen-open-ended-funds",
-  },
-};
+  pathname: "/evergreen-open-ended-funds",
+});
 
 export default function EvergreenOpenEndedFundsPage() {
   return (

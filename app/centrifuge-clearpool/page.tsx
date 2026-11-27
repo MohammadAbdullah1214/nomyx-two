@@ -4,13 +4,14 @@ import ComparisonPage from "@/app/components/comparisons/centrifuge-clearpool/Co
 import { faqs } from "@/app/components/comparisons/centrifuge-clearpool/content";
 import "@/app/css/comparisons.css";
 import "@/app/css/centrifuge-clearpool.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Centrifuge vs Nomyx vs Clearpool | Private Credit Comparison",
   description:
     "Compare Centrifuge, Nomyx, and Clearpool for private credit. Separate tokenization infrastructure from borrowing facilities, funding commitments, servicing, and operating costs.",
-  alternates: { canonical: "https://www.nomyx.io/centrifuge-clearpool" },
-};
+  pathname: "/centrifuge-clearpool",
+});
 
 export default function CentrifugeClearpoolPage() {
   const schema = {

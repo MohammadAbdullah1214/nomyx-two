@@ -1,13 +1,12 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Securities Tokenization Service Addendum | Nomyx Legal Documents",
   description: "Securities Tokenization Service Addendum",
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/securities-addendum",
-  },
-};
+  pathname: "/legal-documents/securities-addendum",
+});
 
 export default function SecuritiesAddendumPage() {
   return (

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CustomCursor, Footer, Navbar } from "@/app/home";
 import { getAuthorBySlug } from "@/lib/authors";
 import { plainTextFromHtml } from "@/lib/blogs";
+import { createPageMetadata } from "@/lib/metadata";
 
 import { ubairJavaidPersonSchema } from "@/lib/schema-data";
 
@@ -19,21 +20,28 @@ export async function generateMetadata({
   const author = await getAuthorBySlug(name);
 
   if (author) {
-    return {
-      title: author.page_title || `${author.name} - Nomyx`,
-      description:
-        author.meta_description ||
-        (author.bio_html
-          ? plainTextFromHtml(author.bio_html).substring(0, 150)
-          : "Author at Nomyx"),
-      alternates: {
-        canonical: `https://www.nomyx.io/blog/author/${name}`,
-      },
-    };
+    const title = author.page_title || `${author.name} - Nomyx`;
+    const description =
+      author.meta_description ||
+      (author.bio_html
+        ? plainTextFromHtml(author.bio_html).substring(0, 150)
+        : "Author at Nomyx");
+
+    return createPageMetadata({
+      title,
+      description,
+      pathname: `/blog/author/${name}`,
+      image: author.cover_image_url || null,
+      imageAlt: author.name || null,
+      type: "profile",
+    });
   }
-  return {
+  return createPageMetadata({
     title: "Author - Nomyx",
-  };
+    description: "Author profile at Nomyx",
+    pathname: `/blog/author/${name}`,
+    type: "profile",
+  });
 }
 
 export default async function AuthorPage({ params }: AuthorProps) {

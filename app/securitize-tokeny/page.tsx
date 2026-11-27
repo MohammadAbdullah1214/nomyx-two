@@ -3,13 +3,14 @@ import { CustomCursor, Footer, Navbar } from "@/app/home";
 import ComparisonPage from "@/app/components/comparisons/securitize-tokeny/ComparisonPage";
 import { faqs } from "@/app/components/comparisons/securitize-tokeny/content";
 import "@/app/css/comparisons.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Securitize vs Nomyx vs Tokeny | Fund Tokenization Comparison",
   description:
     "Compare Securitize, Nomyx, and Tokeny for fund tokenization. Evaluate service scope, retained providers, operating responsibilities, integrations, and transition costs.",
-  alternates: { canonical: "https://www.nomyx.io/securitize-tokeny" },
-};
+  pathname: "/securitize-tokeny",
+});
 
 export default function SecuritizeTokenyPage() {
   const faqSchema = {

@@ -3,13 +3,14 @@ import { CustomCursor, Footer, Navbar } from "@/app/home";
 import ComparisonPage from "@/app/components/comparisons/nomyx-compare/ComparisonPage";
 import "@/app/css/comparisons.css";
 import "@/app/css/nomyx-compare.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Compare Nomyx: Tokenization Platform Comparisons",
   description:
     "Compare Nomyx with Securitize, Tokeny, Taurus, Fireblocks, Brickken, Centrifuge, Clearpool, SettleMint, Bitbond, DigiShares, and InvestaX. Choose a company to see its comparison.",
-  alternates: { canonical: "https://www.nomyx.io/nomyx-compare" },
-};
+  pathname: "/nomyx-compare",
+});
 
 export default function NomyxComparePage() {
   return (

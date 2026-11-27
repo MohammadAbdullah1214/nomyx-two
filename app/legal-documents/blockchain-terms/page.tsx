@@ -1,12 +1,11 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Blockchain Service-Specific Terms | Nomyx Legal Documents",
   description: "Blockchain Service-Specific Terms",
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/blockchain-terms",
-  },
-};
+  pathname: "/legal-documents/blockchain-terms",
+});
 
 export default function BlockchainTermsPage() {
   return (
