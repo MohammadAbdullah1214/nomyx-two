@@ -92,6 +92,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSauceSans.variable}`}>
       <head>
+        <meta property="og:logo" content="https://www.nomyx.io/nomyx-logo.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
