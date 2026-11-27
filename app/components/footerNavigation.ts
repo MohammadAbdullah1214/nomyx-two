@@ -48,6 +48,10 @@ const groups: FooterGroup[] = [
       { name: "Fund Administrators", href: "/#platform" },
       { name: "Institutional Issuers", href: "/tokenized-asset-lifecycle" },
       { name: "Tokenized Asset Lifecycle", href: "/tokenized-asset-lifecycle" },
+      {
+        name: "Capital Velocity Infrastructure",
+        href: "/capital-velocity-pillar",
+      },
     ],
   },
   {
