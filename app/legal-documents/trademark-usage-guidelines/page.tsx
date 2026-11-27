@@ -1,12 +1,11 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Trademark Usage Guidelines | Nomyx Legal Documents",
   description: "Guidelines for using Nomyx trademarks and brand assets.",
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/trademark-usage-guidelines",
-  },
-};
+  pathname: "/legal-documents/trademark-usage-guidelines",
+});
 
 export default function TrademarkUsageGuidelinesPage() {
   return (

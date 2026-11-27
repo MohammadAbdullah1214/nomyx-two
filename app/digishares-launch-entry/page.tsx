@@ -4,13 +4,14 @@ import ComparisonPage from "@/app/components/comparisons/digishares-launch-entry
 import { faqs } from "@/app/components/comparisons/digishares-launch-entry/content";
 import "@/app/css/comparisons.css";
 import "@/app/css/digishares-launch-entry.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "DigiShares Launch vs Nomyx vs Bitbond | First Offering Costs",
   description:
     "Compare DigiShares Launch, a scoped Nomyx configuration, and Bitbond for a first tokenized offering. Evaluate published cost anchors, required extras, and operator effort.",
-  alternates: { canonical: "https://www.nomyx.io/digishares-launch-entry" },
-};
+  pathname: "/digishares-launch-entry",
+});
 
 export default function DigiSharesLaunchEntryPage() {
   const schema = {

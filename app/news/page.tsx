@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import { CustomCursor, Footer, Navbar } from "@/app/home";
 import { getPublishedNews, getFeaturedNews, getNewsCategories } from "@/lib/news";
 import NewsPageClient from "./NewsPageClient";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Nomyx News & Company Updates",
   description: "Get the latest Nomyx news, press releases, and partner announcements. Stay updated on our institutional tokenization platform and digital asset infrastructure.",
-  alternates: {
-    canonical: "https://www.nomyx.io/news",
-  },
-};
+  pathname: "/news",
+});
 
 export default async function NewsIndexPage() {
   const [news, featured, allCategories] = await Promise.all([

@@ -5,14 +5,13 @@ import { ArrowRight, CheckCircle2, FileText, PenLine } from "lucide-react";
 import { CustomCursor, Footer, Navbar } from "@/app/home";
 import { getPublishedBlogs, plainTextFromHtml } from "@/lib/blogs";
 import { AnimatedButton } from "@/app/components/evergreen/shared";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Nomyx Insights | Institutional Tokenization",
   description: "Read the Nomyx blog for expert insights on institutional tokenization. Discover in-depth notes on infrastructure, capital markets workflows, and product thinking.",
-  alternates: {
-    canonical: "https://www.nomyx.io/blog",
-  },
-};
+  pathname: "/blog",
+});
 
 function formatDate(value: string | null) {
   if (!value) {

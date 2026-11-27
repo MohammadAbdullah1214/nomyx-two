@@ -4,13 +4,14 @@ import ComparisonPage from "@/app/components/comparisons/three-model/ComparisonP
 import { faqs } from "@/app/components/comparisons/three-model/content";
 import "@/app/css/comparisons.css";
 import "@/app/css/three-model-comparison.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Three Tokenization Operating Models | Nomyx Comparison",
   description:
     "Compare regulated monoliths, modular issuer-controlled infrastructure, and smart-contract-native credit protocols across ownership, servicing, connectivity, and commercial risk.",
-  alternates: { canonical: "https://www.nomyx.io/three-model-comparison" },
-};
+  pathname: "/three-model-comparison",
+});
 
 export default function ThreeModelComparisonPage() {
   const schema = {

@@ -4,14 +4,15 @@ import ComparisonPage from "@/app/components/comparisons/digishares-investax/Com
 import { faqs } from "@/app/components/comparisons/digishares-investax/content";
 import "@/app/css/comparisons.css";
 import "@/app/css/digishares-investax.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title:
     "DigiShares vs Nomyx vs InvestaX | Real Estate Tokenization Comparison",
   description:
     "Compare DigiShares, Nomyx, and InvestaX for real-estate investor operations. Evaluate eligibility, ownership records, distributions, controlled transfers, service scope, and total operating cost.",
-  alternates: { canonical: "https://www.nomyx.io/digishares-investax" },
-};
+  pathname: "/digishares-investax",
+});
 
 export default function DigiSharesInvestaXPage() {
   const schema = {

@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -5,13 +6,11 @@ import { getLegalDocument } from "../legalDocuments";
 
 const document = getLegalDocument("dpa");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Data Processing Agreement | Nomyx Legal Documents",
-  description: document?.description,
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/dpa",
-  },
-};
+  description: document?.description || "Nomyx Legal Document",
+  pathname: "/legal-documents/dpa",
+});
 
 export default function DataProcessingAgreementPage() {
   if (!document) {

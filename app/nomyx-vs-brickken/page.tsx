@@ -4,13 +4,14 @@ import ComparisonPage from "@/app/components/comparisons/nomyx-vs-brickken/Compa
 import { faqs } from "@/app/components/comparisons/nomyx-vs-brickken/content";
 import "@/app/css/comparisons.css";
 import "@/app/css/nomyx-vs-brickken.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Nomyx vs Brickken: Tokenization Platform Comparison for Asset Managers",
   description:
     "Compare Nomyx and Brickken on smart-contract upgrades, compliance controls, fund lifecycle operations, white-label delivery, integrations, and operating costs.",
-  alternates: { canonical: "https://www.nomyx.io/nomyx-vs-brickken" },
-};
+  pathname: "/nomyx-vs-brickken",
+});
 
 export default function NomyxVsBrickkenPage() {
   const schema = {

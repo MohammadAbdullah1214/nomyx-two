@@ -1,12 +1,11 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Professional Services Terms and Conditions | Nomyx Legal Documents",
-    description: "Terms and conditions for Nomyx professional services.",
-    alternates: {
-        canonical: "https://www.nomyx.io/legal-documents/professional-services",
-    },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Professional Services Terms and Conditions | Nomyx Legal Documents",
+  description: "Terms and conditions for Nomyx professional services.",
+  pathname: "/legal-documents/professional-services",
+});
 
 export default function ProfessionalServicesPage() {
     return (

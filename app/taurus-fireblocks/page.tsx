@@ -3,14 +3,15 @@ import { CustomCursor, Footer, Navbar } from "@/app/home";
 import ComparisonPage from "@/app/components/comparisons/taurus-fireblocks/ComparisonPage";
 import { faqs } from "@/app/components/comparisons/taurus-fireblocks/content";
 import "@/app/css/comparisons.css";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title:
     "Taurus vs Nomyx vs Fireblocks | Institutional Tokenization Comparison",
   description:
     "Compare Taurus, Nomyx, and Fireblocks for institutional tokenization. Evaluate investor workflows, custody technology, integrations, controls, and three-year operating costs.",
-  alternates: { canonical: "https://www.nomyx.io/taurus-fireblocks" },
-};
+  pathname: "/taurus-fireblocks",
+});
 
 export default function TaurusFireblocksPage() {
   const faqSchema = {

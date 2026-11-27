@@ -1,12 +1,11 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "How We Protect Your Service Data (Innovation Services) | Nomyx Legal Documents",
   description: "Innovation Security Measures",
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/innovation-services",
-  },
-};
+  pathname: "/legal-documents/innovation-services",
+});
 
 export default function InnovationServicesPage() {
   return (

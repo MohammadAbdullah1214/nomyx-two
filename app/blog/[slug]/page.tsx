@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { CustomCursor, Footer, Navbar } from "@/app/home";
+import { createPageMetadata } from "@/lib/metadata";
 import {
   getBlogBySlug,
   getPublishedBlogBySlug,
@@ -42,17 +43,21 @@ export async function generateMetadata({
     ? await getBlogBySlug(slug)
     : await getPublishedBlogBySlug(slug);
 
-  return {
-    title: blog
-      ? blog.page_title || `${blog.title} | Nomyx Blog`
-      : "Nomyx Blog",
-    description:
-      blog?.excerpt ||
-      "Tokenization infrastructure notes, capital markets workflows, and product thinking from the Nomyx team.",
-    alternates: {
-      canonical: `https://www.nomyx.io/blog/${slug}`,
-    },
-  };
+  const title = blog
+    ? blog.page_title || `${blog.title} | Nomyx Blog`
+    : "Nomyx Blog";
+  const description =
+    blog?.excerpt ||
+    "Tokenization infrastructure notes, capital markets workflows, and product thinking from the Nomyx team.";
+
+  return createPageMetadata({
+    title,
+    description,
+    pathname: `/blog/${slug}`,
+    image: blog?.cover_image_url || null,
+    imageAlt: blog?.cover_image_alt || blog?.title || null,
+    type: "article",
+  });
 }
 
 function formatDate(value: string | null) {

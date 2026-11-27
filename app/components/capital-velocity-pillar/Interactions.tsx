@@ -31,8 +31,17 @@ export function PillarContent({ children }: { children: ReactNode }) {
 
   function scrollToSection(event: MouseEvent<HTMLElement>) {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
-    const hash = link?.getAttribute("href");
+    const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href^="#"], a[href*="#"]') : null;
+    const rawHref = link?.getAttribute("href");
+    if (!rawHref) return;
+
+    const hashIndex = rawHref.indexOf("#");
+    if (hashIndex === -1) return;
+
+    const pathPart = rawHref.slice(0, hashIndex);
+    if (pathPart && pathPart !== "/capital-velocity-pillar" && pathPart !== "/capital-velocity-pillar/") return;
+
+    const hash = rawHref.slice(hashIndex);
     if (!hash || hash === "#" || link?.target || link?.hasAttribute("download")) return;
     const section = document.getElementById(decodeURIComponent(hash.slice(1)));
     if (!section || !event.currentTarget.contains(section)) return;

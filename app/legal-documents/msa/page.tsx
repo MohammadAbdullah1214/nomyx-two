@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -6,13 +7,11 @@ import { getLegalDocument } from "../legalDocuments";
 
 const document = getLegalDocument("msa");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Main Services Agreement | Nomyx Legal Documents",
-  description: document?.description,
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/msa",
-  },
-};
+  description: document?.description || "Nomyx Legal Document",
+  pathname: "/legal-documents/msa",
+});
 
 export default function MainServiceAgreementPage() {
   if (!document) {

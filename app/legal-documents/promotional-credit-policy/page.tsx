@@ -1,12 +1,11 @@
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Promotional Credits Policy | Nomyx Legal Documents",
   description: "Policy regarding promotional credits for Nomyx services.",
-  alternates: {
-    canonical: "https://www.nomyx.io/legal-documents/promotional-credit-policy",
-  },
-};
+  pathname: "/legal-documents/promotional-credit-policy",
+});
 
 export default function PromotionalCreditPolicyPage() {
   return (

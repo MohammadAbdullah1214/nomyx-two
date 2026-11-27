@@ -4,6 +4,7 @@ import "./globals.css";
 import ToastProvider from "@/app/components/ToastProvider";
 import localFont from "next/font/local";
 import { organizationAndWebsiteSchema } from "@/lib/schema-data";
+import { DEFAULT_SHARE_IMAGE } from "@/lib/metadata";
 
 const openSauceSans = localFont({
   src: [
@@ -47,6 +48,22 @@ export const metadata: Metadata = {
   description:
     "Tokenization infrastructure for institutional capital with upgradeable smart contracts and built-in compliance.",
   applicationName: "Nomyx",
+  openGraph: {
+    title: "Nomyx - Agile Infrastructure for Institutional Capital",
+    description:
+      "Tokenization infrastructure for institutional capital with upgradeable smart contracts and built-in compliance.",
+    url: "https://www.nomyx.io",
+    siteName: "Nomyx",
+    type: "website",
+    images: [DEFAULT_SHARE_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nomyx - Agile Infrastructure for Institutional Capital",
+    description:
+      "Tokenization infrastructure for institutional capital with upgradeable smart contracts and built-in compliance.",
+    images: [DEFAULT_SHARE_IMAGE.url],
+  },
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
