@@ -44,9 +44,28 @@ export function createPageMetadata({
   const twitterImageUrl =
     typeof resolvedImage.url === "string" ? resolvedImage.url : resolvedImage;
 
+  const isProduction = process.env.VERCEL_ENV === "production";
+
   return {
     title,
     description,
+    robots: isProduction
+      ? {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+          },
+        }
+      : {
+          index: false,
+          follow: false,
+          googleBot: {
+            index: false,
+            follow: false,
+          },
+        },
     alternates: {
       canonical: url,
     },

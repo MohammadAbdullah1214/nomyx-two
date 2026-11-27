@@ -52,6 +52,23 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    const isProduction = process.env.VERCEL_ENV === "production";
+    if (!isProduction) {
+      return [
+        {
+          source: "/:path*",
+          headers: [
+            {
+              key: "X-Robots-Tag",
+              value: "noindex, nofollow",
+            },
+          ],
+        },
+      ];
+    }
+    return [];
+  },
 };
 
 export default nextConfig;
