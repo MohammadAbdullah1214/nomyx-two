@@ -52,7 +52,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/contact",
-        destination: "https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true",
+        destination: "/contact-us",
         permanent: false,
       },
     ];

@@ -69,7 +69,7 @@ export const mainFooterColumns: FooterColumn[] = [
       { name: "Press Releases", href: "/news" },
       { name: "Visual Library", href: "#" },
       { name: "Careers", href: "#" },
-      { name: "Contact", href: "https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true" },
+      { name: "Contact", href: "/contact-us" },
     ],
   },
 ];
