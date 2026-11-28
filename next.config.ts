@@ -50,6 +50,11 @@ const nextConfig: NextConfig = {
         destination: "/nomyx-vs-brickken",
         permanent: true,
       },
+      {
+        source: "/contact",
+        destination: "https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true",
+        permanent: false,
+      },
     ];
   },
   async headers() {
