@@ -50,7 +50,29 @@ const nextConfig: NextConfig = {
         destination: "/nomyx-vs-brickken",
         permanent: true,
       },
+      {
+        source: "/contact",
+        destination: "/contact-us",
+        permanent: false,
+      },
     ];
+  },
+  async headers() {
+    const isProduction = process.env.VERCEL_ENV === "production";
+    if (!isProduction) {
+      return [
+        {
+          source: "/:path*",
+          headers: [
+            {
+              key: "X-Robots-Tag",
+              value: "noindex, nofollow",
+            },
+          ],
+        },
+      ];
+    }
+    return [];
   },
 };
 

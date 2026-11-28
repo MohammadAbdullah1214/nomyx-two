@@ -22,8 +22,6 @@ import {
   X,
 } from "lucide-react";
 import { AnimatedButton } from "@/app/components/evergreen/shared";
-import PreferredSourceButton from "@/app/components/PreferredSourceButton";
-import { footerNavigation } from "@/app/components/footerNavigation";
 import pageContent from "./pageContent.json";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blogs";
@@ -1291,118 +1289,8 @@ const FeaturedBlogs = ({ blogs }: { blogs: BlogPost[] }) => {
   );
 };
 
-export const Footer = ({
-  ctaTitle = pageContent.cta.title,
-  ctaDescription = pageContent.cta.description,
-  ctaButtonText = pageContent.cta.button,
-  ctaButtonLink = "https://bookings.cloud.microsoft/book/NomyxDiscoveryCall@nomyx.io/?ismsaljsauthenabled=true",
-}: {
-  ctaTitle?: string;
-  ctaDescription?: string;
-  ctaButtonText?: string;
-  ctaButtonLink?: string;
-}) => (
-  <footer className="relative w-full bg-white overflow-hidden">
-    <div className="relative w-full bg-[#F2F9FF] rounded-t-[60px] md:rounded-t-[100px] pt-20 pb-12 overflow-hidden">
-      {/* Background Decorative Logos */}
-      <img
-        src="/footer-logo-left.png"
-        alt=""
-        className="absolute left-0 top-[20%] h-auto w-[20%] pointer-events-none opacity-60"
-      />
-      <img
-        src="/footer-logo-right.png"
-        alt=""
-        className="absolute right-0 top-[10%] h-auto w-[20%] pointer-events-none opacity-60"
-      />
-
-      <div className="custom-container relative z-10">
-        {/* CTA Content */}
-        <div className="mb-32 text-center">
-          <h2 className="section-heading mb-5">{ctaTitle}</h2>
-          <p className="mx-auto mb-12 max-w-2xl text-[18px] text-[#42546E]">
-            {ctaDescription}
-          </p>
-          <AnimatedButton
-            text={ctaButtonText}
-            href={ctaButtonLink}
-            variant="accent"
-            className="h-14 !px-10"
-            target="_blank"
-            rel="noopener noreferrer"
-          />
-        </div>
-
-        {/* Footer Content */}
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="min-w-0 lg:col-span-3 xl:col-span-4">
-            <Link href="/" className="mb-6 block">
-              <img
-                src="/nomyx-logo.png"
-                alt="Nomyx"
-                className="h-9 md:h-12 w-auto max-w-full object-contain"
-              />
-            </Link>
-            <p className="max-w-sm text-[15px] font-medium leading-relaxed text-[#42546E]">
-              {pageContent.footer.description}
-            </p>
-            <PreferredSourceButton />
-          </div>
-
-          <div className="grid min-w-0 grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:col-span-9 xl:col-span-8 xl:grid-cols-5">
-            {footerNavigation.map((column) => (
-              <div key={column.title} className="min-w-0">
-                <h4 className="mb-6 text-[13px] font-bold leading-relaxed text-[#19233D]">
-                  {column.title}
-                </h4>
-                <ul className="space-y-4">
-                  {column.links.map((link) => (
-                    <li key={link.name}>
-                      {link.href ? (
-                        <Link
-                          href={link.href}
-                          className="block text-[15px] font-medium leading-relaxed text-[#42546E] transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-                        >
-                          {link.name}
-                        </Link>
-                      ) : (
-                        <span
-                          aria-disabled="true"
-                          title="Link destination not yet available"
-                          className="block text-[15px] font-medium leading-relaxed text-[#42546E]/70"
-                        >
-                          {link.name}
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-32 flex flex-col items-center justify-between gap-8 border-t border-slate-200 pt-10 lg:flex-row">
-          <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#42546E]/60">
-            {pageContent.footer.copyright}
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[13px] font-medium text-[#42546E]">
-            {pageContent.footer.legal.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="transition-colors hover:text-accent"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-);
+import { Footer } from "@/app/components/Footer";
+export { Footer };
 
 export default function Home({
   featuredBlogs = [],

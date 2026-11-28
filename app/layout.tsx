@@ -42,12 +42,31 @@ const openSauceSans = localFont({
   variable: "--font-open-sauce",
 });
 
+const isProduction = process.env.VERCEL_ENV === "production";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nomyx.io"),
   title: "Nomyx - Agile Infrastructure for Institutional Capital",
   description:
     "Tokenization infrastructure for institutional capital with upgradeable smart contracts and built-in compliance.",
   applicationName: "Nomyx",
+  robots: isProduction
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+        },
+      }
+    : {
+        index: false,
+        follow: false,
+        googleBot: {
+          index: false,
+          follow: false,
+        },
+      },
   openGraph: {
     title: "Nomyx - Agile Infrastructure for Institutional Capital",
     description:
@@ -99,38 +118,46 @@ export default function RootLayout({
             __html: JSON.stringify(organizationAndWebsiteSchema),
           }}
         />
-        <script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="NrLNMOqsZRzdvyokHjuxwQ"
-          async
-        />
+        {isProduction && (
+          <script
+            src="https://analytics.ahrefs.com/analytics.js"
+            data-key="NrLNMOqsZRzdvyokHjuxwQ"
+            async
+          />
+        )}
       </head>
       <body className="antialiased">
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MXFWRT49"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        <Script
-          id="google-tag-manager"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        {isProduction && (
+          <>
+            <noscript>
+              <iframe
+                src="https://www.googletagmanager.com/ns.html?id=GTM-MXFWRT49"
+                height="0"
+                width="0"
+                style={{ display: "none", visibility: "hidden" }}
+              />
+            </noscript>
+            <Script
+              id="google-tag-manager"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `if(window.location.hostname==='www.nomyx.io'||window.location.hostname==='nomyx.io'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MXFWRT49');`,
-          }}
-        />
+})(window,document,'script','dataLayer','GTM-MXFWRT49');}`,
+              }}
+            />
+          </>
+        )}
         {children}
-        <Script
-          src="https://news.google.com/swg/js/v1/publisher.js"
-          strategy="afterInteractive"
-          {...{ "preferred-sources-control": "manual" }}
-        />
+        {isProduction && (
+          <Script
+            src="https://news.google.com/swg/js/v1/publisher.js"
+            strategy="afterInteractive"
+            {...{ "preferred-sources-control": "manual" }}
+          />
+        )}
         <ToastProvider />
       </body>
     </html>
